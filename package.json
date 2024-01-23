@@ -14,15 +14,7 @@
     "moment": "^2.30.1",
     "next": "^14.0.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-<<<<<<< HEAD
-    "react-hot-toast": "^2.4.1",
-    "react-icons": "^5.0.1",
-    "react-router-dom": "^6.21.3"
-=======
-    "react-fast-marquee": "^1.6.3",
-    "react-icons": "^5.0.1"
->>>>>>> 4bd230e133d521d0d68ca7efe6724b0f9d68a65a
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
