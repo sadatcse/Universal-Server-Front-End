@@ -1,8 +1,20 @@
+"use client"
+import { useEffect, useState } from "react";
 import { FaStarOfLife } from "react-icons/fa";
 
-async function SurveyBenefits() {
-    const res = await fetch("https://back-end-vercel-seven.vercel.app/selling_points");
-    const data = await res.json();
+function SurveyBenefits() {
+    const [surveyBenefitData, setSurveyBenefitData] = useState([]);
+
+    useEffect(()=> {
+        const fetchData = async ()=> {
+            const res = await fetch("https://back-end-vercel-seven.vercel.app/selling_points");
+            const data = await res.json();
+            setSurveyBenefitData(data);
+        }
+        fetchData()
+
+        
+    },[])
     
     return (
         <section className="m-4 md:m-8 dark:bg-gray-800 dark:text-gray-100">
@@ -12,7 +24,7 @@ async function SurveyBenefits() {
             </div>
             <div className="container mx-auto grid justify-center gap-12 sm:grid-cols-2 lg:grid-cols-3">
 
-                {data && data.map((item, ind)=> (
+                {surveyBenefitData && surveyBenefitData.map((item, ind)=> (
                 <div key={ind} className="flex flex-col group items-start text-left p-12 border shadow-lg rounded-md hover:bg-slate-400 hover:shadow-2xl hover:scale-110 transition-all duration-300">
                         <FaStarOfLife className='group-hover:rotate-180 transition-all duration-300 text-3xl' />
                     <h3 className="my-3 text-3xl font-semibold">{item.point}</h3>
