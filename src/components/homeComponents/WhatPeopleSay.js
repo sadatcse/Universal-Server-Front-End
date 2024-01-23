@@ -1,35 +1,38 @@
-import Container from "../shared/Container";
+import Marquee from "react-fast-marquee";
 
+async function WhatPeopleSay() {
+    
+    const res = await fetch("https://online-surbey.vercel.app/testimonials.json");
+    const data = await res.json();
 
-const WhatPeopleSay = () => {
+    
     return (
-        <div>
-            <Container>
-                <h1 className=' text-center text-xl md:text-3xl font-semibold'>What People Say</h1>
-                <div className='grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 p-2'>
-                    <div className="max-w-screen-lg mx-auto my-14 md:my-20 relative rounded-lg">
-                        <img src="https://i.ibb.co/35xcz2g/2514366.png" alt="" className="h-14 md:h-20 absolute -top-6 md:-top-10 left-[40%] md:left-[37%]" />
-                        <div className="h-80 bg-gray-400 rounded-xl p-2 md:p-5 flex items-center justify-center">
-                            <p className="text-gray-800 text-center">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the</p>
-                        </div>
-                    </div>
-                    <div className="max-w-screen-lg mx-auto my-14 md:my-20 relative rounded-lg">
-                        <img src="https://i.ibb.co/35xcz2g/2514366.png" alt="" className="h-14 md:h-20 absolute -top-6 md:-top-10 left-[40%] md:left-[37%]" />
-                        <div className="h-80 bg-gray-400 rounded-xl p-2 md:p-5 flex items-center justify-center">
-                            <p className="text-gray-800 text-center">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the</p>
-                        </div>
-                    </div>
-                    <div className="max-w-screen-lg mx-auto my-14 md:my-20 relative rounded-lg">
-                        <img src="https://i.ibb.co/35xcz2g/2514366.png" alt="" className="h-14 md:h-20 absolute -top-6 md:-top-10 left-[40%] md:left-[37%]" />
-                        <div className="h-80 bg-gray-400 rounded-xl p-2 md:p-5 flex items-center justify-center">
-                            <p className="text-gray-800 text-center">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the</p>
-                        </div>
-                    </div>
+        <section className="py-6 bg-slate-100 text-gray-800">
+            <div className="container flex flex-col items-center justify-center p-4 mx-auto sm:p-10">
+                <h1 className="text-4xl font-bold leadi text-center sm:text-5xl">What people Say About Our Service</h1>
+                <Marquee pauseOnHover={true}>
+                    <div className="flex mt-8">
+                        {data && data.map((item, ind) => (
+                            <div key={ind} className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 shadow-2xl bg-white transition-all duration-300 hover:bg-gray-800 text-gray-800 hover:text-gray-100 group">
+            <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full bg-gray-500 object-cover" src={item?.image} />
+            <div className="flex-1 my-4">
+                <p className="text-xl font-semibold leadi">{item.name}</p>
+                <p>{item?.title}</p>
+                <p> <span className="text-3xl font-bold">“</span>{item?.comment} <span className="text-3xl font-bold" >”</span></p>
 
-                </div>
-            </Container>
+            </div>
+            
         </div>
-    );
-};
 
-export default WhatPeopleSay;
+                        ))}
+                    </div>
+
+                </Marquee>
+
+
+            </div>
+        </section>
+    )
+}
+
+export default WhatPeopleSay

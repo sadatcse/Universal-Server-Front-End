@@ -1,36 +1,30 @@
+import { FaStarOfLife } from "react-icons/fa";
 
-
-const SurveyBenefits = () => {
+async function SurveyBenefits() {
+    const res = await fetch("https://back-end-vercel-seven.vercel.app/selling_points");
+    const data = await res.json();
+    
     return (
-        <div className="my-8 md:my-16">
-            <div className="container mx-auto">
-                <div className="py-5 md:py-10 p-2">
-                    <div>
-                        <h1 className=" text-lg md:text-xl font-semibold">Survey Benefits</h1>
-                        <p className="mt-2 md:w-[40%]">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to de</p>
-                    </div>
-                    <div className=" grid grid-cols-1 md:grid-cols-2 gap-8 mt-5 md:mt-10">
-                        <div className="border-t-2 border-gray-600">
-                            <h1 className=" text-lg md:text-xl font-semibold mt-5 md:mt-8">None stop Create</h1>
-                            <p className="mt-2">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to de</p>
-                        </div>
-                        <div className="border-t-2 border-gray-600">
-                            <h1 className=" text-lg md:text-xl font-semibold mt-5 md:mt-8">Publishing time</h1>
-                            <p className="mt-2">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to de</p>
-                        </div>
-                        <div className="border-t-2 border-gray-600">
-                            <h1 className=" text-lg md:text-xl font-semibold mt-5 md:mt-8">Super Fast Down</h1>
-                            <p className="mt-2">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to de</p>
-                        </div>
-                        <div className="border-t-2 border-gray-600">
-                            <h1 className=" text-lg md:text-xl font-semibold mt-5 md:mt-8">Several Timeout</h1>
-                            <p className="mt-2">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to de</p>
-                        </div>
+        <section className="m-4 md:m-8 dark:bg-gray-800 dark:text-gray-100">
+            <div className="container mx-auto p-4 my-6 space-y-2 text-center">
+                <h2 className="text-5xl font-bold">Survey Benefits</h2>
+                <p className="dark:text-gray-400 max-w-2xl mx-auto">USPs are distinct features that set your product or service apart, attracting customers by offering unique benefits and a competitive edge.</p>
+            </div>
+            <div className="container mx-auto grid justify-center gap-12 sm:grid-cols-2 lg:grid-cols-3">
+
+                {data && data.map((item, ind)=> (
+                <div key={ind} className="flex flex-col group items-start text-left p-12 border shadow-lg rounded-md hover:bg-slate-400 hover:shadow-2xl hover:scale-110 transition-all duration-300">
+                        <FaStarOfLife className='group-hover:rotate-180 transition-all duration-300 text-3xl' />
+                    <h3 className="my-3 text-3xl font-semibold">{item.point}</h3>
+                    <div className="space-y-1">
+                        <p>{item.description}</p>
                     </div>
                 </div>
+
+                ))}
             </div>
-        </div>
-    );
-};
+        </section>
+    )
+}
 
 export default SurveyBenefits
