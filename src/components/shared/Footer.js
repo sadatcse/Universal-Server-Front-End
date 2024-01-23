@@ -1,4 +1,5 @@
 import { FaFacebookF, FaGithub, FaLinkedin } from "react-icons/fa"
+import moment from 'moment';
 
 function Footer() {
     return (
@@ -37,7 +38,7 @@ function Footer() {
                 </div>
             </div>
             <div className="flex items-center justify-center px-6 pt-12 text-sm">
-                <span className="dark:text-gray-400 bg-neutral-950 px-10 py-2">© Copyright 1986. All Rights Reserved.</span>
+                <span className="dark:text-gray-400 bg-neutral-950 px-10 py-2">© Copyright 2023-{moment().format('YYYY')}. All Rights Reserved.</span>
             </div>
         </footer>
     )
