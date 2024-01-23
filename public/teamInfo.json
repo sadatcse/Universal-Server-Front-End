@@ -1,0 +1,68 @@
+[
+    {
+        "name": "Jack Carter",
+        "title": "Financial Analyst",
+        "description": "An analytical thinker with expertise in financial modeling and data analysis. Jack plays a key role in optimizing financial strategies for the company.",
+        "image": "https://img.freepik.com/free-photo/man-isolated-showing-emotions-end-gestures_1303-30095.jpg?size=626&ext=jpg&ga=GA1.1.1866172930.1705479356&semt=sph"
+    },
+    {
+        "name": "Karen Adams",
+        "title": "Human Resources Manager",
+        "description": "Dedicated to fostering a positive workplace culture and managing talent acquisition. Karen ensures a harmonious and productive work environment.",
+        "image": "https://img.freepik.com/free-photo/handsome-bearded-businessman-rubbing-hands-having-deal_176420-18778.jpg?size=626&ext=jpg&ga=GA1.1.1866172930.1705479356&semt=sph"
+    },
+    {
+        "name": "Leo Martinez",
+        "title": "Systems Architect",
+        "description": "An architect of scalable and efficient systems, Leo designs robust and reliable IT infrastructures. His work ensures the seamless operation of critical business applications.",
+        "image": "https://img.freepik.com/free-photo/businessman-dress-code-looks-positive_114579-19015.jpg?size=626&ext=jpg&ga=GA1.1.1866172930.1705479356&semt=sph"
+    },
+    {
+        "name": "Mia Taylor",
+        "title": "Content Writer",
+        "description": "A wordsmith crafting compelling content to engage and inform audiences. Mia's storytelling skills contribute to building a strong online presence for the company.",
+        "image": "https://img.freepik.com/free-photo/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320.jpg?size=626&ext=jpg&ga=GA1.1.1866172930.1705479356&semt=sph"
+    },
+    {
+        "name": "Nick Garcia",
+        "title": "Sales Representative",
+        "description": "A charismatic and results-driven sales professional. Nick excels in building relationships with clients and driving revenue growth for the company.",
+        "image": "https://img.freepik.com/free-photo/cheerful-indian-businessman-smiling-closeup-portrait-jobs-career-campaign_53876-129417.jpg?size=626&ext=jpg&ga=GA1.1.1866172930.1705479356&semt=sph"
+    },
+    {
+        "name": "Olivia White",
+        "title": "Project Manager",
+        "description": "A detail-oriented leader coordinating projects from inception to completion. Olivia ensures that projects are delivered on time and within scope.",
+        "image": "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?size=626&ext=jpg&ga=GA1.1.1866172930.1705479356&semt=sph"
+    },
+    {
+        "name": "Paul Robinson",
+        "title": "Quality Assurance Engineer",
+        "description": "A meticulous tester dedicated to ensuring the reliability and functionality of software products. Paul plays a crucial role in maintaining high-quality standards.",
+        "image": "https://img.freepik.com/free-photo/portrait-successful-man-having-stubble-posing-with-broad-smile-keeping-arms-folded_171337-1267.jpg?size=626&ext=jpg&ga=GA1.1.1866172930.1705479356&semt=sph"
+    },
+    {
+        "name": "Quinn Evans",
+        "title": "Social Media Manager",
+        "description": "A social media strategist creating engaging online content and managing brand presence. Quinn leverages digital platforms to connect with the target audience.",
+        "image": "https://img.freepik.com/free-photo/close-up-portrait-young-bearded-man-white-shirt-jacket-posing-camera-with-broad-smile-isolated-gray_171337-629.jpg?size=626&ext=jpg&ga=GA1.1.1866172930.1705479356&semt=sph"
+    },
+    {
+        "name": "Rachel Brown",
+        "title": "IT Support Specialist",
+        "description": "A tech-savvy professional providing technical support to ensure smooth operations. Rachel is dedicated to resolving IT-related issues promptly.",
+        "image": "https://img.freepik.com/free-photo/handsome-corporate-man-real-estate-agent-assistant-smiling-hold-hands-together-how-may-i-help-you-smiling-friendly-polite-assist-customer-white-background_176420-45257.jpg?size=626&ext=jpg&ga=GA1.1.1866172930.1705479356&semt=sph"
+    },
+    {
+        "name": "Samuel Reed",
+        "title": "Business Analyst",
+        "description": "An analytical thinker interpreting data to inform business decisions. Samuel collaborates with various teams to optimize processes and achieve organizational goals.",
+        "image": "https://img.freepik.com/free-photo/portrait-handsome-stylish-man-with-trendy-hairdo-looks-seriously_273609-16953.jpg?size=626&ext=jpg&ga=GA1.1.1866172930.1705479356&semt=sph"
+    },
+    {
+        "name": "Taylor Martinez",
+        "title": "Legal Counsel",
+        "description": "A legal expert ensuring compliance and mitigating legal risks. Taylor provides valuable guidance to the company on legal matters.",
+        "image": "https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?size=626&ext=jpg&ga=GA1.1.1866172930.1705479356&semt=sph"
+    }
+]
