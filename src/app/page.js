@@ -1,4 +1,5 @@
 import Banner from "@/components/homeComponents/Banner";
+import Faq from "@/components/homeComponents/Faq";
 import SurveyBenefits from "@/components/homeComponents/SurveyBenefits";
 import WhatPeopleSay from "@/components/homeComponents/WhatPeopleSay";
 import Footer from "@/components/shared/Footer";
@@ -11,6 +12,7 @@ const HomePage = () => {
       <Banner />
       <SurveyBenefits />
       <WhatPeopleSay />
+      <Faq></Faq>
       <Footer />
     </>
   );
