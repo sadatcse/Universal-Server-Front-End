@@ -1,0 +1,79 @@
+[
+    {
+        "_id": "654ba42bd4f298ea01fed48a",
+        "name": "John Smith",
+        "title": "Manager",
+        "image": "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?size=626&ext=jpg&ga=GA1.1.1672450516.1680609389&semt=ais",
+        "comment": "Your online survey services have been a game-changer for our business! The user-friendly interface and seamless navigation made gathering feedback a breeze."
+    },
+    {
+        "_id": "654ba42bd4f298ea01fed48b",
+        "name": "Jane Doe",
+        "title": "SEO Specialist",
+        "image": "https://img.freepik.com/free-photo/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320.jpg?size=626&ext=jpg&ga=GA1.1.1672450516.1680609389&semt=ais",
+        "comment": "Impressed with the comprehensive analytics provided by your survey platform. The insightful reports have allowed us to make data-driven decisions that have positively impacted our strategies."
+    },
+    {
+        "_id": "654ba42bd4f298ea01fed48c",
+        "name": "Michael Johnson",
+        "title": "Web Developer",
+        "image": "https://img.freepik.com/premium-photo/onfident-handsome-man-with-arms-crossed-body-smiling-looking-determined_911620-3113.jpg?size=626&ext=jpg&ga=GA1.1.1672450516.1680609389&semt=ais",
+        "comment": "Kudos to your team for creating surveys that are not only visually appealing but also engaging. Our respondents have consistently praised the interactive and enjoyable survey experience."
+    },
+    {
+        "_id": "654ba42bd4f298ea01fed48d",
+        "name": "Emil Brown",
+        "title": "Graphic Designer",
+        "image": "https://img.freepik.com/free-photo/handsome-bearded-guy-posing-against-white-wall_273609-20597.jpg?size=626&ext=jpg&ga=GA1.1.1672450516.1680609389&semt=ais",
+        "comment": "The customization options in your survey tool are fantastic! Being able to tailor each survey to our specific needs has greatly enhanced the relevance and quality of the feedback we receive."
+    },
+    {
+        "_id": "654ba42bd4f298ea01fed48e",
+        "name": "David Wilson",
+        "title": "Marketing Coordinator",
+        "image": "https://img.freepik.com/free-photo/handsome-cheerful-young-man-with-stylish-haircut-dimpled-smile-posing-isolated-against-blank-yellow-wall-dressed-cozy-maroon-sweater-having-confident-look_343059-4609.jpg?size=626&ext=jpg&ga=GA1.1.1672450516.1680609389&semt=ais",
+        "comment": "The real-time response tracking is a standout feature of your survey services. It has given us the agility to respond promptly to emerging trends and address concerns effectively."
+    },
+    {
+        "_id": "654ba42bd4f298ea01fed48f",
+        "name": "Oliv Lee",
+        "title": "Content Writer",
+        "image": "https://img.freepik.com/free-photo/confident-handsome-guy-posing-against-white-wall_176420-32936.jpg?size=626&ext=jpg&ga=GA1.1.1672450516.1680609389&semt=ais",
+        "comment": "Your customer support team has been incredibly responsive and helpful. Anytime we've had questions or needed assistance, they've provided prompt and effective solutions."
+    },
+    {
+        "_id": "654ba42bd4f298ea01fed490",
+        "name": "William Taylor",
+        "title": "Data Analyst",
+        "image": "https://img.freepik.com/free-photo/portrait-handsome-young-man-with-crossed-arms_176420-15567.jpg?size=626&ext=jpg&ga=GA1.1.1672450516.1680609389&semt=ais",
+        "comment": "The advanced survey logic capabilities have made our surveys more intelligent and targeted. This has not only improved response rates but also enriched the depth of the insights we gather."
+    },
+    {
+        "_id": "654ba42bd4f298ea01fed491",
+        "name": "Ava Miller",
+        "title": "Social Media Manager",
+        "image": "https://img.freepik.com/free-photo/cute-smiling-young-man-with-bristle-looking-satisfied_176420-18989.jpg?size=626&ext=jpg&ga=GA1.1.1672450516.1680609389&semt=ais",
+        "comment": "The integrations with other tools in your survey platform have streamlined our workflow. It's impressive how well it seamlessly integrates with our existing systems, saving us time and effort."
+    },
+    {
+        "_id": "654ba42bd4f298ea01fed492",
+        "name": "James Anderson",
+        "title": "UI/UX Designer",
+        "image": "https://img.freepik.com/free-photo/handsome-smiling-man-looking-with-disbelief_176420-19591.jpg?size=626&ext=jpg&ga=GA1.1.1672450516.1680609389&semt=ais",
+        "comment": "The continuous updates and improvements to your survey services showcase your commitment to staying ahead of the curve. We look forward to utilizing new features and enhancements to further elevate our survey experiences."
+    },
+    {
+        "_id": "654ba42bd4f298ea01fed493",
+        "name": "Sophia Martin",
+        "title": "Content Manager",
+        "image": "https://img.freepik.com/free-photo/happy-man-with-earphones-smiling-camera_23-2148322120.jpg?size=626&ext=jpg&ga=GA1.1.1672450516.1680609389&semt=ais",
+        "comment": "The customization options in your survey tool are fantastic! Being able to tailor each survey to our specific needs has greatly enhanced the relevance and quality of the feedback we receive."
+    },
+    {
+        "_id": "654ba42bd4f298ea01fed494",
+        "name": "Daniel Clark",
+        "title": "Sales Representative",
+        "image": "https://img.freepik.com/free-photo/portrait-young-candid-man-student-boy-with-clean-face-relaxed-facial-expression-casual-smile-checked-shirt-t-shirt-summer-outfit-look-white-background_176420-45901.jpg?size=626&ext=jpg&ga=GA1.1.1672450516.1680609389&semt=ais",
+        "comment": "The real-time response tracking is a standout feature of your survey services. It has given us the agility to respond promptly to emerging trends and address concerns effectively."
+    }
+]
