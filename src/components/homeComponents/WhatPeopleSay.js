@@ -2,7 +2,7 @@ import Marquee from "react-fast-marquee";
 
 async function WhatPeopleSay() {
     
-    const res = await fetch("http://localhost:3000/testimonials.json");
+    const res = await fetch("https://online-surbey.vercel.app/testimonials.json");
     const data = await res.json();
 
     
