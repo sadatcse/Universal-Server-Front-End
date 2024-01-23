@@ -9,7 +9,7 @@ const Team = () => {
 
     useEffect(()=> {
         const fetchData = async ()=> {
-            const res = await fetch("http://localhost:3000/teamInfo.json");
+            const res = await fetch("https://online-surbey.vercel.app/teamInfo.json");
             const data = await res.json();
             setTeamData(data);
         }
