@@ -1,10 +1,20 @@
+"use client"
+import { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 
-async function WhatPeopleSay() {
-    
-    const res = await fetch("https://online-surbey.vercel.app/testimonials.json");
-    const data = await res.json();
+function WhatPeopleSay() {
+    const [testimonialData, setTestimonialData] = useState([]);
 
+    useEffect(()=> {
+        const fetchData = async ()=> {
+            const res = await fetch("http://localhost:3000/testimonials.json");
+            const data = await res.json();
+            setTestimonialData(data);
+        }
+        fetchData()
+
+        
+    },[])
     
     return (
         <section className="py-6 bg-slate-100 text-gray-800">
@@ -12,7 +22,7 @@ async function WhatPeopleSay() {
                 <h1 className="text-4xl font-bold leadi text-center sm:text-5xl">What people Say About Our Service</h1>
                 <Marquee pauseOnHover={true}>
                     <div className="flex mt-8">
-                        {data && data.map((item, ind) => (
+                        {testimonialData && testimonialData.map((item, ind) => (
                             <div key={ind} className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 shadow-2xl bg-white transition-all duration-300 hover:bg-gray-800 text-gray-800 hover:text-gray-100 group">
             <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full bg-gray-500 object-cover" src={item?.image} />
             <div className="flex-1 my-4">
