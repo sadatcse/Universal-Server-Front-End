@@ -1,9 +1,8 @@
 'use client'
 import useAdmin from "@/Hook/useAdmin";
 import Link from "next/link";
-import Swal from "sweetalert2";
-import logo from "../../../Asset/logo.png"
 import { FaUser } from "react-icons/fa";
+import logo from "../../../Asset/logo.png";
 
 function Layout({ children }) {
     const { userType, loading: adminLoading } = useAdmin();
@@ -11,20 +10,20 @@ function Layout({ children }) {
     const handleLogOut = () => {
         logOut()
           .then(() => {
-            Swal.fire({
-              icon: 'success',
-              title: 'Logged Out',
-              text: 'User logged out successfully',
-            }).then(() => {
-              navigate("/");
-            });
+            // Swal.fire({
+            //   icon: 'success',
+            //   title: 'Logged Out',
+            //   text: 'User logged out successfully',
+            // }).then(() => {
+            //   navigate("/");
+            // });
           })
           .catch((error) => {
-            Swal.fire({
-              icon: 'error',
-              title: 'Logout Failed',
-              text: 'Logout failed. Please try again later.',
-            });
+            // Swal.fire({
+            //   icon: 'error',
+            //   title: 'Logout Failed',
+            //   text: 'Logout failed. Please try again later.',
+            // });
             console.error(error);
           });
       };

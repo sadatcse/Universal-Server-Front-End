@@ -24,9 +24,9 @@ const Navbar = () => {
       if (scrolling > 300) {
 
         header.classList.add("fixed", "top-0", "bg-blue-100");
-        header.classList.remove("relative");
+        header.classList.remove("relative","bg-transparent");
       } else {
-        header.classList.add("relative");
+        header.classList.add("relative","bg-transparent");
         header.classList.remove("fixed", "top-0", "bg-blue-100");
 
       }

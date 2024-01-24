@@ -8,7 +8,7 @@ const Banner = () => {
         {/* <div className="absolute top-0 left-0 w-full h-full z-[-1]">
             <Image src={bannerBg} width={800} height={800} className="w-full h-full object-cover object-center" alt="banner background" />
         </div> */}
-            <div id="slide1" className="carousel-item relative w-full">
+            <div id="slide1" className="carousel-item relative container m-auto">
                 
                 <div className="absolute flex items-center h-full ">
                     <div className='text-neutral-800 space-y-7 pl-20 w-1/2'>
@@ -20,7 +20,7 @@ const Banner = () => {
                         </div>
                     </div>
                     <div className="p-12 max-w-[500px] rounded-xl shadow-2xl flex justify-center items-center bg-amber-100 relative">
-                        <Image width={600} height={600} alt="company logo" src={logo}className="w-full h-full object-contain object-center logoRotate" />
+                        <Image width={600} height={600} alt="company logo" src={logo}className={`w-full h-full object-contain object-center logoRotate`} />
 
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] overflow-hidden rounded-full bg-amber-100 flex flex-col justify-center items-center">
                         <Image width={600} height={600} src="https://i.pinimg.com/564x/2a/1e/7f/2a1e7f07ebaaf23c0fbe8ac472d45bd4.jpg" alt="lgo image" className="w-[80px] mix-blend-multiply" />
