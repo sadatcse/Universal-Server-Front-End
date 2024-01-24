@@ -12,7 +12,7 @@ const faq = () => {
                             <button type="submit" className="bg-purple-600 rounded-r-md p-2 font-semibold text-white">Search</button>
                         </form>
                     </div>
-                    <img src="https://i.ibb.co/2WVVj7g/writing-great-blogs.jpg" alt="" className="rounded-l-full h-full w-1/2 object-cover hidden md:flex" />
+                    <Image height={500} width={500} src="https://i.ibb.co/2WVVj7g/writing-great-blogs.jpg" alt="" className="rounded-l-full h-full w-1/2 object-cover hidden md:flex" />
                 </div>
             </div>
         </div>
