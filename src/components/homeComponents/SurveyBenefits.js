@@ -25,7 +25,7 @@ function SurveyBenefits() {
             <div className="container mx-auto grid justify-center gap-12 sm:grid-cols-2 lg:grid-cols-3">
 
                 {surveyBenefitData && surveyBenefitData.map((item, ind)=> (
-                <div key={ind} className="flex flex-col group items-start text-left p-12 border shadow-lg rounded-md hover:bg-slate-400 hover:shadow-2xl hover:scale-110 transition-all duration-300">
+                <div key={ind} className="flex flex-col group items-start text-left p-12 border shadow-lg rounded-md hover:bg-blue-200 hover:shadow-2xl hover:scale-110 transition-all duration-300">
                         <FaStarOfLife className='group-hover:rotate-180 transition-all duration-300 text-3xl' />
                     <h3 className="my-3 text-3xl font-semibold">{item.point}</h3>
                     <div className="space-y-1">
