@@ -12,7 +12,6 @@ const HomePage = () => {
       <Banner />
       <SurveyBenefits />
       <WhatPeopleSay />
-      <Faq></Faq>
       <Footer />
     </>
   );
