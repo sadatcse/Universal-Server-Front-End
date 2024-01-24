@@ -7,7 +7,7 @@ function WhatPeopleSay() {
 
     useEffect(()=> {
         const fetchData = async ()=> {
-            const res = await fetch("http://localhost:3000/testimonials.json");
+            const res = await fetch("https://back-end-vercel-seven.vercel.app/testimonials.json");
             const data = await res.json();
             setTestimonialData(data);
         }
