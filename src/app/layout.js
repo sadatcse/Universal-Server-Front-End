@@ -5,7 +5,7 @@ import './globals.css'
 
 
 import {
-  QueryClient
+  QueryClient, QueryClientProvider
 } from '@tanstack/react-query'
 
 const queryClient = new QueryClient();
@@ -20,10 +20,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+      <QueryClientProvider client={queryClient}>
+
         <AuthProvider>
           <Toaster position="top-center" />
           {children}
         </AuthProvider>
+      </QueryClientProvider>
       </body>
     </html>
   )
