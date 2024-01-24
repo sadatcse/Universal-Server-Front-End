@@ -1,3 +1,4 @@
+'use client'
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 
 import PropTypes from 'prop-types';
