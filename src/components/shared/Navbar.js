@@ -1,4 +1,8 @@
+"use client"
+import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
+import logo from "../../Asset/logo2.png";
 
 
 const Navbar = () => {
@@ -13,9 +17,25 @@ const Navbar = () => {
 
   </>
 
+  useEffect(() => {
+    const header = document.getElementById("header");
+    window.addEventListener("scroll", () => {
+      const scrolling = window.scrollY;
+      if (scrolling > 300) {
+
+        header.classList.add("fixed", "top-0");
+        header.classList.remove("relative");
+      } else {
+        header.classList.add("relative");
+        header.classList.remove("fixed", "top-0");
+
+      }
+    })
+  }, [])
+
   return (
-    <header className="border-b-inherit border-2">
-      <div className="navbar bg-base-100">
+    <header className="flex flex-wrap lg:justify-start lg:flex-nowrap z-50 w-full  top-0 left-0 text-sm py-3 lg:py-0 h-24 bg-transparent  transition-all duration-500 relative" id="header" >
+      <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -25,7 +45,7 @@ const Navbar = () => {
               {navlinks}
             </ul>
           </div>
-          <a href="/" className="btn btn-ghost text-xl"><img className="h-18 w-72" src="https://i.ibb.co/G7tQj4K/logo.png" /></a>
+          <a href="/" className="btn btn-ghost text-xl"><Image className="w-16 mix-blend-multiply" width={400} height={400} src={logo} alt="logo" /> <span className="font-exo">Universal Survey</span></a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
