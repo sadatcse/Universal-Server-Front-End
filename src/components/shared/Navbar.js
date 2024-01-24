@@ -23,11 +23,11 @@ const Navbar = () => {
       const scrolling = window.scrollY;
       if (scrolling > 300) {
 
-        header.classList.add("fixed", "top-0");
+        header.classList.add("fixed", "top-0", "bg-blue-100");
         header.classList.remove("relative");
       } else {
         header.classList.add("relative");
-        header.classList.remove("fixed", "top-0");
+        header.classList.remove("fixed", "top-0", "bg-blue-100");
 
       }
     })
