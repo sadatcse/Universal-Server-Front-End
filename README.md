@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!DOCTYPE html>
+<html lang="en">
 
-## Getting Started
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Setup Guide</title>
+</head>
 
-First, run the development server:
+<body>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    <h1>Project Setup Guide</h1>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    <p>Welcome to our project! Follow these steps to set up your development environment and start contributing.</p>
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+    <h2>Clone the Repository</h2>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+    <p>Begin by cloning the full repository to your local machine:</p>
 
-## Learn More
+    <pre>
+        <code>git clone https://github.com/AnamAadel/OnlineSurbey
+cd OnlineSurbey
+        </code>
+    </pre>
 
-To learn more about Next.js, take a look at the following resources:
+    <h2>Install Dependencies</h2>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    <p>Once you are in the project directory, install the required dependencies using npm:</p>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    <pre>
+        <code>npm install</code>
+    </pre>
 
-## Deploy on Vercel
+    <h2>Run the Project</h2>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    <p>To run the project locally, execute the following command:</p>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    <pre>
+        <code>npm run dev</code>
+    </pre>
+
+    <p>This will start the development server, and you can access the project at <a href="http://localhost:3000">http://localhost:3000</a>.</p>
+
+    <h2>Building for Deployment</h2>
+
+    <p>Before submitting your work, make sure to build the project by running:</p>
+
+    <pre>
+        <code>npm run build</code>
+    </pre>
+
+    <p>Check for any errors in your updates. If there are no issues, proceed to push your changes to the repository.</p>
+
+    <h2>Push Your Work</h2>
+
+    <p>Remember not to push directly to the main branch. Follow these steps:</p>
+
+    <ol>
+        <li>Commit your changes:</li>
+        <pre>
+            <code>
+git add .
+git commit -m "Your descriptive commit message"
+            </code>
+        </pre>
+
+        <li>Push your changes to your branch (replace <code>your-branch</code> with the name of your branch):</li>
+        <pre>
+            <code>git push origin your-branch</code>
+        </pre>
+    </ol>
+
+    <p>Inform Sadat or Anamul that your work is done, and they will merge it into the main branch.</p>
+
+    <h2>Feedback and Merging</h2>
+
+    <p>After pushing your changes, our team will review your work. If everything looks good, Sadat or Anamul will merge your branch into the main branch and provide feedback.</p>
+
+    <p>Thank you for your contribution! If you have any questions, feel free to reach out to the team.</p>
+
+</body>
+
+</html>
