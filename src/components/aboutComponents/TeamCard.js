@@ -1,10 +1,10 @@
 import Image from "next/image"
 
-function TeamCard({position , url ,setCurrentTeam}) {
+function TeamCard({position , url ,setCurrentTeam, currentTeam}) {
     return (
-        <div class="max-w-xs p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50 cursor-pointer hover:bg-neutral-800 transition-all duration-300" onClick={()=> setCurrentTeam(position)}>
+        <div class={`max-w-xs p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50  cursor-pointer hover:bg-neutral-800 transition-all duration-300 ${currentTeam === position ? "bg-neutral-800": "bg-white"}`} onClick={()=> setCurrentTeam(position)}>
             <Image src={url} height={500} width={500} alt=""
-                class="object-cover object-center w-full rounded-md h-32 dark:bg-gray-500" />
+                class="object-cover object-center w-full rounded-md h-32 dark:bg-gray-500 placeholder:" />
 
         </div>
     )
