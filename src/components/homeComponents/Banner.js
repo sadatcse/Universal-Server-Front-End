@@ -5,9 +5,6 @@ const Banner = () => {
     const image1 = 'https://images.pexels.com/photos/6801636/pexels-photo-6801636.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
     return (
         <div className="carousel w-full h-fit md:h-screen -mt-24" style={{backgroundImage: `url("/home-banner.jpg")`, backgroundSize: "cover", backgroundPosition: "center"}} >
-        {/* <div className="absolute top-0 left-0 w-full h-full z-[-1]">
-            <Image src={bannerBg} width={800} height={800} className="w-full h-full object-cover object-center" alt="banner background" />
-        </div> */}
             <div id="slide1" className="carousel-item relative container m-auto">
                 
                 <div className="absolute flex flex-col  md:flex-row items-center gap-10 h-full ">
