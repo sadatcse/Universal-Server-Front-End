@@ -1,83 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+Project Setup Guide
+Welcome to our project! Follow these steps to set up your development environment and start contributing.
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Setup Guide</title>
-</head>
+Clone the Repository
+Begin by cloning the full repository to your local machine:
 
-<body>
-
-    <h1>Project Setup Guide</h1>
-
-    <p>Welcome to our project! Follow these steps to set up your development environment and start contributing.</p>
-
-    <h2>Clone the Repository</h2>
-
-    <p>Begin by cloning the full repository to your local machine:</p>
-
-    <pre>
-        <code>git clone https://github.com/AnamAadel/OnlineSurbey
+git clone https://github.com/AnamAadel/OnlineSurbey
 cd OnlineSurbey
-        </code>
-    </pre>
 
-    <h2>Install Dependencies</h2>
+Install Dependencies
+Once you are in the project directory, install the required dependencies using npm:
 
-    <p>Once you are in the project directory, install the required dependencies using npm:</p>
+npm install
+This command will download and install all the necessary packages for the project.
 
-    <pre>
-        <code>npm install</code>
-    </pre>
+Run the Project
+To run the project locally, execute the following command:
+npm run dev
 
-    <h2>Run the Project</h2>
+This will start the development server, and you can access the project at http://localhost:3000.
 
-    <p>To run the project locally, execute the following command:</p>
+Building for Deployment
+Before submitting your work, make sure to build the project by running:
+npm run build
+Check for any errors in your updates. If there are no issues, proceed to push your changes to the repository.
 
-    <pre>
-        <code>npm run dev</code>
-    </pre>
+Push Your Work
+Remember not to push directly to the main branch. Follow these steps:
 
-    <p>This will start the development server, and you can access the project at <a href="http://localhost:3000">http://localhost:3000</a>.</p>
-
-    <h2>Building for Deployment</h2>
-
-    <p>Before submitting your work, make sure to build the project by running:</p>
-
-    <pre>
-        <code>npm run build</code>
-    </pre>
-
-    <p>Check for any errors in your updates. If there are no issues, proceed to push your changes to the repository.</p>
-
-    <h2>Push Your Work</h2>
-
-    <p>Remember not to push directly to the main branch. Follow these steps:</p>
-
-    <ol>
-        <li>Commit your changes:</li>
-        <pre>
-            <code>
+Commit your changes:
 git add .
 git commit -m "Your descriptive commit message"
-            </code>
-        </pre>
+Push your changes to your branch (replace your-branch with the name of your branch):
+git push origin your-branch
 
-        <li>Push your changes to your branch (replace <code>your-branch</code> with the name of your branch):</li>
-        <pre>
-            <code>git push origin your-branch</code>
-        </pre>
-    </ol>
+Inform Sadat or Anamul that your work is done, and they will merge it into the main branch.
 
-    <p>Inform Sadat or Anamul that your work is done, and they will merge it into the main branch.</p>
+Feedback and Merging
+After pushing your changes, our team will review your work. If everything looks good, Sadat or Anamul will merge your branch into the main branch and provide feedback.
 
-    <h2>Feedback and Merging</h2>
-
-    <p>After pushing your changes, our team will review your work. If everything looks good, Sadat or Anamul will merge your branch into the main branch and provide feedback.</p>
-
-    <p>Thank you for your contribution! If you have any questions, feel free to reach out to the team.</p>
-
-</body>
-
-</html>
+Thank you for your contribution! If you have any questions, feel free to reach out to the team.
