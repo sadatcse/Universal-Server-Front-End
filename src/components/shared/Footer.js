@@ -1,13 +1,15 @@
-import { FaFacebookF, FaGithub, FaLinkedin } from "react-icons/fa"
 import moment from 'moment';
+import Image from "next/image";
+import { FaFacebookF, FaGithub, FaLinkedin } from "react-icons/fa";
+import logo from "../../Asset/logo.png";
 
 function Footer() {
     return (
-        <footer className="p-6 dark:bg-gray-800 dark:text-gray-100  text-white bg-neutral-800 mt-12">
+        <footer className="p-6 dark:bg-gray-800 dark:text-gray-100  text-white bg-neutral-800">
             <div className="container grid grid-cols-2 mx-auto gap-x-3 gap-y-8 sm:grid-cols-3 md:grid-cols-4">
                 <div className="flex flex-col space-y-4">
-                    <h2 className="font-medium text-2xl">Online Survey</h2>
-                    <p className="text-gray-500">In publishing and graphic design, Lorem ipsum is a placeholder text co</p>
+                <a href="/" className="text-xl p-6 bg-amber-100 rounded-2xl text-neutral-800 mr-8"><Image className=" mix-blend-multiply" width={400} height={400} src={logo} alt="logo"  /> <span className="font-exo">Universal Survey</span></a>
+                    
                 </div>
                 <div className="flex flex-col space-y-4">
                     <h2 className="font-medium">Core Concepts</h2>
