@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Project Setup Guide
+Welcome to our project! Follow these steps to set up your development environment and start contributing.
 
-## Getting Started
+## Clone the Repository
+Begin by cloning the full repository to your local machine:
 
-First, run the development server:
+git clone https://github.com/AnamAadel/OnlineSurbey
+cd OnlineSurbey
 
-```bash
+## Install Dependencies
+Once you are in the project directory, install the required dependencies using npm:
+
+npm install
+This command will download and install all the necessary packages for the project.
+
+## Run the Project
+To run the project locally, execute the following command:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will start the development server, and you can access the project at http://localhost:3000.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Building for Deployment
+Before submitting your work, make sure to build the project by running:
+npm run build
+Check for any errors in your updates. If there are no issues, proceed to push your changes to the repository.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Push Your Work
+Remember not to push directly to the main branch. Follow these steps:
 
-## Learn More
+Commit your changes:
+git add .
+git commit -m "Your descriptive commit message"
+Push your changes to your branch (replace your-branch with the name of your branch):
+git push origin your-branch
 
-To learn more about Next.js, take a look at the following resources:
+Inform Sadat or Anamul that your work is done, and they will merge it into the main branch.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Feedback and Merging
+After pushing your changes, our team will review your work. If everything looks good, Sadat or Anamul will merge your branch into the main branch and provide feedback.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Thank you for your contribution! If you have any questions, feel free to reach out to the team.
