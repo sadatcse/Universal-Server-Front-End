@@ -9,7 +9,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useForm } from "react-hook-form";
 import { FaGithub } from 'react-icons/fa6';
-import swal from 'sweetalert';
 import logo from "../../../../Asset/logo2.png";
 function  Join() {
     const axiosPublic = useAxiosPublic();
