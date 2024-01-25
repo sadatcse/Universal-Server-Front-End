@@ -10,10 +10,8 @@ const Navbar = () => {
   const navlinks = <>
     <li><Link href="/">Home</Link></li>
     <li><Link href="/primary/about">About us</Link></li>
-    <li><Link href="/primary/contactus">Contact Us </Link></li>
     <li><Link href="/primary/faq">FAQ </Link></li>
-    <li><Link href="/primary/login">Login </Link></li>
-    <li><Link href="/primary/registration">Register </Link></li>
+    <li><Link href="/primary/contactus">Contact Us </Link></li>
 
   </>
 
