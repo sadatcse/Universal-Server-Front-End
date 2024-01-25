@@ -10,16 +10,16 @@ const Banner = () => {
         </div> */}
             <div id="slide1" className="carousel-item relative container m-auto">
                 
-                <div className="absolute flex items-center h-full ">
+                <div className="absolute flex flex-col  md:flex-row items-center gap-10 h-full ">
                     <div className='text-neutral-800 space-y-7 pl-20 w-1/2'>
                         <h2 className="text-6xl font-bold font-exo">Unlock Insights with our Surveys</h2>
                         <p>Make a Difference - Share Your Thoughts and Shape the Future!</p>
                         <div>
-                            <Link href="/about"><button className="btn-lg rounded-md bg-amber-100 shadow-md mr-5">Create Survey</button> </Link>
+                            <Link href="/about"><button className="btn-lg rounded-md bg-amber-100 shadow-lg mr-5">Create Survey</button> </Link>
 
                         </div>
                     </div>
-                    <div className="p-12 max-w-[500px] rounded-xl shadow-2xl flex justify-center items-center bg-amber-100 relative">
+                    <div className="p-12 max-w-[500px] rounded-xl shadow-3xl flex justify-center items-center bg-amber-100 relative">
                         <Image width={600} height={600} alt="company logo" src={logo}className={`w-full h-full object-contain object-center logoRotate`} />
 
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] overflow-hidden rounded-full bg-amber-100 flex flex-col justify-center items-center">

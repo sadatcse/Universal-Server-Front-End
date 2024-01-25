@@ -23,10 +23,10 @@ const Navbar = () => {
       const scrolling = window.scrollY;
       if (scrolling > 300) {
 
-        header.classList.add("fixed", "top-0", "bg-blue-100");
+        header.classList.add("fixed", "top-0", "bg-blue-100","py-0");
         header.classList.remove("relative","bg-transparent");
       } else {
-        header.classList.add("relative","bg-transparent");
+        header.classList.add("relative","bg-transparent", "py-3");
         header.classList.remove("fixed", "top-0", "bg-blue-100");
 
       }
@@ -34,7 +34,7 @@ const Navbar = () => {
   }, [])
 
   return (
-    <header className="flex flex-wrap lg:justify-start lg:flex-nowrap z-50 w-full  top-0 left-0 text-sm py-3 lg:py-0 h-24 bg-transparent  transition-all duration-500 relative" id="header" >
+    <header className="flex flex-wrap lg:justify-start lg:flex-nowrap z-50 w-full top-0 left-0 text-sm bg-transparent transition-all duration-500 relative" id="header" >
       <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
@@ -53,7 +53,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link href="/primary/join" className="btn">Join Now</Link>
+          <Link href="/primary/join" className="btn btn-neutral">Join Now</Link>
         </div>
       </div>
     </header>
