@@ -3,31 +3,49 @@ import useAdmin from "@/Hook/useAdmin";
 import Link from "next/link";
 import { FaUser } from "react-icons/fa";
 import logo from "../../../Asset/logo.png";
+import { useRouter } from 'next/navigation';
+import toast from "react-hot-toast";
 
 function Layout({ children }) {
     const { userType, loading: adminLoading } = useAdmin();
+    const router = useRouter();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
     const handleLogOut = () => {
-        logOut()
-          .then(() => {
-            // Swal.fire({
-            //   icon: 'success',
-            //   title: 'Logged Out',
-            //   text: 'User logged out successfully',
-            // }).then(() => {
-            //   navigate("/");
-            // });
-          })
-          .catch((error) => {
-            // Swal.fire({
-            //   icon: 'error',
-            //   title: 'Logout Failed',
-            //   text: 'Logout failed. Please try again later.',
-            // });
-            console.error(error);
+      logOut()
+        .then(() => {
+          toast.success('User logged out successfully', {
+            duration: 3000,
+            position: 'top-right', 
           });
-      };
-
+         
+          router.push('/', { scroll: false })
+        })
+        .catch((error) => {
+          toast.error('Logout failed. Please try again later.');
+          console.error(error);
+        });
+    };
 
 
     return (
