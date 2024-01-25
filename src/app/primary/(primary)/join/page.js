@@ -2,14 +2,13 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from 'react-simple-captcha';
-
+import toast from "react-hot-toast";
 import useAxiosPublic from '@/Hook/useAxiosPublic';
 import { AuthContext } from '@/providers/AuthProvider';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useForm } from "react-hook-form";
 import { FaGithub } from 'react-icons/fa6';
-import swal from 'sweetalert';
 import logo from "../../../../Asset/logo2.png";
 function  Join() {
     const axiosPublic = useAxiosPublic();
@@ -18,7 +17,7 @@ function  Join() {
     const [isDisabled, setIsDisabled] = useState(true)
     const [showPassword, setShowPassword] = useState(false);
 
-    // captcha functionality start
+
 
     const handleCaptcha = () => {
         if (captchaInput.current.value.length === 6) {
@@ -46,7 +45,7 @@ function  Join() {
         loadCaptchaEnginge(6)
     }, [])
 
-        // getting form data
+
     const {
         register,
         handleSubmit,
@@ -54,61 +53,62 @@ function  Join() {
         formState: { errors },
     } = useForm()
 
-    // google sign in with modal
+
     const handleGoogleSignIn = async () => {
-        setLoading(true)
-        await signInWithGoogle().then(googleResult => {
-            setUser(googleResult.data)
-            // axiosPublic.post("/users", { name: googleResult?.user?.displayName, email: googleResult?.user?.email }).then(res => {
-            //     console.log(res.data)
-            //     swal({
-            //         title: "User Sign in successfully!",
-            //         icon: "success",
-            //     });
-            //     setLoading(false)
+        setLoading(true);
+        try {
+          const googleResult = await signInWithGoogle();
+          setUser(googleResult.data);
+          // await axiosPublic.post("/users", { name: googleResult?.user?.displayName, email: googleResult?.user?.email });
+          toast.success('User Sign in successfully!', {
+            duration: 4000,
+            position: 'top-right',
+          });
+          setLoading(false);
+        } catch (err) {
+          setLoading(false);
+          toast.error('Error during sign-in. Please try again.');
+      
+          console.log(err);
+        }
+      };
+      
+      const handleGihubSignIn = async () => {
+        setLoading(true);
+        try {
+          const githubResult = await signInWithGithub();
+          setUser(githubResult.data);
+          // await axiosPublic.post("/users", { name: githubResult?.user?.displayName, email: githubResult?.user?.email });
+          toast.success('User Sign in successfully!', {
+            duration: 4000, 
+            position: 'top-right',
+          });
+      
+          setLoading(false);
+        } catch (err) {
+          setLoading(false);
+          toast.error('Error during sign-in. Please try again.');
+      
+          console.log(err);
+        }
+      };
 
-            // }).catch(err => console.log(err))
-        }).catch(err => {
-            setLoading(false)
-            console.log(err)
-        })
-    }
-
-    // Github sign in with modal
-    const handleGihubSignIn = async () => {
-        setLoading(true)
-        await signInWithGithub().then(githubResult => {
-            setUser(githubResult.data)
-            // axiosPublic.post("/users", { name: githubResult?.user?.displayName, email: githubResult?.user?.email }).then(res => {
-            //     console.log(res.data)
-            //     swal({
-            //         title: "User Sign in successfully!",
-            //         icon: "success",
-            //     });
-            //     setLoading(false)
-
-            // }).catch(err => console.log(err))
-        }).catch(err => {
-            setLoading(false)
-            console.log(err)
-        })
-    }
-
-        // new user creating function
     const handleCreateInUser = async (data) => {
-        setLoading(true)
-        await createUser(data.email, data.password).then(res => {
-            console.log(res)
-            setLoading(false)
-            swal({
-                title: "User Sign in successfully!",
-                icon: "success",
-            });
-        }).catch(err => {
-            console.log(err)
-            setLoading(false)
-        })
-    }
+        setLoading(true);
+        try {
+          await createUser(data.email, data.password);
+          toast.success('User created successfully!', {
+            duration: 4000, 
+            position: 'top-right', 
+          });
+      
+          setLoading(false);
+        } catch (err) {
+          setLoading(false);
+          toast.error('Error creating user. Please try again.');
+          console.log(err);
+        }
+      };
     return (
         <div className='pt-20 -mb-2 relative bg-blue-200 z-[1]' >
         <div className="w-full h-full absolute top-0 left-0 z-[-1] opacity-20" style={{backgroundImage: "url('https://i.pinimg.com/564x/e7/38/8b/e7388be6e75e602eb3dc5fef7a5dec71.jpg')"}} ></div>
