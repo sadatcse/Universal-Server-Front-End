@@ -14,6 +14,7 @@ const githubProvider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [userRole, setUserRole] = useState("user");
     
    
     
@@ -61,7 +62,9 @@ const AuthProvider = ({ children }) => {
         signInUser,
         signInWithGoogle,
         signInWithGithub,
-        logOut 
+        logOut,
+        userRole,
+        setUserRole
     }
 
     return (

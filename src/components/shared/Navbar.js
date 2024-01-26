@@ -1,17 +1,30 @@
 "use client"
+import { AuthContext } from "@/providers/AuthProvider";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import logo from "../../Asset/logo2.png";
 
 
 const Navbar = () => {
-
+  const {userRole, setUserRole} = useContext(AuthContext);
+  console.log(userRole)
   const navlinks = <>
     <li><Link href="/">Home</Link></li>
     <li><Link href="/primary/about">About us</Link></li>
     <li><Link href="/primary/faq">FAQ </Link></li>
-    <li><Link href="/primary/contactus">Contact Us </Link></li>
+    <li><Link href="/primary/contactus" >Contact Us </Link></li>
+    <li>
+      <details className="dropdown ">
+        <summary className="m-1 btn bg-transparent shadow-none hover:bg-transparent border-none">Dashboard</summary>
+        <ul className="p-2 menu dropdown-content z-[1] rounded-box w-52">
+          <li onClick={()=> setUserRole("user")}><Link href="/dashboard/user/pending_survey">User</Link></li>
+          <li onClick={()=> setUserRole("admin")}><Link href="/dashboard/admin/survey_statistics">Admin</Link></li>
+          <li onClick={()=> setUserRole("company")}> <Link href="/dashboard/company/company_statistics">Company</Link></li>
+          
+        </ul>
+      </details>
+    </li>
 
   </>
 
@@ -21,10 +34,10 @@ const Navbar = () => {
       const scrolling = window.scrollY;
       if (scrolling > 300) {
 
-        header.classList.add("fixed", "top-0", "bg-blue-100","py-0");
-        header.classList.remove("relative","bg-transparent");
+        header.classList.add("fixed", "top-0", "bg-blue-100", "py-0");
+        header.classList.remove("relative", "bg-transparent");
       } else {
-        header.classList.add("relative","bg-transparent", "py-3");
+        header.classList.add("relative", "bg-transparent", "py-3");
         header.classList.remove("fixed", "top-0", "bg-blue-100");
 
       }
@@ -43,7 +56,7 @@ const Navbar = () => {
               {navlinks}
             </ul>
           </div>
-          <a href="/" className="btn btn-ghost text-xl"><Image className="w-16 mix-blend-multiply" width={400} height={400} src={logo} alt="logo" /> <span className="font-exo">Universal Survey</span></a>
+          <Link href="/" className="btn btn-ghost text-xl"><Image className="w-16 mix-blend-multiply" width={400} height={400} src={logo} alt="logo" /> <span className="font-exo">Universal Survey</span></Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
