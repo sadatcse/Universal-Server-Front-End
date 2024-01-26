@@ -79,9 +79,7 @@ function Layout({ children }) {
 
   const users =
     <>
-      <li className=" text-white text-md hover:text-neutral hover:bg-blue-100">
-        <Link href="/dashboard/user/user_statistics" >User Statistics</Link>
-      </li>
+        <ActiveLink isSubRoute={false} href="/dashboard/user/user_statistics" >User Statistics</ActiveLink>
       <GroupLink groupName="Survey">
         <ActiveLink href="/dashboard/user/pending_survey" >Pending Survey</ActiveLink>
         <ActiveLink href="/dashboard/user/product_survey" >Product Based Survey</ActiveLink>
@@ -104,15 +102,15 @@ function Layout({ children }) {
   return (
     <div className='flex flex-col h-screen'>
       <header className="bg-blue-200 text-neutral text-xl hover:text-neutral py-4 flex justify-between items-center">
-        <div href="/" className="btn btn-ghost text-xl"><div className="avatar"  >
-          <div className="w-12 rounded-full ring ring-offset-base-100 ring-offset-2">
+        <div href="/" className="btn btn-ghost text-xl hover:bg-transparent"><div className="avatar"  >
+          <div className="w-12 rounded-full ring ring-offset-base-100 ring-offset-2 ">
             <Image width={400} height={400} src="https://img.freepik.com/free-photo/handsome-bearded-businessman-rubbing-hands-having-deal_176420-18778.jpg?size=626&ext=jpg&ga=GA1.1.1866172930.1705479356&semt=sph" alt="user image" />
           </div>
         </div> <span className="font-exo text-neutral-800">Md Sadat Khan</span></div>
 
         <p className="font-bold text-2xl">{userRole === "admin" ? "Admin" : userRole === "company" ? "Company" : "User"}</p>
 
-        <Link href="/" className="btn btn-ghost text-xl"><Image className="w-16 mix-blend-multiply" width={400} height={400} src={logo} alt="logo" /> <span className="font-exo text-neutral-800">Universal Survey</span></Link>
+        <Link href="/" className="btn btn-ghost text-xl hover:bg-transparent"><Image className="w-16 mix-blend-multiply" width={400} height={400} src={logo} alt="logo" /> <span className="font-exo text-neutral-800">Universal Survey</span></Link>
 
         {/* <UserProfile user={user} role="admin" /> */}
 
