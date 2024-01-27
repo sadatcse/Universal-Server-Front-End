@@ -135,7 +135,7 @@ function Layout({ children }) {
         <div className='flex-1 p-4'>
           {children}
           
-          <img src="https://img.freepik.com/free-vector/duplicate-concept-illustration_114360-4046.jpg?w=740&t=st=1706263242~exp=1706263842~hmac=f37003459bc517b25414dfef6815aa78ab60c8e83b19561aab871e6665bcf2ec" className="max-w-2xl mx-auto" />
+          {/* <img src="https://img.freepik.com/free-vector/duplicate-concept-illustration_114360-4046.jpg?w=740&t=st=1706263242~exp=1706263842~hmac=f37003459bc517b25414dfef6815aa78ab60c8e83b19561aab871e6665bcf2ec" className="max-w-2xl mx-auto" /> */}
         </div>
       </div>
     </div>
