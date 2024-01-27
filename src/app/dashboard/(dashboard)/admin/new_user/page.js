@@ -1,72 +1,54 @@
 'use client'
 import React from 'react'
 import { CiSearch } from "react-icons/ci";
+import { HiOutlineEye } from "react-icons/hi";
+import { RiDeleteBinLine } from "react-icons/ri";
 
 // using fake data now
-
 const userData = [
   {
     "id": 1,
     "name": "John Doe",
     "status": "Active",
-    "role": "Admin"
+    "role": "Admin",
+    "email": "johndoe@yahoo.com"
   },
   {
     "id": 2,
     "name": "Jane Smith",
     "status": "Active",
-    "role": "User"
+    "role": "User",
+    "email": "johesmith@yahoo.com"
   },
   {
     "id": 3,
     "name": "Sam Wilson",
     "status": "Inactive",
-    "role": "Guest"
+    "role": "Guest",
+    "email": "samwilson@yahoo.com"
   },
   {
     "id": 4,
     "name": "Sara Jones",
     "status": "Active",
-    "role": "Moderator"
+    "role": "Moderator",
+    "email": "sarajones@yahoo.com"
   },
   {
     "id": 5,
     "name": "Alex Rodriguez",
     "status": "Active",
-    "role": "User"
+    "role": "User",
+    "email": "alexroot@yahoo.com"
   },
   {
     "id": 6,
     "name": "Emily White",
     "status": "Active",
-    "role": "Editor"
-  },
-  {
-    "id": 7,
-    "name": "Michael Brown",
-    "status": "Inactive",
-    "role": "User"
-  },
-  {
-    "id": 8,
-    "name": "Olivia Taylor",
-    "status": "Active",
-    "role": "Admin"
-  },
-  {
-    "id": 9,
-    "name": "David Miller",
-    "status": "Active",
-    "role": "Moderator"
-  },
-  {
-    "id": 10,
-    "name": "Chloe Jackson",
-    "status": "Inactive",
-    "role": "Guest"
+    "role": "Editor",
+    "email": "emilywhtie@yahoo.com"
   }
 ]
-
 
 function page() {
   return (
@@ -83,6 +65,48 @@ function page() {
         <div className='mt-4 text-gray-400 text-sm'>
           <h1>Total {userData.length} user</h1>
         </div>
+        {/* customised table */}
+        <section className='mt-4'>
+          <div className="overflow-x-auto rounded-l-lg">
+            <table className="table ">
+              {/* head */}
+              <thead className=''>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Status</th>
+                  <th>Role</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  userData.map(user =>
+                    <tr>
+                      <td>{user.id}</td>
+                      <td>{user.name}</td>
+                      <td>{user.email}</td>
+                      <td>{user.status === 'Active' ?
+                        <>
+                          <span className=' text-green-600 px-2 text-xs py-1 rounded-full bg-green-200'>Active</span>
+                        </>
+                        :
+                        <>
+                          <span className=' text-red-600 px-2 text-xs py-1 rounded-full bg-red-200'>Inactive</span>
+                        </>}</td>
+                      <td>{user.role}</td>
+                      <td>
+                        <div className='flex gap-3 items-center'>
+                          <HiOutlineEye /><RiDeleteBinLine className='text-lg text-red-400' />
+                        </div>
+                      </td>
+                    </tr>)
+                }
+              </tbody>
+            </table>
+          </div>
+        </section>
       </div>
     </section>
   )
