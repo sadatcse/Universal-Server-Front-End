@@ -9,7 +9,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 function page() {
   const [userData, setUserData] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/users')
+    fetch('https://universal-survey-backend.vercel.app/users')
       .then(res => res.json())
       .then(data => setUserData(data))
   }, [])
