@@ -1,18 +1,20 @@
 'use client'
-import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 
 import PropTypes from 'prop-types';
-import { createContext, useEffect, useState,  } from 'react';
+import { createContext, useEffect, useState, } from 'react';
 import auth from "../firebase/firebase.config";
 
 
 export const AuthContext = createContext(null);
 
 const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [userRole, setUserRole] = useState("user");
     
    
     
@@ -32,6 +34,10 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, googleProvider);
     }
 
+    const signInWithGithub = ()=> {
+        return signInWithPopup(auth, githubProvider)
+      }
+    
     const logOut = () => {
         setLoading(true);
         return signOut(auth);
@@ -51,10 +57,14 @@ const AuthProvider = ({ children }) => {
     const authInfo = { 
         user, 
         loading,
+        setLoading,
         createUser, 
         signInUser,
         signInWithGoogle,
-        logOut 
+        signInWithGithub,
+        logOut,
+        userRole,
+        setUserRole
     }
 
     return (

@@ -2,7 +2,7 @@ import Image from 'next/image'
 import playImage from "../../../../Asset/play.gif"
 function AboutHero() {
     return (
-        <section className="dark:bg-gray-800 dark:text-gray-100 relative z-[1] bg-blue-50">
+        <section className=" relative z-[1] bg-blue-50">
         <div className="w-full h-full absolute top-0 left-0 z-[-1] opacity-20" style={{backgroundImage: "url('https://i.pinimg.com/564x/e7/38/8b/e7388be6e75e602eb3dc5fef7a5dec71.jpg')"}} >
             
         </div>

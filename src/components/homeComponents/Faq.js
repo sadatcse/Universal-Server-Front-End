@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Container from "../shared/Container";
+
 
 
 const Faq = () => {
@@ -38,8 +40,8 @@ const Faq = () => {
                             </div>
                         </div>
                         <div className="">
-                            <img src="https://i.ibb.co/cCD1bnP/grey-removebg-preview.png" alt="" className="hidden md:flex " />
-                            <img src="https://i.ibb.co/dD4G85m/gb.png" alt="" className="md:hidden" />
+                            <Image height={500} width={500} src="https://i.ibb.co/cCD1bnP/grey-removebg-preview.png" alt="" className="hidden md:flex " />
+                            <Image height={500} width={500}  src="https://i.ibb.co/dD4G85m/gb.png" alt="" className="md:hidden" />
                         </div>
                     </div>
                 </div>

@@ -1,11 +1,11 @@
 'use client'
+import { usePathname, useRouter } from 'next/navigation';
 import { useContext, useState } from "react";
-import { AuthContext } from '../../../../providers/AuthProvider';
 import toast from 'react-hot-toast';
-import { FiLock, FiMail, } from 'react-icons/fi';
 import { FcGoogle } from 'react-icons/fc';
+import { FiLock, FiMail, } from 'react-icons/fi';
 import useAxiosPublic from "../../../../Hook/useAxiosPublic";
-import { useRouter,usePathname } from 'next/navigation'
+import { AuthContext } from '../../../../providers/AuthProvider';
 
 
 
@@ -24,7 +24,7 @@ const Login = () => {
         signInUser(email, password)
             .then((result) => {
                 toast.success("Login successful!")
-                router.push('/dashboard', { scroll: false })
+                router.push('/', { scroll: false })
                 // window.history.replaceState(null, '', pathname)
 
                 
@@ -56,7 +56,7 @@ const Login = () => {
     
             if (response.status === 200) {
                 toast.success("Login successful!");
-                router.push('/dashboard', { scroll: false })
+                router.push('/', { scroll: false })
             } else {
                 toast.error("Failed to create user. Please try again.");
             }
@@ -65,6 +65,7 @@ const Login = () => {
             console.error(error);
         }
     };
+    
     return (
         <div className="flex justify-center items-center h-screen">
             <div className="max-w-md w-full p-8 bg-white rounded-lg shadow-lg">

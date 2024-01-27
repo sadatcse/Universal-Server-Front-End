@@ -1,41 +1,45 @@
-import { useQuery } from "@tanstack/react-query";
+'use client'
+import { useState, useEffect } from "react";
 import useAuth from "./useAuth";
 import UseAxioSecure from "./UseAxioSecure";
 
-
 const useAdmin = () => {
-    const { user, loading: authLoading } = useAuth();
-    const axiosSecure = UseAxioSecure();
-    const { data: userType, isLoading } = useQuery({
-        queryKey: [user?.email, 'userType'],
-        enabled: !authLoading && user !== undefined, 
-        queryFn: async () => {
-            try {
-                const res = await axiosSecure.get(`/users/admin/${user.email}`);
-                let userType = 0; 
+  const { user, loading: authLoading } = useAuth();
+  const axiosSecure = UseAxioSecure();
 
-                if (res.data === 'admin') {
-                    userType = 1;
-                } else if (res.data === 'user') {
-                    userType = 2;
-                } else if (res.data === 'company') {
-                    userType = 3;
-                }
+  const [userType, setUserType] = useState(undefined);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    const fetchUserType = async () => {
+      try {
+        if (!authLoading && user !== undefined) {
+          const res = await axiosSecure.get(`/users/admin/${user.email}`);
+          let userType = 0;
 
-                return userType;
-            } catch (error) {
-            
-                console.error("Error fetching user type:", error);
-                throw new Error("Failed to fetch user type");
-            }
+          if (res.data === 'admin') {
+            userType = 1;
+          } else if (res.data === 'user') {
+            userType = 2;
+          } else if (res.data === 'company') {
+            userType = 3;
+          }
+
+          setUserType(userType);
+          setLoading(false);
         }
-    });
+      } catch (error) {
+        console.error("Error fetching user type:", error);
+        throw new Error("Failed to fetch user type");
+      }
+    };
 
-    const loading = authLoading || isLoading;
-    const userTypeReady = userType !== undefined;
+    fetchUserType();
+  }, [authLoading, user, axiosSecure]);
 
-    return { loading, userType: userTypeReady ? userType : 0 };
+  const userTypeReady = userType !== undefined;
+
+  return { loading: authLoading || loading, userType: userTypeReady ? userType : 0 };
 };
 
 export default useAdmin;
