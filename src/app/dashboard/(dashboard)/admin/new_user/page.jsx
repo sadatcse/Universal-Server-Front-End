@@ -6,7 +6,7 @@ import { HiOutlineEye } from "react-icons/hi";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 
-function page() {
+function NewUsers() {
   const [userData, setUserData] = useState([]);
   useEffect(() => {
     fetch('https://universal-survey-backend.vercel.app/users')
@@ -99,4 +99,4 @@ function page() {
   )
 }
 
-export default page
+export default NewUsers
