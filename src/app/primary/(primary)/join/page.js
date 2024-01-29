@@ -1,14 +1,14 @@
 "use client"
-import { useContext, useEffect, useRef, useState } from 'react';
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from 'react-simple-captcha';
-import toast from "react-hot-toast";
 import useAxiosPublic from '@/Hook/useAxiosPublic';
 import { AuthContext } from '@/providers/AuthProvider';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { FaGithub } from 'react-icons/fa6';
+import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from 'react-simple-captcha';
 import logo from "../../../../Asset/logo2.png";
 function  Join() {
     const axiosPublic = useAxiosPublic();
@@ -114,7 +114,7 @@ function  Join() {
         <div className="w-full h-full absolute top-0 left-0 z-[-1] opacity-20" style={{backgroundImage: "url('https://i.pinimg.com/564x/e7/38/8b/e7388be6e75e602eb3dc5fef7a5dec71.jpg')"}} ></div>
             <div className="py-6 " >
                 <div className="grid grid-cols-1 lg:grid-cols-2 rounded-lg shadow-2xl overflow-hidden mx-auto max-w-sm lg:max-w-4xl items-center bg-white ">
-                    <Image width={500} height={500} src="https://images.unsplash.com/photo-1637276661836-9ca7bf61eb0f?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="people image" className='bg-neutral' />
+                    <Image width={500} height={500} src="https://images.unsplash.com/photo-1637276661836-9ca7bf61eb0f?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="people image" className='bg-neutral hidden md:block' />
                     <div className="p-8">
                         <h2 className="text-2xl font-semibold text-gray-700 text-center"><Image className="w-32 mix-blend-multiply mx-auto" width={400} height={400} src={logo} alt="logo" /></h2>
                         <p className="text-xl text-gray-600 text-center">Welcome back!</p>

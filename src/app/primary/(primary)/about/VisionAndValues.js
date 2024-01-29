@@ -4,7 +4,7 @@ import VisionCard from "@/components/aboutComponents/VisionCard"
 function VisionAndValues() {
     return (
         <section className="my-8">
-            <div className="container mx-auto flex flex-col pb-6 mb-4 md:p-10 md:px-12">
+            <div className="container mx-auto flex flex-col pb-6 mb-4 md:p-10 md:px-12 dark:text-white">
                 <h1 className="text-4xl font-semibold leadi text-center">Our Vision And Values</h1>
                 <p className="max-w-3xl mx-auto mt-6 text-center">The goal of the Universal Survey and Engagement System is to provide a comprehensive and user-
                     friendly online survey platform that caters to the needs of different user roles – Admin, Company, and
