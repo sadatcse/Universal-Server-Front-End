@@ -117,7 +117,7 @@ function Layout({ children }) {
       </header>
 
       <div className='flex flex-1 relative z-10'>
-        <div className='w-64 min-h-full bg-neutral-800'>
+        <div className='w-64 min-h-full bg-neutral-800 max-h-screen overflow-auto'>
           <div className="flex items-center justify-between mb-6 relative">
 
           </div>
@@ -132,7 +132,7 @@ function Layout({ children }) {
 
           </ul>
         </div>
-        <div className='flex-1 p-4'>
+        <div className='flex-1 p-4 max-h-screen overflow-auto'>
           {children}
           
           {/* <img src="https://img.freepik.com/free-vector/duplicate-concept-illustration_114360-4046.jpg?w=740&t=st=1706263242~exp=1706263842~hmac=f37003459bc517b25414dfef6815aa78ab60c8e83b19561aab871e6665bcf2ec" className="max-w-2xl mx-auto" /> */}
