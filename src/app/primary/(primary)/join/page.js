@@ -110,7 +110,7 @@ function  Join() {
         }
       };
     return (
-        <div className='pt-20 -mb-2 relative bg-blue-200 z-[1]' >
+        <div className='pt-20 -mb-2 relative bg-blue-200 z-[1] dark:bg-transparent' >
         <div className="w-full h-full absolute top-0 left-0 z-[-1] opacity-20" style={{backgroundImage: "url('https://i.pinimg.com/564x/e7/38/8b/e7388be6e75e602eb3dc5fef7a5dec71.jpg')"}} ></div>
             <div className="py-6 " >
                 <div className="grid grid-cols-1 lg:grid-cols-2 rounded-lg shadow-2xl overflow-hidden mx-auto max-w-sm lg:max-w-4xl items-center bg-white ">

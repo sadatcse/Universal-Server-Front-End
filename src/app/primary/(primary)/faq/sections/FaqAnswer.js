@@ -2,8 +2,8 @@ import { FaStarOfLife } from "react-icons/fa";
 import { LiaLongArrowAltUpSolid } from "react-icons/lia";
 function FaqAnswer({faqData}) {
   return (
-    <section className=" relative z-[1] bg-blue-300 pt-16" id="ans">
-            <h2 className="text-center font-bold text-5xl pt-6 pb-4 text-neutral-800">FAQ Answers</h2>
+    <section className=" relative z-[1] bg-blue-300 dark:bg-transparent pt-16" id="ans">
+            <h2 className="text-center font-bold text-5xl pt-6 pb-4 text-neutral-800 dark:text-white">FAQ Answers</h2>
             <div className="w-full h-full absolute top-0 left-0 z-[-1] opacity-20" style={{ backgroundImage: "url('https://i.pinimg.com/564x/e7/38/8b/e7388be6e75e602eb3dc5fef7a5dec71.jpg')" }} >
 
             </div>
