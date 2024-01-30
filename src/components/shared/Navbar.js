@@ -3,7 +3,7 @@ import { AuthContext } from "@/providers/AuthProvider";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect } from "react";
-import logo from "../../Asset/logo.png";
+import logo from "../../Asset/logo2.png";
 
 
 const Navbar = () => {
@@ -70,7 +70,7 @@ const Navbar = () => {
               {navlinks}
             </ul>
           </div>
-          <Link href="/" className="btn btn-ghost text-xl hover:bg-transparent"><Image className="w-16 mix-blend-multiply dark:mix-blend-normal" width={400} height={400} src={logo} alt="logo" /> <span className="font-exo  hidden sm:block dark:text-white" id="logo_name">Universal Survey</span></Link>
+          <Link href="/" className="btn btn-ghost text-xl hover:bg-transparent dark:bg-blue-200"><Image className="w-16 mix-blend-multiply dark:mix-blend-normal" width={400} height={400} src={logo} alt="logo" /> <span className="font-exo  hidden sm:block dark:text-neutral-800" >Universal Survey</span></Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 items-center dark:bg-blue-200  dark:lg:bg-transparent dark:text-white " id='nav-menu'>
