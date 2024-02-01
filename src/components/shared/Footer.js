@@ -7,7 +7,7 @@ function Footer() {
         <footer className="p-6 dark:bg-gray-800 dark:text-gray-100  text-white bg-neutral-800">
             <div className="container grid  grid-cols-1 mx-auto gap-x-3 gap-y-8 sm:grid-cols-3 ">
                 <div className="flex flex-col space-y-4">
-                <h2 className="font-bold text-2xl">Universal Survey</h2>
+                    <h2 className="font-bold text-2xl">Universal Survey</h2>
                     <p>Our goal is  to simplify the process of survey creation, distribution, and analysis, making feedback collection effortless for individuals.</p>
 
                 </div>
@@ -31,8 +31,9 @@ function Footer() {
                     </div>
                 </div>
             </div>
-            <div className="flex items-center justify-center px-6 pt-12 text-sm">
-                <span className=" bg-neutral-950 px-10 py-2">© Copyright 2023-{moment().format('YYYY')}. All Rights Reserved.</span>
+            <div className="  bg-neutral-950 w-fit mx-auto text-center px-6 p-4 mt-5 text-sm">
+                <Link href='/primary/rights'><p className="">© Copyright 2023-{moment().format('YYYY')}. All Rights Reserved. </p></Link>
+                <Link href='/primary/privacy'><p className='text-blue-300'> Privacy Policy </p></Link>
             </div>
         </footer>
     )
