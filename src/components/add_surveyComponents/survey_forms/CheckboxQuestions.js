@@ -35,7 +35,7 @@ function CheckboxQuestions({ setShowSurveyForm, setSurveyQuestions, setOpenAddQu
 
     const newArray = [...levelNames, [name]]
     setLevelNames(newArray)
-    optionInput.current.value = "";
+    levelInput.current.value = "";
   }
 
   const onEnter = (e, field) => {

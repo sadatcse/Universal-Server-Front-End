@@ -2,12 +2,12 @@
 import { useState } from 'react';
 import { IoClose } from 'react-icons/io5';
 import QuestionTypeCard from './QuestionTypeCard';
-import RatingScaleQuestions from './RatingScaleQuestions';
 import CheckboxQuestions from './survey_forms/CheckboxQuestions';
 import DropdownMenuQuestions from './survey_forms/DropdownMenuQuestions';
 import LikertScaleQuestions from './survey_forms/LikertScaleQuestions';
 import MultipleChoice from './survey_forms/MultipleChoice';
 import RankingQuestions from './survey_forms/RankingQuestions';
+import RatingScaleQuestions from './survey_forms/RatingScaleQuestions';
 import TextEntryQuestions from './survey_forms/TextEntryQuestions';
 
 function AddQuestionModal({ setOpenAddQuestionModal, setSurveyQuestions }) {
