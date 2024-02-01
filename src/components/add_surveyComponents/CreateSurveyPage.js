@@ -1,14 +1,20 @@
-
 "use client"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddQuestionArea from "./AddQuestionArea";
 import AddSurveyForm from "./AddSurveyForm";
 
 function CreateSurveyPage() {
-  const surveyInitialObject = JSON.parse(localStorage.getItem("my_survey"))
+  
   const [formData, setFormData] = useState({})
-  const [surveyInitialInfo, setSurveyInitialInfo] = useState(surveyInitialObject)
-  const [showQuestionArea, setShowQuestionArea] = useState(typeof surveyInitialObject === "object")
+  const [surveyInitialInfo, setSurveyInitialInfo] = useState({})
+  const [showQuestionArea, setShowQuestionArea] = useState(false)
+
+
+  useEffect(()=> {
+    const surveyInitialObject = JSON.parse(localStorage.getItem("my_survey"))
+    setSurveyInitialInfo(surveyInitialObject)
+    setShowQuestionArea((typeof surveyInitialObject === "object"))
+  },[])
 
   return (
     <div className="w-full flex justify-center">
