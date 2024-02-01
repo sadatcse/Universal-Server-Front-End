@@ -9,8 +9,10 @@ function AddSurveyForm({setFormData, setShowQuestionArea}) {
     e.preventDefault();
     const title = e.target.title.value;
     const description = e.target.description.value;
-    setFormData({title, description})
+    const formData = {title, description};
+    setFormData(formData);
     setShowQuestionArea(title.length > 0 && description.length > 0);
+    localStorage.setItem("my_survey", JSON.stringify(formData));
   }
 
   return (

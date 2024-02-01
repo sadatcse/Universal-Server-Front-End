@@ -37,23 +37,50 @@ function Layout({ children }) {
   const admin = <>
     
 
-    <GroupLink groupName="Dashboard Admin Statistics">
-      <ActiveLink href="/dashboard/admin/survey_statistics" >Survey Statistics</ActiveLink>
-      <ActiveLink href="/dashboard/admin/user_statistics" >User Statistics</ActiveLink>
-      <ActiveLink href="/dashboard/admin/active_survey" >Active Survey</ActiveLink>
-      <ActiveLink href="/dashboard/admin/survey_completed_Number" > Survey Completed Number</ActiveLink>
+    <GroupLink groupName="Dashboard Overview">
+      <ActiveLink href="/dashboard/admin/system_statistics" >System Statistics</ActiveLink>
+      <ActiveLink href="/dashboard/admin/total_surveys" >Total Surveys</ActiveLink>
+      <ActiveLink href="/dashboard/admin/participants" >Participants</ActiveLink>
+      <ActiveLink href="/dashboard/admin/response_analytics" >Response Analytics</ActiveLink>
+      
     </GroupLink>
-
-    <GroupLink groupName="All User Information">
-      <ActiveLink href="/dashboard/admin/new_user" >New User</ActiveLink>
-      <ActiveLink href="/dashboard/admin/unverified_user" >Unverified User</ActiveLink>
-      <ActiveLink href="/dashboard/admin/active_user_list" >Active User list</ActiveLink>
+    <GroupLink groupName="Survey Management">
+      <ActiveLink href="/dashboard/admin/create_new_survey" >Create New Survey</ActiveLink>
+      {/* <ActiveLink href="/dashboard/admin/survey_analytics" >Create New Survey</ActiveLink> */}
+      <ActiveLink href="/dashboard/admin/visualizations_and_reports" >Visualizations and reports</ActiveLink>
+      <ActiveLink href="/dashboard/admin/manage_survey_templates" >Manage Survey Templates</ActiveLink>
+      <ActiveLink href="/dashboard/admin/manage_survey_layout" >Manage Survey Layout</ActiveLink>
+      <ActiveLink href="/dashboard/admin/survey_version_control" >Survey Version Controls</ActiveLink>
+      
     </GroupLink>
-
-    <GroupLink groupName="All Company User Information">
-      <ActiveLink href="/dashboard/admin/all_company_user" >All Company User</ActiveLink>
-      <ActiveLink href="/dashboard/admin/update_company_user" >Update User to Company user</ActiveLink>
-
+    <GroupLink groupName="Participant Management">
+      <ActiveLink href="/dashboard/admin/user_roles_and_permissions" >User Roles and Permissions</ActiveLink>
+      <ActiveLink href="/dashboard/admin/user_activity_monitoring" >User Activity Monitoring</ActiveLink>
+      <ActiveLink href="/dashboard/admin/participant_analytics" >Participant Analytics</ActiveLink>
+    </GroupLink>
+    <GroupLink groupName="Notifications & Alerts">
+      <ActiveLink href="/dashboard/admin/system_notifications" >System Notifications</ActiveLink>
+      <ActiveLink href="/dashboard/admin/survey_status_updates" >Survey Status Updates</ActiveLink>
+      <ActiveLink href="/dashboard/admin/critic" >Critic</ActiveLink>
+      
+    </GroupLink>
+    <GroupLink groupName="Data Management">
+      <ActiveLink href="/dashboard/admin/data_import" >Data Import</ActiveLink>
+      <ActiveLink href="/dashboard/admin/data_export" >Data Export</ActiveLink>
+      <ActiveLink href="/dashboard/admin/data_integrity_checks" >Data Integrity Checks</ActiveLink>
+      
+      
+    </GroupLink>
+    <GroupLink groupName="System Configuration">
+      <ActiveLink href="/dashboard/admin/general_settings" >General Settings</ActiveLink>
+      <ActiveLink href="/dashboard/admin/security_settings" >Security Settings</ActiveLink>
+      <ActiveLink href="/dashboard/admin/notifications_settings" >Notification Settings</ActiveLink>
+    </GroupLink>
+    <GroupLink groupName="Administrator Profile">
+      <ActiveLink href="/dashboard/admin/view_and_edit_admin_information" >View and edit admin information</ActiveLink>
+      <ActiveLink href="/dashboard/admin/activity_history_and_logs" >Activity history and logs</ActiveLink>
+      <ActiveLink href="/dashboard/admin/preferences" >Preferences</ActiveLink>
+      
     </GroupLink>
 
   </>
@@ -61,37 +88,46 @@ function Layout({ children }) {
   const companies =
     <>
       <li className=" text-white text-md hover:text-neutral hover:bg-blue-100">
-        <ActiveLink href="/dashboard/company/company_statistics" >Company Statistics</ActiveLink>
+        <ActiveLink href="/dashboard/company/creator_profile" >Creator Profile</ActiveLink>
       </li>
       
       <GroupLink groupName="Survey">
-        <ActiveLink href="/dashboard/company/add_Survey" >Add Survey</ActiveLink>
-        <ActiveLink href="/dashboard/company/finished_survey_list" >Finished Survey List</ActiveLink>
-        <ActiveLink href="/dashboard/company/on_going_survey" >On Going Survey</ActiveLink>
+        <ActiveLink href="/dashboard/company/create_survey" >Create Survey</ActiveLink>
+        <ActiveLink href="/dashboard/company/AI_survey_creator" >AI Survey Creator</ActiveLink>
+        <ActiveLink href="/dashboard/company/manage_survey" >Manage Survey</ActiveLink>
+        <ActiveLink href="/dashboard/company/survey_history" >Survey History</ActiveLink>
+        <ActiveLink href="/dashboard/company/share_survey" >Share Survey</ActiveLink>
+        
 
       </GroupLink>
-      <GroupLink groupName="User list">
-        <ActiveLink href="/dashboard/company/Invite_User" >Invite User</ActiveLink>
-        <ActiveLink href="/dashboard/company/participate_list" >Participate list</ActiveLink>
+      <GroupLink groupName="Response">
+        <ActiveLink href="/dashboard/company/view_response" >View Response</ActiveLink>
+        <ActiveLink href="/dashboard/company/export_response" >Export Response</ActiveLink>
       </GroupLink>
+      
+      <GroupLink groupName="Participate">
+        <ActiveLink href="/dashboard/company/create_participate" >Create Participate</ActiveLink>
+        <ActiveLink href="/dashboard/company/view_participate" >View Participate</ActiveLink>
+        <ActiveLink href="/dashboard/company/invite_participate" >Invite Participate</ActiveLink>
+        
+      </GroupLink>
+      <GroupLink groupName="Import & Export">
+        <ActiveLink href="/dashboard/company/import_data" >Import Data</ActiveLink>
+        <ActiveLink href="/dashboard/company/export_data" >Export Data</ActiveLink>
+        
+      </GroupLink>
+      
 
     </>
 
   const users =
     <>
-        <ActiveLink isSubRoute={false} href="/dashboard/user/user_statistics" >User Statistics</ActiveLink>
-      <GroupLink groupName="Survey">
-        <ActiveLink href="/dashboard/user/pending_survey" >Pending Survey</ActiveLink>
-        <ActiveLink href="/dashboard/user/product_survey" >Product Based Survey</ActiveLink>
-        <ActiveLink href="/dashboard/user/rating_survey" >Rating Based Survey</ActiveLink>
-        <ActiveLink href="/dashboard/user/feedback_survey" >Feedback Based Survey</ActiveLink>
-        <li className=" text-white text-md hover:text-neutral hover:bg-blue-100">
-        <ActiveLink href="/dashboard/user/completed_survey_list" >Completed Survey List</ActiveLink>
-      </li>
-      </GroupLink>
-      {/* <GroupLink groupName="Completed Survey List">
-        <Link className="hover:bg-neutral-800 hover:text-white p-[1px]" href="/dashboard/user/Filter_by_various_option" >Filter by various optiont</Link>
-      </GroupLink> */}
+        <ActiveLink isSubRoute={false} href="/dashboard/user/available_surveys" >Available Surveys</ActiveLink>
+        <ActiveLink isSubRoute={false} href="/dashboard/user/view_response" >View responses</ActiveLink>
+        <ActiveLink isSubRoute={false} href="/dashboard/user/feedback_report" >FeedBack Report</ActiveLink>
+        <ActiveLink isSubRoute={false} href="/dashboard/user/participant_profile" >Participant Profile</ActiveLink>
+        <ActiveLink isSubRoute={false} href="/dashboard/user/preferences" >Preferences</ActiveLink>
+      
 
     </>
 
