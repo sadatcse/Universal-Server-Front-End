@@ -13,7 +13,7 @@ function AddQuestionArea({ formData, setShowQuestionArea, setFormData , surveyIn
     
     return (
         <div className='w-full'>
-            <h2 className='text-3xl font-bold pb-4 border-b-2 border-rose-400 relative'>{surveyInitialInfo.title} <button className="p-2 absolute top-1/2 right-6 -translate-y-1/2 text-sm rounded-sm text-white bg-neutral-400 border hover:bg-blue-500 hover:text-white" onClick={() => setOpenEditModal(true)} ><FaEdit /></button></h2>
+            <h2 className='text-3xl font-bold pb-4 border-b-2 border-rose-400 relative'>{surveyInitialInfo?.title} <button className="p-2 absolute top-1/2 right-6 -translate-y-1/2 text-sm rounded-sm text-white bg-neutral-400 border hover:bg-blue-500 hover:text-white" onClick={() => setOpenEditModal(true)} ><FaEdit /></button></h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-5 mt-4 gap-6">
             {

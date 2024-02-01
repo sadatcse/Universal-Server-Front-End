@@ -1,7 +1,7 @@
 "use client"
 
 
-function AddSurveyForm({setFormData, setShowQuestionArea}) {
+function AddSurveyForm({setSurveyInitialInfo, setShowQuestionArea}) {
 //   const [title, setTitle] = useState("")
 //   const [description, setDescription] = useState("")
   
@@ -10,7 +10,7 @@ function AddSurveyForm({setFormData, setShowQuestionArea}) {
     const title = e.target.title.value;
     const description = e.target.description.value;
     const formData = {title, description};
-    setFormData(formData);
+    setSurveyInitialInfo(formData);
     setShowQuestionArea(title.length > 0 && description.length > 0);
     localStorage.setItem("my_survey", JSON.stringify(formData));
   }

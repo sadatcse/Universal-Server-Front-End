@@ -12,15 +12,17 @@ function CreateSurveyPage() {
 
   useEffect(()=> {
     const surveyInitialObject = JSON.parse(localStorage.getItem("my_survey"))
-    setSurveyInitialInfo(surveyInitialObject)
-    setShowQuestionArea((typeof surveyInitialObject === "object"))
+    setSurveyInitialInfo(surveyInitialObject || {})
+    console.log(surveyInitialObject)
+    const isObject = surveyInitialObject ? true : false;
+    setShowQuestionArea(isObject)
   },[])
 
   return (
     <div className="w-full flex justify-center">
     {
       !showQuestionArea ?
-      <AddSurveyForm setFormData={setFormData} setShowQuestionArea={setShowQuestionArea} />
+      <AddSurveyForm setSurveyInitialInfo={setSurveyInitialInfo} setShowQuestionArea={setShowQuestionArea} />
       : null
     }
 
