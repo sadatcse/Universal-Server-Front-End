@@ -15,6 +15,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [userRole, setUserRole] = useState("user");
+    const [themMode, setThemMode] = useState(false);
     
    
     
@@ -64,12 +65,16 @@ const AuthProvider = ({ children }) => {
         signInWithGithub,
         logOut,
         userRole,
-        setUserRole
+        setUserRole,
+        themMode,
+        setThemMode
     }
 
     return (
-        <AuthContext.Provider value={authInfo}>
-            {children}
+        <AuthContext.Provider value={authInfo} >
+           <main className={themMode ? "bg-neutral-800" : ""} data-mode={themMode ? "dark" : "light"}>
+           {children}
+           </main> 
         </AuthContext.Provider>
     );
 };

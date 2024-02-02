@@ -17,5 +17,6 @@ module.exports = {
       }
     },
   },
+  darkMode: ['class', '[data-mode="dark"]'],
   plugins: [require("daisyui")],
 };

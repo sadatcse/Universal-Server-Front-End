@@ -47,7 +47,7 @@ const Team = () => {
                 </div>
             </div>
 
-            <div className="col-span-2 hidden md:flex justify-center items-center bg-neutral-800">
+            <div className="col-span-2 hidden md:flex justify-center items-center bg-neutral-800 dark:bg-gray-600">
                 <img src={teamData[currentTeam]?.image} alt="team member image" className="max-h-[500px]"  />
             </div>
         </div>
