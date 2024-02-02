@@ -14,12 +14,12 @@ const Navbar = () => {
     <li><Link href="/primary/faq">FAQ </Link></li>
     <li><Link href="/primary/contactus" >Contact Us </Link></li>
     <li>
-      <details className="dropdown text-inherit h-[35px] dark:text-white">
-        <summary className="m-1 btn bg-transparent shadow-none hover:bg-transparent border-none">Dashboard</summary>
+      <details className="dropdown text-inherit h-[35px] ">
+        <summary className="m-1 btn bg-transparent shadow-none hover:bg-transparent border-none dark:text-white">Dashboard</summary>
         <ul className="p-2 menu dropdown-content z-[1] rounded-box w-52 dark:bg-blue-200 text-neutral-800">
-          <li onClick={() => setUserRole("user")}><Link href="/dashboard/user/available_surveys">User</Link></li>
-          <li onClick={() => setUserRole("admin")}><Link href="/dashboard/admin/system_statistics">Admin</Link></li>
-          <li onClick={() => setUserRole("company")}> <Link href="/dashboard/company/creator_profile">Company</Link></li>
+          <li onClick={() => setUserRole("user")}><Link href="/dashboard/user/available_surveys">Survey Participant</Link></li>
+          <li onClick={() => setUserRole("admin")}><Link href="/dashboard/admin/system_statistics">Administrator</Link></li>
+          <li onClick={() => setUserRole("company")}> <Link href="/dashboard/company/creator_profile">Survey Creator</Link></li>
 
         </ul>
       </details>
@@ -71,7 +71,7 @@ const Navbar = () => {
               {navlinks}
             </ul>
           </div>
-          <Link href="/" className="btn btn-ghost text-xl hover:bg-transparent dark:bg-blue-200"><Image className="w-16 mix-blend-multiply dark:mix-blend-normal" width={400} height={400} src={logo} alt="logo" /> <span className="font-exo  hidden sm:block dark:text-neutral-800" >Universal Survey</span></Link>
+          <Link href="/" className="btn btn-ghost text-xl hover:bg-transparent dark:bg-blue-200"><Image className="w-16 mix-blend-multiply dark:mix-blend-normal" width={400} height={400} src={logo} alt="logo" /> <span className="font-exo  hidden sm:block dark:text-neutral-800 font-permanent" >Universal Survey</span></Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 items-center dark:bg-blue-200  dark:lg:bg-transparent dark:text-white " id='nav-menu'>

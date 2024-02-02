@@ -144,7 +144,7 @@ function Layout({ children }) {
           </div>
         </div> <span className="font-exo text-neutral-800">Md Sadat Khan</span></div>
 
-        <p className="font-bold text-2xl">{userRole === "admin" ? "Admin" : userRole === "company" ? "Company" : "User"}</p>
+        <p className="font-bold text-2xl">{userRole === "admin " ? "Administrator" : userRole === "company" ? "Survey Creator" : "Survey Participant"}</p>
 
         <Link href="/" className="btn btn-ghost text-xl hover:bg-transparent"><Image className="w-16 mix-blend-multiply" width={400} height={400} src={logo} alt="logo" /> <span className="font-exo text-neutral-800">Universal Survey</span></Link>
 
