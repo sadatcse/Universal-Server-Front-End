@@ -1,7 +1,7 @@
 
 function FaqHero({faqData}) {
     return (
-        <section className=" relative z-[1] bg-amber-200" id="faqHero">
+        <section className=" relative z-[1] dark:bg-transparent bg-amber-200" id="faqHero">
             <div className="w-full h-full absolute top-0 left-0 z-[-1] opacity-20" style={{ backgroundImage: "url('https://i.pinimg.com/564x/e7/38/8b/e7388be6e75e602eb3dc5fef7a5dec71.jpg')" }} >
 
             </div>
