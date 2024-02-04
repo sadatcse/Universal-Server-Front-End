@@ -15,7 +15,7 @@ function MultipleChoice({setShowSurveyForm, setSurveyQuestions, setOpenAddQuesti
     const onSave = ()=> {
       const question = questionInput.current.value;
         console.log({question, options})
-        const newObject = {type: "multipleChoice" ,question, options}
+        const newObject = {type: "Multiple Choice Questions" ,question, options}
         setSurveyQuestions((prevItem)=> [...prevItem, newObject])
         setOpenAddQuestionModal(false)
       }

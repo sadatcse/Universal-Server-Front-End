@@ -17,7 +17,7 @@ function CheckboxQuestions({ setShowSurveyForm, setSurveyQuestions, setOpenAddQu
   const onSave = () => {
     const question = questionInput.current.value;
     console.log({ question, options })
-    const newObject = {type: "checkbox" , question, options, levelNames }
+    const newObject = {type: "Checkbox Questions" , question, options, levelNames }
     setSurveyQuestions((prevItem) => [...prevItem, newObject])
     setOpenAddQuestionModal(false)
   }

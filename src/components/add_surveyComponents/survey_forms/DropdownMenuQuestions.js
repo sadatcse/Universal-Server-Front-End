@@ -15,7 +15,7 @@ function DropdownMenuQuestions({setShowSurveyForm, setSurveyQuestions, setOpenAd
     const onSave = ()=> {
       const question = questionInput.current.value;
         console.log({question, options})
-        const newObject = {type: "multipleChoice" ,question, options}
+        const newObject = {type: "Dropdown Menu Questions" ,question, options}
         setSurveyQuestions((prevItem)=> [...prevItem, newObject])
         setOpenAddQuestionModal(false)
       }

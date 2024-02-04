@@ -4,7 +4,7 @@ import logo from "../../Asset/logo2.png";
 const Banner = () => {
     const image1 = 'https://images.pexels.com/photos/6801636/pexels-photo-6801636.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
     return (
-        <div className="w-full min-h-[200vh] md:min-h-[140vh] md:flex items-center justify-center relative z-[1] dark:text-white -mt-24" >
+        <div className="w-full min-h-[200vh] md:min-h-[900px] md:flex items-center justify-center relative z-[1] dark:text-white -mt-24" >
         <div className="w-full h-full absolute top-0 left-0 z-[-1] dark:hidden" style={{backgroundImage: `url("/home-banner.jpg")`, backgroundSize: "cover", backgroundPosition: "center"}}></div>
             <div className="relative container mx-auto">
                 

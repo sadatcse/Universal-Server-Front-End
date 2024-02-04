@@ -10,7 +10,7 @@ function TextEntryQuestions({setShowSurveyForm, setSurveyQuestions, setOpenAddQu
         e.preventDefault();
         const question = e.target.question.value;
         console.log({question})
-        const newObject = {type: "TextEntry" ,question}
+        const newObject = {type: "Text Entry Questions" ,question}
         setSurveyQuestions((prevItem)=> [...prevItem, newObject])
         setOpenAddQuestionModal(false)
       }

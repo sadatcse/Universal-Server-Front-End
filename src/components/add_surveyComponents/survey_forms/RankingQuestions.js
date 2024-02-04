@@ -15,7 +15,7 @@ function RankingQuestions({setShowSurveyForm, setSurveyQuestions, setOpenAddQues
     const onSave = ()=> {
       const question = questionInput.current.value;
         console.log({question, options})
-        const newObject = {type: "Ranking" ,question, options}
+        const newObject = {type: "Ranking Questions" ,question, options}
         setSurveyQuestions((prevItem)=> [...prevItem, newObject])
         setOpenAddQuestionModal(false)
       }

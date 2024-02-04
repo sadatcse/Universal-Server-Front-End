@@ -15,7 +15,7 @@ function LikertScaleQuestions({setShowSurveyForm, setSurveyQuestions, setOpenAdd
     const onSave = ()=> {
       const question = questionInput.current.value;
         console.log({question, options})
-        const newObject = {type: "LikertScale" ,question, options}
+        const newObject = {type: "Likert Scale Questions" ,question, options}
         setSurveyQuestions((prevItem)=> [...prevItem, newObject])
         setOpenAddQuestionModal(false)
       }

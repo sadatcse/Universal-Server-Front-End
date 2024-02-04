@@ -10,11 +10,9 @@ import RankingQuestions from './survey_forms/RankingQuestions';
 import RatingScaleQuestions from './survey_forms/RatingScaleQuestions';
 import TextEntryQuestions from './survey_forms/TextEntryQuestions';
 
-function AddQuestionModal({ setOpenAddQuestionModal, setSurveyQuestions }) {
+function AddQuestionModal({ setOpenAddQuestionModal, setSurveyQuestions , questionTypeName, setQuestionTypeName,showSurveyForm, setShowSurveyForm}) {
 
-    const [showSurveyForm, setShowSurveyForm] = useState(false);
-
-    const [questionTypeName, setQuestionTypeName] = useState("");
+    
 
 
     const typeNames = [

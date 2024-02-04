@@ -17,7 +17,7 @@ function RatingScaleQuestions({ setShowSurveyForm, setSurveyQuestions, setOpenAd
   const onSave = () => {
     const question = questionInput.current.value;
     console.log({ question, options })
-    const newObject = {type: "RatingScale" , question, options, levelNames }
+    const newObject = {type: "Rating Scale Questions" , question, options, levelNames }
     setSurveyQuestions((prevItem) => [...prevItem, newObject])
     setOpenAddQuestionModal(false)
   }

@@ -11,7 +11,8 @@ function AddQuestionArea({ formData, setShowQuestionArea, setFormData, surveyIni
     const [openEditModal, setOpenEditModal] = useState(false)
     const [openAddQuestionModal, setOpenAddQuestionModal] = useState(false)
     const [surveyQuestions, setSurveyQuestions] = useState([])
-
+    const [questionTypeName, setQuestionTypeName] = useState("");
+    const [showSurveyForm, setShowSurveyForm] = useState(false);
     const onSaveSurvey = () => {
         localStorage.removeItem("my_survey");
         setShowQuestionArea(false)
@@ -21,6 +22,10 @@ function AddQuestionArea({ formData, setShowQuestionArea, setFormData, surveyIni
         setShowQuestionArea(false)
     }
 
+    const deleteQuestion = (question)=> {
+        const newArray = surveyQuestions.filter((item) => item.question !== question)
+        setSurveyQuestions(newArray)
+       }
     return (
         <div className='w-full'>
             <div className='pb-4 border-b-2 border-rose-400 relative'>
@@ -37,7 +42,10 @@ function AddQuestionArea({ formData, setShowQuestionArea, setFormData, surveyIni
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-5 mt-4 gap-6">
                 {
                     surveyQuestions && surveyQuestions.map((item, idx) => (
-                        <QuestionCard key={idx} item={item} />
+                        <QuestionCard key={idx} item={item} deleteQuestion={deleteQuestion} setQuestionTypeName={setQuestionTypeName}
+                        setOpenAddQuestionModal={setOpenAddQuestionModal}
+                        setShowSurveyForm={setShowSurveyForm}
+                         />
 
                     ))
                 }
@@ -61,6 +69,8 @@ function AddQuestionArea({ formData, setShowQuestionArea, setFormData, surveyIni
                     <AddQuestionModal
                         setOpenAddQuestionModal={setOpenAddQuestionModal}
                         setSurveyQuestions={setSurveyQuestions}
+                        questionTypeName={questionTypeName} setQuestionTypeName={setQuestionTypeName}
+                        showSurveyForm={showSurveyForm} setShowSurveyForm={setShowSurveyForm}
 
                     />
                     : null
