@@ -1,19 +1,16 @@
 "use client"
 
 import UseAxioSecure from "@/Hook/UseAxioSecure";
-import { AuthContext } from "@/providers/AuthProvider";
-import { useContext } from "react";
 
 
 function AddSurveyForm({setSurveyInitialInfo, setShowQuestionArea}) {
   const axiosSecure = UseAxioSecure();
-  const {user} = useContext(AuthContext);
   
   const onSubmit = async (e)=> {
     e.preventDefault();
     const title = e.target.title.value;
     const description = e.target.description.value;
-    const formData = {title, description, email: user.email};
+    const formData = {title, description};
     setSurveyInitialInfo(formData);
     setShowQuestionArea(title.length > 0 && description.length > 0);
     localStorage.setItem("my_survey", JSON.stringify(formData));

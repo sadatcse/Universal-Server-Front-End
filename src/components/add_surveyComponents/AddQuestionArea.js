@@ -7,7 +7,7 @@ import AddQuestionModal from "./AddQuestionModal";
 import EditModal from "./EditModal";
 import QuestionCard from "./QuestionCard";
 
-function AddQuestionArea({ formData, setShowQuestionArea, setFormData, surveyInitialInfo, setSurveyInitialInfo }) {
+function AddQuestionArea({ setShowQuestionArea,  surveyInitialInfo, setSurveyInitialInfo }) {
     const [openEditModal, setOpenEditModal] = useState(false)
     const [openAddQuestionModal, setOpenAddQuestionModal] = useState(false)
     const [surveyQuestions, setSurveyQuestions] = useState([])

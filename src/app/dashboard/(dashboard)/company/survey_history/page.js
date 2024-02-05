@@ -1,6 +1,11 @@
+import SurveyHistory from "@/components/historyComponents/SurveyHistory";
+import HistoryHeader from "@/components/historyComponents/elements/HistoryHeader";
 
 export default function Page() {
   return (
-    <div>page</div>
+    <>
+      <HistoryHeader />
+      <SurveyHistory />
+    </>
   )
 }

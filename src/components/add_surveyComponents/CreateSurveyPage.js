@@ -11,8 +11,8 @@ function CreateSurveyPage() {
 
 
   useEffect(()=> {
-    const surveyInitialObject = JSON.parse(localStorage.getItem("my_survey"))
-    setSurveyInitialInfo(surveyInitialObject || {})
+    const surveyInitialObject = JSON.parse(localStorage.getItem("my_survey")) || {};
+    setSurveyInitialInfo(surveyInitialObject )
     console.log(surveyInitialObject)
     const isObject = surveyInitialObject ? true : false;
     setShowQuestionArea(isObject)
