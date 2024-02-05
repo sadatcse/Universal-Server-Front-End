@@ -1,6 +1,9 @@
+import ManageSurvey from "@/components/manage_survey/ManageSurvey";
 
 export default function Page() {
   return (
-    <div>page</div>
+    <>
+      <ManageSurvey />
+    </>
   )
 }

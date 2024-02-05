@@ -14,8 +14,10 @@ function MultipleChoice({setShowSurveyForm, setSurveyQuestions, setOpenAddQuesti
       }
     const onSave = ()=> {
       const question = questionInput.current.value;
-        console.log({question, options})
-        const newObject = {type: "Multiple Choice Questions" ,question, options}
+        const surveyTitle = JSON.parse(localStorage.getItem("my_survey")).title;
+        
+        const newObject = {type: "Multiple Choice Questions" ,question, options: options.flat(Infinity), surveyTitle}
+        console.log(newObject)
         setSurveyQuestions((prevItem)=> [...prevItem, newObject])
         setOpenAddQuestionModal(false)
       }
