@@ -60,7 +60,7 @@ function Page() {
           <p className="mt-2 ">Manage your personal profile</p>
         </div>
         <div className="relative">
-          <img className="w-28 h-28 rounded-full" src={ imagePreview || Photourl} alt="" />
+          {Photourl?<><img className="w-28 h-28 rounded-full" src={ imagePreview || Photourl} alt="" /></>:<><div className="skeleton w-28 h-28 rounded-full"></div></>}
           <div className="absolute right-0 bottom-0 z-10 bg-blue-400  rounded-full p-2">
             <FaPen className="text-white text-sm" />
           </div>
@@ -96,7 +96,7 @@ function Page() {
         {/* input */}
         <div>
           <p className="text-sm">Role</p>
-          <input type="text" placeholder=" user" value={role} disabled className="border pl-4 p-2 disabled focus:border-blue-400 rounded-xl mt-1 w-full outline-none " />
+          <input type="text" placeholder="Survey Participient" value={role} disabled className="border pl-4 p-2 disabled focus:border-blue-400 rounded-xl mt-1 w-full outline-none " />
         </div>
         {/* input */}
         <div>
