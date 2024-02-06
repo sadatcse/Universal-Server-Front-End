@@ -19,8 +19,8 @@ function SurveyBenefits() {
     return (
         <section className="m-4 md:m-8 text-neutral">
             <div className="container mx-auto p-4 my-6 space-y-2 text-center">
-                <h2 className="text-5xl font-bold">Survey Benefits</h2>
-                <p className="dark:text-gray-400 max-w-2xl mx-auto">USPs are distinct features that set your product or service apart, attracting customers by offering unique benefits and a competitive edge.</p>
+                <h2 className="text-5xl font-bold dark:text-white">Survey Benefits</h2>
+                <p className="dark:text-white max-w-2xl mx-auto">USPs are distinct features that set your product or service apart, attracting customers by offering unique benefits and a competitive edge.</p>
             </div>
             <div className="container mx-auto grid justify-center gap-12 sm:grid-cols-2 lg:grid-cols-3">
 

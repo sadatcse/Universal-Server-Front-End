@@ -1,25 +1,54 @@
 "use client"
 import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
-import { IoCloseSharp } from "react-icons/io5";
+import { IoMdArrowRoundBack } from "react-icons/io";
 import AddQuestionCard from "./AddQuestionCard";
 import AddQuestionModal from "./AddQuestionModal";
 import EditModal from "./EditModal";
+import QuestionCard from "./QuestionCard";
 
-function AddQuestionArea({ formData, setShowQuestionArea, setFormData }) {
+function AddQuestionArea({ setShowQuestionArea,  surveyInitialInfo, setSurveyInitialInfo }) {
     const [openEditModal, setOpenEditModal] = useState(false)
     const [openAddQuestionModal, setOpenAddQuestionModal] = useState(false)
+    const [surveyQuestions, setSurveyQuestions] = useState([])
+    const [questionTypeName, setQuestionTypeName] = useState("");
+    const [showSurveyForm, setShowSurveyForm] = useState(false);
+    const onSaveSurvey = () => {
+        localStorage.removeItem("my_survey");
+        setShowQuestionArea(false)
+    }
+    const onBack = () => {
+        localStorage.removeItem("my_survey");
+        setShowQuestionArea(false)
+    }
+
+    const deleteQuestion = (question)=> {
+        const newArray = surveyQuestions.filter((item) => item.question !== question)
+        setSurveyQuestions(newArray)
+       }
     return (
         <div className='w-full'>
-            <h2 className='text-3xl font-bold pb-4 border-b-2 border-rose-400 relative'>{formData.title} <button className="p-2 absolute top-1/2 right-6 -translate-y-1/2 text-sm rounded-sm text-white bg-neutral-400 border hover:bg-blue-500 hover:text-white" onClick={() => setOpenEditModal(true)} ><FaEdit /></button></h2>
+            <div className='pb-4 border-b-2 border-rose-400 relative'>
+            <button className="absolute top-1/2 left-1 -translate-y-1/2 bg-red-300 hover:bg-blue-300 text-neutral-800 btn text-3xl flex justify-center items-center" onClick={onBack} ><IoMdArrowRoundBack /></button>
+            <h2 className="text-3xl font-bold ml-20">{surveyInitialInfo?.title}</h2>
+                <div className="absolute top-1/2 right-6 -translate-y-1/2 flex items-center gap-2">
+                    <button className="p-2  text-sm rounded-sm text-white bg-neutral-400 border hover:bg-blue-500 hover:text-white" onClick={() => setOpenEditModal(true)} ><FaEdit /></button>
+
+                    <button className="p-2  text-sm rounded-sm text-white bg-neutral-800 border hover:bg-blue-300 hover:text-neutral-800" onClick={onSaveSurvey}>Save Survey</button>
+
+                </div>
+            </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-5 mt-4 gap-6">
-                <div className="rounded-lg border-2 text-neutral-800 text-4xl bg-amber-200 border-amber-500 h-24 p-2 relative">
-                    <h3 className="text-base font-bold">Are you student?</h3>
-                    <button className="p-1 absolute -top-3 -right-3 text-[10px] text-white bg-neutral-400 border rounded-full hover:bg-red-500 hover:text-white"><IoCloseSharp /></button>
+                {
+                    surveyQuestions && surveyQuestions.map((item, idx) => (
+                        <QuestionCard key={idx} item={item} deleteQuestion={deleteQuestion} setQuestionTypeName={setQuestionTypeName}
+                        setOpenAddQuestionModal={setOpenAddQuestionModal}
+                        setShowSurveyForm={setShowSurveyForm}
+                         />
 
-                    <p className="text-sm"><b className="text-rose-600">Q:</b> 8</p>
-                </div>
+                    ))
+                }
                 <AddQuestionCard
                     setOpenAddQuestionModal={setOpenAddQuestionModal}
                 />
@@ -27,7 +56,8 @@ function AddQuestionArea({ formData, setShowQuestionArea, setFormData }) {
                     openEditModal ?
                         <EditModal
                             setOpenEditModal={setOpenEditModal}
-                            formData={formData}
+                            surveyInitialInfo={surveyInitialInfo}
+                            setSurveyInitialInfo={setSurveyInitialInfo}
                             setShowQuestionArea={setShowQuestionArea} setFormData={setFormData}
 
                         />
@@ -38,6 +68,9 @@ function AddQuestionArea({ formData, setShowQuestionArea, setFormData }) {
                 openAddQuestionModal ?
                     <AddQuestionModal
                         setOpenAddQuestionModal={setOpenAddQuestionModal}
+                        setSurveyQuestions={setSurveyQuestions}
+                        questionTypeName={questionTypeName} setQuestionTypeName={setQuestionTypeName}
+                        showSurveyForm={showSurveyForm} setShowSurveyForm={setShowSurveyForm}
 
                     />
                     : null

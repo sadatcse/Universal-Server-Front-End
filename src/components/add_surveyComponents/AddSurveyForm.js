@@ -1,16 +1,26 @@
 "use client"
 
+import UseAxioSecure from "@/Hook/UseAxioSecure";
 
-function AddSurveyForm({setFormData, setShowQuestionArea}) {
-//   const [title, setTitle] = useState("")
-//   const [description, setDescription] = useState("")
+
+function AddSurveyForm({setSurveyInitialInfo, setShowQuestionArea}) {
+  const axiosSecure = UseAxioSecure();
   
-  const onSubmit = (e)=> {
+  const onSubmit = async (e)=> {
     e.preventDefault();
     const title = e.target.title.value;
     const description = e.target.description.value;
-    setFormData({title, description})
+    const formData = {title, description};
+    setSurveyInitialInfo(formData);
     setShowQuestionArea(title.length > 0 && description.length > 0);
+    localStorage.setItem("my_survey", JSON.stringify(formData));
+
+    // try {
+    //   const result = await axiosSecure.post("/create-survey", formData);
+      
+    // } catch (err) {
+    //   console.log(err)
+    // }
   }
 
   return (

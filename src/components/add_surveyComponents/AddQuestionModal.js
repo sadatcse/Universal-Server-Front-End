@@ -2,19 +2,17 @@
 import { useState } from 'react';
 import { IoClose } from 'react-icons/io5';
 import QuestionTypeCard from './QuestionTypeCard';
-import RatingScaleQuestions from './RatingScaleQuestions';
 import CheckboxQuestions from './survey_forms/CheckboxQuestions';
 import DropdownMenuQuestions from './survey_forms/DropdownMenuQuestions';
 import LikertScaleQuestions from './survey_forms/LikertScaleQuestions';
 import MultipleChoice from './survey_forms/MultipleChoice';
 import RankingQuestions from './survey_forms/RankingQuestions';
+import RatingScaleQuestions from './survey_forms/RatingScaleQuestions';
 import TextEntryQuestions from './survey_forms/TextEntryQuestions';
 
-function AddQuestionModal({ setOpenAddQuestionModal }) {
-    
-    const [showSurveyForm, setShowSurveyForm] = useState(false);
+function AddQuestionModal({ setOpenAddQuestionModal, setSurveyQuestions , questionTypeName, setQuestionTypeName,showSurveyForm, setShowSurveyForm}) {
 
-    const [questionTypeName, setQuestionTypeName] = useState("");
+    
 
 
     const typeNames = [
@@ -38,30 +36,46 @@ function AddQuestionModal({ setOpenAddQuestionModal }) {
                             <div className="gird grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" style={{ display: "grid" }}>
                                 {typeNames && typeNames.map((type, idx) => (
                                     <QuestionTypeCard key={idx} type={type} setQuestionTypeName={setQuestionTypeName}
-                                    setShowSurveyForm={setShowSurveyForm}
-                                    
-                                     />
+                                        setShowSurveyForm={setShowSurveyForm}
+
+                                    />
                                 ))}
 
                             </div>
                         </>
                         :
                         <>
-                        {
-                       questionTypeName === "Multiple Choice Questions" && <MultipleChoice setShowSurveyForm={setShowSurveyForm} />}
+                            {
+                                questionTypeName === "Multiple Choice Questions" && <MultipleChoice setOpenAddQuestionModal={setOpenAddQuestionModal} setSurveyQuestions={setSurveyQuestions}
+                                    setShowSurveyForm={setShowSurveyForm}
+                                />}
 
-                       {questionTypeName === "Checkbox Questions" && 
-                       <CheckboxQuestions setShowSurveyForm={setShowSurveyForm} />}
+                            {questionTypeName === "Checkbox Questions" &&
+                                <CheckboxQuestions setOpenAddQuestionModal={setOpenAddQuestionModal} setSurveyQuestions={setSurveyQuestions}
+                                    setShowSurveyForm={setShowSurveyForm}
+                                />}
 
-                       {questionTypeName === "Dropdown Menu Questions" && <DropdownMenuQuestions setShowSurveyForm={setShowSurveyForm} />}
+                            {questionTypeName === "Dropdown Menu Questions" && <DropdownMenuQuestions setOpenAddQuestionModal={setOpenAddQuestionModal} setSurveyQuestions={setSurveyQuestions}
+                                setShowSurveyForm={setShowSurveyForm} />}
 
-                       {questionTypeName === "Likert Scale Questions" && <LikertScaleQuestions setShowSurveyForm={setShowSurveyForm} />}
+                            {questionTypeName === "Likert Scale Questions" && <LikertScaleQuestions setOpenAddQuestionModal={setOpenAddQuestionModal} setSurveyQuestions={setSurveyQuestions}
+                                setShowSurveyForm={setShowSurveyForm} />}
 
-                       {questionTypeName === "Ranking Questions" && <RankingQuestions setShowSurveyForm={setShowSurveyForm} />}
+                            {questionTypeName === "Ranking Questions" && <RankingQuestions setOpenAddQuestionModal={setOpenAddQuestionModal} setSurveyQuestions={setSurveyQuestions}
+                                setShowSurveyForm={setShowSurveyForm}
 
-                       {questionTypeName === "Text Entry Questions" && <TextEntryQuestions setShowSurveyForm={setShowSurveyForm} />}
-                       {questionTypeName === "Rating Scale Questions" && <RatingScaleQuestions setShowSurveyForm={setShowSurveyForm} />}
-                       
+                            />}
+
+                            {questionTypeName === "Text Entry Questions" && <TextEntryQuestions setOpenAddQuestionModal={setOpenAddQuestionModal} setSurveyQuestions={setSurveyQuestions}
+                                setShowSurveyForm={setShowSurveyForm}
+
+                            />}
+
+                            {questionTypeName === "Rating Scale Questions" && <RatingScaleQuestions setOpenAddQuestionModal={setOpenAddQuestionModal} setSurveyQuestions={setSurveyQuestions}
+                                setShowSurveyForm={setShowSurveyForm}
+
+                            />}
+
                         </>
                 }
 
