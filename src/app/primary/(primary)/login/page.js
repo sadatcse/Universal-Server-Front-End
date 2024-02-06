@@ -46,7 +46,7 @@ const Login = () => {
                 mobile: result.user?.phoneNumber,
                 email: result.user?.email,
                 Photourl:result.user?.photoURL,
-                role: 'user',
+                role: 'Survey Participant',
             };
     
             console.log(userinfo);
