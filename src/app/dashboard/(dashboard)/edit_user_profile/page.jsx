@@ -8,16 +8,44 @@ import axios from 'axios';
 function Page() {
   // user from global auth
   const { user } = useContext(AuthContext);
-
-  const [userInfo , setUserInfo] = useState({});
-  const {id,name,uid,mobile,email,Photourl,role} = userInfo;
+  const [selectedImage, setSelectedImage] = useState('');
+  const [imagePreview , setImagePreview ] = useState(null);
+  const [userInfo, setUserInfo] = useState({});
+  const { id, name, uid, mobile, email, Photourl, role } = userInfo;
 
   // getting user data 
   useEffect(() => {
     axios(`https://universal-survey-backend.vercel.app/users/${user?.email}`)
       .then((data) => setUserInfo(data.data))
-      // .catch((error) => console.error(error));
+    // .catch((error) => console.error(error));
   }, [user]);
+  
+
+
+  // functions
+  const handleOnImageChange = e => {
+    const imageFile = e.target.files[0];
+    setImagePreview(URL.createObjectURL(imageFile));
+    setSelectedImage(imageFile);
+  }
+
+  // const handleSave = () => {
+  //   if (selectedImage) {
+  //     // Getting image link through Image BB
+  //     const apiKey = '23255cbd1487870b7fe3fe227a71663b';
+  //     const imageFile = e.target.files[0];
+  //     const formData = new FormData();
+  //     formData.append('image', imageFile);
+  //     formData.append('key', apiKey);
+  //     fetch('https://api.imgbb.com/1/upload', {
+  //       method: 'POST',
+  //       body: formData
+  //     }).then(response => response.json())
+  //       .then(data => {
+  //         console.log(data.data.url);
+  //       })
+  //   }
+  // }
 
   return (
     // edit user profile
@@ -31,10 +59,14 @@ function Page() {
           <p className="mt-2 ">Manage your personal profile</p>
         </div>
         <div className="relative">
-          <img className="w-28 rounded-full" src={Photourl} alt="" />
-          <div className="absolute right-0 bottom-0 z-10 bg-blue-400 hover:bg-blue-500 cursor-pointer rounded-full p-2">
+          <img className="w-28 h-28 rounded-full" src={ imagePreview || Photourl} alt="" />
+          <div className="absolute right-0 bottom-0 z-10 bg-blue-400  rounded-full p-2">
             <FaPen className="text-white text-sm" />
           </div>
+          {/* hidden file input */}
+          <form onChange={handleOnImageChange} className=''>
+            <input type="file" name="newImage" className='absolute w-7 opacity-0  rounded-full right-0 bottom-0 z-20' id="" />
+          </form>
         </div>
       </div>
 
@@ -53,7 +85,7 @@ function Page() {
         {/* input */}
         <div>
           <p className="text-sm">Mobile</p>
-          <input type="text" placeholder=" +88 01********8"  value={mobile !== undefined ? mobile : 'Not Provided'} className="border pl-4 p-2 focus:border-blue-400 rounded-xl mt-1 w-full outline-none " />
+          <input type="text" placeholder=" +88 01********8" value={mobile !== undefined ? mobile : 'Not Provided'} className="border pl-4 p-2 focus:border-blue-400 rounded-xl mt-1 w-full outline-none " />
         </div>
         {/* input */}
         <div>
