@@ -1,12 +1,12 @@
 "use client"
-import { useState } from 'react'
-import HistoryTable from './elements/HistoryTable'
+import { useState } from 'react';
+import HistoryTable from './elements/HistoryTable';
 
 
 
 
 function SurveyHistory() {
-    const [checkedItemId, setCheckItemId] = useState([])
+    const [checkedItemId, setCheckItemId] = useState([]);
     return (
         <>
             <HistoryTable checkedItemId={checkedItemId} setCheckItemId={setCheckItemId} />
