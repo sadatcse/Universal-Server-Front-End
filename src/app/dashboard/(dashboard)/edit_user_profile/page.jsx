@@ -10,7 +10,7 @@ function Page() {
   const { user } = useContext(AuthContext);
 
   const [userInfo , setUserInfo] = useState({});
-  const {id,name,uid,mobile,email,photoUrl,role} = userInfo;
+  const {id,name,uid,mobile,email,Photourl,role} = userInfo;
 
   // getting user data 
   useEffect(() => {
@@ -31,7 +31,7 @@ function Page() {
           <p className="mt-2 ">Manage your personal profile</p>
         </div>
         <div className="relative">
-          <img className="w-28" src="https://www.cryptopush.net/assets/frontend/theme_base/semahost/img/all/lw_img.png" alt="" />
+          <img className="w-28 rounded-full" src={Photourl} alt="" />
           <div className="absolute right-0 bottom-0 z-10 bg-blue-400 hover:bg-blue-500 cursor-pointer rounded-full p-2">
             <FaPen className="text-white text-sm" />
           </div>
