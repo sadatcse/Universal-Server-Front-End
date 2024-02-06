@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react";
-
+import { RiDeleteBin2Fill } from "react-icons/ri";
+import HistoryCheck from "./HistoryCheck";
 
 const surveyData = [
     {
@@ -63,37 +64,36 @@ const surveyData = [
 
 function HistoryTable({checkedItemId, setCheckItemId}) {
     const [allCheck, setAllCheck] = useState(false)
-
+    const [surveyHistoryData, setSurveyHistoryData] = useState(surveyData)
+    
+    const deleteCheckedItem = ()=> {
+        setSurveyHistoryData(surveyHistoryData.filter((data)=>  !checkedItemId.includes(data.id)))
+        setCheckItemId([])
+        setAllCheck(false);
+    }
     const onAllCheck = (e)=> {
         
-        console.log(checkedItemId)
+        setAllCheck(e.target.checked)
+        console.log(e.target.checked)
         if(e.target.checked){
-            setCheckItemId(()=> surveyData.map(data => data.id));
+            setCheckItemId(surveyHistoryData.map(data => data.id));
             
         }else{
             setCheckItemId([]) 
         }
     }
-    const onSingleCheck = (e, id)=> {
-        
-        setAllCheck(e.target.checked)
-        if(e.target.checked){
-            setCheckItemId([...checkedItemId, id]);
-            
-        }else{
-            setCheckItemId(()=> checkedItemId.filter(data=> data.id)) 
-        }
-    }
+    
+    const deleteStyle = checkedItemId.length > 0 ? {width: "80%"} : {width: "0%"}
     
     return (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto relative">
             <table className="table">
                 {/* head */}
                 <thead>
                     <tr>
                         <th>
                             <label>
-                                <input type="checkbox" className="checkbox" onChange={onAllCheck} />
+                                <input type="checkbox" className="checkbox" checked={allCheck} onChange={onAllCheck} />
                             </label>
                         </th>
                         <th>Title</th>
@@ -106,14 +106,12 @@ function HistoryTable({checkedItemId, setCheckItemId}) {
                     </tr>
                 </thead>
                 <tbody>
-                    {surveyData && surveyData.map((data, idx) => (
+                    {surveyHistoryData && surveyHistoryData.map((data, idx) => (
 
                         <tr key={idx}>
-                            <th>
-                                <label>
-                                    <input type="checkbox" className="checkbox" defaultChecked={checkedItemId.includes(data?.id)} onChange={(e)=> onSingleCheck(e, data?.id)} />
-                                </label>
-                            </th>
+                            <td>
+                                <HistoryCheck allCheck={allCheck} data={data} setCheckItemId={setCheckItemId} checkedItemId={checkedItemId} />
+                            </td>
                             <td>
                                 <h3>{data?.title}</h3>
                             </td>
@@ -136,6 +134,7 @@ function HistoryTable({checkedItemId, setCheckItemId}) {
 
 
             </table>
+            <div className="shadow-xl border-2 flex justify-center items-center text-neutral-800 text-4xl bg-red-300 border-red-500 h-16 overflow-hidden absolute bottom-0 right-0 cursor-pointer transition-all duration-300" style={deleteStyle} onClick={deleteCheckedItem}><RiDeleteBin2Fill /></div>
         </div>
     )
 }
