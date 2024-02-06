@@ -4,6 +4,7 @@ import { FaPen } from "react-icons/fa6";
 import { CiUser } from "react-icons/ci";
 import { AuthContext } from '@/providers/AuthProvider';
 import axios from 'axios';
+import Link from 'next/link';
 
 function Page() {
   // user from global auth
@@ -100,7 +101,8 @@ function Page() {
         {/* input */}
         <div>
           <p className="text-sm">Password</p>
-          <button className="border p-2 rounded-xl mt-1 w-full outline-none">Change Password</button>
+          <Link isSubRoute={false} href="/dashboard/change_password" ><button className="border p-2 rounded-xl mt-1 w-full outline-none">Change Password</button></Link>
+          
         </div>
       </div>
 
