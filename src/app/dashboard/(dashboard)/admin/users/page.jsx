@@ -2,7 +2,9 @@
 import React, { useEffect, useState } from 'react'
 import { CiSearch } from "react-icons/ci";
 import { HiOutlineEye } from "react-icons/hi";
-import { RiDeleteBinLine } from "react-icons/ri";
+import { RiArrowDropDownLine, RiDeleteBinLine } from "react-icons/ri";
+import { IoMdArrowDropdown } from "react-icons/io";
+
 
 
 function NewUsers() {
@@ -23,13 +25,12 @@ function NewUsers() {
   };
   return (
     <section className='md:w-[95%] mx-auto'>
-      <h1 className='text-xl font-bold'>User List</h1>
+      <h1 className='text-xl font-bold'>All Perticipiants</h1>
       <div className="text-xs mt-2 text-gray-500 breadcrumbs">
         <ul>
           <li><a>Home</a></li>
           <li><a>Dasboard</a></li>
-          <li><a>All user inf...</a></li>
-          <li><a>New user</a></li>
+          <li><a>Perticipiants</a></li>
         </ul>
       </div>
       {/* main div */}
@@ -38,12 +39,15 @@ function NewUsers() {
         <div className='flex justify-between gap-3 '>
           <div className='flex p-2 rounded-lg shadow-sm w-3/12 border gap-2 relative'>
             <div className='text-sm outline-none w-full' value={selectedValue} onClick={()=>{setShowDropdown(!showDropdown)}} onChange={handleChange}>
-              
+              <div className='flex items-center justify-between'>
+              <p className='text-gray-400 pl-2'>Role</p>
+              <RiArrowDropDownLine className='text-xl text-gray-500' />
+              </div>
             </div>
             <ul onClick={()=>{setShowDropdown(!showDropdown)}} className={`menu absolute animate__animated animate__fadeIn  bg-white border shadow w-full top-12 z-20 left-0 rounded-lg ${showDropdown ? 'block' : 'hidden'}`}>
-              <li><a>Item 1</a></li>
-              <li><a>Item 2</a></li>
-              <li><a>Item 3</a></li>
+              <li><a>Administrator</a></li>
+              <li><a>Survey Creator</a></li>
+              <li><a>Survey Perticipient</a></li>
             </ul>
           </div>
           <div className='flex p-2 rounded-lg shadow-sm w-9/12 border gap-2 '>

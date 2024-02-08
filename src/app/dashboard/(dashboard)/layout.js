@@ -54,6 +54,7 @@ function Layout({ children }) {
       
     </GroupLink>
     <GroupLink groupName="Participant Management">
+      <ActiveLink href="/dashboard/admin/users" >All Perticipiants</ActiveLink>
       <ActiveLink href="/dashboard/admin/user_roles_and_permissions" >User Roles and Permissions</ActiveLink>
       <ActiveLink href="/dashboard/admin/user_activity_monitoring" >User Activity Monitoring</ActiveLink>
       <ActiveLink href="/dashboard/admin/participant_analytics" >Participant Analytics</ActiveLink>
