@@ -1,5 +1,6 @@
-import ManageHeader from "./components/ManageHeader";
-import SurveyCard from "./components/SurveyCard";
+import ManageHeader from "./components/ManageHeader"
+import SurveyCard from "./components/SurveyCard"
+
 function ManageSurvey() {
   return (
     <>

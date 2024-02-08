@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import playImage from "../../../../Asset/play.gif"
+import playImage from "../../../Asset/play.gif"
 function AboutHero() {
     return (
         <section className=" relative z-[1] bg-blue-200 dark:bg-transparent">

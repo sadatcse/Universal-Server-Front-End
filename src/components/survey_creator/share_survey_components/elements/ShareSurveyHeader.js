@@ -1,5 +1,6 @@
-import ManageSearchBar from '@/components/manage_survey/components/ManageSearchBar';
+
 import { SiSharex } from "react-icons/si";
+import ShareSearchBar from "./ShareSearchBar";
 
 function ShareSurveyHeader() {
     return (
@@ -9,7 +10,7 @@ function ShareSurveyHeader() {
                 <button className="text-neutral-800 btn text-3xl flex justify-center items-center" ><SiSharex /></button>
                 Share Survey</h2>
 
-            <ManageSearchBar />
+            <ShareSearchBar />
 
         </div>
     )

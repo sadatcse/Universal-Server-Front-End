@@ -1,5 +1,6 @@
 import CreatorProfile from "@/components/survey_creator/creatorProfile/CreatorProfile"
 
+
 function Page() {
   return (
     <>

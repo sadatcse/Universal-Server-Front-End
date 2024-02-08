@@ -1,4 +1,5 @@
-import VisionCard from "@/components/aboutComponents/VisionCard"
+import VisionCard from "./VisionCard"
+
 
 
 function VisionAndValues() {

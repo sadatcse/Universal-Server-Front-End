@@ -1,4 +1,5 @@
-import CreateSurveyPage from "@/components/add_surveyComponents/CreateSurveyPage"
+import CreateSurveyPage from "@/components/survey_creator/add_surveyComponents/CreateSurveyPage"
+
 
 function Page() {
 

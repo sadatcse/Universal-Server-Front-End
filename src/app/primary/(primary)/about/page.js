@@ -1,6 +1,7 @@
-import Team from '@/components/aboutComponents/Team';
-import AboutHero from './AboutHero';
-import VisionAndValues from './VisionAndValues';
+import AboutHero from "@/components/primary/aboutComponents/AboutHero";
+import Team from "@/components/primary/aboutComponents/Team";
+import VisionAndValues from "@/components/primary/aboutComponents/VisionAndValues";
+
 
 const AboutPage = () => {
     return (
