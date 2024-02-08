@@ -44,3 +44,26 @@ html {
         -o-transform: rotate(360deg);
     }
 }
+
+/* view response style in the survey creator */
+.react-tabs__tab-list {
+    display: flex;
+    gap: 15px;
+}
+
+.react-tabs__tab-list .react-tabs__tab {
+    padding: 5px 10px;
+    /* background-color: rgb(147 197 253); */
+    font-weight: 800;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    border: 1px solid rgb(38 38 38);
+}
+
+.react-tabs__tab-list .react-tabs__tab--selected {
+    background-color: rgb(38 38 38);
+    color: white;
+}

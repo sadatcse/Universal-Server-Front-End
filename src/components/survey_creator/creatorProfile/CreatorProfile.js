@@ -1,12 +1,12 @@
 'use client'
-import { useContext, useEffect, useState } from 'react'
-import { FaPen } from "react-icons/fa6";
-import { CiUser } from "react-icons/ci";
 import { AuthContext } from '@/providers/AuthProvider';
 import axios from 'axios';
 import Link from 'next/link';
+import { useContext, useEffect, useState } from 'react';
+import { CiUser } from "react-icons/ci";
+import { FaPen } from "react-icons/fa6";
 
-function Page() {
+function CreatorProfile() {
   // user from global auth
   const { user } = useContext(AuthContext);
   const [selectedImage, setSelectedImage] = useState('');
@@ -114,4 +114,5 @@ function Page() {
   )
 }
 
-export default Page
+
+export default CreatorProfile

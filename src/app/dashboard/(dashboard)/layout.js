@@ -85,11 +85,8 @@ function Layout({ children }) {
 
   </>
 
-  const companies =
-    <>
-      <li className=" text-white text-md hover:text-neutral hover:bg-blue-100">
+  const companies = <>
         <ActiveLink href="/dashboard/company/creator_profile" >Creator Profile</ActiveLink>
-      </li>
       
       <GroupLink groupName="Survey">
         <ActiveLink href="/dashboard/company/create_survey" >Create Survey</ActiveLink>
@@ -144,7 +141,7 @@ function Layout({ children }) {
           </div>
         </div> <span className="font-exo text-neutral-800">Md Sadat Khan</span></div>
 
-        <p className="font-bold text-2xl">{userRole === "admin " ? "Administrator" : userRole === "company" ? "Survey Creator" : "Survey Participant"}</p>
+        <p className="font-bold text-2xl">{userRole === "admin " ? "Administrator" : userRole === "company" ? "Survey Creator" : "Survey Participant"} </p>
 
         <Link href="/" className="btn btn-ghost text-xl hover:bg-transparent"><Image className="w-16 mix-blend-multiply" width={400} height={400} src={logo} alt="logo" /> <span className="font-exo text-neutral-800">Universal Survey</span></Link>
 
@@ -160,8 +157,6 @@ function Layout({ children }) {
           <ul className='menu gap-3'>
 
             {currentUserRoute}
-
-              <ActiveLink isSubRoute={false} href="/dashboard/edit_user_profile">View and edit user profile</ActiveLink>
             
               <ActiveLink isSubRoute={false} href="/dashboard/change_password" >Change password</ActiveLink>
             <li  className=" text-white text-md hover:text-neutral hover:bg-blue-100"><Link href="/" onClick={handleLogOut} ><FaUser className="mr-2" /> Logout</Link></li>
