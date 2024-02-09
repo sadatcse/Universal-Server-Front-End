@@ -1,7 +1,7 @@
 import { FaHistory } from 'react-icons/fa'
 import HistorySearchBar from './HistorySearchBar'
 
-function HistoryHeader() {
+function HistoryHeader({setSurveyHistoryData , surveyData}) {
     return (
         <div className='pb-4 border-b-2 border-rose-400 relative flex justify-between items-center'>
 
@@ -9,7 +9,7 @@ function HistoryHeader() {
                 <button className="bg-red-300 text-neutral-800 btn text-3xl flex justify-center items-center" ><FaHistory /></button>
                 Survey History</h2>
 
-            <HistorySearchBar />
+            <HistorySearchBar setSurveyHistoryData={setSurveyHistoryData} surveyData={surveyData} />
 
         </div>
     )

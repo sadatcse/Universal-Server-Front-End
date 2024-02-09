@@ -1,7 +1,7 @@
 import { SiManageiq } from 'react-icons/si'
 import ExportResponseSearchBar from './ExportResponseSearchBar'
 
-function ExportResponseHeader() {
+function ExportResponseHeader({setExportSurveyData, surveyData}) {
     return (
         <div className='pb-4 border-b-2 border-rose-400 relative flex justify-between items-center'>
 
@@ -9,7 +9,7 @@ function ExportResponseHeader() {
                 <button className="bg-red-300 text-neutral-800 btn text-3xl flex justify-center items-center" ><SiManageiq /></button>
                 Manage Survey</h2>
 
-            <ExportResponseSearchBar />
+            <ExportResponseSearchBar setExportSurveyData={setExportSurveyData} surveyData={surveyData} />
 
         </div>
     )

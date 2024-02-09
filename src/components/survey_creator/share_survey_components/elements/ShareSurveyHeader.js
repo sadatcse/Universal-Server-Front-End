@@ -2,7 +2,7 @@
 import { SiSharex } from "react-icons/si";
 import ShareSearchBar from "./ShareSearchBar";
 
-function ShareSurveyHeader() {
+function ShareSurveyHeader({surveyData ,setShareSurveyData}) {
     return (
         <div className='pb-4 border-b-2 border-rose-400 relative flex justify-between items-center'>
 
@@ -10,7 +10,7 @@ function ShareSurveyHeader() {
                 <button className="text-neutral-800 btn text-3xl flex justify-center items-center" ><SiSharex /></button>
                 Share Survey</h2>
 
-            <ShareSearchBar />
+            <ShareSearchBar surveyData={surveyData} setShareSurveyData={setShareSurveyData} />
 
         </div>
     )

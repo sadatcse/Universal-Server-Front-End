@@ -5,11 +5,12 @@ export default function HistoryCheck({allCheck, data, setCheckItemId, checkedIte
     const onSingleCheck = (e, id)=> {
         
         setSingleCheck(e.target.checked)
+        console.log(e.target.checked)
         if(e.target.checked){
             setCheckItemId([...checkedItemId, id]);
             
         }else{
-            setCheckItemId(()=> checkedItemId.filter(data=> data.id)) 
+            setCheckItemId(checkedItemId.filter(itemId => itemId !== id)) 
         }
     }
     return (
