@@ -25,19 +25,22 @@ export default function Page() {
   const SurveyCard = ({ survey }) => {
     const { title, description, creator, deadline } = survey;
     return (
-        <div className=" rounded-lg shadow border p-6 mb-4">
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">{title}</h2>
-            <p className="text-sm text-gray-600 mb-4">{description}</p>
-            <div className="flex items-center justify-between">
-                <p className="text-sm text-gray-600">Creator: {creator}</p>
-                <p className="text-sm text-gray-600">Deadline: {deadline}</p>
-            </div>
-            <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
-                Take Survey
-            </button>
+      <div className=" rounded-lg shadow border p-6 mb-4">
+        <h2 className="text-xl font-semibold text-gray-800 mb-2">{title}</h2>
+        <p className="text-sm text-gray-600 mb-4">{description}</p>
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-sm text-gray-600">Creator: {creator}</p>
+            <p className="text-sm text-gray-600">Deadline: {deadline}</p>
+          </div>
+          <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+            Take Survey
+          </button>
         </div>
+
+      </div>
     );
-};
+  };
 
 
 
