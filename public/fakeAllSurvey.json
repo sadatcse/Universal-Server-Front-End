@@ -1,0 +1,75 @@
+{
+    "surveys": [
+      {
+        "title": "Customer Satisfaction Survey",
+        "description": "Help us improve our services by providing feedback on your recent experience.",
+        "creator": "ABC Corporation",
+        "deadline": "February 28, 2024",
+        "image": ""
+      },
+      {
+        "title": "Product Feedback Survey",
+        "description": "Share your thoughts on our latest product release to help us enhance its features.",
+        "creator": "XYZ Company",
+        "deadline": "March 15, 2024",
+        "image": ""
+      },
+      {
+        "title": "Employee Engagement Survey",
+        "description": "We value your input! Let us know how we can create a better work environment.",
+        "creator": "HR Department",
+        "deadline": "March 10, 2024",
+        "image": ""
+      },
+      {
+        "title": "Website User Experience Survey",
+        "description": "We want to make our website more user-friendly. Your feedback is invaluable.",
+        "creator": "Web Development Team",
+        "deadline": "March 5, 2024",
+        "image": ""
+      },
+      {
+        "title": "Community Health Awareness Survey",
+        "description": "Participate in our survey to help us understand community health needs better.",
+        "creator": "Local Health Department",
+        "deadline": "February 20, 2024",
+        "image": ""
+      },
+      {
+        "title": "Educational Program Feedback Survey",
+        "description": "Provide feedback on our educational programs to help us enhance learning outcomes.",
+        "creator": "Education Institute",
+        "deadline": "March 8, 2024",
+        "image": ""
+      },
+      {
+        "title": "Travel Preferences Survey",
+        "description": "Tell us about your travel preferences and help us tailor our services to your needs.",
+        "creator": "Travel Agency",
+        "deadline": "March 25, 2024",
+        "image": ""
+      },
+      {
+        "title": "Environmental Awareness Survey",
+        "description": "Your opinions matter! Take our survey to share your views on environmental issues.",
+        "creator": "Environmental Organization",
+        "deadline": "February 23, 2024",
+        "image": ""
+      },
+      {
+        "title": "Mobile App Usage Survey",
+        "description": "We're conducting research on mobile app usage. Your input is crucial!",
+        "creator": "App Development Company",
+        "deadline": "March 12, 2024",
+        "image": ""
+      },
+      {
+        "title": "Food Preferences Survey",
+        "description": "Help us understand food preferences in our community by participating in our survey.",
+        "creator": "Local Food Council",
+        "deadline": "February 18, 2024",
+        "image": ""
+      }
+    ]
+  }
+  
