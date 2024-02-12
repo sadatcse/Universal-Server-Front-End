@@ -14,7 +14,7 @@ export default function Page() {
         const jsonData = await response.json();
         setSurveys(jsonData.surveys);
       } catch (error) {
-        console.error('Error fetching surveys:', error); 
+        console.error('Error fetching surveys:', error);
       }
     };
 
@@ -22,36 +22,43 @@ export default function Page() {
   }, []);
 
   // Single survey card
-  const SurveyCard = () =>{
-    return(
+  const SurveyCard = () => {
+    return (
       <div>
         <p>i am a survey</p>
       </div>
     )
   }
-  
+
   return (
 
     <section>
 
-      {/* Banner */}
+      {/* Head */}
       <header>
-        
+        <div class="p-8 md:p-10 rounded-lg mb-5 shadow-lg bg-gradient-to-r from-blue-300 to-blue-500 text-center text-white">
+          <h1 class="font-semibold text-5xl mb-3">
+            Your Opinion Matters
+          </h1>
+          <h4 class="text-lg font-normal">
+            Help Us Improve by Sharing Your Feedback
+          </h4>
+        </div>
       </header>
 
       {/* Survey cards */}
-      <div>
+      <main>
         {
-          surveys?
-          <>
-          {/* While surveys data fatched */}
-          {surveys.map(survey=><p>hi</p>)}
-          </>:<>
-          {/* Skeletons while surveys are loading */}
-          <p>no</p>
-          </>
+          surveys ?
+            <>
+              {/* While surveys data fatched */}
+              {surveys.map(survey => <p>hi</p>)}
+            </> : <>
+              {/* Skeletons while surveys are loading */}
+              <p>no</p>
+            </>
         }
-      </div> 
+      </main>
     </section>
   )
 }
