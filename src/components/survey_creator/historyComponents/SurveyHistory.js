@@ -67,11 +67,11 @@ const surveyData = [
 function SurveyHistory() {
     const [checkedItemId, setCheckItemId] = useState([]);
     const [surveyHistoryData, setSurveyHistoryData] = useState(surveyData)
+    console.log(checkedItemId)
     return (
         <>
          <HistoryHeader setSurveyHistoryData={setSurveyHistoryData} surveyData={surveyData} />
-            <HistoryTable checkedItemId={checkedItemId} setCh
-            eckItemId={setCheckItemId} surveyHistoryData={surveyHistoryData} />
+        <HistoryTable checkedItemId={checkedItemId} setCheckItemId={setCheckItemId} surveyHistoryData={surveyHistoryData} setSurveyHistoryData={setSurveyHistoryData} />
         </>
     )
 }

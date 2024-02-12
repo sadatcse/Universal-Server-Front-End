@@ -15,7 +15,7 @@ export default function HistoryCheck({allCheck, data, setCheckItemId, checkedIte
     }
     return (
         <label>
-            <input type="checkbox" className="checkbox" checked={checkedItemId.includes(data.id) || allCheck }
+            <input type="checkbox" className="checkbox" checked={singleCheck || allCheck }
                 onChange={(e) => onSingleCheck(e, data?.id)} />
         </label>
     )
