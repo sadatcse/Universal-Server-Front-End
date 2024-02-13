@@ -61,7 +61,7 @@ function ParticipantViewResponseTable() {
         <div className="overflow-x-auto relative">
             <table className="table">
                 {/* head */}
-                <thead className="text-lg font-bold">
+                <thead className="text-lg font-bold text-gray-600">
                     <tr>
 
                         <th>Survey Name</th>
@@ -70,7 +70,7 @@ function ParticipantViewResponseTable() {
                         <th>Your Submission</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="text-black">
                     {surveyHistoryData && surveyHistoryData.map((data, idx) => (
 
                         <tr key={idx}>
@@ -85,9 +85,9 @@ function ParticipantViewResponseTable() {
                             </td>
                             <td>{
                                 data?.YourSubmission === "Completed" ?
-                                <button className="btn btn-xs bg-blue-200">{data?.YourSubmission}</button>
+                                <button className="btn btn-xs bg-blue-400 text-white hover:bg-blue-500">{data?.YourSubmission}</button>
                                 :
-                                <button className="btn btn-xs bg-rose-200">{data?.YourSubmission}</button>
+                                <button className="btn btn-xs bg-rose-400 hover:bg-rose-500 text-white">{data?.YourSubmission}</button>
                             }
                                 
                             </td>

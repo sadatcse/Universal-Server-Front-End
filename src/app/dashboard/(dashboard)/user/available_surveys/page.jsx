@@ -51,8 +51,8 @@ export default function Page() {
       {/* Head */}
       <header>
         <div class="p-8 md:p-10 rounded-lg mb-5 shadow-lg bg-gradient-to-r from-blue-300 to-blue-500 text-center text-white">
-          <h1 class="font-semibold  text-4xl md:text-[40px] mb-3">
-            Your Opinion Matters
+          <h1 class="font-semibold  text-5xl  mb-3">
+            Available Surveys
           </h1>
           <h4 class="font-normal">
             Help Us Improve by Sharing Your Feedback
