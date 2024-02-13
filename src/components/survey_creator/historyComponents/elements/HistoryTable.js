@@ -5,7 +5,7 @@ import HistoryCheck from "./HistoryCheck";
 
 
 
-function HistoryTable({checkedItemId, setCheckItemId, surveyHistoryData, setSurveyHistoryData}) {
+function HistoryTable({checkedItemId, setCheckItemId, surveyHistoryData, setSurveyHistoryDatah}) {
     const [allCheck, setAllCheck] = useState(false)
     
     
