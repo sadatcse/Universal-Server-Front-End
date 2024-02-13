@@ -54,8 +54,8 @@ function Page() {
       <div className="flex justify-between">
         <div>
           <div className="flex items-center gap-3">
-            <CiUser className="text-3xl  -ml-1" />
-            <h1 className="text-4xl font-bold">Profile</h1>
+            {/* <CiUser className="text-3xl  -ml-1" /> */}
+            <h1 className="text-4xl font-bold">Perticipant Profile</h1>
           </div>
           <p className="mt-2 ">Manage your personal profile</p>
         </div>
