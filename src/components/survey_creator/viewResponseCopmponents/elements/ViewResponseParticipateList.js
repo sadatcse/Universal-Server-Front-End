@@ -2,7 +2,7 @@
 import { CiSearch } from "react-icons/ci";
 
 // using fake data now
-const userData = [
+const userData = [ 
   {
     "image": "https://online-survey-web-d.vercel.app/_next/image?url=https%3A%2F%2Fimg.freepik.com%2Ffree-photo%2Fhandsome-bearded-businessman-rubbing-hands-having-deal_176420-18778.jpg%3Fsize%3D626%26ext%3Djpg%26ga%3DGA1.1.1866172930.1705479356%26semt%3Dsph&w=640&q=75",
     "id": 1,
@@ -63,12 +63,8 @@ export default function ViewResponseParticipateList() {
         {/* search div */}
         <div className='flex p-2 rounded-lg shadow-sm border gap-2'>
           <button className='text-2xl ml-1'><CiSearch /></button>
-          <input placeholder='Search by name or email' className='text-sm outline-none w-full'></input>
-        </div>
-        {/* total user */}
-        <div className='mt-4 text-gray-400 text-sm'>
-          <h1>Total {userData.length} user</h1>
-        </div>
+          <input placeholder='Search by name, survey name or email' className='text-sm outline-none w-full'></input>
+        </div> 
         {userData.length == 0 ?
           <>
             {/* loading section */}
