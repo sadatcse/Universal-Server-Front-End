@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from "react"
+import { FaSearch } from "react-icons/fa";
 
 export default function Page() {
 
@@ -46,18 +47,34 @@ export default function Page() {
 
   return (
 
-    <section>
+    <section className="w-[96%] mx-auto">
 
       {/* Head */}
       <header>
-        <div class="p-8 md:p-10 rounded-lg mb-5 shadow-lg bg-gradient-to-r from-blue-300 to-blue-500 text-center text-white">
+        {/* <div class="p-8 md:p-10 rounded-lg mb-5 shadow-lg bg-gradient-to-r from-blue-300 to-blue-500 text-center text-white">
           <h1 class="font-semibold  text-5xl  mb-3">
             Available Surveys
           </h1>
           <h4 class="font-normal">
             Help Us Improve by Sharing Your Feedback
           </h4>
+        </div> */}
+        <div className="flex justify-between items-center">
+          <div className="my-5">
+            <h1 className="font-semibold text-4xl">Available Surveys</h1>
+            <p className="text-sm text-gray-500 mt-1">Help Us Improve by Sharing Your Feedback</p>
+          </div>
+
+          <div className="pt-2 relative text-gray-600">
+            <input className="border-2  border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+              type="search" name="search" placeholder="Search surveys" />
+            <button type="submit" className="absolute right-0 top-0 mt-5 mr-4">
+              <FaSearch />
+            </button>
+          </div>
         </div>
+
+        <div className="border-b mb-7 border-gray-300"></div>
       </header>
 
       {/* Survey cards */}
