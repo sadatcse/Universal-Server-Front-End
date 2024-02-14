@@ -14,10 +14,10 @@ function ChangePasswordPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="max-w-md w-full p-6 bg-white rounded-md shadow-md">
-        <h2 className="text-2xl font-semibold mb-4">Change Password</h2>
-
+    <div className="">
+      <div className=" w-full p-6 ">
+        <h2 className="text-4xl font-semibold  text-gray-800">Change Password</h2>
+        <p className="text-sm mb-8 mt-1 ml-1 text-gray-500">Secure Your Account with a New Password</p>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="currentPassword" className="block text-gray-700 text-sm font-bold mb-2">
@@ -63,7 +63,7 @@ function ChangePasswordPage() {
 
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none"
+            className="w-full bg-blue-500 text-white py-2 px-4 font-semibold rounded-md hover:bg-blue-600 focus:outline-none"
           >
             Change Password
           </button>

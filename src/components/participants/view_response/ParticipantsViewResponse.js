@@ -6,8 +6,11 @@ import ParticipantViewResponseTable from "./elements/ParticipantViewResponseTabl
 function ParticipantsViewResponse() {
     return (
         <>
-            <ParticipantViewResponseHeader />
-            <ParticipantViewResponseTable />
+            <div className="w-[97%] mx-auto">
+                <ParticipantViewResponseHeader />
+                <div className='border-b'></div>
+                <ParticipantViewResponseTable />
+            </div>
         </>
     )
 }
