@@ -1,13 +1,13 @@
 'use client'
-import { useState, useEffect } from "react";
-import useAuth from "./useAuth";
+import { useEffect, useState } from "react";
 import UseAxioSecure from "./UseAxioSecure";
+import useAuth from "./useAuth";
 
 const useAdmin = () => {
   const { user, loading: authLoading } = useAuth();
   const axiosSecure = UseAxioSecure();
 
-  const [userType, setUserType] = useState(undefined);
+  const [userRole, setUserRole] = useState(undefined);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -15,17 +15,18 @@ const useAdmin = () => {
       try {
         if (!authLoading && user !== undefined) {
           const res = await axiosSecure.get(`/users/admin/${user.email}`);
-          let userType = 0;
 
-          if (res.data === 'admin') {
-            userType = 1;
-          } else if (res.data === 'user') {
-            userType = 2;
-          } else if (res.data === 'company') {
-            userType = 3;
-          }
+          console.log("user role:", res.data)
 
-          setUserType(userType);
+          // if (res.data === 'admin') {
+          //   userType = 1;
+          // } else if (res.data === 'user') {
+          //   userType = 2;
+          // } else if (res.data === 'company') {
+          //   userType = 3;
+          // }
+
+          setUserRole(res.data);
           setLoading(false);
         }
       } catch (error) {
@@ -37,9 +38,7 @@ const useAdmin = () => {
     fetchUserType();
   }, [authLoading, user, axiosSecure]);
 
-  const userTypeReady = userType !== undefined;
-
-  return { loading: authLoading || loading, userType: userTypeReady ? userType : 0 };
+  return { loading: authLoading || loading, userRole};
 };
 
 export default useAdmin;

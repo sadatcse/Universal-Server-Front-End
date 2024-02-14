@@ -120,6 +120,8 @@ function  Join() {
           console.log(err);
         }
       };
+
+    
     return (
         <div className='pt-20 -mb-2 relative bg-blue-200 z-[1] dark:bg-transparent' >
         <div className="w-full h-full absolute top-0 left-0 z-[-1] opacity-20" style={{backgroundImage: "url('https://i.pinimg.com/564x/e7/38/8b/e7388be6e75e602eb3dc5fef7a5dec71.jpg')"}} ></div>
