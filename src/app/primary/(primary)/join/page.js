@@ -55,23 +55,34 @@ function  Join() {
 
 
     const handleGoogleSignIn = async () => {
-        setLoading(true);
         try {
-          const googleResult = await signInWithGoogle();
-          setUser(googleResult.data);
-          // await axiosPublic.post("/users", { name: googleResult?.user?.displayName, email: googleResult?.user?.email });
-          toast.success('User Sign in successfully!', {
-            duration: 4000,
-            position: 'top-right',
-          });
-          setLoading(false);
-        } catch (err) {
-          setLoading(false);
-          toast.error('Error during sign-in. Please try again.');
-      
-          console.log(err);
+            const result = await signInWithGoogle();
+    
+            const userinfo = {
+                name: result.user?.displayName,
+                uid: result.user?.uid,
+                mobile: result.user?.phoneNumber,
+                email: result.user?.email,
+                Photourl:result.user?.photoURL,
+                role: 'Survey Participant',
+            };
+    
+            console.log(userinfo);
+            
+    
+            const response = await axiosPublic.post('/users', userinfo);
+    
+            if (response.status === 200) {
+                toast.success("Login successful!");
+                router.push('/', { scroll: false })
+            } else {
+                toast.error("Failed to create user. Please try again.");
+            }
+        } catch (error) {
+            toast.error("Social login failed. Please try again later.");
+            console.error(error);
         }
-      };
+    };
       
       const handleGihubSignIn = async () => {
         setLoading(true);
