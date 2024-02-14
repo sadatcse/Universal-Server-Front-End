@@ -5,16 +5,17 @@ import { RiEmotionHappyLine, RiEmotionNormalLine, RiEmotionUnhappyLine } from "r
 export default function Page() {
   return (
     // feedback form
-    <section>
-      <h1 className="text-3xl font-semibold text-[#0091ea] text-center mt-2">Feedback Report</h1>
-      <form className="border md:w-[60%] mx-auto mt-7 rounded-lg">
+    <section className="w-[97%] mx-auto">
+      <h1 className="text-4xl font-semibold  mt-2">Feedback Report</h1>
+      <p className="text-sm text-gray-800 mt-1">Do you have a suggestion of found some bug ? let us know in the field below</p>
+      <form className="border  mx-auto mt-7 rounded">
         {/* heading */}
-        <div className="bg-[#0091ea] py-7 px-5 text-white rounded-t-lg">
+        <div className="bg-[#0091ea] py-7 px-5 text-white rounded rounded-b-none">
           <h2 className="text-2xl font-semibold">Send us your feedback!</h2>
-          <p className="text-sm text-gray-100 mt-1">Do you have a suggestion of found some bug ? let us know in the field below</p>
+          
         </div>
         {/* main */}
-        <main className="rounded-b-lg"> 
+        <main className="rounded"> 
           {/* emoji part */}
           <div className="px-5 py-2">
             <h2 className="text-lg font-medium text-gray-500 mt-1">How was your experience?</h2>

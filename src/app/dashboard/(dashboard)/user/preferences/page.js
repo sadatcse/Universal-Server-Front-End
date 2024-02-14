@@ -38,7 +38,7 @@ export default function Page() {
       <div className=" flex justify-between items-center">
         <div className="flex flex-col justify-center items-start">
           <h1 className="font-semibold text-4xl bg-transparent  rounded-xl w-fit">Preferences</h1>
-          <p className="text-sm mb-6 text-gray-500 mt-2">Delving into Personal Predilections
+          <p className="text-sm mb-6 text-gray-500 mt-1">Delving into Personal Predilections
           </p>
         </div>
         <button className="btn bg-blue-400 hover:bg-blue-500 btn-wide text-white" onClick={toggleEditMode}>

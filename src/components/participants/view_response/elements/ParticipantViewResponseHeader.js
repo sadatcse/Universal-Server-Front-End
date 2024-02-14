@@ -7,7 +7,7 @@ function ParticipantViewResponseHeader() {
       <div className='flex flex-col '>
         <h2 className="text-4xl font-semibold  flex items-center gap-3">
           View Response</h2>
-        <p className='text-sm text-gray-500 mt-2 ml-1'>Responses from you surveys</p>
+        <p className='text-sm text-gray-500 mt-1 ml-1'>Responses from you surveys</p>
       </div>
       <ParticipantViewResponseSearch />
     </div>

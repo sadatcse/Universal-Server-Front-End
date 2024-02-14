@@ -57,7 +57,7 @@ function Page() {
             {/* <CiUser className="text-3xl  -ml-1" /> */}
             <h1 className="text-4xl font-semibold">Perticipant Profile</h1>
           </div>
-          <p className="mt-2 ">Manage your personal profile</p>
+          <p className="mt-1 text-sm">Manage your personal profile</p>
         </div>
         <div className="relative">
           {Photourl?<><img className="w-28 h-28 rounded-full" src={ imagePreview || Photourl} alt="" /></>:<><div className="skeleton w-28 h-28 rounded-full"></div></>}
