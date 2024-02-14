@@ -61,7 +61,7 @@ function Page() {
         </div>
         <div className="relative">
           {Photourl?<><img className="w-28 h-28 rounded-full" src={ imagePreview || Photourl} alt="" /></>:<><div className="skeleton w-28 h-28 rounded-full"></div></>}
-          <div className="absolute right-0 bottom-0 z-10 bg-blue-400  rounded-full p-2">
+          <div className="absolute right-0 bottom-0 z-10 bg-blue-500  rounded-full p-2">
             <FaPen className="text-white text-sm" />
           </div>
           {/* hidden file input */}
@@ -108,7 +108,7 @@ function Page() {
 
       {/* save button */}
       <div className="flex justify-end mt-16">
-        <button className=" px-5 hover:bg-blue-500 py-1 bg-blue-400 rounded-full text-white">Save</button>
+        <button className=" px-5 hover:bg-blue-600 py-1 bg-blue-500 rounded-full text-white">Save</button>
       </div>
     </section>
   )
