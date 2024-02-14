@@ -11,12 +11,11 @@ import { AuthContext } from '../../../../providers/AuthProvider';
 
 const Login = () => {
     const axiosPublic = useAxiosPublic();
-    const { signInUser, signInWithGoogle } = useContext(AuthContext);
+    const {userRole, signInUser, signInWithGoogle } = useContext(AuthContext);
     const router = useRouter();
     const pathname = usePathname();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -49,14 +48,19 @@ const Login = () => {
                 role: 'Survey Participant',
             };
     
-            console.log(userinfo);
+            
             
     
             const response = await axiosPublic.post('/users', userinfo);
+
+            console.log(response.data)
     
             if (response.status === 200) {
                 toast.success("Login successful!");
-                router.push('/', { scroll: false })
+
+                console.log("login user Role:", userRole)
+                const userRoleDashboardRoute = userRole === "Administrator" ? "/dashboard/admin/system_statistics" : userRole === "Survey Creator" ? "/dashboard/company/creator_profile" : "/dashboard/user/available_surveys";
+                userRole && router.push(userRoleDashboardRoute, { scroll: false })
             } else {
                 toast.error("Failed to create user. Please try again.");
             }

@@ -9,15 +9,15 @@ import { useContext } from "react";
 import toast from "react-hot-toast";
 import { FaUser } from "react-icons/fa";
 import logo from "../../../Asset/logo2.png";
-
 function Layout({ children }) {
   // const { userType, loading: adminLoading } = useAdmin();
   
-  const {userRole, setUserRole, user} = useContext(AuthContext);
+  const {userRole, setUserRole, user, logOut} = useContext(AuthContext);
   const router = useRouter();
+  // const {userRole} = useAdmin()
+  console.log(userRole)
   const handleLogOut = () => {
-    logOut()
-      .then(() => {
+    logOut().then(() => {
         toast.success('User logged out successfully', {
           duration: 3000,
           position: 'top-right',
@@ -129,7 +129,7 @@ function Layout({ children }) {
 
     </>
 
-  const currentUserRoute = userRole === "admin" ? admin : userRole === "company" ? companies : users;
+  const currentUserRoute = userRole === "Administrator" ? admin : userRole === "Survey Creator" ? companies : users;
 
 
 
@@ -142,7 +142,7 @@ function Layout({ children }) {
           </div>
         </div> <span className="font-exo text-neutral-800">Md Sadat Khan</span></div>
 
-        <p className="font-bold text-2xl">{userRole === "admin " ? "Administrator" : userRole === "company" ? "Survey Creator" : "Survey Participant"} </p>
+        <p className="font-bold text-2xl">{userRole} </p>
 
         <Link href="/" className="btn btn-ghost text-xl hover:bg-transparent"><Image className="w-16 mix-blend-multiply" width={400} height={400} src={logo} alt="logo" /> <span className="font-exo text-neutral-800">Universal Survey</span></Link>
 
@@ -150,11 +150,11 @@ function Layout({ children }) {
 
       </header>
 
-      <div className='flex flex-1 relative z-10'>
-        <div className='w-64 bg-neutral-800 h-[90vh] overflow-auto'>
-          <div className="flex items-center justify-between mb-6 relative">
-
-          </div>
+      <div className='flex flex-1 relative z-10 '>
+      
+        <div className='w-64 bg-neutral-800 h-[90vh] overflow-auto relative pt-8'>
+        {/* <button className="text-neutral absolute top-3 right-2 text-2xl bg-yellow-200 px-4 py-1"><FaArrowLeftLong /></button> */}
+        
           <ul className='menu gap-3'>
 
             {currentUserRoute}
@@ -164,7 +164,8 @@ function Layout({ children }) {
 
           </ul>
         </div>
-        <div className='flex-1 p-4 h-[90vh] overflow-auto dark:bg-white'>
+        <div className='flex-1 p-4 h-[90vh] overflow-auto dark:bg-white relative'>
+        {/* <button className="text-neutral absolute top-3 left-0 text-2xl bg-yellow-200 px-4 py-1"><FaArrowRightLong /></button> */}
           {children}
           
           {/* <img src="https://img.freepik.com/free-vector/duplicate-concept-illustration_114360-4046.jpg?w=740&t=st=1706263242~exp=1706263842~hmac=f37003459bc517b25414dfef6815aa78ab60c8e83b19561aab871e6665bcf2ec" className="max-w-2xl mx-auto" /> */}

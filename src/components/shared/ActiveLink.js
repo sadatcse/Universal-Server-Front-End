@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 function ActiveLink({ href, children, isSubRoute = true }) {
     const pathname = usePathname()
     const isActive = pathname === href;
-    console.log(pathname)
+    
 
     const activeStyle = isActive ? "bg-neutral-800 text-white hover:bg-neutral-800 hover:text-white"   : "";
     return (
