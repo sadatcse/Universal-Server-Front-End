@@ -3,15 +3,15 @@ import ParticipantViewResponseSearch from './ParticipantViewResponseSearch'
 
 function ParticipantViewResponseHeader() {
   return (
-    <div className='pb-4 border-b border-neutral-500 relative flex justify-between items-center'>
+    <div className='my-4 mb-5  w-[97%] mx-auto relative flex justify-between items-center'>
+      <div className='flex flex-col '>
+        <h2 className="text-4xl font-semibold  flex items-center gap-3">
+          View Response</h2>
+        <p className='text-sm text-gray-500 mt-2 ml-1'>Responses from you surveys</p>
+      </div>
+      <ParticipantViewResponseSearch />
 
-            <h2 className="text-3xl font-bold  flex items-center gap-3">
-                <button className="bg-blue-400 text-white btn text-3xl flex justify-center items-center" ><FaHistory /></button>
-                View Response</h2>
-
-            <ParticipantViewResponseSearch />
-
-        </div>
+    </div>
   )
 }
 
