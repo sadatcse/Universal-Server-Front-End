@@ -13,7 +13,7 @@ import logo from "../../../Asset/logo2.png";
 function Layout({ children }) {
   // const { userType, loading: adminLoading } = useAdmin();
   
-  const {userRole, setUserRole, user} = useContext(AuthContext);
+  const {userRole, setUserRole, user , logOut} = useContext(AuthContext);
   const router = useRouter();
   const handleLogOut = () => {
     logOut()
