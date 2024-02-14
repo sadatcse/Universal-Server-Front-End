@@ -41,7 +41,7 @@ export default function Page() {
           <p className="text-sm mb-6 text-gray-500 mt-1">Delving into Personal Predilections
           </p>
         </div>
-        <button className="btn bg-blue-400 hover:bg-blue-500 btn-wide text-white" onClick={toggleEditMode}>
+        <button className="btn bg-blue-500 hover:bg-blue-600 btn-wide text-white" onClick={toggleEditMode}>
           {editMode ? 'Cancel' : 'Edit'}
         </button>
       </div>
