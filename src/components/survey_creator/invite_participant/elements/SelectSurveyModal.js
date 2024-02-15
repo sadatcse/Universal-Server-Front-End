@@ -178,19 +178,19 @@ const surveyData = [
     }
   ]
 
-export default function SelectSurveyModal({ setOpenModal }) {
+export default function SelectSurveyModal({ setOpenModal, selectedItem, setSelectedItem }) {
     const [surveyItem , setSurveyItem ] = useState(surveyData);
-    const [checkedItemId, setCheckItemId] = useState([]);
+    
     const [allCheck, setAllCheck] = useState(false)
 
     const onAllCheck = (e)=> {
         
         setAllCheck(e.target.checked)
         if(e.target.checked){
-            setCheckItemId(surveyData.map(data => data.id));
+            setSelectedItem(surveyData.map(data => data));
             
         }else{
-            setCheckItemId([]) 
+            setSelectedItem([]) 
         }
     }
 
@@ -205,11 +205,11 @@ export default function SelectSurveyModal({ setOpenModal }) {
 
                      Choose Survey 
 
-                    <span className='ml-3 text-2xl text-blue-500'>{checkedItemId.length}</span>
+                    <span className='ml-3 text-2xl text-blue-500'>{selectedItem.length}</span>
                     </h2>
                     <div className='flex gap-3 items-center'>
                 <InviteParticipantModalSearch  />
-                <button className={`btn btn-md btn-neutral ${checkedItemId.length > 0 ? "" : "btn-disabled"}`}>Save</button>
+                <button className={`btn btn-md btn-neutral ${selectedItem.length > 0 ? "" : "btn-disabled"}`} onClick={()=> setOpenModal(false)}>Save</button>
 
                     </div>
 
@@ -217,7 +217,7 @@ export default function SelectSurveyModal({ setOpenModal }) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full mt-4 gap-6">
                 {
           surveyItem && surveyItem.map((data, idx)=> (
-            <InviteParticipantModalCard key={idx} data={data} checkedItemId={checkedItemId} setCheckItemId={setCheckItemId} allCheck={allCheck} />
+        <InviteParticipantModalCard key={idx} data={data} selectedItem={selectedItem} setSelectedItem={setSelectedItem} allCheck={allCheck} surveyData={surveyData} />
             
           ))
         }
@@ -225,7 +225,7 @@ export default function SelectSurveyModal({ setOpenModal }) {
                 </div>
 
             </div>
-                    <button class="text-white text-4xl absolute top-6 right-10" onClick={() => setOpenModal(false)} ><IoClose /></button>
+                    <button class="text-white text-4xl absolute top-6 right-10" onClick={() => {setSelectedItem(selectedItem); setOpenModal(false)}} ><IoClose /></button>
         </div>
     )
 }
