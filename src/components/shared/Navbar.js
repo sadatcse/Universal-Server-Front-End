@@ -17,9 +17,9 @@ const Navbar = () => {
       <details className="dropdown text-inherit h-[35px] ">
         <summary className="m-1 btn bg-transparent shadow-none hover:bg-transparent border-none dark:text-white">Dashboard</summary>
         <ul className="p-2 menu dropdown-content z-[1] rounded-box w-52 dark:bg-blue-200 text-neutral-800">
-          <li onClick={() => setUserRole("user")}><Link href="/dashboard/user/available_surveys">Survey Participant</Link></li>
-          <li onClick={() => setUserRole("admin")}><Link href="/dashboard/admin/system_statistics">Administrator</Link></li>
-          <li onClick={() => setUserRole("company")}> <Link href="/dashboard/company/creator_profile">Survey Creator</Link></li>
+          <li onClick={() => setUserRole("Survey Participant")} ><Link href="/dashboard/user/available_surveys">Survey Participant</Link></li>
+          <li onClick={() => setUserRole("Administrator")}><Link href="/dashboard/admin/system_statistics">Administrator</Link></li>
+          <li onClick={() => setUserRole("Survey Creator")}> <Link href="/dashboard/company/creator_profile">Survey Creator</Link></li>
 
         </ul>
       </details>

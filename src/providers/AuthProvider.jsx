@@ -59,6 +59,8 @@ const AuthProvider = ({ children }) => {
 
                         setUserRole(res.data);
                         setLoading(false);
+                    }else{
+                        setUserRole(null)
                     }
                 } catch (error) {
                     console.error("Error fetching user type:", error);
