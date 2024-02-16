@@ -12,8 +12,8 @@ function InviteParticipant() {
     const [selectedItem, setSelectedItem] = useState([]);
     return (
         <>
-            <InviteParticipantHeader setOpenModal={setOpenModal} setOpenSelectedItemModal={setOpenSelectedItemModal} />
-            <InviteParticipantTable />
+            <InviteParticipantHeader setOpenModal={setOpenModal} setOpenSelectedItemModal={setOpenSelectedItemModal} selectedItem={selectedItem} />
+            <InviteParticipantTable  />
             {
                 openModal ?
                     <SelectSurveyModal setOpenModal={setOpenModal} selectedItem={selectedItem} setSelectedItem={setSelectedItem} /> : null
