@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function HistoryCheck({allCheck, data, setCheckItemId, checkedItemId}) {
     const [singleCheck, setSingleCheck] = useState(false)
@@ -13,6 +13,12 @@ export default function HistoryCheck({allCheck, data, setCheckItemId, checkedIte
             setCheckItemId(checkedItemId.filter(itemId => itemId !== id)) 
         }
     }
+
+    useEffect(()=> {
+
+        setSingleCheck(checkedItemId.includes(data.id))
+
+    },[checkedItemId, data])
     return (
         <label>
             <input type="checkbox" className="checkbox" checked={singleCheck || allCheck }
