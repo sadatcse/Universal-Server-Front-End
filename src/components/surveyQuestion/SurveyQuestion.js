@@ -1,4 +1,4 @@
-import MultipleChoiceQuestion from "./elements/MultipleChoiceQuestion";
+import CheckBoxGridQuestion from "./elements/CheckBoxGridQuestion";
 
 export default function SurveyQuestion() {
     return (
@@ -6,11 +6,16 @@ export default function SurveyQuestion() {
             <div className="w-full h-4/6 absolute top-0 left-0 z-[-1] bg-blue-200"  >
                 <div className="w-full h-full  opacity-20" style={{ backgroundImage: "url('https://i.pinimg.com/564x/e7/38/8b/e7388be6e75e602eb3dc5fef7a5dec71.jpg')" }} ></div>
             </div>
+            
             <h2 className='text-6xl font-bold text-center pt-12 pb-4'>Survey Satisfaction</h2>
             <p className='text-gray-500 text-center text-2xl font-semibold mb-8'>Please provide your feedback on various aspects of your experience at our company.</p>
-            <div className="container mx-auto bg-white py-6 rounded-xl relative pb-16">
+            <div className="container mx-auto bg-white py-6 rounded-xl relative pb-28 px-8">
+            <progress className="progress progress-success w-4/6 mx-auto block h-1" value="70" max="100"></progress>
 
-                <MultipleChoiceQuestion />
+
+                {/* <SurveyForm /> */}
+                {/* <MultipleChoiceQuestion /> */}
+                <CheckBoxGridQuestion />
 
 
                 <div className="flex items-center justify-between py-1 bg-blue-200 absolute left-1/2 bottom-0 w-full md:w-4/6 rounded-full px-8 -translate-x-1/2 " >
