@@ -1,4 +1,4 @@
-import CheckBoxGridQuestion from "./elements/CheckBoxGridQuestion";
+import DropDownQuestion from "./elements/DropDownQuestion";
 
 export default function SurveyQuestion() {
     return (
@@ -15,7 +15,8 @@ export default function SurveyQuestion() {
 
                 {/* <SurveyForm /> */}
                 {/* <MultipleChoiceQuestion /> */}
-                <CheckBoxGridQuestion />
+                {/* <CheckBoxGridQuestion /> */}
+                <DropDownQuestion />
 
 
                 <div className="flex items-center justify-between py-1 bg-blue-200 absolute left-1/2 bottom-0 w-full md:w-4/6 rounded-full px-8 -translate-x-1/2 " >
