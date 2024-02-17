@@ -1,39 +1,83 @@
 import moment from 'moment';
 import Link from 'next/link';
-import { FaFacebookF, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaInstagram } from 'react-icons/fa';
+import { FiFacebook, FiYoutube } from "react-icons/fi";
+import { LuLinkedin } from "react-icons/lu";
+import { RxDotFilled } from "react-icons/rx";
+import { RiMailSendFill } from "react-icons/ri";
+import { LuMail } from "react-icons/lu";
+import { CgDetailsLess } from "react-icons/cg";
+import { IoCallOutline } from "react-icons/io5";
+
+import { MdOutlineInfo } from "react-icons/md";
+
+
 
 function Footer() {
     return (
-        <footer className="p-6 dark:bg-gray-800 dark:text-gray-100  text-white bg-neutral-800">
-            <div className="container grid  grid-cols-1 mx-auto gap-x-3 gap-y-8 sm:grid-cols-3 ">
+        <footer className="p-6 pt-28 dark:bg-gray-900 dark:text-gray-100  text-white bg-neutral-900">
+            <div className="w-[80%] mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
                 <div className="flex flex-col space-y-4">
-                    <h2 className="font-bold text-2xl">Universal Survey</h2>
-                    <p>Our goal is  to simplify the process of survey creation, distribution, and analysis, making feedback collection effortless for individuals.</p>
+                    <h2 className="font-medium text-2xl">Universal Survey</h2>
+                    <div className='flex gap-3'>
+                        <div>
+                            <MdOutlineInfo className='text-2xl' />
+                        </div>
+                        <p>Our goal is  to simplify the process of survey creation,  distribution, and analysis, making feedback collection effortless for individuals.</p>
+                    </div>
+                    <div className='flex items-center gap-3'>
+                        <LuMail className='text-2xl' /> <p>Official : universalsurvey@support.com</p>
+                    </div>
+                    <div className='flex items-center gap-3'>
+                        <IoCallOutline className='text-2xl' /> <p>Helpline : 01313524255 , 01968547543</p>
+                    </div>
 
                 </div>
-                <div className="flex flex-col space-y-4">
-                    <h2 className="font-medium">Public Pages</h2>
-                    <div className="flex flex-col space-y-2 text-sm ">
-                        <Link href="/">Home</Link>
+                <div className="flex flex-col space-y-4 md:ml-16">
+                    <h2 className="font-medium text-2xl">Useful Links</h2>
+                    <div className="flex flex-col space-y-2 text-lg text-gray-300">
+                        <Link href="/">Refund policy</Link>
                         <Link href="/primary/about">About us</Link>
                         <Link href="/primary/faq">FAQ </Link>
                         <Link href="/primary/contactus" >Contact Us </Link>
+                        <Link href="/primary/contactus" > Terms and Conditions</Link>
 
                     </div>
                 </div>
-                <div className="flex flex-col my-6">
-                    <h2 className="font-semibold text-2xl text-center">Get in touch</h2>
-                    <div className="flex justify-center gap-4 text-sm  mt-4 text-neutral-800">
-                        <a className="w-12 h-12 rounded-full bg-blue-300 flex justify-center items-center text-3xl" href="#"><FaGithub /></a>
-                        <a className="w-12 h-12 rounded-full bg-blue-300 flex justify-center items-center text-3xl" href="#"><FaLinkedin /></a>
-                        <a className="w-12 h-12 rounded-full bg-blue-300 flex justify-center items-center text-3xl" href="#"><FaFacebookF /></a>
-
+                <div className="flex flex-col ">
+                    <h2 className="font-medium  text-2xl">Social Media Link</h2>
+                    <div className="flex justify-start gap-7 text-2xl mt-4">
+                        <FiFacebook />
+                        <FaInstagram />
+                        <LuLinkedin />
+                        <FiYoutube />
+                    </div>
+                    <div className='mt-10'>
+                        <div className='flex items-center rounded max-w-min bg-white'>
+                            <input placeholder='Enter your email' className='rounded rounded-r-none outline-none  text-gray-500 py-1 pl-3 text-sm'></input>
+                            <button className='p-2 rounded font-bold text-lg border bg-[#00ABE4] rounded-l-none right-28'><RiMailSendFill /></button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className="  bg-neutral-950 w-fit mx-auto text-center px-6 p-4 mt-5 text-sm">
-                <Link href='/primary/rights'><p className="">© Copyright 2023-{moment().format('YYYY')}. All Rights Reserved. </p></Link>
-                <Link href='/primary/privacy'><p className='text-blue-300'> Privacy Policy </p></Link>
+
+            <div className='border-b border-neutral-700 w-[80%] mx-auto mt-11'></div>
+            <div className='w-[80%] mx-auto my-4 flex justify-between'>
+                <div className='text-gray-300 flex gap-2 items-center'>
+                    <p>Copyright © 2024 Universal Survey</p>
+                    <RxDotFilled className='text-gray-500' />
+                    <p className='text-gray-400'>Made by @WebD</p>
+                </div>
+                <div className='text-gray-300 items-center flex gap-2'>
+                    <div className='flex items-center gap-1'>
+                        <p>Privacy Policy</p><RxDotFilled className='text-gray-500' />
+                    </div>
+                    <div className='flex items-center gap-1'>
+                        <p>Press Kit</p><RxDotFilled className='text-gray-500' />
+                    </div>
+
+                    <p>Support</p>
+                </div>
             </div>
         </footer>
     )
