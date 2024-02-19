@@ -1,20 +1,16 @@
-import CheckboxGridInput from "./checkbox_grid_question/CheckboxGridInput";
 
-export default function CheckBoxGridQuestion({ question, setQuestions }) {
-    const onCheck = (key, label) => {
 
-        setQuestions(prevValue => {
-            const current_question = prevValue.findIndex(item => item.id === question.id);
+const question = {
+    "question": "Please rate your satisfaction with the following aspects of our service:",
+    "questionType": "Checkbox Grid Questions",
+    "options": {
+        "columnLabels": ["Customer Support", "Product Quality", "Delivery Time", "Website Usability"],
 
-            const copyArray = { ...question };
-
-            copyArray.answer[key][label] = true;
-
-            const updatedArray = prevValue.toSpliced(current_question, 1, copyArray)
-
-            return updatedArray;
-        })
+        "rowLabels": ["Very Satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very Dissatisfied"]
     }
+}
+
+export default function CheckBoxGridQuestion() {
     return (
         <div>
             <h2 className='text-3xl font-bold text-center pt-8 pb-10'>{question?.question}</h2>
@@ -36,14 +32,16 @@ export default function CheckBoxGridQuestion({ question, setQuestions }) {
                     <tbody>
                         {/* row 1 */}
 
-                        {question.options.columnLabels.map((name, idx1) => (
-                            <tr key={idx1}>
+                        {question.options.columnLabels.map((name, idx) => (
+                            <tr key={idx}>
                                 <th>
                                     {name}
                                 </th>
-                                {question.options.rowLabels.map((label, idx2) => (
-                                    <td key={idx2}>
-                                        <CheckboxGridInput idx1={idx1} label={label} isAnswer={question.answer[idx1][label]} onCheck={onCheck} />
+                                {question.options.rowLabels.map((name, idx) => (
+                                    <td key={idx}>
+                                        <label >
+                                            <input type="checkbox" className="checkbox" />
+                                        </label>
                                     </td>
                                 ))}
 
