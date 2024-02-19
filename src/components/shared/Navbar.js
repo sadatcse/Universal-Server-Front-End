@@ -47,7 +47,7 @@ const Navbar = () => {
         menu_icon.classList.remove("dark:text-white");
         menu_icon.classList.add("dark:text-neutral-800");
       } else {
-        header.classList.add("relative", "bg-transparent", "dark:text-white");
+        header.classList.add("relative", "dark:text-white");
         header.classList.remove("fixed", "top-0", "bg-blue-200", "dark:text-neutral-800");
         nav_menu.classList.add("dark:text-white");
         logo_name.classList.add("dark:text-white");
@@ -59,10 +59,9 @@ const Navbar = () => {
 
 
   }, [])
-
   return (
-    <header className=" flex flex-wrap lg:justify-start lg:flex-nowrap w-full items-center z-50 top-0 left-0 text-sm bg-transparent transition-all duration-500 relative" id="header" >
-      <div className="navbar w-[94%] mx-auto">
+    <header className="flex flex-wrap lg:justify-start lg:flex-nowrap w-full items-center z-50 top-0 left-0 text-sm bg-[#E9F1FA] transition-all duration-500 relative" id="header" >
+      <div className="navbar w-[94%] mx-auto ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className=" lg:hidden dark:text-white" id="menu_icon">
