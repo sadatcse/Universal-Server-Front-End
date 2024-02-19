@@ -6,7 +6,6 @@ import { LuLinkedin } from "react-icons/lu";
 import { RxDotFilled } from "react-icons/rx";
 import { RiMailSendFill } from "react-icons/ri";
 import { LuMail } from "react-icons/lu";
-import { CgDetailsLess } from "react-icons/cg";
 import { IoCallOutline } from "react-icons/io5";
 
 import { MdOutlineInfo } from "react-icons/md";
@@ -40,7 +39,7 @@ function Footer() {
                         <Link href="/primary/about">About us</Link>
                         <Link href="/primary/faq">FAQ </Link>
                         <Link href="/primary/contactus" >Contact Us </Link>
-                        <Link href="/primary/contactus" > Terms and Conditions</Link>
+                        <Link href="/primary/terms" > Terms and Conditions</Link>
 
                     </div>
                 </div>
