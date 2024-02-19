@@ -1,6 +1,5 @@
 "use client"
-import useAxiosPublic from '@/Hook/useAxiosPublic';
-import { AuthContext } from '@/providers/AuthProvider';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { useContext, useEffect, useRef, useState } from 'react';
@@ -11,8 +10,6 @@ import { FaGithub } from 'react-icons/fa6';
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from 'react-simple-captcha';
 import logo from "../../../../Asset/logo2.png";
 function  Join() {
-    const axiosPublic = useAxiosPublic();
-    const { createUser, signInWithGoogle, loading, setLoading, signInWithGithub } = useContext(AuthContext);
     const captchaInput = useRef(null);
     const [isDisabled, setIsDisabled] = useState(true)
     const [showPassword, setShowPassword] = useState(false);
@@ -55,71 +52,42 @@ function  Join() {
 
 
     const handleGoogleSignIn = async () => {
-        try {
-            const result = await signInWithGoogle();
-    
-            const userinfo = {
-                name: result.user?.displayName,
-                uid: result.user?.uid,
-                mobile: result.user?.phoneNumber,
-                email: result.user?.email,
-                Photourl:result.user?.photoURL,
-                role: 'Survey Participant',
-            };
-    
-            console.log(userinfo);
-            
-    
-            const response = await axiosPublic.post('/users', userinfo);
-    
-            if (response.status === 200) {
-                toast.success("Login successful!");
-                router.push('/', { scroll: false })
-            } else {
-                toast.error("Failed to create user. Please try again.");
-            }
-        } catch (error) {
-            toast.error("Social login failed. Please try again later.");
-            console.error(error);
-        }
+
+       
     };
       
       const handleGihubSignIn = async () => {
-        setLoading(true);
-        try {
-          const githubResult = await signInWithGithub();
-          setUser(githubResult.data);
-          // await axiosPublic.post("/users", { name: githubResult?.user?.displayName, email: githubResult?.user?.email });
-          toast.success('User Sign in successfully!', {
-            duration: 4000, 
-            position: 'top-right',
-          });
-      
-          setLoading(false);
-        } catch (err) {
-          setLoading(false);
-          toast.error('Error during sign-in. Please try again.');
-      
-          console.log(err);
-        }
+
       };
 
     const handleCreateInUser = async (data) => {
-        setLoading(true);
-        try {
-          await createUser(data.email, data.password);
-          toast.success('User created successfully!', {
-            duration: 4000, 
-            position: 'top-right', 
-          });
-      
-          setLoading(false);
-        } catch (err) {
-          setLoading(false);
-          toast.error('Error creating user. Please try again.');
-          console.log(err);
+
+        console.log(data.email);
+        console.log(data.password);
+        try{
+            const result = await CreateUser(data.email,data.password);
+            console.log(result);
+        } catch(error) {
+            console.log(error);
         }
+      
       };
+
+    async function CreateUser(email,password){
+       const response =await fetch('/api/auth/signup',{
+            method: 'POST',
+            body:JSON.stringify({email,password}),
+            headers:{
+                'Content-Type':'application/json'
+            }
+        });
+        const sdata =await response.json();
+        if (!response.ok){
+            throw new Error(sdata.message || 'Something went wrong!');
+
+        }
+        return sdata;
+    }
 
     
     return (
@@ -130,7 +98,7 @@ function  Join() {
                     <Image width={500} height={500} src="https://images.unsplash.com/photo-1637276661836-9ca7bf61eb0f?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="people image" className='bg-neutral hidden md:block' />
                     <div className="p-8">
                         <h2 className="text-2xl font-semibold text-gray-700 text-center"><Image className="w-32 mix-blend-multiply mx-auto" width={400} height={400} src={logo} alt="logo" /></h2>
-                        <p className="text-xl text-gray-600 text-center">Welcome back!</p>
+                        <p className="text-xl text-gray-600 text-center">Registration now!</p>
                         <a href="#" onClick={handleGoogleSignIn} className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
                             <div className="px-4 py-3" >
                                 <svg className="h-6 w-6" viewBox="0 0 40 40">
@@ -140,13 +108,13 @@ function  Join() {
                                     <path d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.7592 25.1975 27.56 26.805 26.0133 27.9758C26.0142 27.975 26.015 27.975 26.0158 27.9742L31.1742 32.3392C30.8092 32.6708 36.6667 28.3333 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z" fill="#1976D2" />
                                 </svg>
                             </div>
-                            <h1 className="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">Sign in with Google</h1>
+                            <h1 className="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">Sign up with Google</h1>
                         </a>
                         <a href="#" onClick={handleGihubSignIn} className="flex items-center justify-center mt-4  rounded-lg shadow-md hover:bg-gray-100">
                             <div className="px-4 py-3" >
                                 <FaGithub className="text-4xl" />
                             </div>
-                            <h1 className="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">Sign in with Github</h1>
+                            <h1 className="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">Sign up with Github</h1>
                         </a>
                         <div className="mt-4 flex items-center justify-between">
                             <span className="border-b w-1/5 lg:w-1/4"></span>
@@ -182,12 +150,12 @@ function  Join() {
 
                             </div>
                             <div className="mt-8">
-                                <button type='submit' className={` text-white font-bold py-2 px-4 w-full rounded ${isDisabled ? "btn-disabled bg-gray-300" : "bg-gray-700"}`} >Login</button>
+                                <button type='submit' className={` text-white font-bold py-2 px-4 w-full rounded ${isDisabled ? "btn-disabled bg-gray-300" : "bg-gray-700"}`} >Registration</button>
                             </div>
                         </form>
                         <div className="mt-4 flex items-center justify-between">
                             <span className="border-b w-1/5 md:w-1/4"></span>
-                            <Link href="/primary/login" className="text-xs text-gray-500 uppercase">or sign up</Link>
+                            <Link href="/primary/login" className="text-xs text-gray-500 uppercase">or sign in</Link>
                             <span className="border-b w-1/5 md:w-1/4"></span>
                         </div>
                     </div>
