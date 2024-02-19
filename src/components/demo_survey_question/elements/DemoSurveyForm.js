@@ -27,47 +27,31 @@ const countries = [
     "Zambia", "Zimbabwe"
 ]
 
-function SurveyForm({setQuestions , setUserData}) {
-
-    const handleSubmit = (e)=> {
-        e.preventDefault()
-        const first_name = e.target.first_name.value
-        const last_name = e.target.last_name.value
-        const email = e.target.email.value
-        const country = e.target.country.value
-        const age = e.target.age.value
-        const gender = e.target.gender.value
-        const terms_and_condition = e.target.terms_and_condition.checked
-
-        const userObject = {first_name,last_name, email, country, age, gender, terms_and_condition}
-
-        setUserData(userObject)
-    }
-    
+function SurveyForm() {
     return (
-        <form onSubmit={handleSubmit} className="w-[90%] mx-auto mt-3 ">
+        <section className="w-[90%]  mx-auto mt-3 ">
             <h2 className='text-3xl font-bold text-center pt-8'>Please fill with your details</h2>
             {/* info */}
             <div className="grid grid-cols-2 gap-4 mt-5">
                 {/* input */}
                 <div>
                     <p className="text-sm">First Name</p>
-                    <input required type="text" placeholder="First Name" className="border pl-4 p-2 focus:border-blue-400 rounded-xl mt-1 w-full input-success " name="first_name" />
+                    <input type="text" placeholder="First Name" className="border pl-4 p-2 focus:border-blue-400 rounded-xl mt-1 w-full input-success " />
                 </div>
                 <div>
                     <p className="text-sm">Last Name</p>
-                    <input required type="text" placeholder="Last Name" className="border pl-4 p-2 focus:border-blue-400 rounded-xl mt-1 w-full input-success " name="last_name" />
+                    <input type="text" placeholder="Last Name" className="border pl-4 p-2 focus:border-blue-400 rounded-xl mt-1 w-full input-success " />
                 </div>
                 {/* input */}
                 <div>
                     <p className="text-sm">Your Email</p>
-                    <input required type="text" placeholder="Your Email" className="border pl-4 p-2 focus:border-blue-400 rounded-xl mt-1 w-full input-success " name="email" />
+                    <input type="text" placeholder="Your Email" className="border pl-4 p-2 focus:border-blue-400 rounded-xl mt-1 w-full input-success " />
                 </div>
 
                 {/* input */}
                 <div>
                     <p className="text-sm">Your Country</p>
-                    <select className="select select-bordered w-full select-success" name="country">
+                    <select className="select select-bordered w-full select-success">
                         <option disabled selected>Your Country</option>
                         {countries.map((name, idx) => (
                             <option key={idx} >{name}</option>
@@ -76,28 +60,29 @@ function SurveyForm({setQuestions , setUserData}) {
                 </div>
 
                 <div className="flex items-center gap-3">
-                    <input required type="text" placeholder="Age" className="border pl-4 p-2 focus:border-blue-400 rounded-xl mt-1 w-24 input-success " name="age" />
-
+                    <input type="text" placeholder="Age" className="border pl-4 p-2 focus:border-blue-400 rounded-xl mt-1 w-24 input-success " />
                     <div className="flex items-center gap-3">
-                        <input required type="radio" name="gender" id="male" className="radio" value="male" />
+                        <input type="radio" name="gender" id="male" className="radio" />
                         <label htmlFor="male">Male</label>
-                        <input required type="radio" name="gender" id="female" className="radio" value="female" />
+                        <input type="radio" name="gender" id="female" className="radio" />
                         <label htmlFor="female">Female</label>
                     </div>
 
                 </div>
                     <p className="flex items-center gap-3" >
-                        <input type="checkbox" className="checkbox" id="termsAndCondition" name="terms_and_condition" /> 
+                        <input type="checkbox" className="checkbox" id="termsAndCondition" /> 
                         
                         <label htmlFor="termsAndCondition" className="cursor-pointer"> Please accept our </label>
 
                         <span className="text-blue-500">Terms and condition</span>
 
                     </p>
+
+
             </div>
 
-        <button className="btn btn-md btn-neutral mt-6 block ml-auto" type="submit">Continue</button>
-        </form>
+
+        </section>
     )
 }
 

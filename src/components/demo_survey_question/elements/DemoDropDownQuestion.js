@@ -2,31 +2,21 @@
 
 import { useRef, useState } from "react";
 
+const question = {
+    "question": "What is your preferred method of communication?",
+    "questionType": "Dropdown Menu Questions",
+    "options": ["Email", "Phone", "Text Message", "In-Person Meeting"]
+}
 
-function DropDownQuestion({question, setQuestions}) {
+function DropDownQuestion() {
     const [searchValue, setSearchValue] = useState([]);
-    const [selectValue, setSelectValue] = useState(question.answer);
+    const [selectValue, setSelectValue] = useState("");
     const searchInput = useRef(null)
     
     const onSelect = (value)=> {
         if(value.length > 0){
 
             setSelectValue(value)
-
-            setQuestions(prevValue => {
-                const current_question = prevValue.findIndex(item => item.id === question.id);
-        
-                const copyArray = {...question};
-        
-                copyArray.answer = value;
-        
-                const updatedArray = prevValue.toSpliced(current_question, 1, copyArray)
-        
-                console.log(updatedArray)
-        
-                return updatedArray;
-              })
-
         }else{
             setSearchValue([])
         }
@@ -49,22 +39,6 @@ function DropDownQuestion({question, setQuestions}) {
             onSelect("")
         }
         console.log(!tagNames.includes(e.target.tagName.toLowerCase()))
-    }
-
-    const onAnswer = ( value)=> {
-        setQuestions(prevValue => {
-          const current_question = prevValue.findIndex(item => item.id === question.id);
-  
-          const copyArray = {...question};
-  
-          copyArray.answer = selectValue;
-  
-          const updatedArray = prevValue.toSpliced(current_question, 1, copyArray)
-  
-          console.log(updatedArray)
-  
-          return updatedArray;
-        })
     }
 
     const dropdownStyle = searchValue.length > 0 ? {padding: "8px"} : {padding: "0px"};

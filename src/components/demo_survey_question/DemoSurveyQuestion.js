@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CheckBoxGridQuestion from "./elements/CheckBoxGridQuestion";
 import DropDownQuestion from "./elements/DropDownQuestion";
 import LinearScaleQuestion from "./elements/LinearScaleQuestion";
@@ -15,61 +15,24 @@ const surveyData = {
     "questions": [
         {
             "question": "Which of the following benefits do you value the most? (Select all that apply)",
-            "answer": "",
-            "id": 1,
             "questionType": "multiple_choice",
             "options": ["Health insurance", "Paid time off", "Retirement plans", "Flexible work hours"]
         },
         {
             "question": "Please rate your satisfaction with the following aspects of our service:",
-            "answer": {
-                "0": {
-                    "Very Satisfied": false,
-                    "Satisfied": false,
-                    "Neutral": false,
-                    "Dissatisfied": false,
-                    "Very Dissatisfied": false,
-                },
-                "1": {
-                    "Very Satisfied": false,
-                    "Satisfied": false,
-                    "Neutral": false,
-                    "Dissatisfied": false,
-                    "Very Dissatisfied": false,
-                },
-                "2": {
-                    "Very Satisfied": false,
-                    "Satisfied": false,
-                    "Neutral": false,
-                    "Dissatisfied": false,
-                    "Very Dissatisfied": false,
-                },
-                "3": {
-                    "Very Satisfied": false,
-                    "Satisfied": false,
-                    "Neutral": false,
-                    "Dissatisfied": false,
-                    "Very Dissatisfied": false,
-                },
-            },
-            "id": 2,
             "questionType": "checkbox_grid",
             "options": {
-                "columnLabels": ["Customer Support", "Product Quality", "Delivery Time", "Website Usability"],
-                "rowLabels": ["Very Satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very Dissatisfied"]
+                "rowLabels": ["Customer Support", "Product Quality", "Delivery Time", "Website Usability"],
+                "columnLabels": ["Very Satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very Dissatisfied"]
             }
         },
         {
             "question": "On a scale of 1 to 10, how likely are you to recommend our company to a friend or colleague?",
-            "answer": "",
-            "id": 3,
             "questionType": "linear_scale",
             "options": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
         },
         {
             "question": "Where Your office?",
-            "answer": "",
-            "id": 4,
             "questionType": "dropdown",
             "options": [
                 "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
@@ -100,25 +63,15 @@ const surveyData = {
         },
         {
             "question": "Please rank the following aspects of your job from most important to least important:",
-            "answer": "",
-            "id": 5,
             "questionType": "ranking",
-            "options": [{ "id": 1, "title": "Compensation" },
-            { "id": 2, "title": "Work-life balance" },
-            { "id": 3, "title": "Career growth opportunities" },
-            { "id": 4, "title": "Company culture" },
-            { "id": 5, "title": "Job security" }]
+            "options": ["Compensation", "Work-life balance", "Career growth opportunities", "Company culture", "Job security"]
         },
         {
             "question": "What improvements would you suggest to make our workplace better?",
-            "answer": "",
-            "id": 6,
             "questionType": "sort_text"
         },
         {
             "question": "What are your career goals for the next five years?",
-            "answer": "",
-            "id": 7,
             "questionType": "long_text"
         }
 
@@ -126,59 +79,33 @@ const surveyData = {
 }
 
 
-
-
 export default function SurveyQuestion() {
-    const [userData, setUserData] = useState({});
+    const [answerData, setAnswerData] = useState({user: {}});
     const [questions, setQuestions] = useState(surveyData.questions);
     const [currentQuestion, setCurrentQuestion] = useState(0);
-    const [isNext, setIsNext] = useState(false);
 
-    const incrementAndDecrement = (action) => {
-        if (action === "increment") {
-            setCurrentQuestion((prevValue) => {
-                if (prevValue < questions.length - 1) {
-                    return prevValue + 1
-                } else {
-                    return prevValue
+    const incrementAndDecrement = (action)=> {
+        if(action === "increment"){
+            setCurrentQuestion((prevValue)=> {
+                if(prevValue < questions.length - 1){
+                  return  prevValue + 1
+                }else{
+                    return  prevValue
                 }
             })
-        } else if (action === "decrement") {
-            setCurrentQuestion((prevValue) => {
-                if (prevValue > 0) {
-                    return prevValue - 1
-                } else {
-                    return prevValue
+        }else if(action === "decrement"){
+            setCurrentQuestion((prevValue)=>{
+                if(prevValue > 0){
+                  return prevValue - 1
+                }else{
+                    return  prevValue
                 }
             })
         }
     }
 
-    useEffect(() => {   
-        if (questions[currentQuestion].questionType === "checkbox_grid") {
-
-           const isTrue = Object.keys(questions[currentQuestion].answer).some(key => Object.values(questions[currentQuestion].answer[key]).includes(true));
-
-           setIsNext(isTrue)
-        } else if(
-        !(questions[currentQuestion].questionType === "ranking") ||
-
-         !(questions[currentQuestion].questionType === "checkbox_grid")
-         ){
-            if (questions[currentQuestion].answer === "" ) {
-
-                setIsNext(false)
-            }else{
-                setIsNext(true)
-                
-            }
-        }
-
-        
-
-    }, [currentQuestion,questions])
-
-
+    console.log(questions[currentQuestion]?.questionType)
+    console.log("currentQuestion", currentQuestion)
     return (
         <section className=" relative z-[1]  dark:bg-transparent pb-16">
             <div className="w-full h-4/6 absolute top-0 left-0 z-[-1] bg-blue-200"  >
@@ -190,53 +117,50 @@ export default function SurveyQuestion() {
             <div className="container mx-auto bg-white py-6 rounded-xl relative pb-28 px-8">
                 <progress className="progress progress-success w-full md:w-4/6 mx-auto block h-1" value="70" max="100"></progress>
                 {
-                    !userData?.email
+                    !answerData?.user
                         ?
-                        <SurveyForm setQuestions={setQuestions} setUserData={setUserData} />
+                        <SurveyForm  />
                         :
                         <>
-                            {
-                                questions[currentQuestion]?.questionType === "multiple_choice" &&
-                                <MultipleChoiceQuestion setQuestions={setQuestions} question={questions[currentQuestion]} />
-                            }
-                            {
-                                questions[currentQuestion]?.questionType === "checkbox_grid" &&
-                                <CheckBoxGridQuestion setQuestions={setQuestions} question={questions[currentQuestion]} />
-                            }
-                            {
-                                questions[currentQuestion]?.questionType === "dropdown" &&
-                                <DropDownQuestion setQuestions={setQuestions} question={questions[currentQuestion]} />
+                        {
+                            questions[currentQuestion]?.questionType === "multiple_choice" &&
+                            <MultipleChoiceQuestion />
+                        }
+                        {
+                            questions[currentQuestion]?.questionType === "checkbox_grid" &&
+                            <CheckBoxGridQuestion />
+                        }
+                        {
+                            questions[currentQuestion]?.questionType === "dropdown" &&
+                            <DropDownQuestion />
 
-                            }
-                            {
-                                questions[currentQuestion]?.questionType === "linear_scale" &&
-                                <LinearScaleQuestion setQuestions={setQuestions} question={questions[currentQuestion]} />
-                            }
-                            {
-                                questions[currentQuestion]?.questionType === "ranking" &&
-                                <RankingScaleQuestion setQuestions={setQuestions} question={questions[currentQuestion]} />
-                            }
-                            {
-                                questions[currentQuestion]?.questionType === "sort_text" &&
-                                <ShortTextQuestion setQuestions={setQuestions} question={questions[currentQuestion]} />
-                            }
-                            {
-                                questions[currentQuestion]?.questionType === "long_text" &&
-                                <LongTextQuestion setQuestions={setQuestions} question={questions[currentQuestion]} />
-                            }
+                        }
+                        {
+                            questions[currentQuestion]?.questionType === "linear_scale" &&
+                            <LinearScaleQuestion />
+                        }
+                        {
+                            questions[currentQuestion]?.questionType === "ranking" &&
+                            <RankingScaleQuestion />
+                        }
+                        {
+                            questions[currentQuestion]?.questionType === "sort_text" &&
+                            <ShortTextQuestion />
+                        }
+                        {
+                            questions[currentQuestion]?.questionType === "long_text" &&
+                            <LongTextQuestion />
+                        }
 
                         </>
                 }
 
-                {
-                    userData?.email ?
-                        <div className="flex items-center justify-between py-1 bg-blue-200 absolute left-1/2 bottom-0 w-full md:w-4/6 rounded-full px-8 -translate-x-1/2 " >
-                            <button className={`btn btn-neutral ${currentQuestion > 0 ? "" : "btn-disabled"}`} onClick={() => incrementAndDecrement('decrement')} >Prev</button>
-                            <p className="text-3xl font-bold">{currentQuestion + 1}/{questions.length}</p>
-                            <button className={`btn btn-neutral ${isNext ? "" : "btn-disabled"}`} onClick={() => incrementAndDecrement('increment')} >Next</button>
-                        </div> : null
-                }
 
+                <div className="flex items-center justify-between py-1 bg-blue-200 absolute left-1/2 bottom-0 w-full md:w-4/6 rounded-full px-8 -translate-x-1/2 " >
+                    <button className={`btn btn-neutral ${currentQuestion > 0 ? "" : "btn-disabled"}`} onClick={()=> incrementAndDecrement('decrement')} >Prev</button>
+                    <p className="text-3xl font-bold">{currentQuestion + 1}/{questions.length}</p>
+                    <button className="btn btn-neutral" onClick={()=> incrementAndDecrement('increment')}>Next</button>
+                </div>
             </div>
         </section>
     )
