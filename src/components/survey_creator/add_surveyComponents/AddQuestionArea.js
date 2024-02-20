@@ -11,7 +11,7 @@ function AddQuestionArea({ setShowQuestionArea,  surveyInitialInfo, setSurveyIni
     const [openEditModal, setOpenEditModal] = useState(false)
     const [openAddQuestionModal, setOpenAddQuestionModal] = useState(false)
     const [surveyQuestions, setSurveyQuestions] = useState([])
-    const [questionTypeName, setQuestionTypeName] = useState("");
+    const [questionTypeName, setQuestionTypeName] = useState("multiple_choice");
     const [showSurveyForm, setShowSurveyForm] = useState(false);
     const onSaveSurvey = () => {
         localStorage.removeItem("my_survey");
@@ -28,18 +28,18 @@ function AddQuestionArea({ setShowQuestionArea,  surveyInitialInfo, setSurveyIni
        }
     return (
         <div className='w-full'>
-            <div className='pb-4 border-b-2 border-rose-400 relative'>
-            <button className="absolute top-1/2 left-1 -translate-y-1/2 bg-red-300 hover:bg-blue-300 text-neutral-800 btn text-3xl flex justify-center items-center" onClick={onBack} ><IoMdArrowRoundBack /></button>
+            <div className='pb-6 flex items-center border-b-2 relative'>
+            <button className="absolute top-0 left-1 hover:bg-stone-200 text-neutral-800 btn text-3xl flex justify-center items-center" onClick={onBack} ><IoMdArrowRoundBack /></button>
             <h2 className="text-3xl font-bold ml-20">{surveyInitialInfo?.title}</h2>
-                <div className="absolute top-1/2 right-6 -translate-y-1/2 flex items-center gap-2">
-                    <button className="p-2  text-sm rounded-sm text-white bg-neutral-400 border hover:bg-blue-500 hover:text-white" onClick={() => setOpenEditModal(true)} ><FaEdit /></button>
+                <div className="absolute top-0 right-6 flex items-center gap-2">
+                    <button className="btn btn-md btn-neutral" onClick={() => setOpenEditModal(true)} ><FaEdit /></button>
 
-                    <button className="p-2  text-sm rounded-sm text-white bg-neutral-800 border hover:bg-blue-300 hover:text-neutral-800" onClick={onSaveSurvey}>Save Survey</button>
+                    <button className="btn btn-md btn-outline" onClick={onSaveSurvey}>Save Survey</button>
 
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-5 mt-4 gap-6">
+            <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 mt-4 gap-6">
                 {
                     surveyQuestions && surveyQuestions.map((item, idx) => (
                         <QuestionCard key={idx} item={item} deleteQuestion={deleteQuestion} setQuestionTypeName={setQuestionTypeName}

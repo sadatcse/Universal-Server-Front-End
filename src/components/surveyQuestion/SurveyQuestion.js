@@ -1,13 +1,9 @@
 "use client"
 import { useEffect, useState } from "react";
-import CheckBoxGridQuestion from "./elements/CheckBoxGridQuestion";
-import DropDownQuestion from "./elements/DropDownQuestion";
-import LinearScaleQuestion from "./elements/LinearScaleQuestion";
-import LongTextQuestion from "./elements/LongTextQuestion";
-import MultipleChoiceQuestion from "./elements/MultipleChoiceQuestion";
-import RankingScaleQuestion from "./elements/RankingScaleQuestion";
-import ShortTextQuestion from "./elements/ShortTextQuestion";
+import PageControlArea from "./elements/PageControlArea";
+import QuestionArea from "./elements/QuestionArea";
 import SurveyForm from "./elements/SurveyForm";
+import SurveyResult from "./elements/SurveyResult";
 
 const surveyData = {
     "title": "Employee Feedback Survey",
@@ -133,6 +129,7 @@ export default function SurveyQuestion() {
     const [questions, setQuestions] = useState(surveyData.questions);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [isNext, setIsNext] = useState(false);
+    const [isViewResult, setIsViewResult] = useState(false);
 
     const incrementAndDecrement = (action) => {
         if (action === "increment") {
@@ -154,29 +151,29 @@ export default function SurveyQuestion() {
         }
     }
 
-    useEffect(() => {   
+    useEffect(() => {
         if (questions[currentQuestion].questionType === "checkbox_grid") {
 
-           const isTrue = Object.keys(questions[currentQuestion].answer).some(key => Object.values(questions[currentQuestion].answer[key]).includes(true));
+            const isTrue = Object.keys(questions[currentQuestion].answer).some(key => Object.values(questions[currentQuestion].answer[key]).includes(true));
 
-           setIsNext(isTrue)
-        } else if(
-        !(questions[currentQuestion].questionType === "ranking") ||
+            setIsNext(isTrue)
+        } else if (
+            !(questions[currentQuestion].questionType === "ranking") ||
 
-         !(questions[currentQuestion].questionType === "checkbox_grid")
-         ){
-            if (questions[currentQuestion].answer === "" ) {
+            !(questions[currentQuestion].questionType === "checkbox_grid")
+        ) {
+            if (questions[currentQuestion].answer === "") {
 
                 setIsNext(false)
-            }else{
+            } else {
                 setIsNext(true)
-                
+
             }
         }
 
-        
 
-    }, [currentQuestion,questions])
+
+    }, [currentQuestion, questions])
 
 
     return (
@@ -188,57 +185,29 @@ export default function SurveyQuestion() {
             <h2 className='text-3xl md:text-6xl font-bold text-center pt-12 pb-4'>Survey Satisfaction</h2>
             <p className='text-gray-500 text-center text-xl md:text-2xl font-semibold mb-8'>Please provide your feedback on various aspects of your experience at our company.</p>
             <div className="container mx-auto bg-white py-6 rounded-xl relative pb-28 px-8">
-                <progress className="progress progress-success w-full md:w-4/6 mx-auto block h-1" value="70" max="100"></progress>
-                {
-                    !userData?.email
+                { 
+
+                    isViewResult ?
+                        <SurveyResult questions={questions} setQuestions={setQuestions} isViewResult={isViewResult} />
+                        :
+                        !userData?.email
                         ?
                         <SurveyForm setQuestions={setQuestions} setUserData={setUserData} />
                         :
                         <>
-                            {
-                                questions[currentQuestion]?.questionType === "multiple_choice" &&
-                                <MultipleChoiceQuestion setQuestions={setQuestions} question={questions[currentQuestion]} />
-                            }
-                            {
-                                questions[currentQuestion]?.questionType === "checkbox_grid" &&
-                                <CheckBoxGridQuestion setQuestions={setQuestions} question={questions[currentQuestion]} />
-                            }
-                            {
-                                questions[currentQuestion]?.questionType === "dropdown" &&
-                                <DropDownQuestion setQuestions={setQuestions} question={questions[currentQuestion]} />
 
-                            }
-                            {
-                                questions[currentQuestion]?.questionType === "linear_scale" &&
-                                <LinearScaleQuestion setQuestions={setQuestions} question={questions[currentQuestion]} />
-                            }
-                            {
-                                questions[currentQuestion]?.questionType === "ranking" &&
-                                <RankingScaleQuestion setQuestions={setQuestions} question={questions[currentQuestion]} />
-                            }
-                            {
-                                questions[currentQuestion]?.questionType === "sort_text" &&
-                                <ShortTextQuestion setQuestions={setQuestions} question={questions[currentQuestion]} />
-                            }
-                            {
-                                questions[currentQuestion]?.questionType === "long_text" &&
-                                <LongTextQuestion setQuestions={setQuestions} question={questions[currentQuestion]} />
-                            }
+                        <progress className="progress progress-success w-full md:w-4/6 mx-auto block h-1 transition-all duration-500" value={((currentQuestion + 1) / questions.length) * 100} max="100"></progress>
 
+                        <QuestionArea setQuestions={setQuestions} questions={questions} currentQuestion={currentQuestion} />
+
+                        <PageControlArea incrementAndDecrement={incrementAndDecrement} currentQuestion={currentQuestion} questions={questions} setIsViewResult={setIsViewResult} 
+                        isNext={isNext} />
                         </>
-                }
 
-                {
-                    userData?.email ?
-                        <div className="flex items-center justify-between py-1 bg-blue-200 absolute left-1/2 bottom-0 w-full md:w-4/6 rounded-full px-8 -translate-x-1/2 " >
-                            <button className={`btn btn-neutral ${currentQuestion > 0 ? "" : "btn-disabled"}`} onClick={() => incrementAndDecrement('decrement')} >Prev</button>
-                            <p className="text-3xl font-bold">{currentQuestion + 1}/{questions.length}</p>
-                            <button className={`btn btn-neutral ${isNext ? "" : "btn-disabled"}`} onClick={() => incrementAndDecrement('increment')} >Next</button>
-                        </div> : null
                 }
 
             </div>
-        </section>
+        </section >
     )
 }
 

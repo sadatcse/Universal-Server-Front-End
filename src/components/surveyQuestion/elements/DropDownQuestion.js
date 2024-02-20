@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 
 
-function DropDownQuestion({question, setQuestions}) {
+function DropDownQuestion({question, setQuestions, isViewResult}) {
     const [searchValue, setSearchValue] = useState([]);
     const [selectValue, setSelectValue] = useState(question.answer);
     const searchInput = useRef(null)
@@ -69,7 +69,7 @@ function DropDownQuestion({question, setQuestions}) {
 
     const dropdownStyle = searchValue.length > 0 ? {padding: "8px"} : {padding: "0px"};
     return (
-        <div onClick={onObserver}>
+        <div onClick={onObserver} className={isViewResult ? "pointer-events-none": ""}>
             <h2 className='text-3xl font-bold text-center pt-8 pb-10'>{question?.question}</h2>
 
             <div className="mx-auto w-1/2 relative" >
