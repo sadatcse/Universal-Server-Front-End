@@ -10,12 +10,12 @@ function AboutHero() {
             </div>
             <div className="w-[90%] container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between items-center">
                 <div className="flex flex-col justify-center p-6 text-center rounded-sm xl:max-w-2xl lg:text-left items-center sm:items-start dark:text-white">
-                    <h1 className="text-5xl font-semibold leading-tight">We combine <span className='text-[#00ABE4]'> data </span> and technology for enterprise
+                    <h1 className="text-5xl font-semibold leading-tight">We combine <span className='text-[#00ABE4] dark:text-gray-400'> data </span> and technology for enterprise
                     solutions
                     </h1>
                     <div className="max-w-md  pt-12 flex flex-col sm:flex-row items-center sm:justify-start sm:space-x-6">
-                        <div className=' shadow-lg border border-b-0 animate-bounce cursor-pointer p-4 flex items-center rounded-full'>
-                            <FaPlay className='text-2xl text-[#00ABE4]' />
+                        <div className=' shadow-lg border border-b-0 animate-bounce dark:border cursor-pointer p-4 flex items-center rounded-full'>
+                            <FaPlay className='text-2xl text-[#00ABE4] dark:text-white' />
                         </div>
                         <div className="flex flex-col justify-center items-center space-y-4 ">
                             <div>
