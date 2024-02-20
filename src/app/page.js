@@ -4,8 +4,6 @@ import WhatPeopleSay from "@/components/primary/homeComponents/WhatPeopleSay";
 import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
 
-
-
 const HomePage = () => {
   return (
     <>
