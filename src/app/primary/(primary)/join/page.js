@@ -12,6 +12,7 @@ import logo from "../../../../Asset/logo2.png";
 function  Join() {
     const captchaInput = useRef(null);
     const [isDisabled, setIsDisabled] = useState(true)
+    // const [isLogin, setisLogin] = useState(true)
     const [showPassword, setShowPassword] = useState(false);
 
 
