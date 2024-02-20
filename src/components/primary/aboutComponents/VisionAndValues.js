@@ -9,9 +9,7 @@ function VisionAndValues() {
                 <h1 className="text-4xl font-semibold leadi text-center">Our Vision And Values</h1>
                 <p className="max-w-3xl mx-auto mt-6 text-center">The goal of the Universal Survey and Engagement System is to provide a comprehensive and user-
                     friendly online survey platform that caters to the needs of different user roles – Admin, Company, and
-
-                    User. The system aims to streamline the survey creation process, enhance user engagement, and
-                    facilitate data-driven decision-making across various sectors.</p>
+                    User.</p>
             </div>
             <div className="container mx-auto grid grid-cols-1 gap-8 lg:gap-20 md:px-10 md:pb-10 lg:grid-cols-3">
                 <VisionCard path="/strategy.svg" title="Define the strategy" description="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to de" />
