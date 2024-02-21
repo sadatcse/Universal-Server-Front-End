@@ -1,73 +1,39 @@
 'use client'
+
+import { signIn } from "next-auth/client"
 import { usePathname, useRouter } from 'next/navigation';
 import { useContext, useState } from "react";
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 import { FiLock, FiMail, } from 'react-icons/fi';
-import useAxiosPublic from "../../../../Hook/useAxiosPublic";
-import { AuthContext } from '../../../../providers/AuthProvider';
+
 
 
 
 const Login = () => {
-    const axiosPublic = useAxiosPublic();
-    const {userRole, signInUser, signInWithGoogle } = useContext(AuthContext);
+
     const router = useRouter();
     const pathname = usePathname();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-
-        signInUser(email, password)
-            .then((result) => {
-                toast.success("Login successful!")
-                router.push('/', { scroll: false })
-                // window.history.replaceState(null, '', pathname)
-
-                
-
-            })
-            .catch((error) => {
-                toast.error("Login failed. Please check your Email or Password.");
-                console.error(error);
-            });
-    };
+        const result = await signIn('credentials', {
+          redirect: false,
+          email: email,
+          password: password,
+        });
+    
+        if (result?.ok) {
+          toast.success('Successful login!');
+        } else {
+          toast.error('Login failed. Please check your credentials.');
+        }
+      };
 
     const handleGoogleSignIn = async () => {
-        try {
-            const result = await signInWithGoogle();
-    
-            const userinfo = {
-                name: result.user?.displayName,
-                uid: result.user?.uid,
-                mobile: result.user?.phoneNumber,
-                email: result.user?.email,
-                Photourl:result.user?.photoURL,
-                role: 'Survey Participant',
-            };
-    
-            
-            
-    
-            const response = await axiosPublic.post('/users', userinfo);
 
-            console.log(response.data)
-    
-            if (response.status === 200) {
-                toast.success("Login successful!");
-
-                console.log("login user Role:", userRole)
-                const userRoleDashboardRoute = userRole === "Administrator" ? "/dashboard/admin/system_statistics" : userRole === "Survey Creator" ? "/dashboard/company/creator_profile" : "/dashboard/user/available_surveys";
-                userRole && router.push(userRoleDashboardRoute, { scroll: false })
-            } else {
-                toast.error("Failed to create user. Please try again.");
-            }
-        } catch (error) {
-            toast.error("Social login failed. Please try again later.");
-            console.error(error);
-        }
     };
     
     return (

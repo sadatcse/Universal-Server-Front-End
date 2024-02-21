@@ -19,9 +19,9 @@ function WhatPeopleSay() {
     }, [])
 
     return (
-        <section className="py-6 mt-20 bg-[#E9F1FA] dark:bg-blue-200 text-gray-800">
+        <section className="py-6 mt-20 bg-[#E9F1FA] dark:bg-neutral-800 text-gray-800">
             <div className="container flex flex-col items-center justify-center p-4 mx-auto sm:p-10">
-                <h1 className="text-4xl font-bold leadi text-center  sm:text-5xl">What people Say</h1>
+                <h1 className="text-4xl font-semibold  text-center  dark:text-white sm:text-5xl">What people Say</h1>
                 <Marquee pauseOnHover={true}>
                     <div className="flex mt-8">
                         {testimonialData && testimonialData.map((item, ind) => (

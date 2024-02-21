@@ -14,7 +14,7 @@ import { MdOutlineInfo } from "react-icons/md";
 
 function Footer() {
     return (
-        <footer className="p-6 pt-28 dark:bg-gray-900 dark:text-gray-100  text-white bg-neutral-900">
+        <footer className="p-6 pt-28 dark:bg-neutral-800 dark:border-t dark:text-gray-100  text-white bg-neutral-900">
             <div className="w-[80%] mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
                 <div className="flex flex-col space-y-4">
                     <h2 className="font-medium text-2xl">Universal Survey</h2>
@@ -54,7 +54,7 @@ function Footer() {
                     <div className='mt-10'>
                         <div className='flex items-center rounded max-w-min bg-white'>
                             <input placeholder='Enter your email' className='rounded rounded-r-none outline-none  text-gray-500 py-1 pl-3 text-sm'></input>
-                            <button className='p-2 rounded font-bold text-lg border bg-[#00ABE4] rounded-l-none right-28'><RiMailSendFill /></button>
+                            <button className='p-2 rounded font-bold text-lg border dark:bg-neutral-800 bg-[#00ABE4] rounded-l-none right-28'><RiMailSendFill /></button>
                         </div>
                     </div>
                 </div>
