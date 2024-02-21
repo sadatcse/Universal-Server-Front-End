@@ -1,8 +1,5 @@
 'use client'
-<<<<<<< HEAD
-=======
 
->>>>>>> 442864cfeecc668b5c89c5fe29661e90a6e42bdf
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from "react";
 import { FcGoogle } from 'react-icons/fc';
