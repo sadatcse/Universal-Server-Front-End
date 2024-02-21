@@ -11,6 +11,7 @@ function LongTextQuestion({setShowSurveyForm, setSurveyQuestions, setOpenAddQues
         const newObject = {questionType: "long_text" , question}
         setSurveyQuestions((prevItem)=> [...prevItem, newObject])
         setOpenAddQuestionModal(false)
+        setCurrentQuestion({})
       }
 
       useEffect(()=> {

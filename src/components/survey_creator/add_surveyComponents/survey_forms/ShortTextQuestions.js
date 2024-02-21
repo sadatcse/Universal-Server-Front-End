@@ -5,11 +5,10 @@ function ShortTextQuestions({setShowSurveyForm, setSurveyQuestions, setOpenAddQu
   const [questionInput, setQuestionInput] = useState( currentQuestion.question || "");
     const onSubmit = (e)=> {
         e.preventDefault();
-        const question = e.target.question.value;
-        console.log({question})
-        const newObject = {questionType: "short_text" , question}
-        setSurveyQuestions((prevItem)=> [...prevItem, newObject])
+        
+        setSurveyQuestions((prevItem)=> [...prevItem, currentQuestion])
         setOpenAddQuestionModal(false)
+        // setCurrentQuestion({})
       }
 
       useEffect(()=> {

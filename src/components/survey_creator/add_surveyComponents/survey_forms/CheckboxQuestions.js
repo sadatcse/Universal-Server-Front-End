@@ -15,8 +15,9 @@ function CheckboxQuestions({ setShowSurveyForm, setSurveyQuestions, setOpenAddQu
   }
 
   const onSave = () => {
-    setSurveyQuestions((prevItem) => [...prevItem, newObject])
+    setSurveyQuestions((prevItem) => [...prevItem, currentQuestion])
     setOpenAddQuestionModal(false)
+    setCurrentQuestion({})
   }
 
 
@@ -98,7 +99,7 @@ function CheckboxQuestions({ setShowSurveyForm, setSurveyQuestions, setOpenAddQu
     setCurrentQuestion(newObject)
     
 
-  },[options, levelNames, setCurrentQuestion, setSurveyQuestions])
+  },[options, levelNames, setCurrentQuestion])
 
 
   return (

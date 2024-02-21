@@ -12,11 +12,9 @@ function DropdownMenuQuestions({setShowSurveyForm, setSurveyQuestions, setOpenAd
         console.log({question})
       }
     const onSave = ()=> {
-      const question = questionInput.current.value;
-        console.log({question, options})
-        const newObject = {type: "Dropdown Menu Questions" ,question, options}
-        setSurveyQuestions((prevItem)=> [...prevItem, newObject])
+        setSurveyQuestions((prevItem)=> [...prevItem, currentQuestion])
         setOpenAddQuestionModal(false)
+        setCurrentQuestion({})
       }
 
       const addOption = ()=> {

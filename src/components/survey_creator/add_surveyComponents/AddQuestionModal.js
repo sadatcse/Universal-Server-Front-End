@@ -17,11 +17,15 @@ function AddQuestionModal({ setOpenAddQuestionModal,
     questionTypeName,
     setQuestionTypeName,
     showSurveyForm,
-    setShowSurveyForm
+    setShowSurveyForm,
+    currentQuestion, 
+    setCurrentQuestion,
+    isDemo, 
+    setIsDemo
 }) {
     const [isOpenFormTypesDropDown, setIsOpenFormTypesDropDown] = useState(false);
-    const [isDemo, setIsDemo] = useState(false);
-    const [currentQuestion, setCurrentQuestion] = useState({});
+    
+    
     const typeNames = [
         {
             "name": "Multiple Choice",

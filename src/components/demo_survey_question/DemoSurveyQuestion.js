@@ -133,7 +133,7 @@ export default function DemoSurveyQuestion({ currentQuestion, setCurrentQuestion
                         <DemoRankingScaleQuestion question={currentQuestion} setCurrentQuestion={setCurrentQuestion} />
                     }
                     {
-                        currentQuestion?.questionType === "sort_text" &&
+                        currentQuestion?.questionType === "short_text" &&
                         <DemoShortTextQuestion question={currentQuestion} setCurrentQuestion={setCurrentQuestion} />
                     }
                     {

@@ -69,8 +69,8 @@ function DemoLinearScaleQuestion({question}) {
             <div className="relative px-12 w-full h-40 lg:h-36">
                 <ul className="w-full absolute top-1/2 left-0 -translate-y-1/2 flex justify-start md:justify-center gap-4 flex-wrap " >
 
-                    {question.options.map((name, idx) => (
-                            <li key={idx} onClick={()=> setSelectedLabel(idx + 1)} className="text-neutral bg-white border-2 border-neutral rounded-full w-12 h-12 lg:h-16 lg:w-16 shadow-lg hover:bg-neutral-800 hover:text-white flex justify-center items-center text-md md:text-xl  lg:text-4xl cursor-pointer label">{name}</li>
+                    {question.options.map((num, idx) => (
+                            <li key={idx} onClick={()=> setSelectedLabel(idx + 1)} className="text-neutral bg-white border-2 border-neutral rounded-full w-12 h-12 lg:h-16 lg:w-16 shadow-lg hover:bg-neutral-800 hover:text-white flex justify-center items-center text-md md:text-xl  lg:text-4xl cursor-pointer label">{idx + 1}</li>
                     ))}
                 </ul>
 

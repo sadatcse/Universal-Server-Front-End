@@ -11,15 +11,11 @@ function MultipleChoice({setShowSurveyForm, setSurveyQuestions, setOpenAddQuesti
         const question = e.target.question.value;
         console.log({question})
       }
+
     const onSave = ()=> {
-      const question = questionInput.current.value;
-        const surveyTitle = JSON.parse(localStorage.getItem("my_survey")).title;
-        
-        // insert question in the survey question array
-        const newObject = {questionType: "multiple_choice" ,question, options: options.flat(Infinity), surveyTitle}
-        console.log(newObject)
-        setSurveyQuestions((prevItem)=> [...prevItem, newObject])
+        setSurveyQuestions((prevItem)=> [...prevItem, currentQuestion])
         setOpenAddQuestionModal(false)
+        setCurrentQuestion({})
       }
 
       const addOption = ()=> {
@@ -28,9 +24,6 @@ function MultipleChoice({setShowSurveyForm, setSurveyQuestions, setOpenAddQuesti
         const newArray = [...options, [name]]
         setOptions(newArray)
         
-
-        
-
         optionInput.current.value = "";
       } 
 
@@ -56,6 +49,8 @@ function MultipleChoice({setShowSurveyForm, setSurveyQuestions, setOpenAddQuesti
         const newObject = {questionType: "multiple_choice" , question, options: options.flat(Infinity)}
         setCurrentQuestion(newObject)
       },[setCurrentQuestion, options])
+
+      
   return (
     <div class="p-4 relative">
         <div class="heading text-center font-bold text-4xl text-gray-800 mb-4">Multiple Choice Question form</div>

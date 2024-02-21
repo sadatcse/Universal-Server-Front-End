@@ -1,8 +1,8 @@
 "use client"
+import DemoModal from "@/components/demo_survey_question/elements/drag_and_drop/DemoModal";
 import { useState } from "react";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaPlus } from "react-icons/fa";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import AddQuestionCard from "./AddQuestionCard";
 import AddQuestionModal from "./AddQuestionModal";
 import EditModal from "./EditModal";
 import QuestionCard from "./QuestionCard";
@@ -10,9 +10,13 @@ import QuestionCard from "./QuestionCard";
 function AddQuestionArea({ setShowQuestionArea, surveyInitialInfo, setSurveyInitialInfo }) {
     const [openEditModal, setOpenEditModal] = useState(false)
     const [openAddQuestionModal, setOpenAddQuestionModal] = useState(false)
+    const [openDemoModal, setOpenDemoModal] = useState(false)
     const [surveyQuestions, setSurveyQuestions] = useState([])
     const [questionTypeName, setQuestionTypeName] = useState("multiple_choice");
     const [showSurveyForm, setShowSurveyForm] = useState(false);
+    const [currentQuestion, setCurrentQuestion] = useState({});
+    const [isDemo, setIsDemo] = useState(false);
+    console.log(surveyQuestions)
     const onSaveSurvey = () => {
         localStorage.removeItem("my_survey");
         setShowQuestionArea(false)
@@ -33,7 +37,10 @@ function AddQuestionArea({ setShowQuestionArea, surveyInitialInfo, setSurveyInit
                 <button className="absolute top-0 left-1 hover:bg-stone-200 text-neutral-800 btn text-3xl flex justify-center items-center" onClick={onBack} ><IoMdArrowRoundBack /></button>
                 <h2 className="text-3xl font-bold ml-20">{surveyInitialInfo?.title}</h2>
                 <div className="absolute top-0 right-6 flex items-center gap-2">
-                    <button className="btn btn-md btn-neutral" onClick={() => setOpenEditModal(true)} ><FaEdit /></button>
+                    <button className="btn btn-md btn-outline" onClick={() => setOpenEditModal(true)} ><FaEdit /></button>
+                    <button className="btn btn-md btn-outline" onClick={()=> setOpenAddQuestionModal(true)} ><FaPlus /></button>
+
+                    <button className={`btn btn-md btn-neutral ${surveyQuestions.length > 0 ? "" : "btn-disabled"}`} onClick={() => setOpenDemoModal(true)}>Demo</button>
 
                     <button className="btn btn-md btn-outline" onClick={onSaveSurvey}>Save Survey</button>
 
@@ -44,15 +51,15 @@ function AddQuestionArea({ setShowQuestionArea, surveyInitialInfo, setSurveyInit
                 {
                     surveyQuestions && surveyQuestions.map((item, idx) => (
                         <QuestionCard key={idx} item={item} deleteQuestion={deleteQuestion} setQuestionTypeName={setQuestionTypeName}
-                            setOpenAddQuestionModal={setOpenAddQuestionModal}
-                            setShowSurveyForm={setShowSurveyForm}
+                        setOpenAddQuestionModal={setOpenAddQuestionModal}
+                        setShowSurveyForm={setShowSurveyForm}
+                        setCurrentQuestion={setCurrentQuestion}
+                        setIsDemo={setIsDemo}
+
                         />
 
                     ))
                 }
-                <AddQuestionCard
-                    setOpenAddQuestionModal={setOpenAddQuestionModal}
-                />
                 {
                     openEditModal ?
                         <EditModal
@@ -73,7 +80,16 @@ function AddQuestionArea({ setShowQuestionArea, surveyInitialInfo, setSurveyInit
                         questionTypeName={questionTypeName} setQuestionTypeName={setQuestionTypeName}
                         showSurveyForm={showSurveyForm} setShowSurveyForm={setShowSurveyForm}
                         surveyQuestions={surveyQuestions}
-
+                        currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}
+                        isDemo={isDemo} 
+                        setIsDemo={setIsDemo}
+                    />
+                    : null
+            }
+            {
+                openDemoModal ?
+                    <DemoModal
+                        currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} surveyQuestions={surveyQuestions} setSurveyQuestions={setSurveyQuestions} setOpenDemoModal={setOpenDemoModal}
                     />
                     : null
             }
