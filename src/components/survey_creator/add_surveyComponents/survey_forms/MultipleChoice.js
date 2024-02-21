@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
 
 function MultipleChoice({setShowSurveyForm, setSurveyQuestions, setOpenAddQuestionModal, currentQuestion, setCurrentQuestion, setQuestionTypeName, questionTypeName}) {
-  const [options, setOptions] = useState(currentQuestion.options || []);
+  const [options, setOptions] = useState(currentQuestion?.options || []);
   const optionInput = useRef(null)
   const questionInput = useRef(null)
     const onSubmit = (e)=> {

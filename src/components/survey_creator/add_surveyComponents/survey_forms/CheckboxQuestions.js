@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
 
 function CheckboxQuestions({ setShowSurveyForm, setSurveyQuestions, setOpenAddQuestionModal, currentQuestion, setCurrentQuestion }) {
-  const [options, setOptions] = useState(currentQuestion.options.columnLabels || []);
-  const [levelNames, setLevelNames] = useState(currentQuestion.options.rowLabels || []);
+  const [options, setOptions] = useState(currentQuestion?.options?.columnLabels || []);
+  const [levelNames, setLevelNames] = useState(currentQuestion?.options?.rowLabels || []);
   const optionInput = useRef(null)
   const questionInput = useRef(null)
   const levelInput = useRef(null)
@@ -105,7 +105,7 @@ function CheckboxQuestions({ setShowSurveyForm, setSurveyQuestions, setOpenAddQu
     <div class="p-4 py-8 relative w-full">
       <div class="heading text-center font-bold text-4xl m-5 text-gray-800 bg-white ">Checkbox Questions form</div>
 
-      <form class="editor mx-auto w-full flex flex-col text-gray-800  rounded-md shadow-xl p-4 bg-stone-
+      <form class="editor mx-auto w-full flex flex-col text-gray-800 bg-stone-200 rounded-md shadow-xl p-4 bg-stone-
       200" onSubmit={onSubmit}>
         {/* questions field */}
         <label htmlFor="title" className="font-bold text-2xl">Question</label>

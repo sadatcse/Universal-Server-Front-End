@@ -1,9 +1,9 @@
 "use client"
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
 
 function DropdownMenuQuestions({setShowSurveyForm, setSurveyQuestions, setOpenAddQuestionModal, currentQuestion, setCurrentQuestion}) {
-  const [options, setOptions] = useState(currentQuestion.options || []);
+  const [options, setOptions] = useState(currentQuestion?.options || []);
   const optionInput = useRef(null)
   const questionInput = useRef(null)
     const onSubmit = (e)=> {
@@ -51,14 +51,14 @@ function DropdownMenuQuestions({setShowSurveyForm, setSurveyQuestions, setOpenAd
         <div class="heading text-center font-bold text-4xl m-5 text-gray-800 bg-white ">Dropdown Menu Questions form</div>
         <form class="editor mx-auto w-full flex flex-col text-gray-800  rounded-md shadow-xl p-4 bg-stone-200 " onSubmit={onSubmit}>
           <label htmlFor="title" className="font-bold text-2xl">Question</label>
-            <input class="title bg-white shadow-md p-2 mb-4 outline-none rounded" spellcheck="false" id="title" placeholder="Title" type="text" required name="question" ref={questionInput} />
+            <input class="title bg-white shadow-md p-2 mb-4 outline-none rounded" spellcheck="false" id="title" placeholder="Title" type="text" required name="question" ref={questionInput} defaultValue={currentQuestion?.question} />
           <div className="flex w-full justify-stretch rounded-lg overflow-hidden gap-3">
             <div className="space-y-4 border-2 rounded-lg border-neutral p-3 w-full md:w-1/2">
               <h2 className="font-bold text-2xl">Options</h2>
               <ul className="space-y-1 list-disc list-inside min-h-24" >
                 {
                   options.map((optionName, idx)=> (
-                    <li key={idx} className="relative">{optionName[0]} <div className="absolute top-1/2 right-3 -translate-y-1/2 bg-white rounded-full" onClick={()=> deleteOption(optionName[0])}><IoClose /></div></li>
+                    <li key={idx} className="relative">{optionName} <div className="absolute top-1/2 right-3 -translate-y-1/2 bg-white rounded-full" onClick={()=> deleteOption(optionName[0])}><IoClose /></div></li>
 
                   ))
                 }
