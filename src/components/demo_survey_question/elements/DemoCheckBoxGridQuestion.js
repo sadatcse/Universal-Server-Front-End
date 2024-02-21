@@ -1,16 +1,16 @@
 
 
-const question = {
-    "question": "Please rate your satisfaction with the following aspects of our service:",
-    "questionType": "Checkbox Grid Questions",
-    "options": {
-        "columnLabels": ["Customer Support", "Product Quality", "Delivery Time", "Website Usability"],
+// const question = {
+//     "question": "Please rate your satisfaction with the following aspects of our service:",
+//     "questionType": "Checkbox Grid Questions",
+//     "options": {
+//         "columnLabels": ["Customer Support", "Product Quality", "Delivery Time", "Website Usability"],
 
-        "rowLabels": ["Very Satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very Dissatisfied"]
-    }
-}
+//         "rowLabels": ["Very Satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very Dissatisfied"]
+//     }
+// }
 
-export default function DemoCheckBoxGridQuestion() {
+export default function DemoCheckBoxGridQuestion({question}) {
     return (
         <div>
             <h2 className='text-3xl font-bold text-center pt-8 pb-10'>{question?.question}</h2>

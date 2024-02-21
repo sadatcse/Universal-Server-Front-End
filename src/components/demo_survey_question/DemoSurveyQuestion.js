@@ -1,21 +1,12 @@
 "use client"
 import { useState } from "react";
-import CheckBoxGridQuestion from "./elements/CheckBoxGridQuestion";
-import DropDownQuestion from "./elements/DropDownQuestion";
-import LinearScaleQuestion from "./elements/LinearScaleQuestion";
-import LongTextQuestion from "./elements/LongTextQuestion";
-import MultipleChoiceQuestion from "./elements/MultipleChoiceQuestion";
-import RankingScaleQuestion from "./elements/RankingScaleQuestion";
-import ShortTextQuestion from "./elements/ShortTextQuestion";
-import SurveyForm from "./elements/SurveyForm";
-import DemoSurveyForm from "./elements/DemoSurveyForm";
-import DemoMultipleChoiceQuestion from "./elements/DemoMultipleChoiceQuestion";
 import DemoCheckBoxGridQuestion from "./elements/DemoCheckBoxGridQuestion";
 import DemoDropDownQuestion from "./elements/DemoDropDownQuestion";
 import DemoLinearScaleQuestion from "./elements/DemoLinearScaleQuestion";
+import DemoLongTextQuestion from "./elements/DemoLongTextQuestion";
+import DemoMultipleChoiceQuestion from "./elements/DemoMultipleChoiceQuestion";
 import DemoRankingScaleQuestion from "./elements/DemoRankingScaleQuestion";
 import DemoShortTextQuestion from "./elements/DemoShortTextQuestion";
-import DemoLongTextQuestion from "./elements/DemoLongTextQuestion";
 
 const surveyData = {
     "title": "Employee Feedback Survey",
@@ -87,26 +78,23 @@ const surveyData = {
 }
 
 
-export default function DemoSurveyQuestion() {
-    const [answerData, setAnswerData] = useState({user: {}});
-    const [questions, setQuestions] = useState(surveyData.questions);
-    const [currentQuestion, setCurrentQuestion] = useState(0);
-
-    const incrementAndDecrement = (action)=> {
-        if(action === "increment"){
-            setCurrentQuestion((prevValue)=> {
-                if(prevValue < questions.length - 1){
-                  return  prevValue + 1
-                }else{
-                    return  prevValue
+export default function DemoSurveyQuestion({ currentQuestion, setCurrentQuestion, surveyQuestions, setSurveyQuestions }) {
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const incrementAndDecrement = (action) => {
+        if (action === "increment") {
+            setCurrentIndex((prevValue) => {
+                if (prevValue < surveyQuestions.length - 1) {
+                    return prevValue + 1
+                } else {
+                    return prevValue
                 }
             })
-        }else if(action === "decrement"){
-            setCurrentQuestion((prevValue)=>{
-                if(prevValue > 0){
-                  return prevValue - 1
-                }else{
-                    return  prevValue
+        } else if (action === "decrement") {
+            setCurrentIndex((prevValue) => {
+                if (prevValue > 0) {
+                    return prevValue - 1
+                } else {
+                    return prevValue
                 }
             })
         }
@@ -122,50 +110,44 @@ export default function DemoSurveyQuestion() {
             <p className='text-gray-500 text-center text-xl md:text-2xl font-semibold mb-8'>Please provide your feedback on various aspects of your experience at our company.</p>
             <div className="container mx-auto bg-white py-6 rounded-xl relative pb-28 px-8">
                 <progress className="progress progress-success w-full md:w-4/6 mx-auto block h-1" value="70" max="100"></progress>
-                {
-                    !answerData?.user
-                        ?
-                        <DemoSurveyForm  />
-                        :
-                        <>
-                        {
-                            questions[currentQuestion]?.questionType === "multiple_choice" &&
-                            <DemoMultipleChoiceQuestion />
-                        }
-                        {
-                            questions[currentQuestion]?.questionType === "checkbox_grid" &&
-                            <DemoCheckBoxGridQuestion />
-                        }
-                        {
-                            questions[currentQuestion]?.questionType === "dropdown" &&
-                            <DemoDropDownQuestion />
+                <>
+                    {
+                        currentQuestion?.questionType === "multiple_choice" &&
+                        <DemoMultipleChoiceQuestion question={currentQuestion}  />
+                    }
+                    {
+                        currentQuestion?.questionType === "checkbox_grid" &&
+                        <DemoCheckBoxGridQuestion question={currentQuestion} />
+                    }
+                    {
+                        currentQuestion?.questionType === "dropdown" &&
+                        <DemoDropDownQuestion question={currentQuestion} />
 
-                        }
-                        {
-                            questions[currentQuestion]?.questionType === "linear_scale" &&
-                            <DemoLinearScaleQuestion />
-                        }
-                        {
-                            questions[currentQuestion]?.questionType === "ranking" &&
-                            <DemoRankingScaleQuestion />
-                        }
-                        {
-                            questions[currentQuestion]?.questionType === "sort_text" &&
-                            <DemoShortTextQuestion />
-                        }
-                        {
-                            questions[currentQuestion]?.questionType === "long_text" &&
-                            <DemoLongTextQuestion />
-                        }
+                    }
+                    {
+                        currentQuestion?.questionType === "linear_scale" &&
+                        <DemoLinearScaleQuestion question={currentQuestion} />
+                    }
+                    {
+                        currentQuestion?.questionType === "ranking" &&
+                        <DemoRankingScaleQuestion question={currentQuestion} />
+                    }
+                    {
+                        currentQuestion?.questionType === "sort_text" &&
+                        <DemoShortTextQuestion question={currentQuestion} />
+                    }
+                    {
+                        currentQuestion?.questionType === "long_text" &&
+                        <DemoLongTextQuestion question={currentQuestion} />
+                    }
 
-                        </>
-                }
+                </>
 
 
                 <div className="flex items-center justify-between py-1 bg-blue-200 absolute left-1/2 bottom-0 w-full md:w-4/6 rounded-full px-8 -translate-x-1/2 " >
-                    <button className={`btn btn-neutral ${currentQuestion > 0 ? "" : "btn-disabled"}`} onClick={()=> incrementAndDecrement('decrement')} >Prev</button>
-                    <p className="text-3xl font-bold">{currentQuestion + 1}/{questions.length}</p>
-                    <button className="btn btn-neutral" onClick={()=> incrementAndDecrement('increment')}>Next</button>
+                    <button className={`btn btn-neutral ${currentQuestion > 0 ? "" : "btn-disabled"}`} onClick={() => incrementAndDecrement('decrement')} >Prev</button>
+                    <p className="text-3xl font-bold">{currentIndex + 1}/{surveyQuestions.length}</p>
+                    <button className="btn btn-neutral" onClick={() => incrementAndDecrement('increment')}>Next</button>
                 </div>
             </div>
         </section>

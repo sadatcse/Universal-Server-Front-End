@@ -2,13 +2,13 @@
 
 import { useRef, useState } from "react";
 
-const question = {
-    "question": "What is your preferred method of communication?",
-    "questionType": "Dropdown Menu Questions",
-    "options": ["Email", "Phone", "Text Message", "In-Person Meeting"]
-}
+// const question = {
+//     "question": "What is your preferred method of communication?",
+//     "questionType": "Dropdown Menu Questions",
+//     "options": ["Email", "Phone", "Text Message", "In-Person Meeting"]
+// }
 
-function DemoDropDownQuestion() {
+function DemoDropDownQuestion({question}) {
     const [searchValue, setSearchValue] = useState([]);
     const [selectValue, setSelectValue] = useState("");
     const searchInput = useRef(null)

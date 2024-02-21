@@ -1,11 +1,11 @@
 
-const question = {
-    "question": "Which of the following benefits do you value the most? (Select all that apply)",
-    "questionType": "Multiple Choice Questions",
-    "options": ["Health insurance", "Paid time off", "Retirement plans", "Flexible work hours"]
-  }
+// const question = {
+//     "question": "Which of the following benefits do you value the most? (Select all that apply)",
+//     "questionType": "Multiple Choice Questions",
+//     "options": ["Health insurance", "Paid time off", "Retirement plans", "Flexible work hours"]
+//   }
   
-export default function DemoMultipleChoiceQuestion() {
+export default function DemoMultipleChoiceQuestion({question,setCurrentQuestion}) {
   return (
     <div>
         <h2 className='text-3xl font-bold text-center pt-8'>{question.question}</h2>

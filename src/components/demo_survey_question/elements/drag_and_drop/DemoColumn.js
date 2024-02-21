@@ -2,7 +2,6 @@ import {
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { Task } from "./Task";
 import { DemoTask } from "./DemoTask";
 
   

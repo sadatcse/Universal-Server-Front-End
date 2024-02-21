@@ -9,24 +9,23 @@ import {
 } from "@dnd-kit/core";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { useState } from "react";
-import { Column } from "./drag_and_drop/Column";
 import { DemoColumn } from "./drag_and_drop/DemoColumn";
 
 
 
 
-const question = {
-  "question": "Please rank the following aspects of your job from most important to least important:",
-  "questionType": "Ranking Questions",
-  "options": [{ "id": 1, "title": "Compensation" },
-  { "id": 2, "title": "Work-life balance" },
-  { "id": 3, "title": "Career growth opportunities" },
-  { "id": 4, "title": "Company culture" },
-  { "id": 5, "title": "Job security" }]
-}
+// const question = {
+//   "question": "Please rank the following aspects of your job from most important to least important:",
+//   "questionType": "Ranking Questions",
+//   "options": [{ "id": 1, "title": "Compensation" },
+//   { "id": 2, "title": "Work-life balance" },
+//   { "id": 3, "title": "Career growth opportunities" },
+//   { "id": 4, "title": "Company culture" },
+//   { "id": 5, "title": "Job security" }]
+// }
 
 
-export default function DemoRankingScaleQuestion() {
+export default function DemoRankingScaleQuestion({question}) {
   const [tasks, setTasks] = useState(question.options);
 
 

@@ -26,6 +26,7 @@ function AddQuestionArea({ setShowQuestionArea, surveyInitialInfo, setSurveyInit
         const newArray = surveyQuestions.filter((item) => item.question !== question)
         setSurveyQuestions(newArray)
     }
+
     return (
         <div className='w-full'>
             <div className='pb-6 flex items-center border-b-2 relative'>
@@ -71,6 +72,7 @@ function AddQuestionArea({ setShowQuestionArea, surveyInitialInfo, setSurveyInit
                         setSurveyQuestions={setSurveyQuestions}
                         questionTypeName={questionTypeName} setQuestionTypeName={setQuestionTypeName}
                         showSurveyForm={showSurveyForm} setShowSurveyForm={setShowSurveyForm}
+                        surveyQuestions={surveyQuestions}
 
                     />
                     : null

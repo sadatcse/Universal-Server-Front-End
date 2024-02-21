@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const question = {
-    "question": "On a scale of 1 to 10, how likely are you to recommend our company to a friend or colleague?",
-    "questionType": "Rating Scale Questions",
-    "options": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-  };
+// const question = {
+//     "question": "On a scale of 1 to 10, how likely are you to recommend our company to a friend or colleague?",
+//     "questionType": "Rating Scale Questions",
+//     "options": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+//   };
 
-function DemoLinearScaleQuestion() {
+function DemoLinearScaleQuestion({question}) {
     const [searchValue, setSearchValue] = useState([]);
     const [selectedLabel, setSelectedLabel] = useState(0);
     const searchInput = useRef(null)
