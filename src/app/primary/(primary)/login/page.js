@@ -1,9 +1,6 @@
 'use client'
-
-import { signIn } from "next-auth/client"
 import { usePathname, useRouter } from 'next/navigation';
-import { useContext, useState } from "react";
-import toast from 'react-hot-toast';
+import { useState } from "react";
 import { FcGoogle } from 'react-icons/fc';
 import { FiLock, FiMail, } from 'react-icons/fi';
 
@@ -17,20 +14,6 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        const result = await signIn('credentials', {
-          redirect: false,
-          email: email,
-          password: password,
-        });
-    
-        if (result?.ok) {
-          toast.success('Successful login!');
-        } else {
-          toast.error('Login failed. Please check your credentials.');
-        }
-      };
 
     const handleGoogleSignIn = async () => {
 
@@ -71,7 +54,7 @@ const Login = () => {
      
                     </div>
                     <div className="space-y-2">
-                        <button onClick={handleLogin} className="w-full bg-blue-500 text-white p-3 rounded-lg">
+                        <button className="w-full bg-blue-500 text-white p-3 rounded-lg">
                             Login
                         </button>
                         <button onClick={handleGoogleSignIn} className="w-full bg-white border border-gray-400 p-3 flex items-center justify-center rounded-lg">

@@ -27,7 +27,7 @@ const countries = [
     "Zambia", "Zimbabwe"
 ]
 
-function SurveyForm() {
+function DemoSurveyForm() {
     return (
         <section className="w-[90%]  mx-auto mt-3 ">
             <h2 className='text-3xl font-bold text-center pt-8'>Please fill with your details</h2>
@@ -86,4 +86,4 @@ function SurveyForm() {
     )
 }
 
-export default SurveyForm
+export default DemoSurveyForm

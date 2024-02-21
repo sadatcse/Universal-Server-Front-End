@@ -3,7 +3,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { GrDrag } from "react-icons/gr";
 
 
-export const Task = ({ id, title, index }) => {
+export const DemoTask = ({ id, title, index }) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id });
 

@@ -5,7 +5,7 @@ const question = {
     "options": ["Health insurance", "Paid time off", "Retirement plans", "Flexible work hours"]
   }
   
-export default function MultipleChoiceQuestion() {
+export default function DemoMultipleChoiceQuestion() {
   return (
     <div>
         <h2 className='text-3xl font-bold text-center pt-8'>{question.question}</h2>

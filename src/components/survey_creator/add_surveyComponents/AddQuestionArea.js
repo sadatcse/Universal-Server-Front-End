@@ -7,7 +7,7 @@ import AddQuestionModal from "./AddQuestionModal";
 import EditModal from "./EditModal";
 import QuestionCard from "./QuestionCard";
 
-function AddQuestionArea({ setShowQuestionArea,  surveyInitialInfo, setSurveyInitialInfo }) {
+function AddQuestionArea({ setShowQuestionArea, surveyInitialInfo, setSurveyInitialInfo }) {
     const [openEditModal, setOpenEditModal] = useState(false)
     const [openAddQuestionModal, setOpenAddQuestionModal] = useState(false)
     const [surveyQuestions, setSurveyQuestions] = useState([])
@@ -22,15 +22,15 @@ function AddQuestionArea({ setShowQuestionArea,  surveyInitialInfo, setSurveyIni
         setShowQuestionArea(false)
     }
 
-    const deleteQuestion = (question)=> {
+    const deleteQuestion = (question) => {
         const newArray = surveyQuestions.filter((item) => item.question !== question)
         setSurveyQuestions(newArray)
-       }
+    }
     return (
         <div className='w-full'>
             <div className='pb-6 flex items-center border-b-2 relative'>
-            <button className="absolute top-0 left-1 hover:bg-stone-200 text-neutral-800 btn text-3xl flex justify-center items-center" onClick={onBack} ><IoMdArrowRoundBack /></button>
-            <h2 className="text-3xl font-bold ml-20">{surveyInitialInfo?.title}</h2>
+                <button className="absolute top-0 left-1 hover:bg-stone-200 text-neutral-800 btn text-3xl flex justify-center items-center" onClick={onBack} ><IoMdArrowRoundBack /></button>
+                <h2 className="text-3xl font-bold ml-20">{surveyInitialInfo?.title}</h2>
                 <div className="absolute top-0 right-6 flex items-center gap-2">
                     <button className="btn btn-md btn-neutral" onClick={() => setOpenEditModal(true)} ><FaEdit /></button>
 
@@ -43,9 +43,9 @@ function AddQuestionArea({ setShowQuestionArea,  surveyInitialInfo, setSurveyIni
                 {
                     surveyQuestions && surveyQuestions.map((item, idx) => (
                         <QuestionCard key={idx} item={item} deleteQuestion={deleteQuestion} setQuestionTypeName={setQuestionTypeName}
-                        setOpenAddQuestionModal={setOpenAddQuestionModal}
-                        setShowSurveyForm={setShowSurveyForm}
-                         />
+                            setOpenAddQuestionModal={setOpenAddQuestionModal}
+                            setShowSurveyForm={setShowSurveyForm}
+                        />
 
                     ))
                 }

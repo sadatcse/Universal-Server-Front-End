@@ -8,7 +8,7 @@ const question = {
     "options": ["Email", "Phone", "Text Message", "In-Person Meeting"]
 }
 
-function DropDownQuestion() {
+function DemoDropDownQuestion() {
     const [searchValue, setSearchValue] = useState([]);
     const [selectValue, setSelectValue] = useState("");
     const searchInput = useRef(null)
@@ -61,4 +61,4 @@ function DropDownQuestion() {
     )
 }
 
-export default DropDownQuestion
+export default DemoDropDownQuestion

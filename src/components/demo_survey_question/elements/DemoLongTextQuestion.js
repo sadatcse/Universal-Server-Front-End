@@ -2,7 +2,7 @@ const question = {
     "question": "What improvements would you suggest to make our workplace better?",
     "questionType": "Text Entry Questions"
   }
-function LongTextQuestion() {
+function DemoLongTextQuestion() {
     return (
         <div>
             <h2 className='text-3xl font-bold text-center pt-8 pb-10'>{question?.question}</h2>
@@ -14,4 +14,4 @@ function LongTextQuestion() {
     )
 }
 
-export default LongTextQuestion
+export default DemoLongTextQuestion
