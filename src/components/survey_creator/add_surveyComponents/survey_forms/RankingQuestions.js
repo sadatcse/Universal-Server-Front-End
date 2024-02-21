@@ -1,10 +1,10 @@
 "use client"
-import { useRef, useState } from "react";
-import { FaArrowLeftLong } from "react-icons/fa6";
+import { useEffect, useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
 
-function RankingQuestions({setShowSurveyForm, setSurveyQuestions, setOpenAddQuestionModal}) {
-  const [options, setOptions] = useState([]);
+function RankingQuestions({setShowSurveyForm, setSurveyQuestions, setOpenAddQuestionModal, currentQuestion, setCurrentQuestion, setQuestionTypeName, questionTypeName}) {
+  const [options, setOptions] = useState(currentQuestion?.options || []);
+  const [indexId, setIndexId] = useState(1)
   const optionInput = useRef(null)
   const questionInput = useRef(null)
     const onSubmit = (e)=> {
@@ -15,16 +15,17 @@ function RankingQuestions({setShowSurveyForm, setSurveyQuestions, setOpenAddQues
     const onSave = ()=> {
       const question = questionInput.current.value;
         console.log({question, options})
-        const newObject = {type: "Ranking Questions" ,question, options}
+        const newObject = {type: "ranking" ,question, options}
         setSurveyQuestions((prevItem)=> [...prevItem, newObject])
         setOpenAddQuestionModal(false)
       }
 
       const addOption = ()=> {
-        const name = optionInput.current.value;
+        const title = optionInput.current.value;
         
-        const newArray = [...options, [name]]
+        const newArray = [...options, {id: indexId, title}]
         setOptions(newArray)
+        setIndexId(indexId + 1)
         optionInput.current.value = "";
       } 
 
@@ -35,16 +36,27 @@ function RankingQuestions({setShowSurveyForm, setSurveyQuestions, setOpenAddQues
         }
       }
 
-      const deleteOption = (name)=> {
-       const newArray = options.filter((item) => item[0] !== name)
+      const deleteOption = (id)=> {
+       const newArray = options.filter((item) => item.id !== id)
        console.log(newArray)
         setOptions(newArray)
       }
+
+      useEffect(()=> {
+        // set current question in the current question state object
+        const question = questionInput.current.value;
+        
+        
+        const newObject = {questionType: "ranking" , question, options: options}
+        setCurrentQuestion(newObject)
+      },[setCurrentQuestion, options])
+
+
   return (
     <div class="p-4 py-8 relative">
         <div class="heading text-center font-bold text-4xl m-5 text-gray-800 bg-white ">Ranking Questions</div>
         
-        <form class="editor mx-auto w-10/12 flex flex-col text-gray-800  rounded-md shadow-xl p-4  max-w-2xl bg-stone-200 md:min-w-[500px] lg:min-w-[700px]" onSubmit={onSubmit}>
+        <form class="editor mx-auto w-full flex flex-col text-gray-800 rounded-md shadow-xl p-4 bg-stone-200" onSubmit={onSubmit}>
           <label htmlFor="title" className="font-bold text-2xl">Question</label>
             <input class="title bg-white shadow-md p-2 mb-4 outline-none rounded" spellcheck="false" id="title" placeholder="Title" type="text" required name="question" ref={questionInput} />
           <div className="flex w-full justify-stretch rounded-lg overflow-hidden gap-3">
@@ -52,8 +64,8 @@ function RankingQuestions({setShowSurveyForm, setSurveyQuestions, setOpenAddQues
               <h2 className="font-bold text-2xl">Options</h2>
               <ul className="space-y-1 list-disc list-inside min-h-24" >
                 {
-                  options.map((optionName, idx)=> (
-                    <li key={idx} className="relative">{optionName[0]} <div className="absolute top-1/2 right-3 -translate-y-1/2 bg-white rounded-full" onClick={()=> deleteOption(optionName[0])}><IoClose /></div></li>
+                  options.map((item, idx)=> (
+                    <li key={idx} className="relative">{item.title} <div className="absolute top-1/2 right-3 -translate-y-1/2 bg-white rounded-full" onClick={()=> deleteOption(item.id)}><IoClose /></div></li>
 
                   ))
                 }
