@@ -92,6 +92,7 @@ const Navbar = () => {
 
           </label>
           <Link href="/primary/join" className="btn border border-transparent rounded-md bg-[#00ABE4] text-white shadow font-semibold  dark:bg-transparent dark:border-white hover:bg-white hover:border-[#00abe4] hover:border dark:hover:text-black dark:hover:bg-white dark:hover:border-transparent dark:text-white  hover:text-[#00ABE4] transition duration-500 ease-in-out">Join Now</Link>
+          
         </div>
       </div>
     </header>

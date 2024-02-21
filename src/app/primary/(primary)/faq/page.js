@@ -1,8 +1,10 @@
-'use client'
 
 import FaqAnswer from "./sections/FaqAnswer";
 import FaqHero from "./sections/FaqHero";
-
+export const metadata = {
+  title: 'Universal Survey - FAQ',
+  description: 'Find clear and concise answers to frequently asked questions about Universal Survey, including how to participate in surveys, create your own, and understand our terms of service.',
+}
 const FaqPage = () => {
   const faqData = [
     {
