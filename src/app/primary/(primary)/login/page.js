@@ -55,7 +55,7 @@ const Login = () => {
      
                     </div>
                     <div className="space-y-2">
-                        <button onClick={handleLogin} className="w-full bg-blue-500 text-white p-3 rounded-lg">
+                        <button className="w-full bg-blue-500 text-white p-3 rounded-lg">
                             Login
                         </button>
                         <button onClick={handleGoogleSignIn} className="w-full bg-white border border-gray-400 p-3 flex items-center justify-center rounded-lg">
