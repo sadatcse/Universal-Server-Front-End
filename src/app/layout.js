@@ -4,14 +4,13 @@ import { Toaster } from 'react-hot-toast'
 import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
-  title: 'Universal Survey',
-  description: 'made by Team WebD',
-}
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+      <link rel="icon" type="image/png" href="https://seeklogo.com/images/G/google-surveys-logo-99C8B79BA5-seeklogo.com.png"/>
+      </head>
       <body className={inter.className} >
         <AuthProvider>
           <Toaster position="top-center" />

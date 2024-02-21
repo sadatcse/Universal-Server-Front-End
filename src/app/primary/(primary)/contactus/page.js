@@ -1,5 +1,9 @@
 import Image from "next/image";
 
+export const metadata = {
+    title: 'Universal Survey - Contact Us',
+    description: 'Have questions or feedback? Reach out to the Universal Survey team via various channels. We are here to assist you and appreciate your input.',
+  }
 const ContactUS = () => {
     return (
         <section className="hero container mx-auto my-16 relative overflow-hidden px-0 lg:px-24">
