@@ -121,10 +121,6 @@ const surveyData = {
     ]
 }
 
-
-
-
-
 export default function SurveyQuestion() {
     const [userData, setUserData] = useState({});
     const [questions, setQuestions] = useState(surveyData.questions);
@@ -175,7 +171,6 @@ export default function SurveyQuestion() {
 
 
     }, [currentQuestion, questions])
-
 
     return (
         <section className=" relative z-[1]  dark:bg-transparent pb-16">

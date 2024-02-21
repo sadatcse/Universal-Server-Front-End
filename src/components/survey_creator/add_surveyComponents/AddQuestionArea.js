@@ -16,7 +16,7 @@ function AddQuestionArea({ setShowQuestionArea, surveyInitialInfo, setSurveyInit
     const [showSurveyForm, setShowSurveyForm] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState({});
     const [isDemo, setIsDemo] = useState(false);
-    console.log(surveyQuestions)
+    
     const onSaveSurvey = () => {
         localStorage.removeItem("my_survey");
         setShowQuestionArea(false)
