@@ -78,7 +78,7 @@ const surveyData = {
 }
 
 
-export default function DemoSurveyQuestionModal({ currentQuestion, setCurrentQuestion, surveyQuestions, setSurveyQuestions }) {
+export default function DemoSurveyQuestionModal({ surveyQuestions, setSurveyQuestions }) {
     const [currentIndex, setCurrentIndex] = useState(0)
     const incrementAndDecrement = (action) => {
         if (action === "increment") {
@@ -113,39 +113,39 @@ export default function DemoSurveyQuestionModal({ currentQuestion, setCurrentQue
                 <>
                     {
                         surveyQuestions[currentIndex]?.questionType === "multiple_choice" &&
-                        <DemoMultipleChoiceQuestion question={surveyQuestions[currentIndex]} setCurrentQuestion={setCurrentQuestion}  />
+                        <DemoMultipleChoiceQuestion question={surveyQuestions[currentIndex]}   />
                     }
                     {
                         surveyQuestions[currentIndex]?.questionType === "checkbox_grid" &&
-                        <DemoCheckBoxGridQuestion question={surveyQuestions[currentIndex]} setCurrentQuestion={setCurrentQuestion} />
+                        <DemoCheckBoxGridQuestion question={surveyQuestions[currentIndex]} />
                     }
                     {
                         surveyQuestions[currentIndex]?.questionType === "dropdown" &&
-                        <DemoDropDownQuestion question={surveyQuestions[currentIndex]} setCurrentQuestion={setCurrentQuestion} />
+                        <DemoDropDownQuestion question={surveyQuestions[currentIndex]}  />
 
                     }
                     {
                         surveyQuestions[currentIndex]?.questionType === "linear_scale" &&
-                        <DemoLinearScaleQuestion question={surveyQuestions[currentIndex]} setCurrentQuestion={setCurrentQuestion} />
+                        <DemoLinearScaleQuestion question={surveyQuestions[currentIndex]}  />
                     }
                     {
                         surveyQuestions[currentIndex]?.questionType === "ranking" &&
-                        <DemoRankingScaleQuestion question={surveyQuestions[currentIndex]} setCurrentQuestion={setCurrentQuestion} />
+                        <DemoRankingScaleQuestion question={surveyQuestions[currentIndex]}  />
                     }
                     {
                         surveyQuestions[currentIndex]?.questionType === "short_text" &&
-                        <DemoShortTextQuestion question={surveyQuestions[currentIndex]} setCurrentQuestion={setCurrentQuestion} />
+                        <DemoShortTextQuestion question={surveyQuestions[currentIndex]}  />
                     }
                     {
                         surveyQuestions[currentIndex]?.questionType === "long_text" &&
-                        <DemoLongTextQuestion question={surveyQuestions[currentIndex]} setCurrentQuestion={setCurrentQuestion} />
+                        <DemoLongTextQuestion question={surveyQuestions[currentIndex]}  />
                     }
 
                 </>
 
 
                 <div className="flex items-center justify-between py-1 bg-blue-200 absolute left-1/2 bottom-0 w-full md:w-4/6 rounded-full px-8 -translate-x-1/2 " >
-                    <button className={`btn btn-neutral ${currentQuestion > 0 ? "" : "btn-disabled"}`} onClick={() => incrementAndDecrement('decrement')} >Prev</button>
+                    <button className={`btn btn-neutral ${currentIndex > 0 ? "" : "btn-disabled"}`} onClick={() => incrementAndDecrement('decrement')} >Prev</button>
                     <p className="text-3xl font-bold">{currentIndex + 1}/{surveyQuestions.length}</p>
                     <button className="btn btn-neutral" onClick={() => incrementAndDecrement('increment')}>Next</button>
                 </div>

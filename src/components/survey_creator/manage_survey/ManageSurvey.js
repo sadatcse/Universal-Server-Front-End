@@ -1,194 +1,268 @@
 "use client"
+import DemoModal from "@/components/demo_survey_question/elements/drag_and_drop/DemoModal";
 import { useState } from "react";
 import ManageHeader from "./components/ManageHeader";
 import SurveyCard from "./components/SurveyCard";
 
 const surveyData = [
-  {
-      "SurveyTitle": "Customer Satisfaction Survey",
-      "SurveyDescription": "Gather feedback from customers about their experience with our products and services.",
-      "SurveyEndDate": "2023-12-31",
-      "SurveyParticipants": 1500,
-      "SurveyResponseRate": "85%",
-      "Questions": [
-          {
-              "Question": "How satisfied are you with our products?",
-              "Options": ["Very satisfied", "Satisfied", "Neutral", "Dissatisfied"]
-          },
-          {
-              "Question": "How would you rate our customer service?",
-              "Options": ["Excellent", "Good", "Fair", "Poor"]
-          },
-          {
-              "Question": "Would you recommend our products to others?",
-              "Options": ["Definitely yes", "Probably yes", "Not sure", "Probably not"]
-          },
-          {
-              "Question": "How often do you use our products?",
-              "Options": ["Daily", "Weekly", "Monthly", "Rarely"]
-          },
-          {
-              "Question": "What features do you find most useful?",
-              "Options": ["Feature A", "Feature B", "Feature C", "Feature D"]
-          },
-          {
-              "Question": "How likely are you to purchase from us again?",
-              "Options": ["Very likely", "Likely", "Neutral", "Unlikely"]
-          }
-      ]
-  },
-  {
-      "SurveyTitle": "Employee Engagement Survey",
-      "SurveyDescription": "Measure employee satisfaction and identify areas for improvement in the workplace.",
-      "SurveyEndDate": "2024-01-15",
-      "SurveyParticipants": 500,
-      "SurveyResponseRate": "70%",
-      "Questions": [
-          {
-              "Question": "Do you feel valued in the workplace?",
-              "Options": ["Strongly agree", "Agree", "Disagree", "Strongly disagree"]
-          },
-          {
-              "Question": "Do you have clear expectations for your role?",
-              "Options": ["Yes, very clear", "Somewhat clear", "Not very clear", "Not clear at all"]
-          },
-          {
-              "Question": "Do you receive constructive feedback from your manager?",
-              "Options": ["Regularly", "Sometimes", "Rarely", "Never"]
-          },
-          {
-              "Question": "Do you feel recognized for your achievements?",
-              "Options": ["Yes, always", "Sometimes", "Rarely", "Never"]
-          },
-          {
-              "Question": "Do you have opportunities for professional development?",
-              "Options": ["Yes, many opportunities", "Some opportunities", "Few opportunities", "No opportunities"]
-          },
-          {
-              "Question": "Do you feel motivated to perform your best?",
-              "Options": ["Very motivated", "Motivated", "Neutral", "Demotivated"]
-          }
-      ]
-  },
-  {
-      "SurveyTitle": "Product Feedback Survey",
-      "SurveyDescription": "Collect feedback from users about the latest product features and enhancements.",
-      "SurveyEndDate": "2024-02-05",
-      "SurveyParticipants": 1000,
-      "SurveyResponseRate": "90%",
-      "Questions": [
-          {
-              "Question": "Which product feature do you like the most?",
-              "Options": ["Feature X", "Feature Y", "Feature Z", "Other"]
-          },
-          {
-              "Question": "What improvements would you like to see in the next release?",
-              "Options": ["More customization options", "Better performance", "New features", "Bug fixes"]
-          },
-          {
-              "Question": "How satisfied are you with the user interface?",
-              "Options": ["Very satisfied", "Satisfied", "Neutral", "Dissatisfied"]
-          },
-          {
-              "Question": "How likely are you to recommend our product to others?",
-              "Options": ["Very likely", "Likely", "Neutral", "Unlikely"]
-          },
-          {
-              "Question": "Do you find the product easy to use?",
-              "Options": ["Very easy", "Easy", "Somewhat easy", "Difficult"]
-          },
-          {
-              "Question": "What additional features would you like to see?",
-              "Options": ["Feature A", "Feature B", "Feature C", "Feature D"]
-          }
-      ]
-  },
-  {
-      "SurveyTitle": "Website Usability Survey",
-      "SurveyDescription": "Evaluate the ease of use and navigation of our website.",
-      "SurveyEndDate": "2024-03-20",
-      "SurveyParticipants": 800,
-      "SurveyResponseRate": "75%",
-      "Questions": [
-          {
-              "Question": "How easy is it to find what you're looking for on our website?",
-              "Options": ["Very easy", "Easy", "Somewhat easy", "Difficult"]
-          },
-          {
-              "Question": "Are you satisfied with the website's loading speed?",
-              "Options": ["Very satisfied", "Satisfied", "Neutral", "Dissatisfied"]
-          },
-          {
-              "Question": "How would you rate the overall design of the website?",
-              "Options": ["Excellent", "Good", "Fair", "Poor"]
-          },
-          {
-              "Question": "Do you encounter any difficulties during checkout?",
-              "Options": ["No difficulties", "Occasionally", "Frequently", "Always"]
-          },
-          {
-              "Question": "What feature would you like to see improved on the website?",
-              "Options": ["Feature A", "Feature B", "Feature C", "Feature D"]
-          },
-          {
-              "Question": "How likely are you to return to our website in the future?",
-              "Options": ["Very likely", "Likely", "Neutral", "Unlikely"]
-          }
-      ]
-  },
-  {
-      "SurveyTitle": "Training Program Feedback Survey",
-      "SurveyDescription": "Gather feedback from participants about our training programs and courses.",
-      "SurveyEndDate": "2024-04-10",
-      "SurveyParticipants": 300,
-      "SurveyResponseRate": "80%",
-      "Questions": [
-          {
-              "Question": "Was the training content relevant to your needs?",
-              "Options": ["Very relevant", "Relevant", "Neutral", "Irrelevant"]
-          },
-          {
-              "Question": "Did the training meet your expectations?",
-              "Options": ["Exceeded expectations", "Met expectations", "Did not meet expectations", "Not applicable"]
-          },
-          {
-              "Question": "How satisfied are you with the training delivery?",
-              "Options": ["Very satisfied", "Satisfied", "Neutral", "Dissatisfied"]
-          },
-          {
-              "Question": "Would you recommend this training to others?",
-              "Options": ["Definitely yes", "Probably yes", "Not sure", "Probably not"]
-          },
-          {
-              "Question": "What improvements would you suggest for future training sessions?",
-              "Options": ["More interactive sessions", "Better materials", "More practice exercises", "Other"]
-          },
-          {
-              "Question": "How likely are you to apply what you've learned in your work?",
-              "Options": ["Very likely", "Likely", "Neutral", "Unlikely"]
-          }
-      ]
-  }
+    {
+        "title": "Employee Feedback Survey",
+        "description": "Please provide your feedback on various aspects of your experience at our company.",
+        "questions": [
+            {
+                "question": "Which of the following benefits do you value the most? (Select all that apply)",
+                "answer": "",
+                "id": 1,
+                "questionType": "multiple_choice",
+                "options": ["Health insurance", "Paid time off", "Retirement plans", "Flexible work hours"]
+            },
+            {
+                "question": "Please rate your satisfaction with the following aspects of our service:",
+                "answer": {
+                    "0": {
+                        "Very Satisfied": false,
+                        "Satisfied": false,
+                        "Neutral": false,
+                        "Dissatisfied": false,
+                        "Very Dissatisfied": false
+                    },
+                    "1": {
+                        "Very Satisfied": false,
+                        "Satisfied": false,
+                        "Neutral": false,
+                        "Dissatisfied": false,
+                        "Very Dissatisfied": false
+                    },
+                    "2": {
+                        "Very Satisfied": false,
+                        "Satisfied": false,
+                        "Neutral": false,
+                        "Dissatisfied": false,
+                        "Very Dissatisfied": false
+                    },
+                    "3": {
+                        "Very Satisfied": false,
+                        "Satisfied": false,
+                        "Neutral": false,
+                        "Dissatisfied": false,
+                        "Very Dissatisfied": false
+                    }
+                },
+                "id": 2,
+                "questionType": "checkbox_grid",
+                "options": {
+                    "columnLabels": ["Customer Support", "Product Quality", "Delivery Time", "Website Usability"],
+                    "rowLabels": ["Very Satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very Dissatisfied"]
+                }
+            },
+            {
+                "question": "On a scale of 1 to 10, how likely are you to recommend our company to a friend or colleague?",
+                "answer": "",
+                "id": 3,
+                "questionType": "linear_scale",
+                "options": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+            },
+            {
+                "question": "Where Your office?",
+                "answer": "",
+                "id": 4,
+                "questionType": "dropdown",
+                "options": [
+                    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
+                    "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
+                    "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic",
+                    "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
+                    "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia",
+                    "Fiji", "Finland", "France",
+                    "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
+                    "Haiti", "Honduras", "Hungary",
+                    "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Ivory Coast",
+                    "Jamaica", "Japan", "Jordan",
+                    "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan",
+                    "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
+                    "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar",
+                    "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway",
+                    "Oman",
+                    "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal",
+                    "Qatar",
+                    "Romania", "Russia", "Rwanda",
+                    "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria",
+                    "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu",
+                    "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan",
+                    "Vanuatu", "Vatican City", "Venezuela", "Vietnam",
+                    "Yemen",
+                    "Zambia", "Zimbabwe"
+                ]
+            },
+            {
+                "question": "Please rank the following aspects of your job from most important to least important:",
+                "answer": "",
+                "id": 5,
+                "questionType": "ranking",
+                "options": [
+                    { "id": 1, "title": "Compensation" },
+                    { "id": 2, "title": "Work-life balance" },
+                    { "id": 3, "title": "Career growth opportunities" },
+                    { "id": 4, "title": "Company culture" },
+                    { "id": 5, "title": "Job security" }
+                ]
+            },
+            {
+                "question": "What improvements would you suggest to make our workplace better?",
+                "answer": "",
+                "id": 6,
+                "questionType": "sort_text"
+            },
+            {
+                "question": "What are your career goals for the next five years?",
+                "answer": "",
+                "id": 7,
+                "questionType": "long_text"
+            }
+        ]
+    },
+    {
+        "title": "Customer Satisfaction Survey",
+        "description": "Please take a moment to share your feedback about our products and services.",
+        "questions": [
+            {
+                "question": "How satisfied are you with the quality of our products?",
+                "answer": "",
+                "id": 1,
+                "questionType": "linear_scale",
+                "options": ["1", "2", "3", "4", "5"]
+            },
+            {
+                "question": "What is your primary reason for purchasing our products?",
+                "answer": "",
+                "id": 2,
+                "questionType": "multiple_choice",
+                "options": ["Quality", "Price", "Brand reputation", "Customer service"]
+            },
+            {
+                "question": "How likely are you to recommend our company to others?",
+                "answer": "",
+                "id": 3,
+                "questionType": "linear_scale",
+                "options": ["1", "2", "3", "4", "5"]
+            },
+            {
+                "question": "Which aspect of our service needs the most improvement?",
+                "answer": "",
+                "id": 4,
+                "questionType": "dropdown",
+                "options": ["Shipping speed", "Communication", "Product variety", "Return policy"]
+            },
+            {
+                "question": "Please share any additional comments or suggestions.",
+                "answer": "",
+                "id": 5,
+                "questionType": "long_text"
+            }
+        ]
+    },
+    {
+        "title": "Website Feedback Survey",
+        "description": "Help us improve your online experience by providing feedback on our website.",
+        "questions": [
+            {
+                "question": "How easy was it to find the information you were looking for on our website?",
+                "answer": "",
+                "id": 1,
+                "questionType": "linear_scale",
+                "options": ["1", "2", "3", "4", "5"]
+            },
+            {
+                "question": "Which section of our website do you visit most frequently?",
+                "answer": "",
+                "id": 2,
+                "questionType": "multiple_choice",
+                "options": ["Homepage", "Products", "Services", "Contact Us", "About Us"]
+            },
+            {
+                "question": "Are you satisfied with the loading speed of our website?",
+                "answer": "",
+                "id": 3,
+                "questionType": "linear_scale",
+                "options": ["1", "2", "3", "4", "5"]
+            },
+            {
+                "question": "How likely are you to recommend our website to others?",
+                "answer": "",
+                "id": 4,
+                "questionType": "linear_scale",
+                "options": ["1", "2", "3", "4", "5"]
+            },
+            {
+                "question": "What features or improvements would you like to see on our website?",
+                "answer": "",
+                "id": 5,
+                "questionType": "long_text"
+            }
+        ]
+    },
+    {
+        "title": "Training Program Feedback Survey",
+        "description": "Please provide your feedback on our recent training program.",
+        "questions": [
+            {
+                "question": "How satisfied were you with the content covered in the training sessions?",
+                "answer": "",
+                "id": 1,
+                "questionType": "linear_scale",
+                "options": ["1", "2", "3", "4", "5"]
+            },
+            {
+                "question": "Did the training program meet your expectations?",
+                "answer": "",
+                "id": 2,
+                "questionType": "multiple_choice",
+                "options": ["Yes", "No", "Partially"]
+            },
+            {
+                "question": "How likely are you to apply the knowledge gained from the training in your work?",
+                "answer": "",
+                "id": 3,
+                "questionType": "linear_scale",
+                "options": ["1", "2", "3", "4", "5"]
+            },
+            {
+                "question": "What additional topics would you like to see covered in future training sessions?",
+                "answer": "",
+                "id": 4,
+                "questionType": "long_text"
+            }
+        ]
+    }
 ]
 
 
 function ManageSurvey() {
-  const [manageSurveyData ,setManageSurveyData ] = useState(surveyData);
-  const [modalData ,setModalData ] = useState({});
-  return (
-    <>
-      <ManageHeader surveyData={surveyData} setManageSurveyData={setManageSurveyData} />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4 gap-6">
-        {
-          manageSurveyData && manageSurveyData.map((data, idx)=> (
+    const [manageSurveyData, setManageSurveyData] = useState(surveyData);
+    const [currentSurvey, setCurrentSurvey] = useState({});
+    const [isOpenModal, setIsOpenModal] = useState(false)
+    return (
+        <>
+            <ManageHeader surveyData={surveyData} setManageSurveyData={setManageSurveyData} />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4 gap-6">
+                {
+                    manageSurveyData && manageSurveyData.map((survey, idx) => (
 
-            <SurveyCard data={data} key={idx} setModalData={setModalData} />
-          ))
-        }
-            
-        </div>
-    </>
-  )
+                        <SurveyCard survey={survey} key={idx} setCurrentSurvey={setCurrentSurvey} setIsOpenModal={setIsOpenModal} />
+                    ))
+                }
+
+            </div>
+
+            {
+                isOpenModal ?
+                <DemoModal
+                         surveyQuestions={currentSurvey} setSurveyQuestions={setCurrentSurvey} setOpenDemoModal={setIsOpenModal}
+                    />
+                    : null
+            }
+        </>
+    )
 }
 
 export default ManageSurvey

@@ -5,7 +5,7 @@ function ManageSearchBar({surveyData , setManageSurveyData}) {
         const userInput = e.target.value;
         console.log(userInput)
 
-        const filterResult = surveyData.filter(item => item.SurveyTitle.toLowerCase().includes(userInput.toLowerCase()))
+        const filterResult = surveyData.filter(item => item.question.toLowerCase().includes(userInput.toLowerCase()))
 
         setManageSurveyData(filterResult)
     }
