@@ -1,6 +1,6 @@
 import CheckboxGridInput from "./checkbox_grid_question/CheckboxGridInput";
 
-export default function CheckBoxGridQuestion({ question, setQuestions }) {
+export default function CheckBoxGridQuestion({ question, setQuestions , isViewResult}) {
     const onCheck = (key, label) => {
 
         setQuestions(prevValue => {
@@ -16,7 +16,7 @@ export default function CheckBoxGridQuestion({ question, setQuestions }) {
         })
     }
     return (
-        <div>
+        <div className={isViewResult ? "pointer-events-none": ""}>
             <h2 className='text-3xl font-bold text-center pt-8 pb-10'>{question?.question}</h2>
             <div className="overflow-x-auto">
                 <table className="table">

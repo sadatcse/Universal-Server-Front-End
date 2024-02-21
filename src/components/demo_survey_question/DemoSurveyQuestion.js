@@ -8,6 +8,14 @@ import MultipleChoiceQuestion from "./elements/MultipleChoiceQuestion";
 import RankingScaleQuestion from "./elements/RankingScaleQuestion";
 import ShortTextQuestion from "./elements/ShortTextQuestion";
 import SurveyForm from "./elements/SurveyForm";
+import DemoSurveyForm from "./elements/DemoSurveyForm";
+import DemoMultipleChoiceQuestion from "./elements/DemoMultipleChoiceQuestion";
+import DemoCheckBoxGridQuestion from "./elements/DemoCheckBoxGridQuestion";
+import DemoDropDownQuestion from "./elements/DemoDropDownQuestion";
+import DemoLinearScaleQuestion from "./elements/DemoLinearScaleQuestion";
+import DemoRankingScaleQuestion from "./elements/DemoRankingScaleQuestion";
+import DemoShortTextQuestion from "./elements/DemoShortTextQuestion";
+import DemoLongTextQuestion from "./elements/DemoLongTextQuestion";
 
 const surveyData = {
     "title": "Employee Feedback Survey",
@@ -79,7 +87,7 @@ const surveyData = {
 }
 
 
-export default function SurveyQuestion() {
+export default function DemoSurveyQuestion() {
     const [answerData, setAnswerData] = useState({user: {}});
     const [questions, setQuestions] = useState(surveyData.questions);
     const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -104,8 +112,6 @@ export default function SurveyQuestion() {
         }
     }
 
-    console.log(questions[currentQuestion]?.questionType)
-    console.log("currentQuestion", currentQuestion)
     return (
         <section className=" relative z-[1]  dark:bg-transparent pb-16">
             <div className="w-full h-4/6 absolute top-0 left-0 z-[-1] bg-blue-200"  >
@@ -119,37 +125,37 @@ export default function SurveyQuestion() {
                 {
                     !answerData?.user
                         ?
-                        <SurveyForm  />
+                        <DemoSurveyForm  />
                         :
                         <>
                         {
                             questions[currentQuestion]?.questionType === "multiple_choice" &&
-                            <MultipleChoiceQuestion />
+                            <DemoMultipleChoiceQuestion />
                         }
                         {
                             questions[currentQuestion]?.questionType === "checkbox_grid" &&
-                            <CheckBoxGridQuestion />
+                            <DemoCheckBoxGridQuestion />
                         }
                         {
                             questions[currentQuestion]?.questionType === "dropdown" &&
-                            <DropDownQuestion />
+                            <DemoDropDownQuestion />
 
                         }
                         {
                             questions[currentQuestion]?.questionType === "linear_scale" &&
-                            <LinearScaleQuestion />
+                            <DemoLinearScaleQuestion />
                         }
                         {
                             questions[currentQuestion]?.questionType === "ranking" &&
-                            <RankingScaleQuestion />
+                            <DemoRankingScaleQuestion />
                         }
                         {
                             questions[currentQuestion]?.questionType === "sort_text" &&
-                            <ShortTextQuestion />
+                            <DemoShortTextQuestion />
                         }
                         {
                             questions[currentQuestion]?.questionType === "long_text" &&
-                            <LongTextQuestion />
+                            <DemoLongTextQuestion />
                         }
 
                         </>

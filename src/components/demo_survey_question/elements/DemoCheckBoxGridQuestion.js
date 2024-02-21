@@ -10,7 +10,7 @@ const question = {
     }
 }
 
-export default function CheckBoxGridQuestion() {
+export default function DemoCheckBoxGridQuestion() {
     return (
         <div>
             <h2 className='text-3xl font-bold text-center pt-8 pb-10'>{question?.question}</h2>

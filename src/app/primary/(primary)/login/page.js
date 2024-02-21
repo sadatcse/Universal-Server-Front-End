@@ -1,73 +1,23 @@
 'use client'
+
 import { usePathname, useRouter } from 'next/navigation';
-import { useContext, useState } from "react";
-import toast from 'react-hot-toast';
+import { useState } from "react";
 import { FcGoogle } from 'react-icons/fc';
 import { FiLock, FiMail, } from 'react-icons/fi';
-import useAxiosPublic from "../../../../Hook/useAxiosPublic";
-import { AuthContext } from '../../../../providers/AuthProvider';
+
 
 
 
 const Login = () => {
-    const axiosPublic = useAxiosPublic();
-    const {userRole, signInUser, signInWithGoogle } = useContext(AuthContext);
+
     const router = useRouter();
     const pathname = usePathname();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleLogin = (e) => {
-        e.preventDefault();
-
-        signInUser(email, password)
-            .then((result) => {
-                toast.success("Login successful!")
-                router.push('/', { scroll: false })
-                // window.history.replaceState(null, '', pathname)
-
-                
-
-            })
-            .catch((error) => {
-                toast.error("Login failed. Please check your Email or Password.");
-                console.error(error);
-            });
-    };
 
     const handleGoogleSignIn = async () => {
-        try {
-            const result = await signInWithGoogle();
-    
-            const userinfo = {
-                name: result.user?.displayName,
-                uid: result.user?.uid,
-                mobile: result.user?.phoneNumber,
-                email: result.user?.email,
-                Photourl:result.user?.photoURL,
-                role: 'Survey Participant',
-            };
-    
-            
-            
-    
-            const response = await axiosPublic.post('/users', userinfo);
 
-            console.log(response.data)
-    
-            if (response.status === 200) {
-                toast.success("Login successful!");
-
-                console.log("login user Role:", userRole)
-                const userRoleDashboardRoute = userRole === "Administrator" ? "/dashboard/admin/system_statistics" : userRole === "Survey Creator" ? "/dashboard/company/creator_profile" : "/dashboard/user/available_surveys";
-                userRole && router.push(userRoleDashboardRoute, { scroll: false })
-            } else {
-                toast.error("Failed to create user. Please try again.");
-            }
-        } catch (error) {
-            toast.error("Social login failed. Please try again later.");
-            console.error(error);
-        }
     };
     
     return (
@@ -105,7 +55,7 @@ const Login = () => {
      
                     </div>
                     <div className="space-y-2">
-                        <button onClick={handleLogin} className="w-full bg-blue-500 text-white p-3 rounded-lg">
+                        <button className="w-full bg-blue-500 text-white p-3 rounded-lg">
                             Login
                         </button>
                         <button onClick={handleGoogleSignIn} className="w-full bg-white border border-gray-400 p-3 flex items-center justify-center rounded-lg">

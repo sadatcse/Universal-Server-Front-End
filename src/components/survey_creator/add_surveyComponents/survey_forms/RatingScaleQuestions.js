@@ -83,7 +83,7 @@ function RatingScaleQuestions({ setShowSurveyForm, setSurveyQuestions, setOpenAd
   return (
     <div class="p-4 py-8 relative">
       <div class="heading text-center font-bold text-4xl m-5 text-gray-800 bg-white ">Rating Scale Questions form</div>
-      <button className="text-4xl absolute top-4 left-6" onClick={() => setShowSurveyForm(false)}><FaArrowLeftLong /></button>
+      
       <form class="editor mx-auto w-10/12 flex flex-col text-gray-800  rounded-md shadow-xl p-4  max-w-2xl bg-stone-400 md:min-w-[500px] lg:min-w-[700px]" onSubmit={onSubmit}>
         {/* questions field */}
         <label htmlFor="title" className="font-bold text-2xl">Question</label>

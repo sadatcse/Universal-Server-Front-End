@@ -8,7 +8,7 @@ const question = {
     "options": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
   };
 
-function LinearScaleQuestion() {
+function DemoLinearScaleQuestion() {
     const [searchValue, setSearchValue] = useState([]);
     const [selectedLabel, setSelectedLabel] = useState(0);
     const searchInput = useRef(null)
@@ -80,4 +80,4 @@ function LinearScaleQuestion() {
     )
 }
 
-export default LinearScaleQuestion
+export default DemoLinearScaleQuestion

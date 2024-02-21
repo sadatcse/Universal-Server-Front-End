@@ -10,6 +10,7 @@ import {
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { useState } from "react";
 import { Column } from "./drag_and_drop/Column";
+import { DemoColumn } from "./drag_and_drop/DemoColumn";
 
 
 
@@ -25,7 +26,7 @@ const question = {
 }
 
 
-export default function RankingScaleQuestion() {
+export default function DemoRankingScaleQuestion() {
   const [tasks, setTasks] = useState(question.options);
 
 
@@ -75,7 +76,7 @@ export default function RankingScaleQuestion() {
           collisionDetection={closestCorners}
           onDragEnd={handleDragEnd}
         >
-          <Column id="toDo" tasks={tasks} />
+          <DemoColumn id="toDo" tasks={tasks} />
         </DndContext>
       </div>
     </div>

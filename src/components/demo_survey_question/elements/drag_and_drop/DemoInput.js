@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-export const Input = ({ onSubmit }) => {
+export const DemoInput = ({ onSubmit }) => {
   const [input, setInput] = useState("");
 
   const handleSubmit = () => {

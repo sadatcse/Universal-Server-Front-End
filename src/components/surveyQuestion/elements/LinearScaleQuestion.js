@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 
 
-function LinearScaleQuestion({question, setQuestions}) {
+function LinearScaleQuestion({question, setQuestions, isViewResult}) {
     const initialValue = question.answer === "" ? 0 : parseInt(question.answer)
     const [selectedLabel, setSelectedLabel] = useState(initialValue);
-    const [mouseupIndex, setMouseupIndex] = useState(0);
+    const [mouseupIndex, setMouseupIndex] = useState(initialValue);
 
 
 
@@ -66,7 +66,7 @@ function LinearScaleQuestion({question, setQuestions}) {
 
     
     return (
-        <div>
+        <div className={isViewResult ? "pointer-events-none": ""}>
             <h2 className='text-3xl font-bold text-center pt-8 pb-10'>{question?.question}</h2>
             <div className="relative px-12 w-full h-40 lg:h-36">
                 <ul className="w-full absolute top-1/2 left-0 -translate-y-1/2 flex justify-start md:justify-center gap-4 flex-wrap " >

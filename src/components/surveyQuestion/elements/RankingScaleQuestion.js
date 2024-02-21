@@ -12,7 +12,7 @@ import { useState } from "react";
 import { Column } from "./drag_and_drop/Column";
 
 
-export default function RankingScaleQuestion({question, setQuestions}) {
+export default function RankingScaleQuestion({question, setQuestions, isViewResult}) {
   const [tasks, setTasks] = useState(question.answer || question.options);
 
   const sensors = useSensors(
@@ -62,7 +62,7 @@ export default function RankingScaleQuestion({question, setQuestions}) {
   };
 
   return (
-    <div>
+    <div className={isViewResult ? "pointer-events-none": ""} >
       <h2 className='text-3xl font-bold text-center pt-8 pb-10'>{question?.question}</h2>
       <div className="App">
         <DndContext
