@@ -35,9 +35,9 @@ const typeNames = [
     }
 ]
 
-function QuestionTypeCard({ item, setQuestionTypeName, questionTypeName }) {
+function QuestionTypeCard({ item, setQuestionTypeName, questionTypeName, setCurrentQuestion }) {
     return (
-        <div className={`btn btn-outline h-24 relative cursor-pointer text-md flex justify-center items-center flex-col gap-1 ${questionTypeName === item.type ? "btn-active" : ""}`} onClick={() => setQuestionTypeName(item.type)}>
+        <div className={`btn btn-outline h-24 relative cursor-pointer text-md flex justify-center items-center flex-col gap-1 ${questionTypeName === item.type ? "btn-active" : ""}`} onClick={() => { setQuestionTypeName(item.type); setCurrentQuestion({})}} >
                 {
                     item.type === "multiple_choice" &&
                     <BiFoodMenu className="text-2xl" />

@@ -2,7 +2,7 @@ import { FaArrowUp } from 'react-icons/fa';
 import { FaArrowDown } from 'react-icons/fa6';
 import QuestionTypeCard from './QuestionTypeCard';
 
-export default function FormTypes({ setQuestionTypeName, typeNames , isOpenFormTypesDropDown , setIsOpenFormTypesDropDown, questionTypeName}) {
+export default function FormTypes({ setQuestionTypeName, typeNames , isOpenFormTypesDropDown , setIsOpenFormTypesDropDown, questionTypeName, setCurrentQuestion}) {
     
     return (
         <details className="dropdown text-inherit h-5/6 absolute top-0 right-1">
@@ -11,6 +11,7 @@ export default function FormTypes({ setQuestionTypeName, typeNames , isOpenFormT
 
                 {typeNames && typeNames.map((item, idx) => (
                     <QuestionTypeCard key={idx} item={item} setQuestionTypeName={setQuestionTypeName} questionTypeName={questionTypeName}
+                    setCurrentQuestion={setCurrentQuestion}
                     />
                 ))}
 

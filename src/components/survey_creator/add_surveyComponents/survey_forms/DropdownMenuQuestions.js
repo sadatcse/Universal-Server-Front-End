@@ -1,10 +1,9 @@
 "use client"
 import { useRef, useState } from "react";
-import { FaArrowLeftLong } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 
-function DropdownMenuQuestions({setShowSurveyForm, setSurveyQuestions, setOpenAddQuestionModal}) {
-  const [options, setOptions] = useState([]);
+function DropdownMenuQuestions({setShowSurveyForm, setSurveyQuestions, setOpenAddQuestionModal, currentQuestion, setCurrentQuestion}) {
+  const [options, setOptions] = useState(currentQuestion.options || []);
   const optionInput = useRef(null)
   const questionInput = useRef(null)
     const onSubmit = (e)=> {
@@ -40,10 +39,17 @@ function DropdownMenuQuestions({setShowSurveyForm, setSurveyQuestions, setOpenAd
        console.log(newArray)
         setOptions(newArray)
       }
+
+      useEffect(()=> {
+        // set current question in the current question state object
+        const question = questionInput.current.value;
+        const newObject = {questionType: "dropdown" , question, options: options.flat(Infinity)}
+        setCurrentQuestion(newObject)
+      },[setCurrentQuestion, options])
   return (
     <div class="p-4 py-8 relative">
         <div class="heading text-center font-bold text-4xl m-5 text-gray-800 bg-white ">Dropdown Menu Questions form</div>
-        <form class="editor mx-auto w-10/12 flex flex-col text-gray-800  rounded-md shadow-xl p-4  max-w-2xl bg-stone-200 md:min-w-[500px] lg:min-w-[700px]" onSubmit={onSubmit}>
+        <form class="editor mx-auto w-full flex flex-col text-gray-800  rounded-md shadow-xl p-4 bg-stone-200 " onSubmit={onSubmit}>
           <label htmlFor="title" className="font-bold text-2xl">Question</label>
             <input class="title bg-white shadow-md p-2 mb-4 outline-none rounded" spellcheck="false" id="title" placeholder="Title" type="text" required name="question" ref={questionInput} />
           <div className="flex w-full justify-stretch rounded-lg overflow-hidden gap-3">

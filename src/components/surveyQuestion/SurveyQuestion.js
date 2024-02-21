@@ -121,6 +121,13 @@ const surveyData = {
     ]
 }
 
+let initialValue = {}
+for (let index = 0; index < column; index++) {
+    const newObject = {index: row}; 
+    initialValue = {...initialValue, newObject};
+}
+console.log(initialValue)
+
 
 
 

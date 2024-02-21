@@ -1,10 +1,10 @@
 "use client"
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
 
-function CheckboxQuestions({ setShowSurveyForm, setSurveyQuestions, setOpenAddQuestionModal }) {
-  const [options, setOptions] = useState([]);
-  const [levelNames, setLevelNames] = useState([]);
+function CheckboxQuestions({ setShowSurveyForm, setSurveyQuestions, setOpenAddQuestionModal, currentQuestion, setCurrentQuestion }) {
+  const [options, setOptions] = useState(currentQuestion.options.columnLabels || []);
+  const [levelNames, setLevelNames] = useState(currentQuestion.options.rowLabels || []);
   const optionInput = useRef(null)
   const questionInput = useRef(null)
   const levelInput = useRef(null)
@@ -13,13 +13,12 @@ function CheckboxQuestions({ setShowSurveyForm, setSurveyQuestions, setOpenAddQu
     const question = e.target.question.value;
     console.log({ question })
   }
+
   const onSave = () => {
-    const question = questionInput.current.value;
-    console.log({ question, options })
-    const newObject = {type: "Checkbox Questions" , question, options, levelNames }
     setSurveyQuestions((prevItem) => [...prevItem, newObject])
     setOpenAddQuestionModal(false)
   }
+
 
   const addOption = () => {
     const name = optionInput.current.value;
@@ -27,6 +26,8 @@ function CheckboxQuestions({ setShowSurveyForm, setSurveyQuestions, setOpenAddQu
     const newArray = [...options, [name]]
     setOptions(newArray)
     optionInput.current.value = "";
+
+    
   }
 
   const addLevel = () => {
@@ -79,11 +80,33 @@ function CheckboxQuestions({ setShowSurveyForm, setSurveyQuestions, setOpenAddQu
     }
   }
 
+
+  useEffect(()=> {
+  // set current question
+    const question = questionInput.current.value;
+
+    // created answer option
+    let initialValue = {};
+    for (let index = 0; index < options.length; index++) {
+      initialValue[index] = levelNames;
+    }
+
+    const newObject = { questionType: "checkbox_grid", question, options: {
+    columnLabels: options, rowLabels: levelNames,
+    },
+    answer: initialValue }
+    setCurrentQuestion(newObject)
+    
+
+  },[options, levelNames, setCurrentQuestion, setSurveyQuestions])
+
+
   return (
-    <div class="p-4 py-8 relative">
+    <div class="p-4 py-8 relative w-full">
       <div class="heading text-center font-bold text-4xl m-5 text-gray-800 bg-white ">Checkbox Questions form</div>
 
-      <form class="editor mx-auto w-10/12 flex flex-col text-gray-800  rounded-md shadow-xl p-4  max-w-2xl bg-stone-200 md:min-w-[500px] lg:min-w-[700px]" onSubmit={onSubmit}>
+      <form class="editor mx-auto w-full flex flex-col text-gray-800  rounded-md shadow-xl p-4 bg-stone-
+      200" onSubmit={onSubmit}>
         {/* questions field */}
         <label htmlFor="title" className="font-bold text-2xl">Question</label>
         <input class="title bg-white shadow-md p-2 mb-4 outline-none rounded" spellcheck="false" id="title" placeholder="Question" type="text" required name="question" ref={questionInput} />

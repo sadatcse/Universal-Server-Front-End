@@ -1,9 +1,9 @@
 "use client"
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
 
-function MultipleChoice({setShowSurveyForm, setSurveyQuestions, setOpenAddQuestionModal}) {
-  const [options, setOptions] = useState([]);
+function MultipleChoice({setShowSurveyForm, setSurveyQuestions, setOpenAddQuestionModal, currentQuestion, setCurrentQuestion, setQuestionTypeName, questionTypeName}) {
+  const [options, setOptions] = useState(currentQuestion.options || []);
   const optionInput = useRef(null)
   const questionInput = useRef(null)
     const onSubmit = (e)=> {
@@ -15,7 +15,8 @@ function MultipleChoice({setShowSurveyForm, setSurveyQuestions, setOpenAddQuesti
       const question = questionInput.current.value;
         const surveyTitle = JSON.parse(localStorage.getItem("my_survey")).title;
         
-        const newObject = {type: "Multiple Choice Questions" ,question, options: options.flat(Infinity), surveyTitle}
+        // insert question in the survey question array
+        const newObject = {questionType: "multiple_choice" ,question, options: options.flat(Infinity), surveyTitle}
         console.log(newObject)
         setSurveyQuestions((prevItem)=> [...prevItem, newObject])
         setOpenAddQuestionModal(false)
@@ -26,6 +27,10 @@ function MultipleChoice({setShowSurveyForm, setSurveyQuestions, setOpenAddQuesti
         
         const newArray = [...options, [name]]
         setOptions(newArray)
+        
+
+        
+
         optionInput.current.value = "";
       } 
 
@@ -41,19 +46,29 @@ function MultipleChoice({setShowSurveyForm, setSurveyQuestions, setOpenAddQuesti
        console.log(newArray)
         setOptions(newArray)
       }
+
+
+      useEffect(()=> {
+        // set current question in the current question state object
+        const question = questionInput.current.value;
+        
+        
+        const newObject = {questionType: "multiple_choice" , question, options: options.flat(Infinity)}
+        setCurrentQuestion(newObject)
+      },[setCurrentQuestion, options])
   return (
     <div class="p-4 relative">
         <div class="heading text-center font-bold text-4xl text-gray-800 mb-4">Multiple Choice Question form</div>
         <form class="editor mx-auto w-full flex flex-col text-gray-800  rounded-md shadow-xl p-4  max-w-2xl bg-stone-200" onSubmit={onSubmit}>
           <label htmlFor="title" className="font-bold text-2xl">Question</label>
-            <input class="title bg-white-100 shadow-md p-2 mb-4 outline-none rounded" spellcheck="false" id="title" placeholder="Title" type="text" required name="question" ref={questionInput} />
+            <input class="title bg-white-100 shadow-md p-2 mb-4 outline-none rounded" spellcheck="false" id="title" placeholder="Title" type="text" required name="question" ref={questionInput} defaultValue={currentQuestion.question} />
           <div className="flex w-full justify-stretch rounded-lg overflow-hidden gap-3">
             <div className="space-y-4 border-2 rounded-lg border-neutral text-neutral-950 p-3 w-full md:w-1/2">
               <h2 className="font-bold text-2xl">Options</h2>
               <ul className="space-y-1 list-disc list-inside min-h-24" >
                 {
                   options.map((optionName, idx)=> (
-                    <li key={idx} className="relative">{optionName[0]} <div className="absolute top-1/2 right-3 -translate-y-1/2 bg-white rounded-full" onClick={()=> deleteOption(optionName[0])}><IoClose /></div></li>
+                    <li key={idx} className="relative">{optionName} <div className="absolute top-1/2 right-3 -translate-y-1/2 bg-white rounded-full" onClick={()=> deleteOption(optionName[0])}><IoClose /></div></li>
 
                   ))
                 }

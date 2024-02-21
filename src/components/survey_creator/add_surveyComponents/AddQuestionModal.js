@@ -60,46 +60,56 @@ function AddQuestionModal({ setOpenAddQuestionModal,
                 {
                     !isDemo ?
                         <>
-                        <button className={`absolute top-1 right-40 btn btn-neutral`} onClick={()=> setIsDemo(true)}>Demo</button>
-                            <FormTypes setQuestionTypeName={setQuestionTypeName} typeNames={typeNames} isOpenFormTypesDropDown={isOpenFormTypesDropDown} setIsOpenFormTypesDropDown={setIsOpenFormTypesDropDown} questionTypeName={questionTypeName} />
+                            <button className={`absolute top-1 right-40 btn btn-neutral`} onClick={() => {setIsDemo(true); setIsOpenFormTypesDropDown(false)}} >Demo</button>
+                            <FormTypes setQuestionTypeName={setQuestionTypeName} typeNames={typeNames} isOpenFormTypesDropDown={isOpenFormTypesDropDown} setIsOpenFormTypesDropDown={setIsOpenFormTypesDropDown} questionTypeName={questionTypeName} setCurrentQuestion={setCurrentQuestion} />
 
                             {
                                 questionTypeName === "multiple_choice" && <MultipleChoice setOpenAddQuestionModal={setOpenAddQuestionModal} setSurveyQuestions={setSurveyQuestions}
-                                    setShowSurveyForm={setShowSurveyForm} questionTypeName={questionTypeName}
+                                    setShowSurveyForm={setShowSurveyForm} questionTypeName={questionTypeName} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}
+                                    setQuestionTypeName={setQuestionTypeName}
+
+                                    
                                 />}
 
                             {questionTypeName === "checkbox_grid" &&
                                 <CheckboxQuestions setOpenAddQuestionModal={setOpenAddQuestionModal} setSurveyQuestions={setSurveyQuestions}
-                                    setShowSurveyForm={setShowSurveyForm} questionTypeName={questionTypeName}
+                                    setShowSurveyForm={setShowSurveyForm} questionTypeName={questionTypeName} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}
+                                    setQuestionTypeName={setQuestionTypeName}
                                 />}
 
                             {questionTypeName === "dropdown" && <DropdownMenuQuestions setOpenAddQuestionModal={setOpenAddQuestionModal} setSurveyQuestions={setSurveyQuestions}
-                                setShowSurveyForm={setShowSurveyForm} questionTypeName={questionTypeName} />}
+                                setShowSurveyForm={setShowSurveyForm} questionTypeName={questionTypeName} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}
+                                setQuestionTypeName={setQuestionTypeName} />}
 
                             {questionTypeName === "ranking" && <RankingQuestions setOpenAddQuestionModal={setOpenAddQuestionModal} setSurveyQuestions={setSurveyQuestions}
-                                setShowSurveyForm={setShowSurveyForm} questionTypeName={questionTypeName}
+                                setShowSurveyForm={setShowSurveyForm} questionTypeName={questionTypeName} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}
+                                setQuestionTypeName={setQuestionTypeName}
 
                             />}
 
                             {questionTypeName === "sort_text" && <ShortTextQuestions setOpenAddQuestionModal={setOpenAddQuestionModal} setSurveyQuestions={setSurveyQuestions}
-                                setShowSurveyForm={setShowSurveyForm} questionTypeName={questionTypeName}
+                                setShowSurveyForm={setShowSurveyForm} questionTypeName={questionTypeName} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}
+                                setQuestionTypeName={setQuestionTypeName}
 
                             />}
                             {questionTypeName === "long_text" && <LongTextQuestion setOpenAddQuestionModal={setOpenAddQuestionModal} setSurveyQuestions={setSurveyQuestions}
-                                setShowSurveyForm={setShowSurveyForm} questionTypeName={questionTypeName}
+                                setShowSurveyForm={setShowSurveyForm} questionTypeName={questionTypeName} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}
+                                setQuestionTypeName={setQuestionTypeName}
 
                             />}
 
                             {questionTypeName === "linear_scale" && <RatingScaleQuestions setOpenAddQuestionModal={setOpenAddQuestionModal} setSurveyQuestions={setSurveyQuestions}
-                                setShowSurveyForm={setShowSurveyForm} questionTypeName={questionTypeName}
+                                setShowSurveyForm={setShowSurveyForm} questionTypeName={questionTypeName} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}
+                                setQuestionTypeName={setQuestionTypeName}
 
                             />
                             }
                         </>
                         :
 
-                        <DemoSurveyQuestion currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} surveyQuestions={surveyQuestions}
-                        setSurveyQuestions={setSurveyQuestions} />
+                        <DemoSurveyQuestion currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion}
+                        setQuestionTypeName={setQuestionTypeName} surveyQuestions={surveyQuestions}
+                            setSurveyQuestions={setSurveyQuestions} />
                 }
 
 
@@ -108,9 +118,9 @@ function AddQuestionModal({ setOpenAddQuestionModal,
                 <div className="w-full">
                     {
                         !isDemo ?
-                    <button className="text-neutral text-4xl absolute top-3 left-6" onClick={() => setOpenAddQuestionModal(false)}><IoClose /></button>
-                        :
-                    <button className="text-neutral text-4xl absolute top-3 left-6" onClick={() => setIsDemo(false)}><IoClose /></button>
+                            <button className="text-neutral text-4xl absolute top-3 left-6" onClick={() => setOpenAddQuestionModal(false)}><IoClose /></button>
+                            :
+                            <button className="text-neutral text-4xl absolute top-3 left-6" onClick={() => setIsDemo(false)}><IoClose /></button>
 
                     }
                 </div>

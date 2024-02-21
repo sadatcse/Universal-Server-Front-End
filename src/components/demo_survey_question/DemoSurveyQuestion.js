@@ -113,32 +113,32 @@ export default function DemoSurveyQuestion({ currentQuestion, setCurrentQuestion
                 <>
                     {
                         currentQuestion?.questionType === "multiple_choice" &&
-                        <DemoMultipleChoiceQuestion question={currentQuestion}  />
+                        <DemoMultipleChoiceQuestion question={currentQuestion} setCurrentQuestion={setCurrentQuestion}  />
                     }
                     {
                         currentQuestion?.questionType === "checkbox_grid" &&
-                        <DemoCheckBoxGridQuestion question={currentQuestion} />
+                        <DemoCheckBoxGridQuestion question={currentQuestion} setCurrentQuestion={setCurrentQuestion} />
                     }
                     {
                         currentQuestion?.questionType === "dropdown" &&
-                        <DemoDropDownQuestion question={currentQuestion} />
+                        <DemoDropDownQuestion question={currentQuestion} setCurrentQuestion={setCurrentQuestion} />
 
                     }
                     {
                         currentQuestion?.questionType === "linear_scale" &&
-                        <DemoLinearScaleQuestion question={currentQuestion} />
+                        <DemoLinearScaleQuestion question={currentQuestion} setCurrentQuestion={setCurrentQuestion} />
                     }
                     {
                         currentQuestion?.questionType === "ranking" &&
-                        <DemoRankingScaleQuestion question={currentQuestion} />
+                        <DemoRankingScaleQuestion question={currentQuestion} setCurrentQuestion={setCurrentQuestion} />
                     }
                     {
                         currentQuestion?.questionType === "sort_text" &&
-                        <DemoShortTextQuestion question={currentQuestion} />
+                        <DemoShortTextQuestion question={currentQuestion} setCurrentQuestion={setCurrentQuestion} />
                     }
                     {
                         currentQuestion?.questionType === "long_text" &&
-                        <DemoLongTextQuestion question={currentQuestion} />
+                        <DemoLongTextQuestion question={currentQuestion} setCurrentQuestion={setCurrentQuestion} />
                     }
 
                 </>

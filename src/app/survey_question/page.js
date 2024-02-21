@@ -1,4 +1,5 @@
-import SurveyQuestion from '@/components/surveyQuestion/SurveyQuestion'
+import SurveyQuestion from "@/components/surveyQuestion/SurveyQuestion"
+
 
 function page() {
   return (
