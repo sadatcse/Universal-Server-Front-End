@@ -35,7 +35,7 @@ function Footer() {
                 <div className="flex flex-col space-y-4 md:ml-16">
                     <h2 className="font-medium text-2xl">Useful Links</h2>
                     <div className="flex flex-col space-y-2 text-lg text-gray-300">
-                        <Link href="/">Refund policy</Link>
+                        <Link href="/primary/refundpolicy">Refund policy</Link>
                         <Link href="/primary/about">About us</Link>
                         <Link href="/primary/faq">FAQ </Link>
                         <Link href="/primary/contactus" >Contact Us </Link>
@@ -69,13 +69,12 @@ function Footer() {
                 </div>
                 <div className='text-gray-300 items-center flex gap-2'>
                     <div className='flex items-center gap-1'>
-                        <p>Privacy Policy</p><RxDotFilled className='text-gray-500' />
+                    <Link href="/primary/privacy"><p>Privacy Policy</p></Link>
+                        
                     </div>
                     <div className='flex items-center gap-1'>
-                        <p>Press Kit</p><RxDotFilled className='text-gray-500' />
+                    <Link href="/primary/presskit"><p>Press Kit</p></Link> 
                     </div>
-
-                    <p>Support</p>
                 </div>
             </div>
         </footer>

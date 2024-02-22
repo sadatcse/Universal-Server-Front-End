@@ -1,5 +1,7 @@
 "use client"
-
+import useAxiosPublic from '@/Hook/useAxiosPublic';
+import { AuthContext } from '@/providers/AuthProvider';
+import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useContext, useEffect, useRef, useState } from 'react';
@@ -9,11 +11,14 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { FaGithub } from 'react-icons/fa6';
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from 'react-simple-captcha';
 import logo from "../../../../Asset/logo2.png";
+
 function  Join() {
+    const axiosPublic = useAxiosPublic();
+    const { createUser, signInWithGoogle, loading, setLoading, signInWithGithub } = useContext(AuthContext);
     const captchaInput = useRef(null);
     const [isDisabled, setIsDisabled] = useState(true)
-    // const [isLogin, setisLogin] = useState(true)
     const [showPassword, setShowPassword] = useState(false);
+    const router = useRouter()
 
 
 
@@ -53,44 +58,85 @@ function  Join() {
 
 
     const handleGoogleSignIn = async () => {
+        try {
+            const result = await signInWithGoogle();
 
-       
+            const userinfo = {
+                name: result.user?.displayName,
+                uid: result.user?.uid,
+                mobile: result.user?.phoneNumber,
+                email: result.user?.email,
+                Photourl:result.user?.photoURL,
+                role: 'Survey Participant',
+            };
+
+            console.log(userinfo);
+
+
+            const response = await axiosPublic.post('/users', userinfo);
+
+            if (response.status === 200) {
+                toast.success("Login successful!");
+                router.push('/', { scroll: false })
+            } else {
+                toast.error("Failed to Login. Please try again.");
+            }
+        } catch (error) {
+            toast.error("Social login failed. Please try again later.");
+            console.error(error);
+        }
+
+
     };
       
-      const handleGihubSignIn = async () => {
-
-      };
+    const handleGihubSignIn  = async () => {
+        setLoading(true);
+        try {
+            const githubResult = await signInWithGithub();
+    
+            const userinfo = {
+                name: githubResult.data.user?.displayName,
+                email: githubResult.data.user?.email,
+                role: 'Survey Participant',
+            };
+    
+            const response = await axiosPublic.post('/users', userinfo);
+    
+            if (response.status === 200) {
+                toast.success("User signed in successfully!", {
+                    duration: 4000,
+                    position: 'top-right',
+                });
+                router.push('/', { scroll: false });
+            } else {
+                toast.error("Failed to create user. Please try again.");
+            }
+    
+            setLoading(false);
+        } catch (err) {
+            setLoading(false);
+            toast.error('Error during sign-in. Please try again.');
+    
+            console.error(err);
+        }
+    };
 
     const handleCreateInUser = async (data) => {
-
-        console.log(data.email);
-        console.log(data.password);
-        try{
-            const result = await CreateUser(data.email,data.password);
-            console.log(result);
-        } catch(error) {
-            console.log(error);
-        }
+        setLoading(true);
+        try {
+          await createUser(data.email, data.password);
+          toast.success('User created successfully!', {
+            duration: 4000, 
+            position: 'top-right', 
+          });
       
-      };
-
-    async function CreateUser(email,password){
-       const response =await fetch('/api/auth/signup',{
-            method: 'POST',
-            body:JSON.stringify({email,password}),
-            headers:{
-                'Content-Type':'application/json'
-            }
-        });
-        const sdata =await response.json();
-        if (!response.ok){
-            throw new Error(sdata.message || 'Something went wrong!');
-
+          setLoading(false);
+        } catch (err) {
+          setLoading(false);
+          toast.error('Error creating user. Please try again.');
+          console.log(err);
         }
-        return sdata;
-    }
-
-    
+      };
     return (
         <div className='pt-20 -mb-2 relative bg-blue-200 z-[1] dark:bg-transparent' >
         <div className="w-full h-full absolute top-0 left-0 z-[-1] opacity-20" style={{backgroundImage: "url('https://i.pinimg.com/564x/e7/38/8b/e7388be6e75e602eb3dc5fef7a5dec71.jpg')"}} ></div>
@@ -99,7 +145,7 @@ function  Join() {
                     <Image width={500} height={500} src="https://images.unsplash.com/photo-1637276661836-9ca7bf61eb0f?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="people image" className='bg-neutral hidden md:block' />
                     <div className="p-8">
                         <h2 className="text-2xl font-semibold text-gray-700 text-center"><Image className="w-32 mix-blend-multiply mx-auto" width={400} height={400} src={logo} alt="logo" /></h2>
-                        <p className="text-xl text-gray-600 text-center">Registration now!</p>
+                        <p className="text-xl text-gray-600 text-center">Registration Now !</p>
                         <a href="#" onClick={handleGoogleSignIn} className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
                             <div className="px-4 py-3" >
                                 <svg className="h-6 w-6" viewBox="0 0 40 40">
@@ -119,7 +165,7 @@ function  Join() {
                         </a>
                         <div className="mt-4 flex items-center justify-between">
                             <span className="border-b w-1/5 lg:w-1/4"></span>
-                            <a href="#" className="text-xs text-center text-gray-500 uppercase">or login with email</a>
+                            <a href="#" className="text-xs text-center text-gray-500 uppercase">or Registration with email</a>
                             <span className="border-b w-1/5 lg:w-1/4"></span>
                         </div>
                         <form onSubmit={handleSubmit(handleCreateInUser)}>

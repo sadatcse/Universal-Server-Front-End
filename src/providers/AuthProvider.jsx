@@ -55,9 +55,9 @@ const AuthProvider = ({ children }) => {
                 try {
                     if (currentUser) {
                         const res = await axiosSecure.get(`/users/admin/${currentUser.email}`);
-                        console.log("user role:", res.data)
-
+                        
                         setUserRole(res.data);
+                        console.log(userRole);
                         setLoading(false);
                     }else{
                         setUserRole(null)
