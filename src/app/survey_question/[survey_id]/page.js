@@ -1,9 +1,11 @@
 import SurveyQuestion from "@/components/surveyQuestion/SurveyQuestion"
 
 
-function page() {
+
+function page({params}) {
+  
   return (
-    <SurveyQuestion />
+    <SurveyQuestion surveyId={params.survey_id} />
   )
 }
 
