@@ -842,7 +842,7 @@ export default function ViewResponseParticipateList() {
                           <td>{user.mobile == null ? 'None' : user.mobile}</td>
                           <td>{user.date}</td>
                           <td>
-                          <button className="btn btn-ghost btn-xs bg-blue-300" onClick={()=>{ setCurrentResponseResult(user?.responseSurvey); setIsOpenModal(true)}}>Details</button>
+                          <button className="btn btn-ghost btn-sm bg-blue-300" onClick={()=>{ setCurrentResponseResult(user?.responseSurvey); setIsOpenModal(true)}}>View Result</button>
                           </td>
                         </tr>)
                     }

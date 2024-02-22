@@ -49,7 +49,6 @@ function HistoryTable({checkedItemId, setCheckItemId, surveyHistoryData, setSurv
                         <th>Participants</th>
                         <th>Response Rate</th>
                         <th>Action</th>
-                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -69,9 +68,6 @@ function HistoryTable({checkedItemId, setCheckItemId, surveyHistoryData, setSurv
                             <td>{data?.date}</td>
                             <td>{data?.participants}</td>
                             <td>{data?.responseRate}</td>
-                            <td>
-                                <button className="btn btn-ghost btn-xs bg-blue-300">Details</button>
-                            </td>
                             <td>
                                 <button className="btn btn-ghost btn-xs bg-red-300" onClick={()=> deleteItem(data?.id)}>Delete</button>
                             </td>
