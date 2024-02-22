@@ -129,7 +129,7 @@ export default function SurveyQuestion({surveyId}) {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [isNext, setIsNext] = useState(false);
     const [isViewResult, setIsViewResult] = useState(false);
-    const axiosSecure = useAxiosPublic()
+    const axiosPublic = useAxiosPublic()
 
 
 
@@ -154,7 +154,7 @@ export default function SurveyQuestion({surveyId}) {
     }
 
     useEffect(()=> {
-        axiosSecure.get(`/get_survey/${surveyId}`).then(res => {
+        axiosPublic.get(`/get_survey/${surveyId}`).then(res => {
             setQuestions(res?.data?.questions)
             console.log(res.data)
             setTitleAndDescription({title: res.data.title, description: res?.data?.description})
@@ -205,7 +205,7 @@ export default function SurveyQuestion({surveyId}) {
                     Object.keys(questions).length > 0 ?
 
                     isViewResult ?
-                        <SurveyResult questions={questions} setQuestions={setQuestions} isViewResult={isViewResult} />
+                        <SurveyResult questions={questions} setQuestions={setQuestions} isViewResult={isViewResult} userData={userData} />
                         :
                         !userData?.email
                         ?
