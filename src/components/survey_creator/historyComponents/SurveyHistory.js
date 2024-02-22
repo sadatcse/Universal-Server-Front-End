@@ -67,11 +67,22 @@ const surveyData = [
 function SurveyHistory() {
     const [checkedItemId, setCheckItemId] = useState([]);
     const [surveyHistoryData, setSurveyHistoryData] = useState(surveyData)
-    console.log(checkedItemId)
+    const [allCheck, setAllCheck] = useState(false)
+    
+
+    const deleteCheckedItem = ()=> {
+        setSurveyHistoryData(surveyHistoryData.filter((data)=>  !checkedItemId.includes(data.id)))
+        setCheckItemId([])
+        setAllCheck(false);
+    }
     return (
         <>
-         <HistoryHeader setSurveyHistoryData={setSurveyHistoryData} surveyData={surveyData} />
-        <HistoryTable checkedItemId={checkedItemId} setCheckItemId={setCheckItemId} surveyHistoryData={surveyHistoryData} setSurveyHistoryData={setSurveyHistoryData} />
+         <HistoryHeader 
+         setSurveyHistoryData={setSurveyHistoryData} 
+         surveyData={surveyData} 
+         checkedItemId={checkedItemId} deleteCheckedItem={deleteCheckedItem} />
+
+        <HistoryTable checkedItemId={checkedItemId} setCheckItemId={setCheckItemId} surveyHistoryData={surveyHistoryData} setSurveyHistoryData={setSurveyHistoryData} allCheck={allCheck} setAllCheck={setAllCheck} />
         </>
     )
 }
