@@ -6,7 +6,7 @@ import MultipleChoiceQuestion from './MultipleChoiceQuestion'
 import RankingScaleQuestion from './RankingScaleQuestion'
 import ShortTextQuestion from './ShortTextQuestion'
 
-export default function SurveyResult({ setQuestions, qn, isViewResult, questions }) {
+export default function SurveyResult({ setQuestions, isViewResult, questions }) {
     return (
         <>
         <h2 className='text-4xl font-bold text-center mb-8 w-full border-b-2'>Your  Answers</h2>
