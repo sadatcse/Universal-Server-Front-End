@@ -11,7 +11,7 @@ export default function SurveyResult({ setQuestions, isViewResult, questions }) 
         <>
         <h2 className='text-4xl font-bold text-center mb-8 w-full border-b-2'>Your  Answers</h2>
             {
-                questions.map((qn, idx) => (
+                questions?.map((qn, idx) => (
                         <div key={idx}>
 
                         {

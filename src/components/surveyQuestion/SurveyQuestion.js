@@ -1,4 +1,5 @@
 "use client"
+import useAxiosPublic from "@/Hook/useAxiosPublic";
 import { useEffect, useState } from "react";
 import PageControlArea from "./elements/PageControlArea";
 import QuestionArea from "./elements/QuestionArea";
@@ -121,12 +122,16 @@ const surveyData = {
     ]
 }
 
-export default function SurveyQuestion() {
+export default function SurveyQuestion({surveyId}) {
     const [userData, setUserData] = useState({});
-    const [questions, setQuestions] = useState(surveyData.questions);
+    const [questions, setQuestions] = useState({});
+    const [titleAndDescription, setTitleAndDescription] = useState({});
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [isNext, setIsNext] = useState(false);
     const [isViewResult, setIsViewResult] = useState(false);
+    const axiosSecure = useAxiosPublic()
+
+
 
     const incrementAndDecrement = (action) => {
         if (action === "increment") {
@@ -148,29 +153,44 @@ export default function SurveyQuestion() {
         }
     }
 
+    useEffect(()=> {
+        axiosSecure.get(`/get_survey/${surveyId}`).then(res => {
+            setQuestions(res?.data?.questions)
+            console.log(res.data)
+            setTitleAndDescription({title: res.data.title, description: res?.data?.description})
+        }).catch(err => console.log(err))
+    },[axiosSecure, surveyId])
+
+
+
     useEffect(() => {
-        if (questions[currentQuestion].questionType === "checkbox_grid") {
 
-            const isTrue = Object.keys(questions[currentQuestion].answer).some(key => Object.values(questions[currentQuestion].answer[key]).includes(true));
+        if(Object.keys(questions).length > 0){
 
-            setIsNext(isTrue)
-        } else if (
-            !(questions[currentQuestion].questionType === "ranking") ||
-
-            !(questions[currentQuestion].questionType === "checkbox_grid")
-        ) {
-            if (questions[currentQuestion].answer === "") {
-
-                setIsNext(false)
-            } else {
-                setIsNext(true)
-
+            if (questions[currentQuestion]?.questionType === "checkbox_grid") {
+    
+                const isTrue = Object.keys(questions[currentQuestion].answer).some(key => Object.values(questions[currentQuestion].answer[key]).includes(true));
+    
+                setIsNext(isTrue)
+            } else if (
+                !(questions[currentQuestion]?.questionType === "ranking") ||
+    
+                !(questions[currentQuestion]?.questionType === "checkbox_grid")
+            ) {
+                if (questions[currentQuestion]?.answer === "") {
+    
+                    setIsNext(false)
+                } else {
+                    setIsNext(true)
+    
+                }
             }
+
         }
-
-
-
     }, [currentQuestion, questions])
+
+    
+    
 
     return (
         <section className=" relative z-[1]  dark:bg-transparent pb-16">
@@ -178,10 +198,11 @@ export default function SurveyQuestion() {
                 <div className="w-full h-full  opacity-20" style={{ backgroundImage: "url('https://i.pinimg.com/564x/e7/38/8b/e7388be6e75e602eb3dc5fef7a5dec71.jpg')" }} ></div>
             </div>
 
-            <h2 className='text-3xl md:text-6xl font-bold text-center pt-12 pb-4'>Survey Satisfaction</h2>
-            <p className='text-gray-500 text-center text-xl md:text-2xl font-semibold mb-8'>Please provide your feedback on various aspects of your experience at our company.</p>
+            <h2 className='text-3xl md:text-6xl font-bold text-center pt-12 pb-4'>{titleAndDescription?.title}</h2>
+            <p className='text-gray-500 text-center text-xl md:text-2xl font-semibold mb-8'>{titleAndDescription?.description}</p>
             <div className="container mx-auto bg-white py-6 rounded-xl relative pb-28 px-8">
                 { 
+                    Object.keys(questions).length > 0 ?
 
                     isViewResult ?
                         <SurveyResult questions={questions} setQuestions={setQuestions} isViewResult={isViewResult} />
@@ -199,6 +220,7 @@ export default function SurveyQuestion() {
                         <PageControlArea incrementAndDecrement={incrementAndDecrement} currentQuestion={currentQuestion} questions={questions} setIsViewResult={setIsViewResult} 
                         isNext={isNext} />
                         </>
+                        : <h2>404 Page not found</h2>
 
                 }
 
