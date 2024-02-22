@@ -39,12 +39,22 @@ const surveyData = [
       ]
   },
   {
-      "SurveyTitle": "Employee Engagement Survey",
-      "SurveyDescription": "Measure employee satisfaction and identify areas for improvement in the workplace.",
-      "SurveyEndDate": "2024-01-15",
-      "SurveyParticipants": 500,
-      "SurveyResponseRate": "70%",
-      "Questions": [
+    "id": "ABC123",
+    "title": "Customer Satisfaction ",
+    "description": "Gather feedback from customers about their experience with our products and services.",
+    "startDate": "2023-12-01",
+    "endDate": "2023-12-31",
+    "participants": 1500,
+    "responseRate": "85%",
+    "status": "Closed",
+    "results": "/survey-results/ABC123",
+    "feedback": "/survey-feedback/ABC123",
+    "creator": "Marketing Team",
+    "category": "Product Feedback",
+    "language": "English",
+    "duration": "1 month",
+    "platform": "Online Form",
+      "questions": [
           {
               "Question": "Do you feel valued in the workplace?",
               "Options": ["Strongly agree", "Agree", "Disagree", "Strongly disagree"]

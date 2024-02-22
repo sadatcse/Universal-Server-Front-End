@@ -61,7 +61,7 @@ const surveyData = [
     }
 ]
 
-function ViewResponseTable() {
+function ViewResponseTable({setIsOpenModal}) {
     const [surveyHistoryData, setSurveyHistoryData] = useState(surveyData)
 
     const onAllCheck = (e) => {
@@ -109,7 +109,7 @@ function ViewResponseTable() {
                             <td>{data?.participants}</td>
                             <td>{data?.responseRate}</td>
                             <td>
-                                <button className="btn btn-ghost btn-xs bg-blue-300">Details</button>
+                                <button className="btn btn-ghost btn-xs bg-blue-300" onClick={()=> setIsOpenModal(true)}>Details</button>
                             </td>
                         </tr>
                     ))}
