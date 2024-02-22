@@ -239,15 +239,20 @@ import SurveyCard from "./components/SurveyCard";
 
 
 function ManageSurvey() {
-    const [manageSurveyData, setManageSurveyData] = useState({});
+    const [surveyData, setSurveyData] = useState([]);
+    const [manageSurveyData, setManageSurveyData] = useState([]);
     const [currentSurvey, setCurrentSurvey] = useState({});
     const [isOpenModal, setIsOpenModal] = useState(false)
-    const axiosSecure = useAxiosPublic()
+    const axiosPublic = useAxiosPublic()
+
     useEffect(()=> {
-        axiosSecure.get("/get_survey").then(res => {
+        axiosPublic.get("/get_survey").then(res => {
             setManageSurveyData(res.data)
+            setSurveyData(res.data)
+           
+            
         })
-    },[axiosSecure])
+    },[axiosPublic])
 
     return (
         <>
