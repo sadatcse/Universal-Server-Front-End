@@ -1,19 +1,14 @@
 "use client"
 import { useState } from "react";
-import { RiDeleteBin2Fill } from "react-icons/ri";
 import HistoryCheck from "./HistoryCheck";
 
 
 
-function HistoryTable({checkedItemId, setCheckItemId, surveyHistoryData, setSurveyHistoryData}) {
-    const [allCheck, setAllCheck] = useState(false)
+function HistoryTable({checkedItemId, setCheckItemId, surveyHistoryData, setSurveyHistoryData, deleteCheckedItem, allCheck, setAllCheck}) {
     
     
-    const deleteCheckedItem = ()=> {
-        setSurveyHistoryData(surveyHistoryData.filter((data)=>  !checkedItemId.includes(data.id)))
-        setCheckItemId([])
-        setAllCheck(false);
-    }
+    
+   
     const onAllCheck = (e)=> {
         
         setAllCheck(e.target.checked)
@@ -77,7 +72,7 @@ function HistoryTable({checkedItemId, setCheckItemId, surveyHistoryData, setSurv
 
 
             </table>
-            <div className="shadow-xl border-2 flex justify-center items-center text-neutral-800 text-4xl bg-red-300 border-red-500 h-16 overflow-hidden absolute top-0 right-0 cursor-pointer transition-all duration-300" style={deleteStyle} onClick={deleteCheckedItem}><RiDeleteBin2Fill /></div>
+            
         </div>
     )
 }
