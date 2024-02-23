@@ -1,22 +1,38 @@
 "use client"
+import UseAxioSecure from "@/Hook/UseAxioSecure";
 import { useEffect, useState } from "react";
 import AddQuestionArea from "./AddQuestionArea";
 import AddSurveyForm from "./AddSurveyForm";
 
-function CreateSurveyPage() {
+function CreateSurveyPage({surveyId}) {
   
   const [formData, setFormData] = useState({})
   const [surveyInitialInfo, setSurveyInitialInfo] = useState({})
   const [showQuestionArea, setShowQuestionArea] = useState(false)
-
+  const [surveyQuestions, setSurveyQuestions] = useState([])
+  const axiosSecure = UseAxioSecure()
 
   useEffect(()=> {
-    const surveyInitialObject = JSON.parse(localStorage.getItem("my_survey")) || {};
-    setSurveyInitialInfo(surveyInitialObject )
-    console.log(surveyInitialObject)
-    const isObject = surveyInitialObject ? true : false;
-    setShowQuestionArea(isObject)
-  },[])
+    
+    if(surveyId){
+      axiosSecure.get(`/get_survey/${surveyId}`).then(res => {
+        setSurveyQuestions(res?.data?.questions)
+          setSurveyInitialInfo({title: res.data.title, description: res?.data?.description})
+          setShowQuestionArea(true)
+      }).catch(err => console.log(err))
+      
+    }else{
+      const surveyInitialObject = JSON.parse(localStorage.getItem("my_survey")) || {};
+      
+      const isTrue = Object.keys(surveyInitialObject).length > 0 ? true : false;
+      setShowQuestionArea(isTrue)
+      if(isTrue){
+        setSurveyInitialInfo(surveyInitialObject)
+
+      }
+
+    }
+},[axiosSecure, surveyId])
 
   return (
     <div className="w-full flex justify-center">
@@ -30,7 +46,7 @@ function CreateSurveyPage() {
         showQuestionArea
          ?
       <AddQuestionArea formData={formData} setShowQuestionArea={setShowQuestionArea} setFormData={setFormData} surveyInitialInfo={surveyInitialInfo}
-      setSurveyInitialInfo={setSurveyInitialInfo} />
+      setSurveyInitialInfo={setSurveyInitialInfo} surveyQuestions={surveyQuestions} setSurveyQuestions={setSurveyQuestions} />
       : null
       }
     </div>
