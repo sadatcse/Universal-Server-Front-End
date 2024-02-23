@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { FaEdit, FaStarOfLife } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 import { TbEyeglass2 } from 'react-icons/tb';
@@ -11,10 +12,9 @@ function SurveyCard({survey, setCurrentSurvey, setIsOpenModal}) {
             <div >
             </div>
 
-
             <div className='absolute top-0 right-0 w-8 h-full flex justify-start items-center flex-col py-2 gap-2' >
                 <button className="p-1 text-[12px] text-neutral bg-white border rounded-full hover:bg-neutral hover:text-white" ><MdDelete /></button>
-                <button className="p-1 text-[12px] text-neutral bg-white border rounded-full hover:bg-neutral hover:text-white" ><FaEdit /></button>
+                <Link className="p-1 text-[12px] text-neutral bg-white border rounded-full hover:bg-neutral hover:text-white" href={`/dashboard/company/create_survey/${survey._id}`} ><FaEdit /></Link>
                 <button className="p-1 text-[12px] text-neutral bg-white border rounded-full hover:bg-neutral hover:text-white" onClick={()=> {setIsOpenModal(true); setCurrentSurvey(survey.questions) }} ><TbEyeglass2 /></button>
 
             </div>

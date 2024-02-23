@@ -16,8 +16,11 @@ function CreateSurveyPage({surveyId}) {
     
     if(surveyId){
       axiosSecure.get(`/get_survey/${surveyId}`).then(res => {
-        setSurveyQuestions(res?.data?.questions)
-          setSurveyInitialInfo({title: res.data.title, description: res?.data?.description})
+        const surveyData = {...res?.data};
+        setSurveyQuestions(surveyData?.questions)
+        delete surveyData?.questions
+        console.log(surveyData)
+          setSurveyInitialInfo({...surveyData})
           setShowQuestionArea(true)
       }).catch(err => console.log(err))
       

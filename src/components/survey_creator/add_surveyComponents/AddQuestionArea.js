@@ -6,10 +6,12 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaEdit, FaPlus } from "react-icons/fa";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import swal from "sweetalert";
 import AddQuestionModal from "./AddQuestionModal";
 import EditModal from "./EditModal";
 import QuestionCard from "./QuestionCard";
-import swal from "sweetalert";
+import useAxiosPublic from "@/Hook/useAxiosPublic";
+import UseAxioSecure from "@/Hook/UseAxioSecure";
 
 function AddQuestionArea({ setShowQuestionArea, surveyInitialInfo, setSurveyInitialInfo, surveyQuestions, setSurveyQuestions }) {
     const [openEditModal, setOpenEditModal] = useState(false)
@@ -20,6 +22,7 @@ function AddQuestionArea({ setShowQuestionArea, surveyInitialInfo, setSurveyInit
     const [currentQuestion, setCurrentQuestion] = useState({});
     const [isDemo, setIsDemo] = useState(false);
     const router = useRouter();
+    const axiosSecure = UseAxioSecure();
 
     const onSaveSurvey = () => {
         localStorage.removeItem("my_survey");
@@ -28,13 +31,13 @@ function AddQuestionArea({ setShowQuestionArea, surveyInitialInfo, setSurveyInit
             questions: surveyQuestions, createDate: moment().format('MM/DD/YYYY')
         }
 
-        axios.post("http://localhost:5000/create_survey", surveyObject).then(res => {
+        axiosSecure.post("/create_survey", surveyObject).then(res => {
             if (res?.data.acknowledged) {
                 swal({
                     title: "Good job!",
                     text: "You Completed the Survey!",
                     icon: "success",
-                    button: "Go Home",
+                    button: "Go to Manage Survey Page",
                 }).then((value) => {
                     router.push("/dashboard/company/manage_survey", { scroll: true })
                     setShowQuestionArea(false)
