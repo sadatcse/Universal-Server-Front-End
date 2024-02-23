@@ -1,5 +1,6 @@
 "use client"
 import useAxiosPublic from "@/Hook/useAxiosPublic";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import PageControlArea from "./elements/PageControlArea";
 import QuestionArea from "./elements/QuestionArea";
@@ -156,10 +157,9 @@ export default function SurveyQuestion({surveyId}) {
     useEffect(()=> {
         axiosPublic.get(`/get_survey/${surveyId}`).then(res => {
             setQuestions(res?.data?.questions)
-            console.log(res.data)
             setTitleAndDescription({title: res.data.title, description: res?.data?.description})
         }).catch(err => console.log(err))
-    },[axiosSecure, surveyId])
+    },[axiosPublic, surveyId])
 
 
 
@@ -220,7 +220,7 @@ export default function SurveyQuestion({surveyId}) {
                         <PageControlArea incrementAndDecrement={incrementAndDecrement} currentQuestion={currentQuestion} questions={questions} setIsViewResult={setIsViewResult} 
                         isNext={isNext} />
                         </>
-                        : <h2>404 Page not found</h2>
+                        : <Image src="/ring.gif" width={500} height={500} alt="loading" className="max-w-[500] block mx-auto mt-10 mix-blend-multiply" />
 
                 }
 
