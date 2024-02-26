@@ -28,7 +28,16 @@ export default function SurveyResult({ setQuestions, isViewResult, questions,use
 
         }
             
-        }).catch(err => console.log(err))  
+        }).catch(err => {
+            swal({
+                title: "Good job!",
+                text: "You Completed the Survey!",
+                icon: "error",
+                button: "Try Again",
+              }).then((value) => {
+                router.push("/", { scroll: false })
+              });
+        })  
     }
 
     return (

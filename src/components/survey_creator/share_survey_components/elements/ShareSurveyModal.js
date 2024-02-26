@@ -1,235 +1,225 @@
-"use client"
+"use client";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import { ImEmbed2 } from "react-icons/im";
-import { IoClose, IoCopy } from 'react-icons/io5';
+import { IoClose, IoCopy } from "react-icons/io5";
 import {
-    EmailIcon,
-    EmailShareButton,
-    FacebookIcon,
-    FacebookMessengerIcon,
-    FacebookMessengerShareButton,
-    FacebookShareButton,
-    GabIcon,
-    GabShareButton,
-    HatenaIcon,
-    HatenaShareButton,
-    InstapaperIcon,
-    InstapaperShareButton,
-    LineIcon,
-    LineShareButton,
-    LinkedinIcon,
-    LinkedinShareButton,
-    LivejournalIcon,
-    LivejournalShareButton,
-    MailruIcon,
-    MailruShareButton,
-    OKIcon,
-    OKShareButton,
-    PinterestIcon,
-    PinterestShareButton,
-    PocketIcon,
-    PocketShareButton,
-    RedditIcon,
-    RedditShareButton,
-    TelegramIcon,
-    TelegramShareButton,
-    TumblrIcon,
-    TumblrShareButton,
-    VKIcon,
-    VKShareButton,
-    ViberIcon,
-    ViberShareButton,
-    WeiboIcon,
-    WeiboShareButton,
-    WhatsappIcon,
-    WhatsappShareButton
-} from 'react-share';
-export default function ShareSurveyModal({setOpenShareModal}) {
-    const shareUrl = 'http://github.com';
-    const title = "GitHub"
-    const [isCopied, setIsCopied] = useState(false)
+  EmailIcon,
+  EmailShareButton,
+  FacebookIcon,
+  FacebookMessengerIcon,
+  FacebookMessengerShareButton,
+  FacebookShareButton,
+  GabIcon,
+  GabShareButton,
+  HatenaIcon,
+  HatenaShareButton,
+  InstapaperIcon,
+  InstapaperShareButton,
+  LineIcon,
+  LineShareButton,
+  LinkedinIcon,
+  LinkedinShareButton,
+  LivejournalIcon,
+  LivejournalShareButton,
+  MailruIcon,
+  MailruShareButton,
+  OKIcon,
+  OKShareButton,
+  PinterestIcon,
+  PinterestShareButton,
+  PocketIcon,
+  PocketShareButton,
+  RedditIcon,
+  RedditShareButton,
+  TelegramIcon,
+  TelegramShareButton,
+  TumblrIcon,
+  TumblrShareButton,
+  VKIcon,
+  VKShareButton,
+  ViberIcon,
+  ViberShareButton,
+  WeiboIcon,
+  WeiboShareButton,
+  WhatsappIcon,
+  WhatsappShareButton,
+} from "react-share";
+import EmbedCode from "./EmbedCode";
+export default function ShareSurveyModal({ shareUrl, setOpenShareModal }) {
+  const title = "GitHub";
 
-    const onCopy = async ()=> {
-        try {
-            await navigator.clipboard.writeText(shareUrl);
-            setIsCopied(true)
-            setTimeout(()=> setIsCopied(false) ,1000)
-        } catch (err) {
-            console.log(err)
-        }
+  const [isCopied, setIsCopied] = useState(false);
+  const [isEmbedCopied, setIsEmbedCopied] = useState(false);
+  const [isShowEmbedCode, setShowIsEmbedCode] = useState(false);
+  const [embedTypeName, setEmbedTypeName] = useState("html");
+
+  const onCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 1000);
+    } catch (err) {
+      console.log(err);
     }
-    return (
-        <div class="fixed left-0 top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50 py-10">
-            <div class="max-h-full w-full max-w-[800px] overflow-y-auto sm:rounded-2xl bg-white p-8">
-            <h2 className="text-3xl text-neutral-800 pb-3 border-b-2 border-blue-500 mb-3"><b>Share:</b> Universal Survey</h2>
-                <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-8 lg:grid-cols-10 mt-4 gap-6">
+  };
 
-                    <button className="w-[52px] h-[52px] flex justify-center items-center shadow-md rounded-full text-2xl bg-blue-100 hover:bg-blue-300"><ImEmbed2 /></button>
-                    <button className={`w-[52px] h-[52px] flex justify-center items-center shadow-md rounded-full text-2xl ${isCopied ? "bg-green-300" : "bg-red-200" }`} onClick={onCopy}>
-                    {isCopied ? 
-                    <FaCheck />:
-                    <IoCopy />
-                    }
-                    </button>
-                    
-                    <FacebookShareButton url={shareUrl} className="">
-                        <FacebookIcon size={52} round />
-                    </FacebookShareButton>
+  const onEmbedCopy = async (type) => {
+    try {
+      let embedCode;
 
-                    <FacebookMessengerShareButton
-                        url={shareUrl}
-                    >
-                        <FacebookMessengerIcon size={52} round />
-                    </FacebookMessengerShareButton>
+      if (type === "html") {
+        embedCode = ` <iframe src='${shareUrl}'
+        style="width: 100%; height: 400px; border: 1px solid #ccc;
+        border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0,
+        0.1)"> </iframe>`;
+      } else if (type === "jsx") {
+        embedCode = `<iframe
+        src='${shareUrl}'
+        style={{
+          width: "100%",
+          height: "400px",
+          border: "1px solid #ccc",
+          borderRadius: "5px",
+          boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        
+      </iframe>`;
+      }
+      await navigator.clipboard.writeText(embedCode);
+      setIsEmbedCopied(true);
+      setTimeout(() => setIsEmbedCopied(false), 1000);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-                    <TelegramShareButton
-                        url={shareUrl}
-                        title={title}
-                        
-                    >
-                        <TelegramIcon size={52} round />
-                    </TelegramShareButton>
+  return (
+    <div class="fixed left-0 top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50 py-10">
+      <div class="max-h-full w-full max-w-[800px] overflow-y-auto sm:rounded-2xl bg-white p-8">
+        <h2 className="text-3xl text-neutral-800 pb-3 border-b-2 border-stone-500 mb-3">
+          <b>Share:</b> Universal Survey
+        </h2>
+        <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-8 lg:grid-cols-10 mt-4 gap-6 relative">
+          <EmbedCode
+            embedTypeName={embedTypeName}
+            setEmbedTypeName={setEmbedTypeName}
+            shareUrl={shareUrl}
+            isShowEmbedCode={isShowEmbedCode}
+            setShowIsEmbedCode={setShowIsEmbedCode}
+            isEmbedCopied={isEmbedCopied}
+            onEmbedCopy={onEmbedCopy}
+          />
+          <button
+            className="w-[52px] h-[52px] flex justify-center items-center shadow-md rounded-full text-2xl bg-blue-100 hover:bg-blue-300"
+            onClick={() => setShowIsEmbedCode(true)}
+          >
+            <ImEmbed2 />
+          </button>
+          <button
+            className={`w-[52px] h-[52px] flex justify-center items-center shadow-md rounded-full text-2xl ${
+              isCopied ? "bg-green-300" : "bg-red-200"
+            }`}
+            onClick={onCopy}
+          >
+            {isCopied ? <FaCheck /> : <IoCopy />}
+          </button>
 
-                    <WhatsappShareButton
-                        url={shareUrl}
-                        title={title}
-                        
-                        
-                    >
-                        <WhatsappIcon size={52} round />
-                    </WhatsappShareButton>
+          <FacebookShareButton url={shareUrl} className="">
+            <FacebookIcon size={52} round />
+          </FacebookShareButton>
 
-                    <LinkedinShareButton url={shareUrl} >
-                        <LinkedinIcon size={52} round />
-                    </LinkedinShareButton>
+          <FacebookMessengerShareButton url={shareUrl}>
+            <FacebookMessengerIcon size={52} round />
+          </FacebookMessengerShareButton>
 
-                    <PinterestShareButton
-                        url={shareUrl}
-                    >
-                        <PinterestIcon size={52} round />
-                    </PinterestShareButton>
+          <TelegramShareButton url={shareUrl} title={title}>
+            <TelegramIcon size={52} round />
+          </TelegramShareButton>
 
-                    <VKShareButton
-                        url={shareUrl}
-                        
-                        
-                    >
-                        <VKIcon size={52} round />
-                    </VKShareButton>
+          <WhatsappShareButton url={shareUrl} title={title}>
+            <WhatsappIcon size={52} round />
+          </WhatsappShareButton>
 
-                    <OKShareButton
-                        url={shareUrl}
-                    >
-                        <OKIcon size={52} round />
-                    </OKShareButton>
+          <LinkedinShareButton url={shareUrl}>
+            <LinkedinIcon size={52} round />
+          </LinkedinShareButton>
 
-                    <RedditShareButton
-                        url={shareUrl}
-                        title={title}
-                        
-                        
-                    >
-                        <RedditIcon size={52} round />
-                    </RedditShareButton>
+          <PinterestShareButton url={shareUrl}>
+            <PinterestIcon size={52} round />
+          </PinterestShareButton>
 
-                    <GabShareButton
-                        url={shareUrl}
-                        title={title}
-                        
-                        
-                    >
-                        <GabIcon size={52} round />
-                    </GabShareButton>
+          <VKShareButton url={shareUrl}>
+            <VKIcon size={52} round />
+          </VKShareButton>
 
-                    <TumblrShareButton
-                        url={shareUrl}
-                        title={title}
-                        
-                    >
-                        <TumblrIcon size={52} round />
-                    </TumblrShareButton>
+          <OKShareButton url={shareUrl}>
+            <OKIcon size={52} round />
+          </OKShareButton>
 
-                    <LivejournalShareButton
-                        url={shareUrl}
-                        title={title}
-                        
-                        
-                    >
-                        <LivejournalIcon size={52} round />
-                    </LivejournalShareButton>
+          <RedditShareButton url={shareUrl} title={title}>
+            <RedditIcon size={52} round />
+          </RedditShareButton>
 
-                    <MailruShareButton
-                        url={shareUrl}
-                        title={title}
-                        
-                    >
-                        <MailruIcon size={52} round />
-                    </MailruShareButton>
+          <GabShareButton url={shareUrl} title={title}>
+            <GabIcon size={52} round />
+          </GabShareButton>
 
+          <TumblrShareButton url={shareUrl} title={title}>
+            <TumblrIcon size={52} round />
+          </TumblrShareButton>
 
-                    <EmailShareButton
-                        url={shareUrl}
-                        subject={title}
-                        
-                        
-                    >
-                        <EmailIcon size={52} round />
-                    </EmailShareButton>
+          <LivejournalShareButton url={shareUrl} title={title}>
+            <LivejournalIcon size={52} round />
+          </LivejournalShareButton>
 
-                    <ViberShareButton url={shareUrl} title={title} >
-                        <ViberIcon size={52} round />
-                    </ViberShareButton>
+          <MailruShareButton url={shareUrl} title={title}>
+            <MailruIcon size={52} round />
+          </MailruShareButton>
 
-                    <ViberShareButton url={shareUrl} title={title} >
-                        <ViberIcon size={52} round />
-                    </ViberShareButton>
+          <EmailShareButton url={shareUrl} subject={title}>
+            <EmailIcon size={52} round />
+          </EmailShareButton>
 
-                    <LineShareButton url={shareUrl} title={title} >
-                        <LineIcon size={52} round />
-                    </LineShareButton>
+          <ViberShareButton url={shareUrl} title={title}>
+            <ViberIcon size={52} round />
+          </ViberShareButton>
 
-                    <WeiboShareButton
-                        url={shareUrl}
-                        title={title}
-                        
-                        
-                    >
-                        <WeiboIcon size={52} round />
-                    </WeiboShareButton>
+          <ViberShareButton url={shareUrl} title={title}>
+            <ViberIcon size={52} round />
+          </ViberShareButton>
 
-                    <PocketShareButton
-                        url={shareUrl}
-                        title={title}
-                        
-                    >
-                        <PocketIcon size={52} round />
-                    </PocketShareButton>
+          <LineShareButton url={shareUrl} title={title}>
+            <LineIcon size={52} round />
+          </LineShareButton>
 
-                    <InstapaperShareButton
-                        url={shareUrl}
-                        title={title}
-                        
-                    >
-                        <InstapaperIcon size={52} round />
-                    </InstapaperShareButton>
+          <WeiboShareButton url={shareUrl} title={title}>
+            <WeiboIcon size={52} round />
+          </WeiboShareButton>
 
-                    <HatenaShareButton
-                        url={shareUrl}
-                        title={title}
-                        
-                    >
-                        <HatenaIcon size={52} round />
-                    </HatenaShareButton>
+          <PocketShareButton url={shareUrl} title={title}>
+            <PocketIcon size={52} round />
+          </PocketShareButton>
 
+          <InstapaperShareButton url={shareUrl} title={title}>
+            <InstapaperIcon size={52} round />
+          </InstapaperShareButton>
 
-                </div>
-
-                <div class="w-full">
-
-                    <button class="text-white text-4xl absolute top-6 right-10" onClick={()=> setOpenShareModal(false)} ><IoClose /></button>
-                </div>
-            </div>
+          <HatenaShareButton url={shareUrl} title={title}>
+            <HatenaIcon size={52} round />
+          </HatenaShareButton>
         </div>
-    )
+
+        <div className="w-full">
+          <button
+            className="text-white text-4xl absolute top-6 right-10"
+            onClick={() => setOpenShareModal(false)}
+          >
+            <IoClose />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
