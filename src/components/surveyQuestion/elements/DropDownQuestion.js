@@ -67,7 +67,7 @@ function DropDownQuestion({question, setQuestions, isViewResult}) {
         })
     }
 
-    const dropdownStyle = searchValue.length > 0 ? {padding: "8px"} : {padding: "0px"};
+    const dropdownStyle = searchValue?.length > 0 ? {padding: "8px"} : {padding: "0px"};
     return (
         <div onClick={onObserver} className={isViewResult ? "pointer-events-none": ""}>
             <h2 className='text-3xl font-bold text-center pt-8 pb-10'>{question?.question}</h2>
@@ -77,7 +77,7 @@ function DropDownQuestion({question, setQuestions, isViewResult}) {
 
                 <ul className="shadow menu dropdown-content z-[1] bg-success gap-3 rounded-box w-full max-h-40 overflow-auto flex-nowrap transition-all duration-100 absolute top-full left-0 mt-3 p-6" style={dropdownStyle} >
 
-                    {searchValue.map((name, idx) => (
+                    {searchValue?.map((name, idx) => (
                             <li key={idx} onClick={()=> onSelect( name)} className="text-neutral bg-white shadow-sm rounded-md hover:bg-neutral-800 hover:text-white"><a>{name}</a></li>
                     ))}
                 </ul>

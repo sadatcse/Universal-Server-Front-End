@@ -26,7 +26,7 @@ export default function CheckBoxGridQuestion({ question, setQuestions , isViewRe
                             <th>
 
                             </th>
-                            {question.options.rowLabels.map((name, idx) => (
+                            {question?.options?.rowLabels.map((name, idx) => (
                                 <th key={idx} className="text-neutral">
                                     {name}
                                 </th>
@@ -36,14 +36,14 @@ export default function CheckBoxGridQuestion({ question, setQuestions , isViewRe
                     <tbody>
                         {/* row 1 */}
 
-                        {question.options.columnLabels.map((name, idx1) => (
+                        {question?.options?.columnLabels.map((name, idx1) => (
                             <tr key={idx1}>
                                 <th>
                                     {name}
                                 </th>
                                 {question.options.rowLabels.map((label, idx2) => (
                                     <td key={idx2}>
-                                        <CheckboxGridInput idx1={idx1} label={label} isAnswer={question.answer[idx1][label]} onCheck={onCheck} />
+                                        <CheckboxGridInput idx1={idx1} label={label} isAnswer={question?.answer[idx1][label]} onCheck={onCheck} />
                                     </td>
                                 ))}
 
@@ -56,7 +56,7 @@ export default function CheckBoxGridQuestion({ question, setQuestions , isViewRe
                     <tfoot>
                         <tr>
                             <th></th>
-                            {question.options.rowLabels.map((name, idx) => (
+                            {question?.options?.rowLabels.map((name, idx) => (
                                 <th key={idx} className="text-neutral">
                                     {name}
                                 </th>

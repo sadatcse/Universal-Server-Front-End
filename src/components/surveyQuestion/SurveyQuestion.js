@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import useAxiosPublic from "@/Hook/useAxiosPublic";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -123,109 +123,139 @@ import SurveyResult from "./elements/SurveyResult";
 //     ]
 // }
 
-export default function SurveyQuestion({surveyId}) {
-    const [userData, setUserData] = useState({});
-    const [questions, setQuestions] = useState({});
-    const [titleAndDescription, setTitleAndDescription] = useState({});
-    const [currentQuestion, setCurrentQuestion] = useState(0);
-    const [isNext, setIsNext] = useState(false);
-    const [isViewResult, setIsViewResult] = useState(false);
-    const axiosPublic = useAxiosPublic()
+export default function SurveyQuestion({ surveyId }) {
+  const [userData, setUserData] = useState({});
+  const [questions, setQuestions] = useState({});
+  const [titleAndDescription, setTitleAndDescription] = useState({});
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [isNext, setIsNext] = useState(false);
+  const [isViewResult, setIsViewResult] = useState(false);
+  const axiosPublic = useAxiosPublic();
 
-
-
-    const incrementAndDecrement = (action) => {
-        if (action === "increment") {
-            setCurrentQuestion((prevValue) => {
-                if (prevValue < questions.length - 1) {
-                    return prevValue + 1
-                } else {
-                    return prevValue
-                }
-            })
-        } else if (action === "decrement") {
-            setCurrentQuestion((prevValue) => {
-                if (prevValue > 0) {
-                    return prevValue - 1
-                } else {
-                    return prevValue
-                }
-            })
+  const incrementAndDecrement = (action) => {
+    if (action === "increment") {
+      setCurrentQuestion((prevValue) => {
+        if (prevValue < questions.length - 1) {
+          return prevValue + 1;
+        } else {
+          return prevValue;
         }
+      });
+    } else if (action === "decrement") {
+      setCurrentQuestion((prevValue) => {
+        if (prevValue > 0) {
+          return prevValue - 1;
+        } else {
+          return prevValue;
+        }
+      });
     }
+  };
 
-    useEffect(()=> {
-        axiosPublic.get(`/get_survey/${surveyId}`).then(res => {
-            setQuestions(res?.data?.questions)
-            setTitleAndDescription({title: res.data.title, description: res?.data?.description})
-        }).catch(err => console.log(err))
-    },[axiosPublic, surveyId])
+  useEffect(() => {
+    axiosPublic
+      .get(`/get_survey/${surveyId}`)
+      .then((res) => {
+        setQuestions(res?.data?.questions);
+        setTitleAndDescription({
+          title: res.data.title,
+          description: res?.data?.description,
+        });
+      })
+      .catch((err) => console.log(err));
+  }, [axiosPublic, surveyId]);
 
+  useEffect(() => {
+    if (Object.keys(questions).length > 0) {
+      if (questions[currentQuestion]?.questionType === "checkbox_grid") {
+        const isTrue = Object.keys(questions[currentQuestion].answer).some(
+          (key) =>
+            Object.values(questions[currentQuestion].answer[key]).includes(true)
+        );
 
-
-    useEffect(() => {
-
-        if(Object.keys(questions).length > 0){
-
-            if (questions[currentQuestion]?.questionType === "checkbox_grid") {
-    
-                const isTrue = Object.keys(questions[currentQuestion].answer).some(key => Object.values(questions[currentQuestion].answer[key]).includes(true));
-    
-                setIsNext(isTrue)
-            } else if (
-                !(questions[currentQuestion]?.questionType === "ranking") ||
-    
-                !(questions[currentQuestion]?.questionType === "checkbox_grid")
-            ) {
-                if (questions[currentQuestion]?.answer === "") {
-    
-                    setIsNext(false)
-                } else {
-                    setIsNext(true)
-    
-                }
-            }
-
+        setIsNext(isTrue);
+      } else if (
+        !(questions[currentQuestion]?.questionType === "ranking") ||
+        !(questions[currentQuestion]?.questionType === "checkbox_grid")
+      ) {
+        if (questions[currentQuestion]?.answer === "") {
+          setIsNext(false);
+        } else {
+          setIsNext(true);
         }
-    }, [currentQuestion, questions])
+      }
+    }
+  }, [currentQuestion, questions]);
 
-    
-    
+  return (
+    <section className=" relative z-[1]  dark:bg-transparent pb-16">
+      <div className="w-full h-4/6 absolute top-0 left-0 z-[-1] bg-blue-200">
+        <div
+          className="w-full h-full  opacity-20"
+          style={{
+            backgroundImage:
+              "url('https://i.pinimg.com/564x/e7/38/8b/e7388be6e75e602eb3dc5fef7a5dec71.jpg')",
+          }}
+        ></div>
+      </div>
 
-    return (
-        <section className=" relative z-[1]  dark:bg-transparent pb-16">
-            <div className="w-full h-4/6 absolute top-0 left-0 z-[-1] bg-blue-200"  >
-                <div className="w-full h-full  opacity-20" style={{ backgroundImage: "url('https://i.pinimg.com/564x/e7/38/8b/e7388be6e75e602eb3dc5fef7a5dec71.jpg')" }} ></div>
-            </div>
+      <h2 className="text-3xl md:text-6xl font-bold text-center pt-12 pb-4">
+        {titleAndDescription?.title}
+      </h2>
+      <p className="text-gray-500 text-center text-xl md:text-2xl font-semibold mb-8">
+        {titleAndDescription?.description}
+      </p>
+      <div className="container mx-auto bg-white py-6 rounded-xl relative pb-28 px-8">
+        {Object.keys(questions).length > 0 ? (
+          isViewResult ? (
+            <SurveyResult
+              questions={questions}
+              setQuestions={setQuestions}
+              isViewResult={isViewResult}
+              userData={userData}
+              setUserData={setUserData}
+              setIsViewResult={setIsViewResult}
+              surveyId={surveyId}
+            />
+          ) : !userData?.email ? (
+            <SurveyForm
+              setQuestions={setQuestions}
+              setUserData={setUserData}
+              surveyId={surveyId}
+            />
+          ) : (
+            <>
+              <progress
+                className="progress progress-success w-full md:w-4/6 mx-auto block h-1 transition-all duration-500"
+                value={((currentQuestion + 1) / questions.length) * 100}
+                max="100"
+              ></progress>
 
-            <h2 className='text-3xl md:text-6xl font-bold text-center pt-12 pb-4'>{titleAndDescription?.title}</h2>
-            <p className='text-gray-500 text-center text-xl md:text-2xl font-semibold mb-8'>{titleAndDescription?.description}</p>
-            <div className="container mx-auto bg-white py-6 rounded-xl relative pb-28 px-8">
-                { 
-                    Object.keys(questions).length > 0 ?
+              <QuestionArea
+                setQuestions={setQuestions}
+                questions={questions}
+                currentQuestion={currentQuestion}
+              />
 
-                    isViewResult ?
-                        <SurveyResult questions={questions} setQuestions={setQuestions} isViewResult={isViewResult} userData={userData} setUserData={setUserData} setIsViewResult={setIsViewResult} />
-                        :
-                        !userData?.email
-                        ?
-                        <SurveyForm setQuestions={setQuestions} setUserData={setUserData} />
-                        :
-                        <>
-
-                        <progress className="progress progress-success w-full md:w-4/6 mx-auto block h-1 transition-all duration-500" value={((currentQuestion + 1) / questions.length) * 100} max="100"></progress>
-
-                        <QuestionArea setQuestions={setQuestions} questions={questions} currentQuestion={currentQuestion} />
-
-                        <PageControlArea incrementAndDecrement={incrementAndDecrement} currentQuestion={currentQuestion} questions={questions} setIsViewResult={setIsViewResult} 
-                        isNext={isNext} />
-                        </>
-                        : <Image src="/ring.gif" width={500} height={500} alt="loading" className="max-w-[500] block mx-auto mt-10 mix-blend-multiply" />
-
-                }
-
-            </div>
-        </section >
-    )
+              <PageControlArea
+                incrementAndDecrement={incrementAndDecrement}
+                currentQuestion={currentQuestion}
+                questions={questions}
+                setIsViewResult={setIsViewResult}
+                isNext={isNext}
+              />
+            </>
+          )
+        ) : (
+          <Image
+            src="/ring.gif"
+            width={500}
+            height={500}
+            alt="loading"
+            className="max-w-[500] block mx-auto mt-10 mix-blend-multiply"
+          />
+        )}
+      </div>
+    </section>
+  );
 }
-
