@@ -17,25 +17,30 @@ export default function SurveyResult({
   questions,
   userData,
   surveyId,
+  titleAndDescription,
 }) {
   const axiosPublic = useAxiosPublic();
   const router = useRouter();
   const onSubmit = () => {
     const { surveyIds, ...restData } = userData;
+    const answers = { [titleAndDescription?.title]: questions };
+
+    console.log(answers);
     const combinedObject = {
       ...restData,
-      answers: questions,
+      answers,
       date: moment().format("MM/DD/YYYY"),
       surveyIds: surveyIds ? [...surveyIds, surveyId] : [surveyId],
     };
+
     axiosPublic
       .post("/create_participant", combinedObject)
       .then((res) => {
         console.log(res);
         if (
-          res?.data?.participantResult.acknowledged ||
-          res?.data?.surveyResult.acknowledged ||
-          res?.data?.acknowledged
+          res.data?.participantResult?.acknowledged ||
+          res.data?.surveyResult?.acknowledged ||
+          res.data?.acknowledged
         ) {
           swal({
             title: "Good job!",

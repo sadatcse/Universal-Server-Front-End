@@ -243,6 +243,7 @@ export default function SurveyQuestion({ surveyId, participantId }) {
               setUserData={setUserData}
               setIsViewResult={setIsViewResult}
               surveyId={surveyId}
+              titleAndDescription={titleAndDescription}
             />
           ) : !userData?.email ? (
             <SurveyForm
