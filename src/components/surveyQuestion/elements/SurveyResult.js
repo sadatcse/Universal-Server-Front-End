@@ -21,17 +21,22 @@ export default function SurveyResult({
   const axiosPublic = useAxiosPublic();
   const router = useRouter();
   const onSubmit = () => {
+    const { surveyIds, ...restData } = userData;
     const combinedObject = {
-      ...userData,
+      ...restData,
       answers: questions,
       date: moment().format("MM/DD/YYYY"),
-      surveyId,
+      surveyIds: surveyIds ? [...surveyIds, surveyId] : [surveyId],
     };
     axiosPublic
       .post("/create_participant", combinedObject)
       .then((res) => {
         console.log(res);
-        if (res?.data.acknowledged) {
+        if (
+          res?.data?.participantResult.acknowledged ||
+          res?.data?.surveyResult.acknowledged ||
+          res?.data?.acknowledged
+        ) {
           swal({
             title: "Good job!",
             text: "You Completed the Survey!",
@@ -48,8 +53,6 @@ export default function SurveyResult({
           text: "There is an error!",
           icon: "error",
           button: "Try Again",
-        }).then((value) => {
-          router.push("/", { scroll: false });
         });
       });
   };

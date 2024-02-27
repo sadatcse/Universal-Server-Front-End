@@ -6,6 +6,8 @@ import PageControlArea from "./elements/PageControlArea";
 import QuestionArea from "./elements/QuestionArea";
 import SurveyForm from "./elements/SurveyForm";
 import SurveyResult from "./elements/SurveyResult";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 // const surveyData = {
 //     "title": "Employee Feedback Survey",
@@ -123,7 +125,7 @@ import SurveyResult from "./elements/SurveyResult";
 //     ]
 // }
 
-export default function SurveyQuestion({ surveyId }) {
+export default function SurveyQuestion({ surveyId, participantId }) {
   const [userData, setUserData] = useState({});
   const [questions, setQuestions] = useState({});
   const [titleAndDescription, setTitleAndDescription] = useState({});
@@ -131,6 +133,7 @@ export default function SurveyQuestion({ surveyId }) {
   const [isNext, setIsNext] = useState(false);
   const [isViewResult, setIsViewResult] = useState(false);
   const axiosPublic = useAxiosPublic();
+  const router = useRouter();
 
   const incrementAndDecrement = (action) => {
     if (action === "increment") {
@@ -163,7 +166,31 @@ export default function SurveyQuestion({ surveyId }) {
         });
       })
       .catch((err) => console.log(err));
-  }, [axiosPublic, surveyId]);
+
+    // get participant data
+
+    if (participantId) {
+      axiosPublic
+        .get(`/get_participant/${participantId}`)
+        .then((res) => {
+          console.log("is existed?");
+          if (res?.data?.surveyIds.includes(surveyId)) {
+            swal({
+              title: "Alert!",
+              text: "You have already Completed the Survey!",
+              icon: "error",
+              button: "Try Another",
+            }).then((value) => {
+              router.push("/dashboard/user/available_surveys", {
+                scroll: false,
+              });
+            });
+          }
+          setUserData(res?.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [axiosPublic, surveyId, participantId]);
 
   useEffect(() => {
     if (Object.keys(questions).length > 0) {
