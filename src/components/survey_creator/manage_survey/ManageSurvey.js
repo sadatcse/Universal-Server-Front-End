@@ -1,9 +1,10 @@
-"use client"
+"use client";
 import useAxiosPublic from "@/Hook/useAxiosPublic";
 import DemoModal from "@/components/demo_survey_question/elements/drag_and_drop/DemoModal";
 import { useEffect, useState } from "react";
 import ManageHeader from "./components/ManageHeader";
 import SurveyCard from "./components/SurveyCard";
+import Image from "next/image";
 
 // const surveyData = [
 //     {
@@ -237,45 +238,73 @@ import SurveyCard from "./components/SurveyCard";
 //     }
 // ]
 
-
 function ManageSurvey() {
-    const [surveyData, setSurveyData] = useState([]);
-    const [manageSurveyData, setManageSurveyData] = useState([]);
-    const [currentSurvey, setCurrentSurvey] = useState({});
-    const [isOpenModal, setIsOpenModal] = useState(false)
-    const axiosPublic = useAxiosPublic()
+  const [surveyData, setSurveyData] = useState([]);
+  const [manageSurveyData, setManageSurveyData] = useState([]);
+  const [currentSurvey, setCurrentSurvey] = useState({});
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [reFetch, setReFetch] = useState(0);
+  const axiosPublic = useAxiosPublic();
+  const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(()=> {
-        axiosPublic.get("/get_survey").then(res => {
-            setManageSurveyData(res.data)
-            setSurveyData(res.data)
-           
-            
-        })
-    },[axiosPublic])
+  useEffect(() => {
+    setIsLoading(true);
+    axiosPublic.get("/get_survey").then((res) => {
+      setManageSurveyData(res.data);
+      setSurveyData(res.data);
+      setIsLoading(false);
+    });
+  }, [axiosPublic, reFetch]);
 
-    return (
-        <>
-            <ManageHeader surveyData={surveyData} setManageSurveyData={setManageSurveyData} />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4 gap-6">
-                {
-                    manageSurveyData && manageSurveyData.map((survey, idx) => (
+  return (
+    <>
+      <ManageHeader
+        surveyData={surveyData}
+        setManageSurveyData={setManageSurveyData}
+      />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4 gap-6">
+        {manageSurveyData.length > 0 ? (
+          manageSurveyData.map((survey, idx) => (
+            <SurveyCard
+              survey={survey}
+              key={idx}
+              setCurrentSurvey={setCurrentSurvey}
+              setIsOpenModal={setIsOpenModal}
+              setReFetch={setReFetch}
+            />
+          ))
+        ) : (
+          <div className="col-span-full">
+            {isLoading ? (
+              <Image
+                src="/ring.gif"
+                width={500}
+                height={500}
+                alt="loading"
+                className="max-w-[500] block mx-auto mt-10 mix-blend-multiply"
+              />
+            ) : (
+              <Image
+                src="/question.png"
+                width={500}
+                height={500}
+                alt="loading"
+                className="max-w-[500] block mx-auto mt-10 mix-blend-multiply"
+              />
+            )}
+          </div>
+        )}
+      </div>
 
-                        <SurveyCard survey={survey} key={idx} setCurrentSurvey={setCurrentSurvey} setIsOpenModal={setIsOpenModal} />
-                    ))
-                }
-
-            </div>
-
-            {
-                isOpenModal ?
-                <DemoModal
-                         surveyQuestions={currentSurvey} setSurveyQuestions={setCurrentSurvey} setOpenDemoModal={setIsOpenModal}
-                    />
-                    : null
-            }
-        </>
-    )
+      {isOpenModal ? (
+        <DemoModal
+          surveyQuestions={currentSurvey}
+          setSurveyQuestions={setCurrentSurvey}
+          setOpenDemoModal={setIsOpenModal}
+        />
+      ) : null}
+    </>
+  );
 }
 
-export default ManageSurvey
+export default ManageSurvey;

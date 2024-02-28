@@ -84,8 +84,8 @@ const Banner = () => {
               width={600}
               height={600}
               alt="company logo"
-              src={logo}
-              className={`max-w-md object-contain object-center`}
+              src="https://img.freepik.com/free-vector/flat-creativity-concept-illustration_52683-64279.jpg?w=740&t=st=1709107398~exp=1709107998~hmac=48bb87d73a4106a32a7801c266ab15f74954e788eb6a24a8f12aaddcbe226626"
+              className={`max-w-md object-contain object-center mix-blend-multiply`}
             />
           </div>
         </div>
