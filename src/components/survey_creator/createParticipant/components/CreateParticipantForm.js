@@ -226,8 +226,8 @@ function CreateParticipantForm({ setQuestions, setUserData }) {
       terms_and_condition,
     };
 
-    axios
-      .post("http://localhost:5000/create_participant", userObject)
+    axiosPublic
+      .post("/create_participant", userObject)
       .then((res) => {
         console.log(res);
         if (res?.data.acknowledged) {
