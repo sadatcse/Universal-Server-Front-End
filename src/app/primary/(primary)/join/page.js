@@ -14,7 +14,7 @@ import {
   loadCaptchaEnginge,
   validateCaptcha,
 } from "react-simple-captcha";
-import logo from "../../../../Asset/logo2.png";
+import logo from "../../../../Asset/d.png";
 
 function Join() {
   const axiosPublic = useAxiosPublic();
@@ -125,11 +125,28 @@ function Join() {
   const handleCreateInUser = async (data) => {
     setLoading(true);
     try {
-      await createUser(data.email, data.password);
-      toast.success("User created successfully!", {
-        duration: 4000,
-        position: "top-right",
-      });
+      const result = await createUser(data.email, data.password);
+
+      const userinfo = {
+        name: result.user?.displayName,
+        uid: result.user?.uid,
+        mobile: result.user?.phoneNumber,
+        email: result.user?.email,
+        Photourl: result.user?.photoURL,
+        role: "Survey Participant",
+      };
+
+      const response = await axiosPublic.post("/users", userinfo);
+
+      if (response.status === 200) {
+        toast.success("User created successfully!", {
+          duration: 2000,
+          position: "top-right",
+        });
+        router.push("/", { scroll: false });
+      } else {
+        toast.error("Failed to Login. Please try again.");
+      }
 
       setLoading(false);
     } catch (err) {

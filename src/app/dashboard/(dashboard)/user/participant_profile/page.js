@@ -10,7 +10,8 @@ import swal from "sweetalert";
 
 function Page() {
   // user from global auth
-  const { user, userRole, currentUser } = useContext(AuthContext);
+  const { user, userRole, currentUser, setCurrentUser } =
+    useContext(AuthContext);
   const [selectedImage, setSelectedImage] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
   // const [userInfo, setUserInfo] = useState({});
@@ -41,6 +42,7 @@ function Page() {
 
     let userObject = {
       name,
+      uid: user?.uid,
       mobile,
       email,
       role,
@@ -64,9 +66,14 @@ function Page() {
           };
           console.log(userObject);
           axiosSecure
-            .patch(`users/${currentUser?._id}`, userObject)
+            .patch(`/users/${currentUser?._id}`, userObject)
             .then((response) => {
               if (response.status === 200) {
+                delete currentUser?.Photourl;
+                setCurrentUser({
+                  ...currentUser,
+                  Photourl: res.data.data.display_url,
+                });
                 swal({
                   title: "Good job!",
                   text: "Your Profile has been updated!",
@@ -81,7 +88,7 @@ function Page() {
         .catch((err) => console.log(err));
     } else {
       axiosSecure
-        .patch(`users/${currentUser?._id}`, userObject)
+        .patch(`/users/${currentUser?._id}`, userObject)
         .then((response) => {
           if (response.status === 200) {
             swal({
@@ -109,7 +116,7 @@ function Page() {
           <p className="mt-1 text-sm">Manage your personal profile</p>
         </div>
         <div className="relative">
-          {currentUser?.Photourl ? (
+          {currentUser?.Photourl || imagePreview ? (
             <>
               <img
                 className="w-28 h-28 rounded-full"
@@ -122,7 +129,7 @@ function Page() {
               <div className="skeleton w-28 h-28 rounded-full"></div>
             </>
           )}
-          <div className="absolute right-0 bottom-0 z-10 bg-blue-500  rounded-full p-2">
+          <div className="absolute right-0 bottom-0 z-10 bg-blue-500  rounded-full p-2  ">
             <FaPen className="text-white text-sm" />
           </div>
           {/* hidden file input */}
@@ -130,7 +137,7 @@ function Page() {
             <input
               type="file"
               name="newImage"
-              className="absolute w-7 opacity-0  rounded-full right-0 bottom-0 z-20"
+              className="absolute w-7 opacity-0  rounded-full right-0 bottom-0 z-20 cursor-pointer"
               id=""
             />
           </form>
