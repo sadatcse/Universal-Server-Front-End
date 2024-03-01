@@ -207,7 +207,7 @@ function Layout({ children }) {
 
   return (
     <div className="flex flex-col h-screen">
-      <header className="bg-blue-200 text-neutral text-xl hover:text-neutral py-4 flex justify-between items-center relative z-[2]">
+      <header className="bg-blue-200 text-neutral text-xl hover:text-neutral py-4 flex justify-between items-center relative">
         <div href="/" className="btn btn-ghost text-xl hover:bg-transparent">
           <div className="avatar">
             <div className="w-12 rounded-full ring ring-offset-base-100 ring-offset-2 ">
