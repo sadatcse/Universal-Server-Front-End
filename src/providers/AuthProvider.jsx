@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [userRole, setUserRole] = useState("user");
+  const [userRole, setUserRole] = useState("Survey Participant");
   const [themMode, setThemMode] = useState(false);
   const axiosSecure = UseAxioSecure();
 

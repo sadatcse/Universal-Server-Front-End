@@ -31,7 +31,7 @@ export default function Page() {
             {/* <p className="text-sm text-gray-600">Deadline: {deadline}</p> */}
           </div>
           <Link
-            href={`http://localhost:3000/survey_question/${survey?._id}?email=${currentUser?.email}`}
+            href={`https://universal-survey-backend.vercel.app/survey_question/${survey?._id}?email=${currentUser?.email}`}
             className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
           >
             Take Survey

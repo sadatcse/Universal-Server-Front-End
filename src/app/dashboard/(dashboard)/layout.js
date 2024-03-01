@@ -9,6 +9,7 @@ import { useContext } from "react";
 import toast from "react-hot-toast";
 import { FaUser } from "react-icons/fa";
 import logo from "../../../Asset/d.png";
+import { IoNotifications } from "react-icons/io5";
 function Layout({ children }) {
   // const { userType, loading: adminLoading } = useAdmin();
 
@@ -56,24 +57,27 @@ function Layout({ children }) {
           Create New Survey
         </ActiveLink>
         {/* <ActiveLink href="/dashboard/admin/survey_analytics" >Create New Survey</ActiveLink> */}
-        <ActiveLink href="/dashboard/admin/visualizations_and_reports">
+        {/* <ActiveLink href="/dashboard/admin/visualizations_and_reports">
           Visualizations and reports
-        </ActiveLink>
+        </ActiveLink> */}
         <ActiveLink href="/dashboard/admin/manage_survey_templates">
-          Manage Survey Templates
+          Manage Survey
         </ActiveLink>
-        <ActiveLink href="/dashboard/admin/manage_survey_layout">
+        {/* <ActiveLink href="/dashboard/admin/manage_survey_layout">
           Manage Survey Layout
-        </ActiveLink>
-        <ActiveLink href="/dashboard/admin/survey_version_control">
+        </ActiveLink> */}
+        {/* <ActiveLink href="/dashboard/admin/survey_version_control">
           Survey Version Controls
+        </ActiveLink> */}
+        <ActiveLink href="/dashboard/admin/share_survey">
+          Share Survey
         </ActiveLink>
       </GroupLink>
       <GroupLink groupName="Participant Management">
-        <ActiveLink href="/dashboard/admin/users">All Perticipiants</ActiveLink>
-        <ActiveLink href="/dashboard/admin/user_roles_and_permissions">
+        <ActiveLink href="/dashboard/admin/users">All Participants</ActiveLink>
+        {/* <ActiveLink href="/dashboard/admin/user_roles_and_permissions">
           User Roles and Permissions
-        </ActiveLink>
+        </ActiveLink> */}
         <ActiveLink href="/dashboard/admin/user_activity_monitoring">
           User Activity Monitoring
         </ActiveLink>
@@ -82,12 +86,12 @@ function Layout({ children }) {
         </ActiveLink>
       </GroupLink>
       <GroupLink groupName="Notifications & Alerts">
-        <ActiveLink href="/dashboard/admin/system_notifications">
+        {/* <ActiveLink href="/dashboard/admin/system_notifications">
           System Notifications
         </ActiveLink>
         <ActiveLink href="/dashboard/admin/survey_status_updates">
           Survey Status Updates
-        </ActiveLink>
+        </ActiveLink> */}
         <ActiveLink href="/dashboard/admin/critic">Critic</ActiveLink>
       </GroupLink>
       <GroupLink groupName="Data Management">
@@ -163,14 +167,14 @@ function Layout({ children }) {
           Invite Participate
         </ActiveLink>
       </GroupLink>
-      <GroupLink groupName="Import & Export">
+      {/* <GroupLink groupName="Import & Export">
         <ActiveLink href="/dashboard/company/import_data">
           Import Data
         </ActiveLink>
         <ActiveLink href="/dashboard/company/export_data">
           Export Data
         </ActiveLink>
-      </GroupLink>
+      </GroupLink> */}
     </>
   );
 
@@ -203,7 +207,7 @@ function Layout({ children }) {
 
   return (
     <div className="flex flex-col h-screen">
-      <header className="bg-blue-200 text-neutral text-xl hover:text-neutral py-4 flex justify-between items-center">
+      <header className="bg-blue-200 text-neutral text-xl hover:text-neutral py-4 flex justify-between items-center relative z-[2]">
         <div href="/" className="btn btn-ghost text-xl hover:bg-transparent">
           <div className="avatar">
             <div className="w-12 rounded-full ring ring-offset-base-100 ring-offset-2 ">
@@ -221,26 +225,47 @@ function Layout({ children }) {
               />
             </div>
           </div>{" "}
-          <span className="font-exo text-neutral-800">Md Sadat Khan</span>
+          <span className="font-exo text-neutral-800">{currentUser?.name}</span>
         </div>
 
         <p className="font-bold text-2xl">{userRole} </p>
 
-        <Link href="/" className="btn btn-ghost text-xl hover:bg-transparent">
-          <Image
-            className="w-16 mix-blend-multiply"
-            width={400}
-            height={400}
-            src={logo}
-            alt="logo"
-          />{" "}
-          <span className="font-exo text-neutral-800">Universal Survey</span>
-        </Link>
+        <div className="flex items-center">
+          <details className="dropdown text-inherit">
+            <summary className="btn bg-transparent shadow-none hover:bg-transparent border-none dark:text-white pr-0 pl-0">
+              <div className="avatar placeholder mr-2">
+                <div className="bg-neutral rounded-full w-8 text-white">
+                  <IoNotifications />
+                </div>
+              </div>
+            </summary>
+            <div className="p-2 menu dropdown-content z-[1] rounded-box w-52 dark:bg-blue-200 text-neutral-800 bg-white right-0">
+              <Image
+                src="/question.png"
+                width={200}
+                height={200}
+                alt="loading"
+                className="max-w-[100] block mx-auto mt-10 mix-blend-multiply"
+              />
+            </div>
+          </details>
+
+          <Link href="/" className="btn btn-ghost text-xl hover:bg-transparent">
+            <Image
+              className="w-16 mix-blend-multiply"
+              width={400}
+              height={400}
+              src={logo}
+              alt="logo"
+            />{" "}
+            <span className="font-exo text-neutral-800">Universal Survey</span>
+          </Link>
+        </div>
 
         {/* <UserProfile user={user} role="admin" /> */}
       </header>
 
-      <div className="flex flex-1 relative z-10 ">
+      <div className="flex flex-1 relative z-[1] ">
         <div className="w-64 bg-neutral-800 h-[90vh] overflow-auto relative pt-8">
           {/* <button className="text-neutral absolute top-3 right-2 text-2xl bg-yellow-200 px-4 py-1"><FaArrowLeftLong /></button> */}
 
