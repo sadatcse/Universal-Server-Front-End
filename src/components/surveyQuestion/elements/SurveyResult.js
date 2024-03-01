@@ -64,7 +64,7 @@ export default function SurveyResult({
 
   return (
     <>
-      <h2 className="text-4xl font-bold text-center mb-8 w-full border-b-2">
+      <h2 className="text-4xl font-bold text-center mb-8 w-full border-b-2" >
         Your Answers
       </h2>
       {questions?.map((qn, idx) => (

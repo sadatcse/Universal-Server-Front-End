@@ -87,36 +87,7 @@ function Page() {
             ></input>
           </div>
         </div>
-        {/* total user */}
-        <div className="mt-4 text-gray-400 text-sm">
-          <h1>
-            {userData.length === 0 ? (
-              <>
-                <div className="skeleton h-4 w-20 mt-5 opacity-50"></div>
-              </>
-            ) : (
-              <>Total {userData.length} user</>
-            )}
-          </h1>
-        </div>
-        {userData.length == 0 ? (
-          <>
-            {/* loading section */}
-            <section>
-              <div className="skeleton h-14 w-full mt-9 opacity-50"></div>
-              <div className="skeleton h-9 w-full mt-5 opacity-50"></div>
-              <div className="skeleton h-9 w-full mt-5 opacity-50"></div>
-              <div className="skeleton h-9 w-full mt-5 opacity-50"></div>
-              <div className="skeleton h-9 w-full mt-5 opacity-50"></div>
-              <div className="skeleton h-9 w-full mt-5 opacity-50"></div>
-            </section>
-          </>
-        ) : (
-          <>
-            {/* customised table */}
             <ViewResponseParticipateList />
-          </>
-        )}
       </div>
     </section>
   );

@@ -167,12 +167,12 @@ function ViewResponseTable() {
           {/* head */}
           <thead>
             <tr>
-              <th>Image</th>
-              <th>first Name</th>
-              <th>List Name</th>
-              <th>Email</th>
-              <th>Country</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Creator</th>
+              <th>Participants Count</th>
               <th>Date</th>
+              <th>Platform</th>
               <th>Action</th>
             </tr>
           </thead>
