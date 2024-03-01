@@ -4,7 +4,7 @@ function page({ params, searchParams }) {
   return (
     <SurveyQuestion
       surveyId={params.survey_id}
-      participantId={searchParams?.id}
+      userEmail={searchParams?.email}
     />
   );
 }

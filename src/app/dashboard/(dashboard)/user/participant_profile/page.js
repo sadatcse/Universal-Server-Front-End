@@ -14,18 +14,7 @@ function Page() {
     useContext(AuthContext);
   const [selectedImage, setSelectedImage] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
-  // const [userInfo, setUserInfo] = useState({});
-  // const { _id, name, mobile, email, Photourl, role } =
-  //   currentUser && currentUser;
   const axiosSecure = UseAxioSecure();
-  // getting user data
-  // useEffect(() => {
-  //   axios(
-  //     `https://universal-survey-backend.vercel.app/users/${user?.email}`
-  //   ).then((data) => setUserInfo(data.data));
-  //   // .catch((error) => console.error(error));
-  // }, [user]);
-
   // functions
   const handleOnImageChange = (e) => {
     const imageFile = e.target.files[0];

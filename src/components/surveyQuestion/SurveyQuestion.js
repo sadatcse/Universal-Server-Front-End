@@ -125,7 +125,7 @@ import { useRouter } from "next/navigation";
 //     ]
 // }
 
-export default function SurveyQuestion({ surveyId, participantId }) {
+export default function SurveyQuestion({ surveyId, userEmail }) {
   const [userData, setUserData] = useState({});
   const [questions, setQuestions] = useState({});
   const [titleAndDescription, setTitleAndDescription] = useState({});
@@ -156,6 +156,32 @@ export default function SurveyQuestion({ surveyId, participantId }) {
   };
 
   useEffect(() => {
+    // get participant data
+
+    if (userEmail) {
+      axiosPublic
+        .get(`/users/${userEmail}`)
+        .then((res) => {
+          if (res?.data?.surveyIds) {
+            if (res?.data?.surveyIds.includes(surveyId)) {
+              swal({
+                title: "Alert!",
+                text: "You have already Completed the Survey!",
+                icon: "error",
+                button: "Try Another",
+              }).then((value) => {
+                router.push("/dashboard/user/available_surveys", {
+                  scroll: false,
+                });
+              });
+            }
+          }
+          setUserData(res?.data);
+          console.log("user data", res?.data);
+        })
+        .catch((err) => console.log(err));
+    }
+
     axiosPublic
       .get(`/get_survey/${surveyId}`)
       .then((res) => {
@@ -166,31 +192,7 @@ export default function SurveyQuestion({ surveyId, participantId }) {
         });
       })
       .catch((err) => console.log(err));
-
-    // get participant data
-
-    if (participantId) {
-      axiosPublic
-        .get(`/get_participant/${participantId}`)
-        .then((res) => {
-          console.log("is existed?");
-          if (res?.data?.surveyIds.includes(surveyId)) {
-            swal({
-              title: "Alert!",
-              text: "You have already Completed the Survey!",
-              icon: "error",
-              button: "Try Another",
-            }).then((value) => {
-              router.push("/dashboard/user/available_surveys", {
-                scroll: false,
-              });
-            });
-          }
-          setUserData(res?.data);
-        })
-        .catch((err) => console.log(err));
-    }
-  }, [axiosPublic, surveyId, participantId]);
+  }, [axiosPublic, surveyId, userEmail]);
 
   useEffect(() => {
     if (Object.keys(questions).length > 0) {

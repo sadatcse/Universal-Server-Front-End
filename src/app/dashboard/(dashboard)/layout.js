@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import toast from "react-hot-toast";
 import { FaUser } from "react-icons/fa";
-import logo from "../../../Asset/logo2.png";
+import logo from "../../../Asset/d.png";
 function Layout({ children }) {
   // const { userType, loading: adminLoading } = useAdmin();
 
@@ -110,7 +110,7 @@ function Layout({ children }) {
       </GroupLink>
       <GroupLink groupName="Administrator Profile">
         <ActiveLink href="/dashboard/admin/view_and_edit_admin_information">
-          View and edit admin information
+          Administrator Profile
         </ActiveLink>
         <ActiveLink href="/dashboard/admin/activity_history_and_logs">
           Activity history and logs
