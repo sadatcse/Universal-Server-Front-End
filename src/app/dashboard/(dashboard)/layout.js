@@ -168,6 +168,9 @@ function Layout({ children }) {
           Invite Participate
         </ActiveLink>
       </GroupLink>
+      <ActiveLink isSubRoute={false} href="/dashboard/company/payment">
+        Payment
+      </ActiveLink>
       {/* <GroupLink groupName="Import & Export">
         <ActiveLink href="/dashboard/company/import_data">
           Import Data
