@@ -8,6 +8,7 @@ const nextConfig = {
       "i.pinimg.com",
       "i.ibb.co",
       "www.freepik.com",
+      "https://lh3.googleusercontent.com",
     ],
   },
 };

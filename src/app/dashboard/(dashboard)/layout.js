@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import { FaUser } from "react-icons/fa";
 import logo from "../../../Asset/d.png";
 import { IoNotifications } from "react-icons/io5";
+import PrivateRoute from "@/routes/PrivateRoute";
 function Layout({ children }) {
   // const { userType, loading: adminLoading } = useAdmin();
 
@@ -205,97 +206,103 @@ function Layout({ children }) {
     userRole === "Administrator"
       ? admin
       : userRole === "Survey Creator"
-        ? companies
-        : users;
+      ? companies
+      : users;
 
   return (
-    <div className="flex flex-col h-screen">
-      <header className="bg-blue-200 text-neutral text-xl hover:text-neutral py-4 flex justify-between items-center relative">
-        <div href="/" className="btn btn-ghost text-xl hover:bg-transparent">
-          <div className="avatar">
-            <div className="w-12 rounded-full ring ring-offset-base-100 ring-offset-2 ">
-              <Image
-                width={400}
-                height={400}
-                src={
-                  currentUser?.Photourl
-                    ? currentUser?.Photourl
-                    : user?.Photourl
+    <PrivateRoute>
+      <div className="flex flex-col h-screen">
+        <header className="bg-blue-200 text-neutral text-xl hover:text-neutral py-4 flex justify-between items-center relative">
+          <div href="/" className="btn btn-ghost text-xl hover:bg-transparent">
+            <div className="avatar">
+              <div className="w-12 rounded-full ring ring-offset-base-100 ring-offset-2 ">
+                <Image
+                  width={400}
+                  height={400}
+                  src={
+                    currentUser?.Photourl
+                      ? currentUser?.Photourl
+                      : user?.Photourl
                       ? user?.Photourl
                       : "/no_user.jpg"
-                }
-                alt="user image"
-              />
-            </div>
-          </div>{" "}
-          <span className="font-exo text-neutral-800">{currentUser?.name}</span>
-        </div>
-
-        <p className="font-bold text-2xl">{userRole} </p>
-
-        <div className="flex items-center">
-          <details className="dropdown text-inherit">
-            <summary className="btn bg-transparent shadow-none hover:bg-transparent border-none dark:text-white pr-0 pl-0">
-              <div className="avatar placeholder mr-2">
-                <div className="bg-neutral rounded-full w-8 text-white">
-                  <IoNotifications />
-                </div>
+                  }
+                  alt="user image"
+                />
               </div>
-            </summary>
-            <div className="p-2 menu dropdown-content z-[1] rounded-box w-52 dark:bg-blue-200 text-neutral-800 bg-white right-0">
+            </div>{" "}
+            <span className="font-exo text-neutral-800">
+              {currentUser?.name}
+            </span>
+          </div>
+
+          <p className="font-bold text-2xl">{userRole} </p>
+
+          <div className="flex items-center">
+            <details className="dropdown text-inherit">
+              <summary className="btn bg-transparent shadow-none hover:bg-transparent border-none dark:text-white pr-0 pl-0">
+                <div className="avatar placeholder mr-2">
+                  <div className="bg-neutral rounded-full w-8 text-white">
+                    <IoNotifications />
+                  </div>
+                </div>
+              </summary>
+              <div className="p-2 menu dropdown-content z-[1] rounded-box w-52 dark:bg-blue-200 text-neutral-800 bg-white right-0">
+                <Image
+                  src="/question.png"
+                  width={200}
+                  height={200}
+                  alt="loading"
+                  className="max-w-[100] block mx-auto mt-10 mix-blend-multiply"
+                />
+              </div>
+            </details>
+
+            <Link
+              href="/"
+              className="btn btn-ghost text-xl hover:bg-transparent"
+            >
               <Image
-                src="/question.png"
-                width={200}
-                height={200}
-                alt="loading"
-                className="max-w-[100] block mx-auto mt-10 mix-blend-multiply"
-              />
-            </div>
-          </details>
+                className="w-16 mix-blend-multiply"
+                width={400}
+                height={400}
+                src={logo}
+                alt="logo"
+              />{" "}
+              <span className="font-exo text-neutral-800">
+                Universal Survey
+              </span>
+            </Link>
+          </div>
 
-          <Link href="/" className="btn btn-ghost text-xl hover:bg-transparent">
-            <Image
-              className="w-16 mix-blend-multiply"
-              width={400}
-              height={400}
-              src={logo}
-              alt="logo"
-            />{" "}
-            <span className="font-exo text-neutral-800">Universal Survey</span>
-          </Link>
-        </div>
+          {/* <UserProfile user={user} role="admin" /> */}
+        </header>
 
-        {/* <UserProfile user={user} role="admin" /> */}
-      </header>
+        <div className="flex flex-1 relative z-[1] ">
+          <div className="w-64 bg-neutral-800 h-[90vh] overflow-auto relative pt-8">
+            {/* <button className="text-neutral absolute top-3 right-2 text-2xl bg-yellow-200 px-4 py-1"><FaArrowLeftLong /></button> */}
 
-      <div className="flex flex-1 relative z-[1] ">
-        <div className="w-64 bg-neutral-800 h-[90vh] overflow-auto relative pt-8">
-          {/* <button className="text-neutral absolute top-3 right-2 text-2xl bg-yellow-200 px-4 py-1"><FaArrowLeftLong /></button> */}
+            <ul className="menu gap-3">
+              {currentUserRoute}
 
-          <ul className="menu gap-3">
-            {currentUserRoute}
+              <ActiveLink isSubRoute={false} href="/dashboard/change_password">
+                Change password
+              </ActiveLink>
+              <li className=" text-white text-md hover:text-neutral hover:bg-blue-100">
+                <Link href="/" onClick={handleLogOut}>
+                  <FaUser className="mr-2" /> Logout
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="flex-1 p-4 h-[90vh] overflow-auto dark:bg-white relative">
+            {/* <button className="text-neutral absolute top-3 left-0 text-2xl bg-yellow-200 px-4 py-1"><FaArrowRightLong /></button> */}
+            {children}
 
-            <ActiveLink isSubRoute={false} href="/dashboard/change_password">
-              Change password
-            </ActiveLink>
-            <ActiveLink isSubRoute={false} href="/dashboard/company/payment">
-              Payment
-            </ActiveLink>
-            <li className=" text-white text-md hover:text-neutral hover:bg-blue-100">
-              <Link href="/" onClick={handleLogOut}>
-                <FaUser className="mr-2" /> Logout
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="flex-1 p-4 h-[90vh] overflow-auto dark:bg-white relative">
-          {/* <button className="text-neutral absolute top-3 left-0 text-2xl bg-yellow-200 px-4 py-1"><FaArrowRightLong /></button> */}
-          {children}
-
-          {/* <img src="https://img.freepik.com/free-vector/duplicate-concept-illustration_114360-4046.jpg?w=740&t=st=1706263242~exp=1706263842~hmac=f37003459bc517b25414dfef6815aa78ab60c8e83b19561aab871e6665bcf2ec" className="max-w-2xl mx-auto" /> */}
+            {/* <img src="https://img.freepik.com/free-vector/duplicate-concept-illustration_114360-4046.jpg?w=740&t=st=1706263242~exp=1706263842~hmac=f37003459bc517b25414dfef6815aa78ab60c8e83b19561aab871e6665bcf2ec" className="max-w-2xl mx-auto" /> */}
+          </div>
         </div>
       </div>
-    </div>
+    </PrivateRoute>
   );
 }
 
