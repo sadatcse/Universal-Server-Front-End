@@ -1,75 +1,94 @@
-{
-    "surveys": [
+[
+  {
+    "title": "Customer Satisfaction Survey",
+    "description": "We appreciate your feedback! Please take a moment to share your thoughts on our products and services.",
+    "questions": [
       {
-        "title": "Customer Satisfaction Survey",
-        "description": "Help us improve our services by providing feedback on your recent experience.",
-        "creator": "ABC Corporation",
-        "deadline": "February 28, 2024",
-        "image": ""
+        "question": "Which of the following features do you find most useful? (Select all that apply)",
+        "answer": "",
+        "id": 1,
+        "questionType": "multiple_choice",
+        "options": ["Search functionality", "User-friendly interface", "Customization options", "Integration with other platforms"]
       },
       {
-        "title": "Product Feedback Survey",
-        "description": "Share your thoughts on our latest product release to help us enhance its features.",
-        "creator": "XYZ Company",
-        "deadline": "March 15, 2024",
-        "image": ""
+        "question": "Please rate your experience with our support team:",
+        "answer": {
+          "0": {
+            "Excellent": false,
+            "Good": false,
+            "Fair": false,
+            "Poor": false
+          },
+          "1": {
+            "Excellent": false,
+            "Good": false,
+            "Fair": false,
+            "Poor": false
+          },
+          "2": {
+            "Excellent": false,
+            "Good": false,
+            "Fair": false,
+            "Poor": false
+          },
+          "3": {
+            "Excellent": false,
+            "Good": false,
+            "Fair": false,
+            "Poor": false
+          }
+        },
+        "id": 2,
+        "questionType": "checkbox_grid",
+        "options": {
+          "columnLabels": ["Friendliness", "Knowledge", "Responsiveness", "Effectiveness"],
+          "rowLabels": ["Excellent", "Good", "Fair", "Poor"]
+        }
       },
       {
-        "title": "Employee Engagement Survey",
-        "description": "We value your input! Let us know how we can create a better work environment.",
-        "creator": "HR Department",
-        "deadline": "March 10, 2024",
-        "image": ""
+        "question": "On a scale of 1 to 10, how likely are you to continue using our services?",
+        "answer": "",
+        "id": 3,
+        "questionType": "linear_scale",
+        "options": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
       },
       {
-        "title": "Website User Experience Survey",
-        "description": "We want to make our website more user-friendly. Your feedback is invaluable.",
-        "creator": "Web Development Team",
-        "deadline": "March 5, 2024",
-        "image": ""
+        "question": "Which country are you located in?",
+        "answer": "",
+        "id": 4,
+        "questionType": "dropdown",
+        "options": [
+          "United States", "Canada", "United Kingdom", "Australia", "Germany", "France", "Japan", "China", "Brazil", "India"
+        ]
       },
       {
-        "title": "Community Health Awareness Survey",
-        "description": "Participate in our survey to help us understand community health needs better.",
-        "creator": "Local Health Department",
-        "deadline": "February 20, 2024",
-        "image": ""
+        "question": "Please prioritize the following areas of improvement for our services:",
+        "answer": "",
+        "id": 5,
+        "questionType": "ranking",
+        "options": [
+          { "id": 1, "title": "Customer support" },
+          { "id": 2, "title": "Product quality" },
+          { "id": 3, "title": "Speed of delivery" },
+          { "id": 4, "title": "Website performance" },
+          { "id": 5, "title": "Payment process" }
+        ]
       },
       {
-        "title": "Educational Program Feedback Survey",
-        "description": "Provide feedback on our educational programs to help us enhance learning outcomes.",
-        "creator": "Education Institute",
-        "deadline": "March 8, 2024",
-        "image": ""
+        "question": "What suggestions do you have to enhance our user experience?",
+        "answer": "",
+        "id": 6,
+        "questionType": "sort_text"
       },
       {
-        "title": "Travel Preferences Survey",
-        "description": "Tell us about your travel preferences and help us tailor our services to your needs.",
-        "creator": "Travel Agency",
-        "deadline": "March 25, 2024",
-        "image": ""
-      },
-      {
-        "title": "Environmental Awareness Survey",
-        "description": "Your opinions matter! Take our survey to share your views on environmental issues.",
-        "creator": "Environmental Organization",
-        "deadline": "February 23, 2024",
-        "image": ""
-      },
-      {
-        "title": "Mobile App Usage Survey",
-        "description": "We're conducting research on mobile app usage. Your input is crucial!",
-        "creator": "App Development Company",
-        "deadline": "March 12, 2024",
-        "image": ""
-      },
-      {
-        "title": "Food Preferences Survey",
-        "description": "Help us understand food preferences in our community by participating in our survey.",
-        "creator": "Local Food Council",
-        "deadline": "February 18, 2024",
-        "image": ""
+        "question": "Where do you see our company in the next five years?",
+        "answer": "",
+        "id": 7,
+        "questionType": "long_text"
       }
     ]
   }
-  
+]
+// Marketing Team
+// Product Feedback
+// Online Form 

@@ -7,6 +7,7 @@ import logo from "../../Asset/d.png";
 import { IoMoonOutline } from "react-icons/io5";
 import { IoNotifications } from "react-icons/io5";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const {
@@ -18,6 +19,7 @@ const Navbar = () => {
     currentUser,
     logOut,
   } = useContext(AuthContext);
+  const router = useRouter();
 
   const currentUserRoute =
     userRole === "Administrator"
@@ -203,29 +205,38 @@ const Navbar = () => {
             </div>
           </details>
 
-          <Link
-            href="/primary/join"
-            className="btn border border-transparent rounded-md bg-[#00ABE4] text-white shadow font-semibold  dark:bg-transparent dark:border-white hover:bg-white hover:border-[#00abe4] hover:border dark:hover:text-black dark:hover:bg-white dark:hover:border-transparent dark:text-white  hover:text-[#00ABE4] transition duration-500 ease-in-out"
-          >
-            Join Now
-          </Link>
+          {!user ? (
+            <Link
+              href="/primary/join"
+              className="btn border border-transparent rounded-md bg-[#00ABE4] text-white shadow font-semibold  dark:bg-transparent dark:border-white hover:bg-white hover:border-[#00abe4] hover:border dark:hover:text-black dark:hover:bg-white dark:hover:border-transparent dark:text-white  hover:text-[#00ABE4] transition duration-500 ease-in-out"
+            >
+              Join Now
+            </Link>
+          ) : (
+            <Link
+              href={currentUserRoute}
+              className="btn border border-transparent rounded-md bg-[#00ABE4] text-white shadow font-semibold  dark:bg-transparent dark:border-white hover:bg-white hover:border-[#00abe4] hover:border dark:hover:text-black dark:hover:bg-white dark:hover:border-transparent dark:text-white  hover:text-[#00ABE4] transition duration-500 ease-in-out"
+            >
+              Dashboard
+            </Link>
+          )}
 
           <details className="dropdown text-inherit mt-[9px] ">
             <summary className="btn bg-transparent shadow-none hover:bg-transparent border-none dark:text-white">
               <div className="avatar">
                 <div className="w-12 rounded-full ring ring-offset-base-100 ring-offset-2 ">
-                  <Image
-                    width={400}
-                    height={400}
-                    src={
-                      currentUser?.Photourl
-                        ? currentUser?.Photourl
-                        : user?.Photourl
-                        ? user?.Photourl
-                        : "/no_user.jpg"
-                    }
-                    alt="user image"
-                  />
+                  {user ? (
+                    <img
+                      src={
+                        currentUser?.Photourl
+                          ? currentUser?.Photourl
+                          : user?.Photourl
+                      }
+                      alt="user image"
+                    />
+                  ) : (
+                    <img src="/no_user.jpg" alt="user image" />
+                  )}
                 </div>
               </div>
             </summary>
@@ -234,9 +245,7 @@ const Navbar = () => {
                 <span className="text-blue-400"> Hi! </span>
                 {currentUser ? currentUser?.name : "Brother"}
               </li>
-              <li>
-                <Link href={currentUserRoute}>View Profile</Link>
-              </li>
+
               <li onClick={() => setUserRole("Survey Participant")}>
                 <Link href="/dashboard/user/available_surveys">
                   Survey Participant
@@ -253,9 +262,15 @@ const Navbar = () => {
                   Survey Creator
                 </Link>
               </li>
-              <button onClick={handleLogOut} className="btn">
-                Log Out
-              </button>
+              {!user ? (
+                <Link href="/primary/login" className="btn">
+                  Login
+                </Link>
+              ) : (
+                <button onClick={handleLogOut} className="btn">
+                  Log Out
+                </button>
+              )}
             </ul>
           </details>
         </div>
