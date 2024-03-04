@@ -4,7 +4,9 @@ import React from 'react';
 
 const Cart = () => {
     const makePayment = async () =>{
-        const apiUrl = 'https://universal-survey-backend.vercel.app';
+
+        const apiUrl = 'http://localhost:5000'; // try server with local host
+        // const apiUrl = 'https://universal-survey-backend.vercel.app';
         const stripe = await loadStripe("pk_test_51OFDMCA34jDiSLEQltx4bmchbPYk8mJGSwMy4zcENlQgUW0PoRkkAgWCVjIGdHlJmbqDTYYvee3QxCWh5x2lZfWs00FMlnlYkZ");
         
         const cart = [
@@ -51,7 +53,7 @@ const Cart = () => {
     }
     return (
         <div>
-            <button onClick={makePayment} >Pay now</button>
+            <button onClick={makePayment}>Subscribe</button>
         </div>
     );
 };
