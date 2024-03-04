@@ -167,6 +167,9 @@ function Layout({ children }) {
           Invite Participate
         </ActiveLink>
       </GroupLink>
+      <ActiveLink isSubRoute={false} href="/dashboard/company/payment">
+        Payment
+      </ActiveLink>
       {/* <GroupLink groupName="Import & Export">
         <ActiveLink href="/dashboard/company/import_data">
           Import Data
@@ -202,8 +205,8 @@ function Layout({ children }) {
     userRole === "Administrator"
       ? admin
       : userRole === "Survey Creator"
-      ? companies
-      : users;
+        ? companies
+        : users;
 
   return (
     <div className="flex flex-col h-screen">
@@ -218,8 +221,8 @@ function Layout({ children }) {
                   currentUser?.Photourl
                     ? currentUser?.Photourl
                     : user?.Photourl
-                    ? user?.Photourl
-                    : "/no_user.jpg"
+                      ? user?.Photourl
+                      : "/no_user.jpg"
                 }
                 alt="user image"
               />
@@ -274,6 +277,9 @@ function Layout({ children }) {
 
             <ActiveLink isSubRoute={false} href="/dashboard/change_password">
               Change password
+            </ActiveLink>
+            <ActiveLink isSubRoute={false} href="/dashboard/company/payment">
+              Payment
             </ActiveLink>
             <li className=" text-white text-md hover:text-neutral hover:bg-blue-100">
               <Link href="/" onClick={handleLogOut}>
