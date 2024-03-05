@@ -12,10 +12,10 @@ function VisionAndValues() {
                     User.</p>
             </div>
             <div className="container mx-auto grid grid-cols-1 gap-8 lg:gap-20 md:px-10 md:pb-10 lg:grid-cols-3">
-                <VisionCard path="/strategy.svg" title="Define the strategy" description="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to de" />
-                <VisionCard path="/rocket.svg" title="Improve perfomance" description="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to de" />
-                <VisionCard path="/customer.svg" title="Making cleaner service" description="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to de" />
-                <VisionCard path="/module.svg" title="Testing and evaluation  " description="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to de" />
+                <VisionCard path="/strategy.svg" title="Define the strategy" description="Establishing clear goals, target audience, and execution plan to guide the project effectively." />
+                <VisionCard path="/rocket.svg" title="Improve perfomance" description="Enhancing technical aspects like speed and reliability to ensure smooth operation and user satisfaction." />
+                <VisionCard path="/customer.svg" title="Making cleaner service" description="Refining user experience by simplifying interfaces and workflows for better usability and engagement." />
+                <VisionCard path="/module.svg" title="Testing and evaluation  " description="Ensuring quality and reliability through thorough testing across functionality, usability, and performance aspects." />
             </div>
         </section>
     )
