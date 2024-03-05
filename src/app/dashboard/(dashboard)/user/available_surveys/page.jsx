@@ -1,6 +1,7 @@
 "use client";
 import useAxiosPublic from "@/Hook/useAxiosPublic";
 import { AuthContext } from "@/providers/AuthProvider";
+import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
@@ -20,7 +21,6 @@ export default function Page() {
   // Single survey card
   const SurveyCard = ({ survey }) => {
     const { title, description, creator } = survey;
-    console.log(survey);
     return (
       <div className=" rounded-lg shadow border p-6 mb-4">
         <h2 className="text-xl font-semibold text-gray-800 mb-2">{title}</h2>
@@ -32,7 +32,7 @@ export default function Page() {
           </div>
           <Link
             href={`https://universal-server-front-end.vercel.app/survey_question/${survey?._id}?email=${currentUser?.email}`}
-            className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+            className="mt-4 bg-neutral-800 hover:bg-neutral-500 text-white font-semibold py-2 px-4 rounded"
           >
             Take Survey
           </Link>
@@ -89,7 +89,13 @@ export default function Page() {
         ) : (
           <>
             {/* Skeletons while surveys are loading */}
-            <p>no</p>
+            <Image
+              src="/ring.gif"
+              width={500}
+              height={500}
+              alt="loading"
+              className="max-w-[500] block mx-auto mt-10 mix-blend-multiply"
+            />
           </>
         )}
       </main>
