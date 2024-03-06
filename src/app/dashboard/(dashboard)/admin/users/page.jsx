@@ -5,23 +5,48 @@ import { HiOutlineEye } from "react-icons/hi";
 import { RiArrowDropDownLine, RiDeleteBinLine } from "react-icons/ri";
 import { IoMdArrowDropdown } from "react-icons/io";
 import useAxiosPublic from "@/Hook/useAxiosPublic";
+import UseAxioSecure from "@/Hook/UseAxioSecure";
+import axios from "axios";
+import swal from "sweetalert";
 
 function NewUsers() {
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedValue, setSelectedValue] = useState("item2");
   const [userData, setUserData] = useState([]);
+  const [countDeleteItem, setCountDeleteItem] = useState(0);
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = UseAxioSecure();
   // fetching the user data from db
   useEffect(() => {
     axiosPublic("/users")
       .then((data) => setUserData(data.data))
       .catch((err) => console.log(err));
-  }, [axiosPublic]);
+  }, [axiosPublic, countDeleteItem]);
 
   // dropdown
   const handleChange = (e) => {
     setShowDropdown(!showDropdown);
     setSelectedValue(e.target.value);
+  };
+
+  const onDeleteUser = (user) => {
+    // axiosSecure
+    console.log(user);
+    axios
+      .delete(`http://localhost:5000/users/${user._id}`)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.acknowledged || res.data.deletedCount > 0) {
+          swal({
+            title: "Good job!",
+            text: `${user.name ? user.name : "A user"} deleted successfully!`,
+            icon: "success",
+            button: "Ok",
+          });
+          setCountDeleteItem(countDeleteItem + 1);
+        }
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <section className="md:w-[95%] mx-auto">
@@ -32,10 +57,10 @@ function NewUsers() {
             <a>Home</a>
           </li>
           <li>
-            <a>Dasboard</a>
+            <a>Dashboard</a>
           </li>
           <li>
-            <a>Perticipiants</a>
+            <a>Perticipant</a>
           </li>
         </ul>
       </div>
@@ -72,7 +97,7 @@ function NewUsers() {
                 <a>Survey Creator</a>
               </li>
               <li>
-                <a>Survey Perticipient</a>
+                <a>Survey Perticipant</a>
               </li>
             </ul>
           </div>
@@ -160,7 +185,10 @@ function NewUsers() {
                         <td>
                           <div className="flex gap-3 items-center">
                             <HiOutlineEye />
-                            <RiDeleteBinLine className="text-lg text-red-400 " />
+                            <RiDeleteBinLine
+                              onClick={() => onDeleteUser(user)}
+                              className="text-lg text-red-400 "
+                            />
                           </div>
                         </td>
                       </tr>

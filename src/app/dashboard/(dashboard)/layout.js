@@ -5,20 +5,21 @@ import { AuthContext } from "@/providers/AuthProvider";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { FaUser } from "react-icons/fa";
 import logo from "../../../Asset/d.png";
 import { IoNotifications } from "react-icons/io5";
 import PrivateRoute from "@/routes/PrivateRoute";
+import { FiMenu } from "react-icons/fi";
+import { IoMdClose } from "react-icons/io";
 function Layout({ children }) {
   // const { userType, loading: adminLoading } = useAdmin();
 
   const { userRole, setUserRole, user, logOut, currentUser } =
     useContext(AuthContext);
   const router = useRouter();
-  // const {userRole} = useAdmin()
-  console.log(userRole);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -212,32 +213,46 @@ function Layout({ children }) {
   return (
     <PrivateRoute>
       <div className="flex flex-col h-screen">
-        <header className="bg-blue-200 text-neutral text-xl hover:text-neutral py-4 flex justify-between items-center relative">
-          <div href="/" className="btn btn-ghost text-xl hover:bg-transparent">
-            <div className="avatar">
-              <div className="w-12 rounded-full ring ring-offset-base-100 ring-offset-2 ">
-                <Image
-                  width={400}
-                  height={400}
-                  src={
-                    currentUser?.Photourl
-                      ? currentUser?.Photourl
-                      : user?.Photourl
-                      ? user?.Photourl
-                      : "/no_user.jpg"
-                  }
-                  alt="user image"
-                />
+        <header className="bg-blue-200 text-neutral text-xl hover:text-neutral  pb-0 sm:pb-4 pt-4 flex justify-between items-center relative flex-wrap flex-row-reverse sm:flex-row px-2">
+          <div className="flex items-center gap-3 ml-6  order-1 sm:order-1">
+            <button
+              className="text-neutral bg-stone-100 p-3 rounded-md order-2 sm:order-1"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {!isMenuOpen ? <FiMenu /> : <IoMdClose />}
+            </button>
+
+            <div
+              href="/"
+              className="btn btn-ghost text-xl hover:bg-transparent order-1 sm:order-2"
+            >
+              <div className="avatar">
+                <div className="w-12 rounded-full ring ring-offset-base-100 ring-offset-2 ">
+                  <Image
+                    width={400}
+                    height={400}
+                    src={
+                      currentUser?.Photourl
+                        ? currentUser?.Photourl
+                        : user?.Photourl
+                        ? user?.Photourl
+                        : "/no_user.jpg"
+                    }
+                    alt="user image"
+                  />
+                </div>
               </div>
-            </div>{" "}
-            <span className="font-exo text-neutral-800">
-              {currentUser?.name}
-            </span>
+              <span className="font-exo text-neutral-800 hidden lg:inline-block">
+                {currentUser?.name}
+              </span>
+            </div>
           </div>
 
-          <p className="font-bold text-2xl">{userRole} </p>
+          <p className="font-bold text-2xl  p-4 sm:p-0 order-3 sm:order-2 w-full sm:w-fit">
+            {userRole}{" "}
+          </p>
 
-          <div className="flex items-center">
+          <div className="flex items-center order-2 sm:order-3">
             <details className="dropdown text-inherit">
               <summary className="btn bg-transparent shadow-none hover:bg-transparent border-none dark:text-white pr-0 pl-0">
                 <div className="avatar placeholder mr-2">
@@ -268,7 +283,7 @@ function Layout({ children }) {
                 src={logo}
                 alt="logo"
               />{" "}
-              <span className="font-exo text-neutral-800">
+              <span className="font-exo text-neutral-800 hidden lg:inline-block">
                 Universal Survey
               </span>
             </Link>
@@ -278,9 +293,11 @@ function Layout({ children }) {
         </header>
 
         <div className="flex flex-1 relative z-[1] ">
-          <div className="w-64 bg-neutral-800 h-[90vh] overflow-auto relative pt-8">
-            {/* <button className="text-neutral absolute top-3 right-2 text-2xl bg-yellow-200 px-4 py-1"><FaArrowLeftLong /></button> */}
-
+          <div
+            className={`${
+              isMenuOpen ? "w-64" : "w-0"
+            } transition-all duration-500 bg-neutral-800 h-[90vh] overflow-auto absolute top-0 left-0 lg:relative pt-8 z-[3]`}
+          >
             <ul className="menu gap-3">
               {currentUserRoute}
 

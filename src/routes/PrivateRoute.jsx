@@ -5,6 +5,7 @@ import { AuthContext } from "@/providers/AuthProvider";
 function PrivateRoute({ children }) {
   const { user } = useContext(AuthContext);
   const router = useRouter();
+  
 
   useEffect(() => {
     if (!user) {

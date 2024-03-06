@@ -9,7 +9,7 @@ function MultipleChoice({setShowSurveyForm, setSurveyQuestions, setOpenAddQuesti
     const onSubmit = (e)=> {
         e.preventDefault();
         const question = e.target.question.value;
-        console.log({question})
+       
       }
 
     const onSave = ()=> {

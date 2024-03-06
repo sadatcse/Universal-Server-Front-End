@@ -100,7 +100,9 @@ function Page() {
         <div>
           <div className="flex items-center gap-3">
             {/* <CiUser className="text-3xl  -ml-1" /> */}
-            <h1 className="text-4xl font-semibold">Administrator Profile</h1>
+            <h1 className="text-xl sm:text-4xl font-semibold">
+              Administrator Profile
+            </h1>
           </div>
           <p className="mt-1 text-sm">Manage your personal profile</p>
         </div>
@@ -134,7 +136,10 @@ function Page() {
       </div>
 
       {/* info */}
-      <form onSubmit={handleSave} className="grid grid-cols-2 gap-4 mt-5">
+      <form
+        onSubmit={handleSave}
+        className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5"
+      >
         {/* input */}
         <div>
           <p className="text-sm">Full name</p>
