@@ -53,7 +53,7 @@ function Page() {
             ...userObject,
             Photourl: res.data.data.display_url,
           };
-          console.log(userObject);
+
           axiosSecure
             .patch(`/users/${currentUser?._id}`, userObject)
             .then((response) => {
@@ -71,7 +71,6 @@ function Page() {
                 });
                 setUserRole(role);
               }
-              console.log(response);
             })
             .catch((err) => console.log(err));
         })
@@ -89,7 +88,6 @@ function Page() {
             });
             setUserRole(role);
           }
-          console.log(response);
         })
         .catch((err) => console.log(err));
     }

@@ -1982,7 +1982,6 @@ export default function ViewResponseParticipateList() {
       .get("/get_participant")
       .then((res) => {
         setParticipantData(res.data);
-        console.log(res.data);
       })
       .catch((err) => console.log(err));
   }, [axiosPublic]);

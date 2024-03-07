@@ -3,7 +3,6 @@ import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 
 export default function ParticipantModal({ responseResult, setIsOpenModal }) {
-  console.log(responseResult);
   const [currentResult, setCurrentResult] = useState({});
   const [isShowResult, setIsShowResult] = useState(false);
   return (

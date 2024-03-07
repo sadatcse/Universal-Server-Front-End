@@ -20,7 +20,7 @@ export default function Page() {
   // Single survey card
   const SurveyCard = ({ survey }) => {
     const { title, description, creator } = survey;
-    console.log(survey);
+
     return (
       <div className=" rounded-lg shadow border p-6 mb-4">
         <h2 className="text-xl font-semibold text-gray-800 mb-2">{title}</h2>

@@ -9,11 +9,9 @@ function SurveyCard({ survey, setCurrentSurvey, setIsOpenModal, setReFetch }) {
   const axiosSecure = UseAxioSecure();
 
   const deleteSurvey = () => {
-    console.log("delete");
     axiosSecure
       .delete(`/delete_survey/${survey._id}`)
       .then((res) => {
-        console.log(res.data?.acknowledged);
         if (res.data?.acknowledged) {
           swal({
             title: "Good job!",
@@ -31,7 +29,6 @@ function SurveyCard({ survey, setCurrentSurvey, setIsOpenModal, setReFetch }) {
           icon: "error",
           button: "Try Again",
         });
-        console.log(err);
       });
   };
 

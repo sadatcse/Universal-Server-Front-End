@@ -65,7 +65,6 @@ const AuthProvider = ({ children }) => {
             const response = await axiosSecure.get(
               `/users/${currentUser.email}`
             );
-            console.log("user role:", response.data);
 
             localStorage.setItem("user", JSON.stringify(response.data));
 

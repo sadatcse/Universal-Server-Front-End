@@ -235,7 +235,6 @@ export default function SelectSurveyModal({
       .get("/get_survey")
       .then((res) => {
         setSurveyItem(res.data);
-        console.log(res.data);
       })
       .catch((err) => console.log(err));
   }, [axiosPublic]);

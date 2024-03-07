@@ -33,7 +33,6 @@ function NewUsers() {
     axiosSecure
       .delete(`http://localhost:5000/users/${user._id}`)
       .then((res) => {
-        console.log(res.data);
         if (res.data.acknowledged || res.data.deletedCount > 0) {
           swal({
             title: "Good job!",

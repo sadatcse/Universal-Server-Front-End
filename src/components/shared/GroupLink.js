@@ -8,7 +8,6 @@ function GroupLink({ children, groupName, ...rest }) {
   const pathname = usePathname();
 
   useEffect(() => {
-    console.log(children);
     if (children?.length > 0) {
       const pathArray = children?.map((item) => item.props.href);
 

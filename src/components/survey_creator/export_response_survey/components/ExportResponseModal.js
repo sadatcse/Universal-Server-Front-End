@@ -74,12 +74,8 @@ function ExportResponseModal({ setOpenModal, currentSurveyData }) {
                   );
                   const answerValue =
                     valueIndex > 0 && options.rowLabels[valueIndex];
-                  // console.log("answerValue", answerValue);
-                  // console.log("question option", options.columnLabels[index]);
+
                   if (answerValue) {
-                    // console.log(
-                    //   [options.columnLabels[index], answerValue].join(": ")
-                    // );
                     return [options.columnLabels[index], answerValue].join(
                       ": "
                     );
@@ -107,7 +103,6 @@ function ExportResponseModal({ setOpenModal, currentSurveyData }) {
           return answersArray.filter((item) => typeof item !== "undefined");
         });
 
-        console.log(transformArray);
         setResponseData(transformArray);
       });
     }

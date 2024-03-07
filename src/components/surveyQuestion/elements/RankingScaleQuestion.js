@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   DndContext,
   KeyboardSensor,
@@ -11,8 +11,11 @@ import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { useState } from "react";
 import { Column } from "./drag_and_drop/Column";
 
-
-export default function RankingScaleQuestion({question, setQuestions, isViewResult}) {
+export default function RankingScaleQuestion({
+  question,
+  setQuestions,
+  isViewResult,
+}) {
   const [tasks, setTasks] = useState(question.answer || question.options);
 
   const sensors = useSensors(
@@ -40,30 +43,33 @@ export default function RankingScaleQuestion({question, setQuestions, isViewResu
       // changed element according to the drag and drop
       const changedElementOrderArray = arrayMove(tasks, originalPos, newPos);
 
-      setQuestions(prevValue => {
-        const current_question = prevValue.findIndex(item => item.id === question.id);
+      setQuestions((prevValue) => {
+        const current_question = prevValue.findIndex(
+          (item) => item.id === question.id
+        );
 
-        const copyArray = {...question};
+        const copyArray = { ...question };
 
         copyArray.answer = changedElementOrderArray;
 
-        const updatedArray = prevValue.toSpliced(current_question, 1, copyArray)
-
-        console.log(updatedArray)
-
+        const updatedArray = prevValue.toSpliced(
+          current_question,
+          1,
+          copyArray
+        );
 
         return updatedArray;
-      })
-      
+      });
 
-      return changedElementOrderArray
-
+      return changedElementOrderArray;
     });
   };
 
   return (
-    <div className={isViewResult ? "pointer-events-none": ""} >
-      <h2 className='text-3xl font-bold text-center pt-8 pb-10'>{question?.question}</h2>
+    <div className={isViewResult ? "pointer-events-none" : ""}>
+      <h2 className="text-3xl font-bold text-center pt-8 pb-10">
+        {question?.question}
+      </h2>
       <div className="App">
         <DndContext
           sensors={sensors}

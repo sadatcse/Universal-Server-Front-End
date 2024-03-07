@@ -30,7 +30,6 @@ function RatingScaleQuestions({
       answer: "",
       id: createdId,
     };
-    console.log(newObject);
 
     setCurrentQuestion(newObject);
   }, [setCurrentQuestion, questionInput, options, createdId]);

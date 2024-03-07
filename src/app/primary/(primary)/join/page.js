@@ -34,21 +34,17 @@ function Join() {
   const handleCaptcha = () => {
     if (captchaInput.current.value.length === 6) {
       if (validateCaptcha(captchaInput.current.value)) {
-        console.log("captcha is", false);
         setIsDisabled(false);
       } else {
-        console.log("captcha is", true);
         setIsDisabled(true);
       }
     } else {
-      console.log("captcha is", true);
       setIsDisabled(true);
     }
   };
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
-    console.log(showPassword);
   };
 
   useEffect(() => {
@@ -74,8 +70,6 @@ function Join() {
         Photourl: result.user?.photoURL,
         role: "Survey Participant",
       };
-
-      console.log(userinfo);
 
       const response = await axiosPublic.post("/users", userinfo);
 
@@ -153,7 +147,6 @@ function Join() {
     } catch (err) {
       setLoading(false);
       toast.error("Error creating user. Please try again.");
-      console.log(err);
     }
   };
   return (

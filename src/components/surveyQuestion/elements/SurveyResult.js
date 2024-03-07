@@ -25,7 +25,6 @@ export default function SurveyResult({
     const { surveyIds, ...restData } = userData;
     const answers = { [titleAndDescription?.title]: questions };
 
-    console.log(answers);
     const combinedObject = {
       ...restData,
       answers,
@@ -36,7 +35,6 @@ export default function SurveyResult({
     axiosPublic
       .post("/create_participant", combinedObject)
       .then((res) => {
-        console.log(res);
         if (
           res.data?.participantResult?.acknowledged ||
           res.data?.surveyResult?.acknowledged ||
@@ -64,7 +62,7 @@ export default function SurveyResult({
 
   return (
     <>
-      <h2 className="text-4xl font-bold text-center mb-8 w-full border-b-2" >
+      <h2 className="text-4xl font-bold text-center mb-8 w-full border-b-2">
         Your Answers
       </h2>
       {questions?.map((qn, idx) => (

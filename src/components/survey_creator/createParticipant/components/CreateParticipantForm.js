@@ -229,7 +229,6 @@ function CreateParticipantForm({ setQuestions, setUserData }) {
     axiosPublic
       .post("/create_participant", userObject)
       .then((res) => {
-        console.log(res);
         if (res?.data.acknowledged) {
           swal({
             title: "Good job!",

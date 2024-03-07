@@ -1,59 +1,63 @@
-"use client"
+"use client";
 import UseAxioSecure from "@/Hook/UseAxioSecure";
 import { useEffect, useState } from "react";
 import AddQuestionArea from "./AddQuestionArea";
 import AddSurveyForm from "./AddSurveyForm";
 
-function CreateSurveyPage({surveyId}) {
-  
-  const [formData, setFormData] = useState({})
-  const [surveyInitialInfo, setSurveyInitialInfo] = useState({})
-  const [showQuestionArea, setShowQuestionArea] = useState(false)
-  const [surveyQuestions, setSurveyQuestions] = useState([])
-  const axiosSecure = UseAxioSecure()
+function CreateSurveyPage({ surveyId }) {
+  const [formData, setFormData] = useState({});
+  const [surveyInitialInfo, setSurveyInitialInfo] = useState({});
+  const [showQuestionArea, setShowQuestionArea] = useState(false);
+  const [surveyQuestions, setSurveyQuestions] = useState([]);
+  const axiosSecure = UseAxioSecure();
 
-  useEffect(()=> {
-    
-    if(surveyId){
-      axiosSecure.get(`/get_survey/${surveyId}`).then(res => {
-        const surveyData = {...res?.data};
-        setSurveyQuestions(surveyData?.questions)
-        delete surveyData?.questions
-        console.log(surveyData)
-          setSurveyInitialInfo({...surveyData})
-          setShowQuestionArea(true)
-      }).catch(err => console.log(err))
-      
-    }else{
-      const surveyInitialObject = JSON.parse(localStorage.getItem("my_survey")) || {};
-      
+  useEffect(() => {
+    if (surveyId) {
+      axiosSecure
+        .get(`/get_survey/${surveyId}`)
+        .then((res) => {
+          const surveyData = { ...res?.data };
+          setSurveyQuestions(surveyData?.questions);
+          delete surveyData?.questions;
+
+          setSurveyInitialInfo({ ...surveyData });
+          setShowQuestionArea(true);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      const surveyInitialObject =
+        JSON.parse(localStorage.getItem("my_survey")) || {};
+
       const isTrue = Object.keys(surveyInitialObject).length > 0 ? true : false;
-      setShowQuestionArea(isTrue)
-      if(isTrue){
-        setSurveyInitialInfo(surveyInitialObject)
-
+      setShowQuestionArea(isTrue);
+      if (isTrue) {
+        setSurveyInitialInfo(surveyInitialObject);
       }
-
     }
-},[axiosSecure, surveyId])
+  }, [axiosSecure, surveyId]);
 
   return (
     <div className="w-full flex justify-center">
-    {
-      !showQuestionArea ?
-      <AddSurveyForm setSurveyInitialInfo={setSurveyInitialInfo} setShowQuestionArea={setShowQuestionArea} />
-      : null
-    }
+      {!showQuestionArea ? (
+        <AddSurveyForm
+          setSurveyInitialInfo={setSurveyInitialInfo}
+          setShowQuestionArea={setShowQuestionArea}
+        />
+      ) : null}
 
-      {
-        showQuestionArea
-         ?
-      <AddQuestionArea formData={formData} setShowQuestionArea={setShowQuestionArea} setFormData={setFormData} surveyInitialInfo={surveyInitialInfo}
-      setSurveyInitialInfo={setSurveyInitialInfo} surveyQuestions={surveyQuestions} setSurveyQuestions={setSurveyQuestions} />
-      : null
-      }
+      {showQuestionArea ? (
+        <AddQuestionArea
+          formData={formData}
+          setShowQuestionArea={setShowQuestionArea}
+          setFormData={setFormData}
+          surveyInitialInfo={surveyInitialInfo}
+          setSurveyInitialInfo={setSurveyInitialInfo}
+          surveyQuestions={surveyQuestions}
+          setSurveyQuestions={setSurveyQuestions}
+        />
+      ) : null}
     </div>
-  )
+  );
 }
 
-export default CreateSurveyPage
+export default CreateSurveyPage;

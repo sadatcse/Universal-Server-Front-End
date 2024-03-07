@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   DndContext,
   KeyboardSensor,
@@ -11,9 +11,6 @@ import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { useState } from "react";
 import { DemoColumn } from "./drag_and_drop/DemoColumn";
 
-
-
-
 // const question = {
 //   "question": "Please rank the following aspects of your job from most important to least important:",
 //   "questionType": "Ranking Questions",
@@ -24,11 +21,8 @@ import { DemoColumn } from "./drag_and_drop/DemoColumn";
 //   { "id": 5, "title": "Job security" }]
 // }
 
-
-export default function DemoRankingScaleQuestion({question}) {
+export default function DemoRankingScaleQuestion({ question }) {
   const [tasks, setTasks] = useState(question.options);
-
-
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -55,20 +49,20 @@ export default function DemoRankingScaleQuestion({question}) {
       // changed element according to the drag and drop
       const changedElementOrderArray = arrayMove(tasks, originalPos, newPos);
 
-      const changedIdArray = changedElementOrderArray.map((item, index) => ({ id: index + 1, title: item.title }));
+      const changedIdArray = changedElementOrderArray.map((item, index) => ({
+        id: index + 1,
+        title: item.title,
+      }));
 
-
-      console.log("changedIdArray", changedIdArray)
-      // console.log("changedElementOrderArray",changedElementOrderArray)
-
-      return changedElementOrderArray
-
+      return changedElementOrderArray;
     });
   };
 
   return (
     <div>
-      <h2 className='text-3xl font-bold text-center pt-8 pb-10'>{question?.question}</h2>
+      <h2 className="text-3xl font-bold text-center pt-8 pb-10">
+        {question?.question}
+      </h2>
       <div className="App">
         <DndContext
           sensors={sensors}

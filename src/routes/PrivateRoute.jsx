@@ -8,7 +8,7 @@ function PrivateRoute({ children }) {
 
   useEffect(() => {
     const get_user = localStorage.getItem("user");
-    console.log(get_user);
+
     if (!get_user) {
       router.push("/primary/login", { scroll: true });
     }

@@ -177,7 +177,6 @@ export default function SurveyQuestion({ surveyId, userEmail }) {
             }
           }
           setUserData(res?.data);
-          console.log("user data", res?.data);
         })
         .catch((err) => console.log(err));
     }

@@ -46,10 +46,9 @@ const SingleCard = ({ name, price, styled }) => {
       });
 
       // const response = await axiosSecure.post(`/create-checkout-session`, body);
-      console.log(response);
 
       const session = await response.json();
-      console.log(session);
+
       // const result = stripe.redirectToCheckout({ successUrl: session.url });
 
       router.push(session.url);

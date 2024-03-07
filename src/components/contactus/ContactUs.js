@@ -47,7 +47,6 @@ const ContactUS = () => {
           e.target.message.value = "";
         },
         (error) => {
-          console.log("FAILED...", error);
           swal({
             title: "Alert!",
             text: "Your message has been sent successfully!",

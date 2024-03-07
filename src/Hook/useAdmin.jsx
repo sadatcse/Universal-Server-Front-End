@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useEffect, useState } from "react";
 import UseAxioSecure from "./UseAxioSecure";
 import useAuth from "./useAuth";
@@ -15,8 +15,6 @@ const useAdmin = () => {
       try {
         if (!authLoading && user !== undefined) {
           const res = await axiosSecure.get(`/users/admin/${user.email}`);
-
-          console.log("user role:", res.data)
 
           // if (res.data === 'admin') {
           //   userType = 1;
@@ -38,7 +36,7 @@ const useAdmin = () => {
     fetchUserType();
   }, [authLoading, user, axiosSecure]);
 
-  return { loading: authLoading || loading, userRole};
+  return { loading: authLoading || loading, userRole };
 };
 
 export default useAdmin;

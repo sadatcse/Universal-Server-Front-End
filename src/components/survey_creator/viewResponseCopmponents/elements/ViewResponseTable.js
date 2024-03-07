@@ -139,7 +139,6 @@ function ViewResponseTable() {
 
   const onAllCheck = (e) => {
     setAllCheck(e.target.checked);
-    console.log(e.target.checked);
     if (e.target.checked) {
       setCheckItemId(surveyHistoryData.map((data) => data.id));
     } else {
@@ -154,7 +153,6 @@ function ViewResponseTable() {
       .get("/get_survey")
       .then((res) => {
         setSurveyResponseData(res.data);
-        console.log(res.data);
       })
       .catch((err) => console.log(err));
   }, [axiosPublic]);
