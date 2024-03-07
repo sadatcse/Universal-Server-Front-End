@@ -5,11 +5,13 @@ const Payment = () => {
     <section className="md:px-6 px-4">
       {/* header */}
       <div className="text-center mt-6">
-        <h1 className="text-4xl font-semibold">Choose your plan</h1>
+        <h1 className="text-4xl font-semibold">
+          Support our mission and be part of the change.
+        </h1>
         <p className="text-sm text-gray-500 mt-3 ">
           {" "}
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt ducimus
-          jflk fak
+          Join us in making a difference! Your donation directly supports our
+          mission
         </p>
       </div>
       {/* card */}
