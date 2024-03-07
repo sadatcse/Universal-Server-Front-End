@@ -10,7 +10,7 @@ import swal from "sweetalert";
 
 function CreatorProfile() {
   // user from global auth
-  const { user, userRole, currentUser, setCurrentUser } =
+  const { user, userRole, currentUser, setCurrentUser, setUserRole } =
     useContext(AuthContext);
   const [selectedImage, setSelectedImage] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
@@ -53,7 +53,6 @@ function CreatorProfile() {
             ...userObject,
             Photourl: res.data.data.display_url,
           };
-          console.log(userObject);
           axiosSecure
             .patch(`/users/${currentUser?._id}`, userObject)
             .then((response) => {
@@ -69,8 +68,8 @@ function CreatorProfile() {
                   icon: "success",
                   button: "Ok",
                 });
+                setUserRole(role);
               }
-              console.log(response);
             })
             .catch((err) => console.log(err));
         })
@@ -86,8 +85,8 @@ function CreatorProfile() {
               icon: "success",
               button: "Ok",
             });
+            setUserRole(role);
           }
-          console.log(response);
         })
         .catch((err) => console.log(err));
     }

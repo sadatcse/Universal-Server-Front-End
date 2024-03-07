@@ -80,30 +80,30 @@ function Layout({ children }) {
         {/* <ActiveLink href="/dashboard/admin/user_roles_and_permissions">
           User Roles and Permissions
         </ActiveLink> */}
-        <ActiveLink href="/dashboard/admin/user_activity_monitoring">
+        {/* <ActiveLink href="/dashboard/admin/user_activity_monitoring">
           User Activity Monitoring
         </ActiveLink>
         <ActiveLink href="/dashboard/admin/participant_analytics">
           Participant Analytics
-        </ActiveLink>
+        </ActiveLink> */}
       </GroupLink>
-      <GroupLink groupName="Notifications & Alerts">
-        {/* <ActiveLink href="/dashboard/admin/system_notifications">
+      {/* <GroupLink groupName="Notifications & Alerts">
+        <ActiveLink href="/dashboard/admin/system_notifications">
           System Notifications
         </ActiveLink>
         <ActiveLink href="/dashboard/admin/survey_status_updates">
           Survey Status Updates
-        </ActiveLink> */}
+        </ActiveLink>
         <ActiveLink href="/dashboard/admin/critic">Critic</ActiveLink>
-      </GroupLink>
-      <GroupLink groupName="Data Management">
+      </GroupLink> */}
+      {/* <GroupLink groupName="Data Management">
         <ActiveLink href="/dashboard/admin/data_import">Data Import</ActiveLink>
         <ActiveLink href="/dashboard/admin/data_export">Data Export</ActiveLink>
         <ActiveLink href="/dashboard/admin/data_integrity_checks">
           Data Integrity Checks
         </ActiveLink>
-      </GroupLink>
-      <GroupLink groupName="System Configuration">
+      </GroupLink> */}
+      {/* <GroupLink groupName="System Configuration">
         <ActiveLink href="/dashboard/admin/general_settings">
           General Settings
         </ActiveLink>
@@ -113,15 +113,15 @@ function Layout({ children }) {
         <ActiveLink href="/dashboard/admin/notifications_settings">
           Notification Settings
         </ActiveLink>
-      </GroupLink>
+      </GroupLink> */}
       <GroupLink groupName="Administrator Profile">
         <ActiveLink href="/dashboard/admin/view_and_edit_admin_information">
           Administrator Profile
         </ActiveLink>
-        <ActiveLink href="/dashboard/admin/activity_history_and_logs">
+        {/* <ActiveLink href="/dashboard/admin/activity_history_and_logs">
           Activity history and logs
-        </ActiveLink>
-        <ActiveLink href="/dashboard/admin/preferences">Preferences</ActiveLink>
+        </ActiveLink> */}
+        {/* <ActiveLink href="/dashboard/admin/preferences">Preferences</ActiveLink> */}
       </GroupLink>
     </>
   );

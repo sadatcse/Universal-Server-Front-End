@@ -30,9 +30,7 @@ function NewUsers() {
   };
 
   const onDeleteUser = (user) => {
-    // axiosSecure
-    console.log(user);
-    axios
+    axiosSecure
       .delete(`http://localhost:5000/users/${user._id}`)
       .then((res) => {
         console.log(res.data);

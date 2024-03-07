@@ -10,7 +10,7 @@ import swal from "sweetalert";
 
 function Page() {
   // user from global auth
-  const { user, userRole, currentUser, setCurrentUser } =
+  const { user, userRole, currentUser, setCurrentUser, setUserRole } =
     useContext(AuthContext);
   const [selectedImage, setSelectedImage] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
@@ -70,7 +70,7 @@ function Page() {
                   button: "Ok",
                 });
               }
-              console.log(response);
+              setUserRole(role);
             })
             .catch((err) => console.log(err));
         })
@@ -86,8 +86,8 @@ function Page() {
               icon: "success",
               button: "Ok",
             });
+            setUserRole(role);
           }
-          console.log(response);
         })
         .catch((err) => console.log(err));
     }
