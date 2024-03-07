@@ -26,8 +26,8 @@ const Navbar = () => {
     userRole === "Administrator"
       ? "/dashboard/admin/view_and_edit_admin_information"
       : userRole === "Survey Creator"
-        ? "/dashboard/company/creator_profile"
-        : "/dashboard/user/participant_profile";
+      ? "/dashboard/company/creator_profile"
+      : "/dashboard/user/participant_profile";
 
   const navlinks = (
     <>
@@ -168,7 +168,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end flex items-center">
-          <label className="swap swap-rotate dark:text-white mr-5">
+          <label className="swap swap-rotate dark:text-white ">
             {/* this hidden checkbox controls the state */}
             <input
               type="checkbox"
@@ -189,7 +189,7 @@ const Navbar = () => {
 
           <details className="dropdown text-inherit">
             <summary className="btn bg-transparent shadow-none hover:bg-transparent border-none dark:text-white">
-              <div className="avatar placeholder mr-2">
+              <div className="avatar placeholder">
                 <div className="text-3xl">
                   <BiSolidBell />
                 </div>
@@ -216,7 +216,7 @@ const Navbar = () => {
           ) : (
             <Link
               href={currentUserRoute}
-              className="btn border border-transparent rounded-md bg-[#00ABE4] text-white shadow font-semibold  dark:bg-transparent dark:border-white hover:bg-white hover:border-[#00abe4] hover:border dark:hover:text-black dark:hover:bg-white dark:hover:border-transparent dark:text-white  hover:text-[#00ABE4] transition duration-500 ease-in-out"
+              className="btn border border-transparent rounded-md bg-[#00ABE4] text-white shadow font-semibold  dark:bg-transparent dark:border-white hover:bg-white hover:border-[#00abe4] hover:border dark:hover:text-black dark:hover:bg-white dark:hover:border-transparent dark:text-white  hover:text-[#00ABE4] transition duration-500 ease-in-out hidden md:flex"
             >
               Dashboard
             </Link>
@@ -247,22 +247,12 @@ const Navbar = () => {
                 {currentUser ? currentUser?.name : "Brother"}
               </li>
 
-              <li onClick={() => setUserRole("Survey Participant")}>
-                <Link href="/dashboard/user/available_surveys">
-                  Survey Participant
-                </Link>
-              </li>
-              <li onClick={() => setUserRole("Administrator")}>
-                <Link href="/dashboard/admin/system_statistics">
-                  Administrator
-                </Link>
-              </li>
-              <li onClick={() => setUserRole("Survey Creator")}>
-                {" "}
-                <Link href="/dashboard/company/creator_profile">
-                  Survey Creator
-                </Link>
-              </li>
+              <Link
+                href={currentUserRoute}
+                className="btn border border-transparent rounded-md bg-[#00ABE4] text-white shadow font-semibold  dark:bg-transparent dark:border-white hover:bg-white hover:border-[#00abe4] hover:border dark:hover:text-black dark:hover:bg-white dark:hover:border-transparent dark:text-white  hover:text-[#00ABE4] transition duration-500 ease-in-out flex md:hidden mb-3"
+              >
+                Dashboard
+              </Link>
               {!user ? (
                 <Link href="/primary/login" className="btn">
                   Login

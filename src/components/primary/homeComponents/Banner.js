@@ -71,12 +71,14 @@ const Banner = () => {
                 </button>
               </Link>
             ) : (
-              <button
-                onClick={showAlert}
-                className="btn-lg border border-transparent rounded-md bg-[#00ABE4] text-white shadow font-semibold mr-5  dark:bg-transparent dark:border-white hover:bg-white hover:border-[#00abe4] hover:border dark:hover:text-black dark:hover:bg-white dark:hover:border-transparent dark:text-white  hover:text-[#00ABE4] mt-6 transition duration-500 ease-in-out"
-              >
-                Create Survey
-              </button>
+              <Link href="/dashboard/user/available_surveys">
+                <button
+                  href="/dashboard/user/available_surveys"
+                  className="btn-lg border border-transparent rounded-md bg-[#00ABE4] text-white shadow font-semibold mr-5  dark:bg-transparent dark:border-white hover:bg-white hover:border-[#00abe4] hover:border dark:hover:text-black dark:hover:bg-white dark:hover:border-transparent dark:text-white  hover:text-[#00ABE4] mt-6 transition duration-500 ease-in-out"
+                >
+                  Take Survey
+                </button>
+              </Link>
             )}
           </div>
           <div className="" data-aos="fade-left">
