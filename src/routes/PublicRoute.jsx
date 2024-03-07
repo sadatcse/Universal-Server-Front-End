@@ -7,10 +7,12 @@ function PublicRoute({ children }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (user) {
+    const get_user = localStorage.getItem("user");
+
+    if (get_user) {
       router.push("/", { scroll: true });
     }
-  }, [user, router]);
+  }, [router]);
 
   return <>{!user && <div>{children}</div>}</>;
 }

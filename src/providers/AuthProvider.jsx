@@ -67,6 +67,8 @@ const AuthProvider = ({ children }) => {
             );
             console.log("user role:", response.data);
 
+            localStorage.setItem("user", JSON.stringify(response.data));
+
             setCurrentUser(response.data);
             setUserRole(res.data);
             setLoading(false);
@@ -78,6 +80,10 @@ const AuthProvider = ({ children }) => {
         }
       };
       getUserRole();
+
+      if (!currentUser) {
+        localStorage.removeItem("user");
+      }
     });
     return () => {
       unSubscribe();

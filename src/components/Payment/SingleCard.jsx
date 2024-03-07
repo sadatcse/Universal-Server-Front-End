@@ -3,54 +3,59 @@
 import { useRouter } from "next/navigation";
 import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
+import UseAxioSecure from "@/Hook/UseAxioSecure";
 const SingleCard = ({ name, price, styled }) => {
   const router = useRouter();
+  const axiosSecure = UseAxioSecure();
   const makePayment = async () => {
-    // const apiUrl = "http://localhost:5000"; // try server with local host
-    const apiUrl = "https://universal-survey-backend.vercel.app";
+    try {
+      // const apiUrl = "http://localhost:5000"; // try server with local host
+      const apiUrl = "https://universal-survey-backend.vercel.app";
 
-    // const cart = [
-    //   {
-    //     id: "1",
-    //     name: "Widget A",
-    //     price: 10.99,
-    //     quantity: 2,
-    //   },
-    //   {
-    //     id: "2",
-    //     name: "Widget B",
-    //     price: 5.49,
-    //     quantity: 1,
-    //   },
-    //   {
-    //     id: "3",
-    //     name: "Widget C",
-    //     price: 7.99,
-    //     quantity: 3,
-    //   },
-    // ];
+      // const cart = [
+      //   {
+      //     id: "1",
+      //     name: "Widget A",
+      //     price: 10.99,
+      //     quantity: 2,
+      //   },
+      //   {
+      //     id: "2",
+      //     name: "Widget B",
+      //     price: 5.49,
+      //     quantity: 1,
+      //   },
+      //   {
+      //     id: "3",
+      //     name: "Widget C",
+      //     price: 7.99,
+      //     quantity: 3,
+      //   },
+      // ];
 
-    const body = {
-      products: { name, price, image_url: "https://i.ibb.co/DKx3VMX/d.png" },
-    };
-    const headers = {
-      "Content-Type": "application/json",
-    };
-    const response = await fetch(`${apiUrl}/create-checkout-session`, {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(body),
-    });
+      const body = {
+        products: { name, price, image_url: "https://i.ibb.co/DKx3VMX/d.png" },
+      };
+      const headers = {
+        "Content-Type": "application/json",
+      };
+      const response = await fetch(`${apiUrl}/create-checkout-session`, {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(body),
+      });
 
-    const session = await response.json();
-    console.log(session);
-    // const result = stripe.redirectToCheckout({ successUrl: session.url });
+      // const response = await axiosSecure.post(`/create-checkout-session`, body);
+      console.log(response);
 
-    router.push(session.url);
+      const session = await response.json();
+      console.log(session);
+      // const result = stripe.redirectToCheckout({ successUrl: session.url });
 
-    // if (result.error) {
-    //   console.log(result.error);
-    // }
+      router.push(session.url);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

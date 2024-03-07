@@ -6,12 +6,13 @@ function PrivateRoute({ children }) {
   const { user } = useContext(AuthContext);
   const router = useRouter();
 
-  // // Check if user is authenticated
-  // if (!user) {
-  //   // Redirect to login page if user is not authenticated
-  //   router.push("/login");
-  //   return null; // Render nothing while redirecting
-  // }
+  useEffect(() => {
+    const get_user = localStorage.getItem("user");
+    console.log(get_user);
+    if (!get_user) {
+      router.push("/primary/login", { scroll: true });
+    }
+  }, [router]);
 
   return <>{user && <div>{children}</div>}</>;
 }
